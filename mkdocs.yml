@@ -1,0 +1,4 @@
+site_name: Desafio
+nav:
+    - Home: README.md
+theme: readthedocs
