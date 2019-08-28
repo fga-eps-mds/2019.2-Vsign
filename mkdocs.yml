@@ -1,4 +1,6 @@
 site_name: Desafio
 nav:
     - Home: README.md
+    - Gerenciamento de Projeto: 
+        - 'Plano de Gerenciamento de Configuração de Software': 'managementProject/gcs.md'
 theme: readthedocs
