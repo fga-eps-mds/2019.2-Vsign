@@ -17,5 +17,5 @@ Essa descrição indica a funcionalidade desejada.
 Essa descrição indica o valor agregado pela funcionalidade.
 
 **Critérios de aceite**
-- Critério 1;
-- Critério 2.
+- [ ] Critério 1;
+- [ ] Critério 2.
