@@ -1,7 +1,7 @@
 ---
 name: Bug template
 about: Reportar um bug em alguma feature do sistema
-title: BUG#(número da issue)-(nome da história)
+title: BUG(número da história)-(nome da história)
 labels: bug, help wanted
 assignees: ''
 

@@ -1,7 +1,7 @@
 ---
 name: Custom template
 about: Criação customizável de outras issues
-title: US(número da história)-(nome da história)
+title: ''
 labels: ''
 assignees: ''
 
