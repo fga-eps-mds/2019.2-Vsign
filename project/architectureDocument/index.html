@@ -1,0 +1,373 @@
+<!DOCTYPE html>
+<!--[if IE 8]><html class="no-js lt-ie9" lang="en" > <![endif]-->
+<!--[if gt IE 8]><!--> <html class="no-js" lang="en" > <!--<![endif]-->
+<head>
+  <meta charset="utf-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  
+  
+  <link rel="shortcut icon" href="../../img/favicon.ico">
+  <title>Documento de Arquitetura - Vsign</title>
+  <link href='https://fonts.googleapis.com/css?family=Lato:400,700|Roboto+Slab:400,700|Inconsolata:400,700' rel='stylesheet' type='text/css'>
+
+  <link rel="stylesheet" href="../../css/theme.css" type="text/css" />
+  <link rel="stylesheet" href="../../css/theme_extra.css" type="text/css" />
+  <link rel="stylesheet" href="//cdnjs.cloudflare.com/ajax/libs/highlight.js/9.12.0/styles/github.min.css">
+  
+  <script>
+    // Current page data
+    var mkdocs_page_name = "Documento de Arquitetura";
+    var mkdocs_page_input_path = "project/architectureDocument.md";
+    var mkdocs_page_url = null;
+  </script>
+  
+  <script src="../../js/jquery-2.1.1.min.js" defer></script>
+  <script src="../../js/modernizr-2.8.3.min.js" defer></script>
+  <script src="//cdnjs.cloudflare.com/ajax/libs/highlight.js/9.12.0/highlight.min.js"></script>
+  <script>hljs.initHighlightingOnLoad();</script> 
+  
+</head>
+
+<body class="wy-body-for-nav" role="document">
+
+  <div class="wy-grid-for-nav">
+
+    
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side stickynav">
+      <div class="wy-side-nav-search">
+        <a href="../.." class="icon icon-home"> Vsign</a>
+        <div role="search">
+  <form id ="rtd-search-form" class="wy-form" action="../../search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" title="Type search term here" />
+  </form>
+</div>
+      </div>
+
+      <div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="main navigation">
+	<ul class="current">
+	  
+          
+            <li class="toctree-l1">
+		
+    <a class="" href="../..">Home</a>
+	    </li>
+          
+            <li class="toctree-l1">
+		
+    <span class="caption-text">Projeto</span>
+    <ul class="subnav">
+                <li class=" current">
+                    
+    <a class="current" href="./">Documento de Arquitetura</a>
+    <ul class="subnav">
+            
+    <li class="toctree-l3"><a href="#historico-de-revisoes">Histórico de Revisões</a></li>
+    
+
+    <li class="toctree-l3"><a href="#1-introducao">1. Introdução</a></li>
+    
+        <ul>
+        
+            <li><a class="toctree-l4" href="#11-objetivos">1.1. Objetivos</a></li>
+        
+            <li><a class="toctree-l4" href="#12-escopo">1.2. Escopo</a></li>
+        
+            <li><a class="toctree-l4" href="#13-abreviacoes-acronimos-e-definicoes">1.3. Abreviações, Acrônimos e Definições</a></li>
+        
+            <li><a class="toctree-l4" href="#14-referencias">1.4. Referências</a></li>
+        
+            <li><a class="toctree-l4" href="#15-visao-geral">1.5. Visão Geral</a></li>
+        
+        </ul>
+    
+
+    <li class="toctree-l3"><a href="#2-representacao-arquitetural">2. Representação Arquitetural</a></li>
+    
+        <ul>
+        
+            <li><a class="toctree-l4" href="#21-implementacao">2.1. Implementação</a></li>
+        
+        </ul>
+    
+
+    <li class="toctree-l3"><a href="#22-integracao">2.2. Integração</a></li>
+    
+
+    <li class="toctree-l3"><a href="#23-deployment">2.3. Deployment</a></li>
+    
+        <ul>
+        
+            <li><a class="toctree-l4" href="#231-back-end-api">2.3.1. Back-end (API)</a></li>
+        
+            <li><a class="toctree-l4" href="#232-front-end-ui">2.3.2. Front-end (UI)</a></li>
+        
+        </ul>
+    
+
+    <li class="toctree-l3"><a href="#24-banco-de-dados">2.4. Banco de Dados</a></li>
+    
+
+    <li class="toctree-l3"><a href="#3-metas-e-restricoes-arquiteturais">3. Metas e Restrições Arquiteturais</a></li>
+    
+        <ul>
+        
+            <li><a class="toctree-l4" href="#31-metas">3.1. Metas</a></li>
+        
+            <li><a class="toctree-l4" href="#32-restricoes">3.2. Restrições</a></li>
+        
+        </ul>
+    
+
+    <li class="toctree-l3"><a href="#4-artefatos-arquiteturais">4. Artefatos Arquiteturais</a></li>
+    
+        <ul>
+        
+            <li><a class="toctree-l4" href="#41-funcionalidades">4.1 Funcionalidades</a></li>
+        
+            <li><a class="toctree-l4" href="#42-integracoes">4.2 Integrações</a></li>
+        
+        </ul>
+    
+
+    <li class="toctree-l3"><a href="#5-qualidade">5. Qualidade</a></li>
+    
+
+    </ul>
+                </li>
+    </ul>
+	    </li>
+          
+            <li class="toctree-l1">
+		
+    <span class="caption-text">Gerenciamento de Projeto</span>
+    <ul class="subnav">
+                <li class="">
+                    
+    <a class="" href="../../managementProject/gcs/">Plano de Gerenciamento de Configuração de Software</a>
+                </li>
+    </ul>
+	    </li>
+          
+        </ul>
+      </div>
+      &nbsp;
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap">
+
+      
+      <nav class="wy-nav-top" role="navigation" aria-label="top navigation">
+        <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+        <a href="../..">Vsign</a>
+      </nav>
+
+      
+      <div class="wy-nav-content">
+        <div class="rst-content">
+          <div role="navigation" aria-label="breadcrumbs navigation">
+  <ul class="wy-breadcrumbs">
+    <li><a href="../..">Docs</a> &raquo;</li>
+    
+      
+        
+          <li>Projeto &raquo;</li>
+        
+      
+    
+    <li>Documento de Arquitetura</li>
+    <li class="wy-breadcrumbs-aside">
+      
+    </li>
+  </ul>
+  <hr/>
+</div>
+          <div role="main">
+            <div class="section">
+              
+                <h2 id="historico-de-revisoes">Histórico de Revisões</h2>
+<table>
+<thead>
+<tr>
+<th align="center">Data</th>
+<th align="center">Versão</th>
+<th align="center">Descrição</th>
+<th align="center">Autor</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td align="center">04/09/2019</td>
+<td align="center">0.1</td>
+<td align="center">Abertura</td>
+<td align="center">Marcos Cabeceira</td>
+</tr>
+</tbody>
+</table>
+<hr />
+<h2 id="1-introducao">1. Introdução</h2>
+<h3 id="11-objetivos">1.1. Objetivos</h3>
+<p>Este documento fornece uma visão geral da arquitetura abrangente do VSign. Apresenta várias visualizações de arquitetura diferente para descrever os diferentes aspectos do sistema. Destina-se a transmitir aos interessados as decisões arquiteturais significativas que foram tomadas.</p>
+<h3 id="12-escopo">1.2. Escopo</h3>
+<p>Descrição da arquitetura do website de busca e compra de passagens aéreas online VSign.</p>
+<h3 id="13-abreviacoes-acronimos-e-definicoes">1.3. Abreviações, Acrônimos e Definições</h3>
+<table>
+<thead>
+<tr>
+<th align="center">Acrônimo</th>
+<th align="center">Definição</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td align="center">API</td>
+<td align="center">Application programming interface</td>
+</tr>
+<tr>
+<td align="center">UI</td>
+<td align="center">User Interface</td>
+</tr>
+<tr>
+<td align="center">NFR</td>
+<td align="center">Non-Functional Requirements Framework</td>
+</tr>
+<tr>
+<td align="center">MVC</td>
+<td align="center">Model-view-controller</td>
+</tr>
+<tr>
+<td align="center">UUID</td>
+<td align="center">Identificador Único Universal</td>
+</tr>
+</tbody>
+</table>
+<h3 id="14-referencias">1.4. Referências</h3>
+<h3 id="15-visao-geral">1.5. Visão Geral</h3>
+<h2 id="2-representacao-arquitetural">2. Representação Arquitetural</h2>
+<h3 id="21-implementacao">2.1. Implementação</h3>
+<h4 id="211-back-end-api">2.1.1. Back-end (API)</h4>
+<p>A API será desenvolvida utilizando a arquitetura MVC (Model-View-Controller), implementado através do framework Ruby on Rails. Os benefícios da arquitetura incluem:</p>
+<ul>
+<li>Separação de conceitos</li>
+<li>Facilidade em atender o conceito de DRY (Don't repeat yourself)</li>
+<li>Esclarecimento de onde diferentes tipos de código devem estar para facilitar a manutenção</li>
+<li>Diagrama MVC</li>
+</ul>
+<p><img alt="alt text" src="https://github.com/DSW12018/fluge/wiki/images/mvc.png" title="Fluxo MVC" /></p>
+<p><strong>Models</strong>  - Uma model representa as informações (dados) da aplicação e as diretrizes para manipulação dessas informações. No Ruby on Rails, as models são utilizadas principalmente para gerenciar as regras de interação com as tabelas do banco de dados. Geralmente, recomenda-se colocar as regras de negócio do software nas models.</p>
+<p><strong>Views</strong> - As views representam a interface de usuário da aplicação. No VSign, essa camada não será implementada utilizando o Ruby on Rails.</p>
+<p><strong>Controllers</strong> - As controllers promovem a ligação entre as models e as views. No Rails, as controllers são responsáveis pelo processamento das requisições do browser, solicitando às models, quando necessário, dados armazenados no banco de dados. No VSign, as controllers terão a função de receber as requisições da interface de usuário.</p>
+<h4 id="212-front-end-ui">2.1.2. Front-end (UI)</h4>
+<p>A interface de usuário está desenvolvida utilizando a arquitetura Redux, implementada através da biblioteca React, desenvolvida pela equipe do Facebook.</p>
+<p><img alt="alt text" src="https://camo.githubusercontent.com/9de527b9432cc9244dc600875b46b43311918b59/68747470733a2f2f73332e616d617a6f6e6177732e636f6d2f6d656469612d702e736c69642e65732f75706c6f6164732f3336343831322f696d616765732f323438343739302f415243482d5265647578322d657874656e6465642d7265616c2d6465636c657261746976652e676966" title="Fluxo de dados Redux" /></p>
+<p>O VSign é uma arquitetura relativamente nova que introduz o conceito de fluxo de dados unidirecional. Nessa arquitetura, encontra-se geralmente os seguintes componentes:</p>
+<p><strong>Actions</strong> - São helpers que passam dados para o dispatcher.</p>
+<p><strong>Reducers</strong> - Recebem as actions e transmitem os payloads para os callbacks.</p>
+<p><strong>Store</strong> - São contêineres que guardam o estado da aplicação.</p>
+<h2 id="22-integracao">2.2. Integração</h2>
+<p>A integração do back-end com o front-end será feita através de uma API GraphQL.</p>
+<p><img alt="alt text" src="https://github.com/DSW12018/fluge/wiki/images/graphql.png" title="Fluxo do GraphQL" /></p>
+<p>A utilização do GraphQL trás uma série de benefícios para o desenvolvimento do VSign.</p>
+<ul>
+<li>Endpoint único responsável por processar as requisições de busca e mutação.</li>
+<li>Menor número de requisições a API, devido a possibilidade de especificação de necessidade de múltiplos recursos numa só requisição (under-fetching).</li>
+<li>Busca específica de informações, evitando o retorno de dados desnecessários (over-fetching).</li>
+</ul>
+<h2 id="23-deployment">2.3. Deployment</h2>
+<p>Pode-se descrever, em alto nível, as seguintes etapas para a implantação do software nos ambientes de produção:</p>
+<ol>
+<li>Pull request da funcionalidade para a branch de desenvolvimento;</li>
+<li>Análise estática do código e build do software através de um sistema de integração contínua;</li>
+<li>Mesclagem do código na branch de desenvolvimento;</li>
+<li>Deploy do software para o ambiente de homologação (staging);</li>
+<li>Mesclagem do código na branch master;</li>
+<li>Deploy do software para o ambiente de produção.</li>
+</ol>
+<p>A relação de ferramentas e serviços utilizados está disponível no Plano de Gerenciamento de Configuração de Software.</p>
+<h3 id="231-back-end-api">2.3.1. Back-end (API)</h3>
+<p>O processo de implantação para a API contém múltiplas etapas para assegurar que o código que chegue aos ambientes de produção foi verificado e validado com o uso de ferramentas automáticas e a prática de code review.</p>
+<h3 id="232-front-end-ui">2.3.2. Front-end (UI)</h3>
+<p>As implantações na interface de usuário seguirão o mesmo princípio, mudando apenas, se necessário, as ferramentas automáticas. Além disso, é importante que a interface de usuário seja validada através de testes com pessoas.</p>
+<h2 id="24-banco-de-dados">2.4. Banco de Dados</h2>
+<p>Para a persistência de dados do VSign, será utilizado o sistema gerenciador de banco de dados PostgreSQL.</p>
+<p>O PostgreSQL possui excelente integração com o framework Ruby on Rails. Isso permite a utilização de UUID para colunas id do tipo foreign key, além oferecer uma gama de tipos de dados, auxiliando no desenvolvimento de um bom projeto de banco de dados.</p>
+<h2 id="3-metas-e-restricoes-arquiteturais">3. Metas e Restrições Arquiteturais</h2>
+<h3 id="31-metas">3.1. Metas</h3>
+<p>A arquitetura do VSign foi definida de forma a atender as seguintes metas:</p>
+<p><strong>Desacoplamento</strong> - A separação do software em duas frentes: interface de usuário (frontend) e API (backend), facilitará para a equipe de desenvolvimento a divisão de tarefas necessárias para a construção do software. Além disso, permite escolher as melhores soluções tecnológicas para a implementação de cada frente, levando em consideração quesitos de boas práticas de software e know-how da equipe.</p>
+<p><strong>Deployment</strong> - Oferecer maior flexibilidade para definição das fases necessárias para a implantação do software nos ambientes de produção, utilizando as ferramentas e serviços mais adequados para cada frente do sistema, levando em consideração tanto a otimização de custos, tal como requisitos técnicos.</p>
+<p><strong>Evolução</strong> - A necessidade do desenvolvimento de novas funcionalidades poderá ser feita de forma independente na API e na interface de usuário, inclusive, adotando outras tecnologias, desde que a integração entre as duas frentes seja mantida.</p>
+<h3 id="32-restricoes">3.2. Restrições</h3>
+<p>A escolha arquitetural também levou a identificação de algumas restrições:</p>
+<p><strong>Expertise</strong> - A equipe não possui muito experiência de desenvolvimento nas tecnologias escolhidas. Entretanto, sabendo de tal restrição, buscou-se elaborar um Plano de Gerenciamento de Riscos para que o projeto possa ser desenvolvido com êxito.</p>
+<p><strong>Padrões de Projeto</strong> - Apesar de o software adotar padrões de projeto bem conhecidos no mercado, pode encontrar-se dificuldade para adoção de padrões de projetos requeridos para a avaliação do projeto.</p>
+<h2 id="4-artefatos-arquiteturais">4. Artefatos Arquiteturais</h2>
+<h3 id="41-funcionalidades">4.1 Funcionalidades</h3>
+<p>A descrição das funcionalidades do VSign são apresentadas na forma de histórias de usuário, no repositório do projeto. Elas possuirão critérios de aceitação que descrevem de forma técnica como deverá ser desenvolvida a funcionalidade, para que, dessa forma, seja cumprido os planos de gerenciamento e qualidade do projeto.</p>
+<p>A implementação das funcionalidades ocorrerá de forma iterativa ao longo do projeto, obedecendo os termos descritos no desenho do processo.</p>
+<p>Os artefatos para esta visão são:</p>
+<ul>
+<li>Histórias de Usuário</li>
+<li>NFR</li>
+</ul>
+<h3 id="42-integracoes">4.2 Integrações</h3>
+<p>Os artefatos de integração descrevem a decomposição do sistema, bem como as formas de comunicação entre os módulos.</p>
+<p>Os documentos que são disponibilizados para essa visão são:</p>
+<ul>
+<li>Rich Picture</li>
+<li>Diagrama de Classes</li>
+<li>Diagrama de Sequência</li>
+</ul>
+<h2 id="5-qualidade">5. Qualidade</h2>
+<p>Na API, os padrões adotados no projeto seguirão convenções do framework Ruby on Rails, que são amplamente utilizados por projetos de diversos tamanhos.</p>
+<p>Na interface de usuário, a utilização do React, permitirá que o desenvolvimento seja realizado de forma eficiente e componentizado, com facilidade de integração com outras bibliotecas e serviços.</p>
+<p>Os desenvolvedores do projeto também farão uso das folhas de estilo das linguagens de programação adotadas e contarão com ferramentas de análise estática, para assegurar que o desenvolvimento está de acordo com os requisitos de boas práticas de desenvolvimento de software.</p>
+              
+            </div>
+          </div>
+          <footer>
+  
+    <div class="rst-footer-buttons" role="navigation" aria-label="footer navigation">
+      
+        <a href="../../managementProject/gcs/" class="btn btn-neutral float-right" title="Plano de Gerenciamento de Configuração de Software">Next <span class="icon icon-circle-arrow-right"></span></a>
+      
+      
+        <a href="../.." class="btn btn-neutral" title="Home"><span class="icon icon-circle-arrow-left"></span> Previous</a>
+      
+    </div>
+  
+
+  <hr/>
+
+  <div role="contentinfo">
+    <!-- Copyright etc -->
+    
+  </div>
+
+  Built with <a href="http://www.mkdocs.org">MkDocs</a> using a <a href="https://github.com/snide/sphinx_rtd_theme">theme</a> provided by <a href="https://readthedocs.org">Read the Docs</a>.
+</footer>
+      
+        </div>
+      </div>
+
+    </section>
+
+  </div>
+
+  <div class="rst-versions" role="note" style="cursor: pointer">
+    <span class="rst-current-version" data-toggle="rst-current-version">
+      
+      
+        <span><a href="../.." style="color: #fcfcfc;">&laquo; Previous</a></span>
+      
+      
+        <span style="margin-left: 15px"><a href="../../managementProject/gcs/" style="color: #fcfcfc">Next &raquo;</a></span>
+      
+    </span>
+</div>
+    <script>var base_url = '../..';</script>
+    <script src="../../js/theme.js" defer></script>
+      <script src="../../search/main.js" defer></script>
+
+</body>
+</html>

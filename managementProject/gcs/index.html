@@ -8,7 +8,7 @@
   
   
   <link rel="shortcut icon" href="../../img/favicon.ico">
-  <title>Plano de Gerenciamento de Configuração de Software - Desafio</title>
+  <title>Plano de Gerenciamento de Configuração de Software - Vsign</title>
   <link href='https://fonts.googleapis.com/css?family=Lato:400,700|Roboto+Slab:400,700|Inconsolata:400,700' rel='stylesheet' type='text/css'>
 
   <link rel="stylesheet" href="../../css/theme.css" type="text/css" />
@@ -36,7 +36,7 @@
     
     <nav data-toggle="wy-nav-shift" class="wy-nav-side stickynav">
       <div class="wy-side-nav-search">
-        <a href="../.." class="icon icon-home"> Desafio</a>
+        <a href="../.." class="icon icon-home"> Vsign</a>
         <div role="search">
   <form id ="rtd-search-form" class="wy-form" action="../../search.html" method="get">
     <input type="text" name="q" placeholder="Search docs" title="Type search term here" />
@@ -51,6 +51,17 @@
             <li class="toctree-l1">
 		
     <a class="" href="../..">Home</a>
+	    </li>
+          
+            <li class="toctree-l1">
+		
+    <span class="caption-text">Projeto</span>
+    <ul class="subnav">
+                <li class="">
+                    
+    <a class="" href="../../project/architectureDocument/">Documento de Arquitetura</a>
+                </li>
+    </ul>
 	    </li>
           
             <li class="toctree-l1">
@@ -72,7 +83,7 @@
     
         <ul>
         
-            <li><a class="toctree-l4" href="#21-uso-de-issues">2.1 Uso de Issues</a></li>
+            <li><a class="toctree-l4" href="#21-tipo-de-issues">2.1 Tipo de Issues</a></li>
         
         </ul>
     
@@ -92,7 +103,7 @@
       
       <nav class="wy-nav-top" role="navigation" aria-label="top navigation">
         <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
-        <a href="../..">Desafio</a>
+        <a href="../..">Vsign</a>
       </nav>
 
       
@@ -129,9 +140,14 @@
 </thead>
 <tbody>
 <tr>
-<td align="center">1.0</td>
+<td align="center">0.1</td>
 <td align="center">Introdução, Uso de Issues</td>
 <td align="center">Thiago Ribeiro</td>
+</tr>
+<tr>
+<td align="center">0.2</td>
+<td align="center">Templates de Issues</td>
+<td align="center">@caue96</td>
 </tr>
 </tbody>
 </table>
@@ -140,26 +156,71 @@
 <p align="justify">Neste documento tem como objetivo descrever os principais itens em relação a Gerência de Configuração do Projeto. Objetiva-se por meio desde, padronizar e explicitar as políticas de contribuição a serem seguidas pela equipe durante o desenvolvimento do projeto e manutenção do mesmo.</p>
 
 <h2 id="2-politicas">2. Políticas</h2>
-<h3 id="21-uso-de-issues">2.1 Uso de Issues</h3>
-<p align = "justify">
+<h3 id="21-tipo-de-issues">2.1 Tipo de Issues</h3>
+<h4 id="211-issue-de-bug">2.1.1 Issue de Bug</h4>
+<hr />
+<p>Nome: Bug template<br>
+Sobre: Reportar um bug em alguma feature do sistema<br>
+Título: BUG(número da história)-(nome da história)<br>
+Labels: bug, help wanted</p>
+<hr />
+<pre><code>**Descrição**
+Uma descrição clara e concisa do bug.
 
-No decorrer do desenvolvimento, deverão ser utilizadas issues para mapear as demandas do projeto, de modo que cada issue deve ser identificada com labels que facilite o rastreamentos de papéis e demandas específicas e suas respectivas prioridades.
+**Passo a Passo**
+Passo a passo para se reproduzir o bug:
+1. Go to '...'
+2. Click on '....'
+3. Scroll down to '....'
+4. See error
 
-O nome das issues que dizem respeito a histórias de usuário, seguirá o seguinte formato: 
+**Comportamento Esperado**
+Descrição do comportamento esperado pela feature desenvolvida.
 
-* US< número da história>-< Nome definido para a história pela equipe >.</p>
+**Screenshots**
+Pelo menos uma screenshot do bug.
 
-<ul>
-<li>Exemplo : "US01-UserStories".</li>
-</ul>
-<p align = "justify">Deverá inserir as tasks e os critérios de aceitação de cada história de usuário, e especificar em voz de usuário. A especificação da história de usuário seguirá o seguinte padrão:
+**Informações do Desktop:**
+ - OS:
+ - Versão do OS:
+ - Browser:
+ - Versão do Browser:
+</code></pre>
 
-* Eu, como <usuário> desejo <meta/desejo>, para <benefício>.</p>
+<h4 id="212-issue-de-user-story">2.1.2 Issue de User Story</h4>
+<hr />
+<p>Nome: US template<br>
+Sobre: Nova feature do sistema<br>
+Título: US(número da história)-(nome da história)<br>
+Labels: enhancement</p>
+<hr />
+<pre><code>**Descrição (Como [quem], eu quero [o quê] para [por quê]?)**
+Essa descrição vai indicar o autor da ação, funcionalidade desejada e o valor agregado pela funcionalidade.
+Ex: Como ADMINISTRADOR, preciso ter acesso a um relatório de vendas para saber quanto recebi em determinado período.
 
-<ul>
-<li>Exemplo: “Eu, como gerente, desejo cadastrar novos produtos, para manter meu estoque sempre atualizado.”</li>
-</ul>
-<p>ref: https://www.drupal.org/issue-queue/how-to#Templates</p>
+**Critérios de aceite**
+- [ ] Critério 1;
+- [ ] Critério 2;
+- [ ] Critério n.
+Ex:
+- [ ] Vendedores não poderão ter acesso ao relatório;
+- [ ] Os relatórios devem ter a opção de imprimir;
+- [ ] Os relatórios devem ter a opção de exportar para Excel;
+- [ ] Deverá ter filtro por data, para que o administrador possa definir o período desejado.
+</code></pre>
+
+<h4 id="213-custom-issue">2.1.3 Custom Issue</h4>
+<hr />
+<p>Nome: Custom template<br>
+Sobre: Criação customizável de outras issues<br>
+Título: ""<br>
+Labels: ""</p>
+<hr />
+<pre><code>**Descrição**
+Descrição do que se trata a issue.
+</code></pre>
+
+<p>referências: <a href="https://medium.com/vertice/como-escrever-boas-users-stories-hist%C3%B3rias-de-usu%C3%A1rios-b29c75043fac">Issue de User Story</a> e <a href="https://github.com/devspace/awesome-github-templates">Issue de Bug</a></p>
               
             </div>
           </div>
@@ -168,7 +229,7 @@ O nome das issues que dizem respeito a histórias de usuário, seguirá o seguin
     <div class="rst-footer-buttons" role="navigation" aria-label="footer navigation">
       
       
-        <a href="../.." class="btn btn-neutral" title="Home"><span class="icon icon-circle-arrow-left"></span> Previous</a>
+        <a href="../../project/architectureDocument/" class="btn btn-neutral" title="Documento de Arquitetura"><span class="icon icon-circle-arrow-left"></span> Previous</a>
       
     </div>
   
@@ -194,7 +255,7 @@ O nome das issues que dizem respeito a histórias de usuário, seguirá o seguin
     <span class="rst-current-version" data-toggle="rst-current-version">
       
       
-        <span><a href="../.." style="color: #fcfcfc;">&laquo; Previous</a></span>
+        <span><a href="../../project/architectureDocument/" style="color: #fcfcfc;">&laquo; Previous</a></span>
       
       
     </span>
