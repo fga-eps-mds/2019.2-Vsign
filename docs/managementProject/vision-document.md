@@ -2,6 +2,7 @@
 | Data        |Versão   | Descrição       | Autor
 |-------------|---------|-----------------|-------------|
 | 04/09/2019  |1.0      |Introdução, Posicionamento(parcial), estrutura geral do documento |Marcos Gabriel Tavares|
+| 05/09/2019  |2.0      |Descrição do problema, Usuário, Principais necessidades do usuário, Ambiente do usuário, Perspectiva no produto e Recursos do produto|Marcos Vinicius Lima Raimundo|
 
 # 1. Introdução
 ----
@@ -27,11 +28,11 @@ As pessoas têm cada vez menos tempo disponível em suas agendas e agendar uma d
 
 ## 2.2. Descrição do Problema
 
-| O problea seria       |   |
+| O problea seria       | Assinar um contratos por vídeo  |
 |-----------------------|---|
-| Que afeta             |   |
+| Que afeta             | Pessoar que querem assinar contrstos com a bxble  |
 | Cujo impacto é        |   |
-| Uma boa solução seria |   |
+| Uma boa solução seria | Uma plataforma que permita a assinitura do contrato via vídeo  |
 
 ## 2.3. Sentença de Posição do Produto
 
@@ -50,23 +51,29 @@ As pessoas têm cada vez menos tempo disponível em suas agendas e agendar uma d
 ## 3.1. Usuário
 | Nome      |Descrição | Responsabilidades
 |-----------|----------|------------------|
-| Cliente   |          |                  |
+| Cliente   |Pessoa interessada em fechar um contrato para crédito consignado | Utilizar a plataforma oferecida pela Vsign para assinar este contrato|
 
 ## 3.2. Principais necessidade do usuário
 | Necessidade |Problema | Solução proposta| Solução atual
 |-------------|---------|-----------------|-------------|
-|             |         |                 |             |
+|O cliante tem a necessidade um contrato| A dificuldade de assinar um documento físico| Um sistema web no qual o contratante pode enviar um vídeo confirmando que aceitou os termos do contrato| O cliente deve ir em algum posto de atendimento ou imprimir o contrato e enviar digitalizado via web|
+
+## 3.3. Ambiente do usuário
+A plataforma devo ser acessada a partir de um dispositivo conectado a internet, utilizando um navegador. A experiência do usuário deve ser semelhante em qualquer que seja o dispositivo, entretanto pode sofrer impacto pela velocidade da internet.   
 # 4. Envolvidos
 ----
 | NOME      |DESCRIÇÃO | PRINCIPAIS RESPONSABILIDADES
 |-----------|----------|----------------------------|
 | Marcos Gabriel Tavares |  Membro da equipe de desenvolvimento.   |Executar o projeto além de desenvolver e manter a documentação e o software.|
+| Marcos Vinicius Lima Raimundo |  Membro da equipe de desenvolvimento.   |Executar o projeto além de desenvolver e manter a documentação e o software.|
 
 # 5. Visão geral do produto
 ----
 # 5.1. Perspectiva do produto
-
+O produto tem como objetivo proporcionar uma maneira simples e prática do usuário assinar um contrato com a bxblue . O produto tem como objetivo também verificar a documentação do usuário
 # 5.2. Recursos do produto
-*
-*
-*
+- Oferecer as duas opções de assinatura, a tradicional e a por vídeo.
+- Na opção por vídeo, o produto deve mostar um texto para ser lido durante o vídeo, com as informações presentes no contrato.
+- Deve ter uma maneira do cliente enviar fotos do documentos pessoais.
+- O produto deve obter os dados presentes no vídeo e verificar com os contidos no contrato.
+- Verificar também os dados pessoais.
