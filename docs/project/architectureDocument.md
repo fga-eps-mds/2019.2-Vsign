@@ -1,8 +1,10 @@
 ## Histórico de Revisões
 
-| Data       | Versão | Descrição    | Autor             |
-|:----------:|:------:|:------------:|:-----------------:|
-| 04/09/2019 | 0.1    | Abertura     | Marcos Cabeceira  |
+| Data       | Versão | Descrição                              | Autor                |
+|:----------:|:------:|:--------------------------------------:|:--------------------:|
+| 04/09/2019 | 0.1    | Abertura                               | Marcos Cabeceira     |
+| 06/09/2019 | 0.1.1  | Correção de erros de português         | Marcos Cabeceira     |
+| 06/09/2019 | 0.1.2  | Correção de erros de português         | Marcos Cabeceira     |
 
 -----
 
@@ -14,7 +16,7 @@ Este documento fornece uma visão geral da arquitetura abrangente do VSign. Apre
 
 ### 1.2. Escopo
 
-Descrição da arquitetura do website de assinatura de contrator por vídeo, VSign.
+Descrição da arquitetura do website de assinatura de contratos por vídeo, VSign.
 
 ### 1.3. Abreviações, Acrônimos e Definições
 
