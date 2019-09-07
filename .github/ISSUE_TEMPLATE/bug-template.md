@@ -7,24 +7,24 @@ assignees: ''
 
 ---
 
-**Descrição**
+**Descrição**<br>
 Uma descrição clara e concisa do bug.
 
-**Passo a Passo**
+**Passo a Passo**<br>
 Passo a passo para se reproduzir o bug:
 1. Go to '...'
 2. Click on '....'
 3. Scroll down to '....'
 4. See error
 
-**Comportamento Esperado**
+**Comportamento Esperado**<br>
 Descrição do comportamento esperado pela feature desenvolvida.
 
-**Screenshots**
+**Screenshots**<br>
 Pelo menos uma screenshot do bug.
 
 **Informações do Desktop:**
- - OS: 
- - Versão do OS: 
- - Browser: 
+ - OS:
+ - Versão do OS:
+ - Browser:
  - Versão do Browser:

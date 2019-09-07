@@ -7,5 +7,5 @@ assignees: ''
 
 ---
 
-**Descrição**
+**Descrição**<br>
 Descrição do que se trata a issue.
