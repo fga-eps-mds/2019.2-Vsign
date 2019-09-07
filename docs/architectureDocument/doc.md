@@ -14,7 +14,7 @@ Este documento fornece uma visão geral da arquitetura abrangente do VSign. Apre
 
 ### 1.2. Escopo
 
-Descrição da arquitetura do website de busca e compra de passagens aéreas online VSign.
+Descrição da arquitetura do website de assinatura de contrator por vídeo, VSign.
 
 ### 1.3. Abreviações, Acrônimos e Definições
 
@@ -57,9 +57,9 @@ A interface de usuário está desenvolvida utilizando a arquitetura Redux, imple
 
 ![alt text](https://camo.githubusercontent.com/9de527b9432cc9244dc600875b46b43311918b59/68747470733a2f2f73332e616d617a6f6e6177732e636f6d2f6d656469612d702e736c69642e65732f75706c6f6164732f3336343831322f696d616765732f323438343739302f415243482d5265647578322d657874656e6465642d7265616c2d6465636c657261746976652e676966 "Fluxo de dados Redux")
 
-O VSign é uma arquitetura relativamente nova que introduz o conceito de fluxo de dados unidirecional. Nessa arquitetura, encontra-se geralmente os seguintes componentes:
+O Redux é uma arquitetura relativamente nova que introduz o conceito de fluxo de dados unidirecional. Nessa arquitetura, encontra-se geralmente os seguintes componentes:
 
-**Actions** - São helpers que passam dados para o dispatcher.
+**Actions** - São helpers que passam dados para os Reducers.
 
 **Reducers** - Recebem as actions e transmitem os payloads para os callbacks.
 
