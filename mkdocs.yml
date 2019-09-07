@@ -1,7 +1,9 @@
-site_name: Desafio
+site_name: Vsign
 nav:
     - Home: README.md
-    - Documento de Arquitetura: 'architectureDocument/doc.md'
+    - Projeto: 
+        - 'Documento de Arquitetura': 'project/architectureDocument.md'
+        - 'Documento de Visão': 'project/vision-document.md'
     - Gerenciamento de Projeto: 
         - 'Plano de Gerenciamento de Configuração de Software': 'managementProject/gcs.md'
 theme: readthedocs
