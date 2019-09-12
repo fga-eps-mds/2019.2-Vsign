@@ -53,7 +53,30 @@
     <a class="current" href=".">Home</a>
     <ul class="subnav">
             
-    <li class="toctree-l2"><a href="#vsign">VSign</a></li>
+    <li class="toctree-l2"><a href="#vsign">🔵  VSign</a></li>
+    
+
+    <li class="toctree-l2"><a href="#guia-para-rodar-o-projeto-com-o-docker">🐳 Guia para rodar o projeto com o Docker</a></li>
+    
+        <ul>
+        
+            <li><a class="toctree-l3" href="#instalacao">Instalação</a></li>
+        
+        </ul>
+    
+
+    <li class="toctree-l2"><a href="#rodando-a-aplicacao">Rodando a aplicação</a></li>
+    
+        <ul>
+        
+            <li><a class="toctree-l3" href="#rails-httpslocalhost3000">Rails : https://localhost:3000</a></li>
+        
+            <li><a class="toctree-l3" href="#react-httpslocalhost3001">React : https://localhost:3001</a></li>
+        
+        </ul>
+    
+
+    <li class="toctree-l2"><a href="#comandos-principais">Comandos Principais</a></li>
     
 
     </ul>
@@ -128,7 +151,70 @@
           <div role="main">
             <div class="section">
               
-                <h3 id="vsign">VSign</h3>
+                <p><a href="https://circleci.com/gh/fga-eps-mds/2019.2-Vsign"><img alt="CircleCI" src="https://circleci.com/gh/fga-eps-mds/2019.2-Vsign.svg?style=svg" /></a></p>
+<h2 id="vsign">🔵  VSign</h2>
+<h2 id="guia-para-rodar-o-projeto-com-o-docker">🐳 Guia para rodar o projeto com o Docker</h2>
+<ul>
+<li>
+<h3 id="instalacao">Instalação</h3>
+</li>
+</ul>
+<p>Para o uso é necessário possuir o Docker e o Docker Compose em sua máquina. Caso não os possua segue abaixo os link para instalação.</p>
+<p><a href="https://docs.docker.com/engine/installation/linux/docker-ce/">Instalação Docker</a></p>
+<p><a href="https://docs.docker.com/compose/install/">Instalação Docker-compose</a>.</p>
+<ul>
+<li>
+<h2 id="rodando-a-aplicacao">Rodando a aplicação</h2>
+</li>
+</ul>
+<p>Entre na pasta raíz do projeto em que está localizado o <strong>docker-compose.yml</strong> e digite no terminal:</p>
+<p>&emsp;&emsp; Primeiro (Enquanto não houver alterações no Gemfile ou Dockerfile, não precisará repetir o comando):</p>
+<pre><code>  docker-compose build
+</code></pre>
+
+<p>&emsp;&emsp; Em seguida use o comando para subir o ambiente com logs.</p>
+<pre><code>  docker-compose up
+</code></pre>
+
+<p>&emsp;&emsp; Após ter subido o ambiente em um terminal, caso seja a primeira vez que esteja rodando a aplicação, crie o banco (em outro terminal e com o ambiente ainda rodando no anterior):</p>
+<pre><code>  docker-compose run backend rake db:create
+</code></pre>
+
+<p>&emsp;&emsp; Espere até que todos os serviços estejam disponíveis, acesse os servidores com os seguintes endereço: </p>
+<ul>
+<li>
+<h4 id="rails-httpslocalhost3000">Rails : https://localhost:3000</h4>
+</li>
+<li>
+<h4 id="react-httpslocalhost3001">React : https://localhost:3001</h4>
+</li>
+</ul>
+<p>Para subir um ambiente apenas, navegue até a pasta correspondente /backend ou /frontend onde se encontra o <strong>docker-compose.yml</strong></p>
+<pre><code>  docker-compose up
+</code></pre>
+
+<ul>
+<li>
+<h2 id="comandos-principais">Comandos Principais</h2>
+</li>
+</ul>
+<p>&emsp;&emsp; Para subir o ambiente com logs digite: (Criará a imagem baseado no Dockerfile e criará os containers de serviços que definimos no docker-compose.yml)</p>
+<p><code>terminal
+  docker-compose up</code></p>
+<p>&emsp;&emsp; Para desligar o ambiente de maneira completa. (Para e remove os containers, networks, volumes e imagens criadas pelo "up")</p>
+<p><code>terminal
+  docker-compose down</code></p>
+<p>&emsp;&emsp; Para executar comandos depois de ter subido o docker-compose. (Dentro do seu novo ambiente)</p>
+<p>&emsp;&emsp;&emsp; Maneira direta. Exemplo: (Dirá a versão do Rails ou Node)</p>
+<p>```terminal
+  docker-compose run backend rails -version</p>
+<p>docker-compose run frontend node --version
+ ```</p>
+<p>&emsp;&emsp;&emsp; Para abrir um prompt interativo para usar quantos comandos desejar: (Para sair digite: exit)</p>
+<p>```terminal
+  docker-compose run backend sh</p>
+<p>docker-compose run frontend sh
+ ```</p>
               
             </div>
           </div>
@@ -177,5 +263,5 @@
 
 <!--
 MkDocs version : 1.0.4
-Build Date UTC : 2019-09-07 19:42:48
+Build Date UTC : 2019-09-12 13:54:56
 -->
