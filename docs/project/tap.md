@@ -6,7 +6,7 @@
 | :----: | :-------: | :---: |
 | 0.1 | Abertura do documento | [Cauê](https://github.com/caue96) |
 | 0.2 | Montagem da estrutura do documento | [Cauê](https://github.com/caue96) |
-| 0.3 | Tópicos 1 a 3, 4.1, 5.2 e 5.3 | [Cauê](https://github.com/caue96) |
+| 0.3 | Tópicos 1 a 3, 4.1 e 5 | [Cauê](https://github.com/caue96) |
 
 ---
 
@@ -158,7 +158,13 @@ Desenvolver um sistema que apresente e colete informações dos usuários por me
 ### 5. Considerações do Projeto
 
 #### 5.1 Riscos
-
+| Descrição | Probabilidade | Impacto | Ações de mitigação |
+| :-------- | :-----------: | :-----: | :----------------- |
+| Desistência de membro | Média | Alto | Acúmulo de função por membro que tiver com menos trabalho para fazer |
+| Ausência constante de membro | Alta | Médio | Identificar o membro com problemas e entregar tarefas mais simples e menos importantes para ele |
+| Atrasos por dificuldades com as tecnologias | Média | Baixo | Atraso inicial em entregas do software por dificuldades com as tecnologias utilizadas |
+| Problemas com computadores de membro da equipe | Média | Baixo | Procurar outro computador para membro com problemas continuar o trabalho |
+| Falta de comunicação | Alta | Médio | Motivar a equipe a se comunicar melhor, encorajar a comunicação, deixar claro a importância da comunicação e reforçar os meios de comunicação oficiais da equipe |
 
 #### 5.2 Suposições
 - Escopo não irá mudar durante o desenvolvimento do software;
