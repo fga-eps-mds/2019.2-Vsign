@@ -1,18 +1,43 @@
-import React from 'react';
-import { BrowserRouter as Router, Route, Link } from "react-router-dom";
-import logo from './logo.svg';
-import LandingPage from "./components/LandingPage";
-import header from "./components/header";
-import footer from "./components/footer";
+import React, {Component} from 'react';
 
-function App() {
-  return (
-    <Router>
-      <div>
-        <Route exact path="/welcome" component={header} />
+import Toolbar from './components/Toolbar/Toolbar';
+
+import SideDrawer from './components/SideDrawer/SideDrawer';
+
+import Backdrop from './components/Backdrop/Backdrop';
+ 
+
+class App extends Component{
+  state = {
+    sideDrawerOpen: false
+  };
+
+  drawerToggleClickHandler = () =>{
+    this.setState((prevState)=>{
+      return {sideDrawerOpen: !prevState.sideDrawerOpen};
+    });
+  };
+
+  backdropClickHandler = () => {
+    this.setState({sideDrawerOpen: false});
+  };
+  render() {
+    let sideDrawer;
+    let backdrop;
+
+    if(this.state.sideDrawerOpen){
+      sideDrawer =<SideDrawer/>;
+      backdrop = <Backdrop click={this.backdropClickHandler}/>
+    }
+    return (
+      <div  style={{height: '100%'}}>
+        <Toolbar drawerToggleClickHandler ={this.drawerToggleClickHandler}/>
+        {sideDrawer}
+        {backdrop}
       </div>
-    </Router>
-  );
+      
+      
+    );
+  }
 }
-
 export default App;
