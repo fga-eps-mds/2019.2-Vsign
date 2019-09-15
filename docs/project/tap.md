@@ -7,6 +7,7 @@
 | 0.1 | Abertura do documento | [Cauê](https://github.com/caue96) |
 | 0.2 | Montagem da estrutura do documento | [Cauê](https://github.com/caue96) |
 | 0.3 | Tópicos 1 a 3, 4.1 e 5 | [Cauê](https://github.com/caue96) |
+| 0.4 | Tópicos 4.2 a 4.5 | [Cauê](https://github.com/caue96) |
 
 ---
 
@@ -74,62 +75,47 @@ Desenvolver um sistema que apresente e colete informações dos usuários por me
 |[Thiago Pereira](https://github.com/thiagorpereira)| DevOps |
 |[Victor Gomide](https://github.com/victoralvesgomide)| Scrum Master |
 |[Vinicius Porto](https://github.com/ViniciusPuerto)| Desenvolvedor |
-|[William Veira](https://github.com/williamtpv)| Desenvolvedor |
+|[William Viera](https://github.com/williamtpv)| Desenvolvedor |
 
 #### 3.4 Responsabilidades
 **Arquiteto:**
-- Escolher um padrão para a maneira de desenvolver aplicações;
-- Definir/criar um framework para ser usado na aplicação;
-- Enxergar de maneira mais abrangente;
-- Adotar um design de componentização;
-- Ter contato e conhecimento com outras aplicações na organização;
-- Quebrar a complexidade do desenvolvimento de aplicações e pedaços menores e melhores gerenciáveis;
-- Entender as funções de cada componente;
-- Entender as interações e dependências entre os componentes de software;
-- Comunicar esses pontos com os desenvolvedores.
+- Levantamento de roadmap de requisitos;
+- Proposta de arquitetura micro serviços;
+- Orquestração de containeres com micro serviços.
 
 **Desenvolvedor:**
-- Definir e criar soluções técnicas de acordo com a tecnologia utilizada no projeto;
-- Compreender a arquitetura e adaptar-se a ela;
-- Identificar e construir os testes de desenvolvedor que cubram o comportamento desejado dos componentes técnicos;
-- Comunicar o design de uma forma que os outros membros da equipe compreendam;
-- Integrar o sistema com os novos componentes de software produzidos ou alterados.
+- Código/Entrega;
+- Documentação;
+- Coerência - documentos e código|;
+- Histórias e planejamento da release;
+- Testes automatizados e cobertura de código;
+- Tracking;
+- Wiki Atualizada;
+- Software implantado e disponível para uso.
 
 **DevOps:**
+- Ambiente de desenvolvimento via container;
+- Gitflow;
+- Pipeline de integração e deploy contínuos;
 - Integração contínua;
-- Distribuição contínua;
-- Microsserviços;
-- Infraestrutura como código;
-- Gerenciamento de configuração;
-- Política como código;
-- Monitoramento e registro de log;
-- Comunicação e colaboração.
+- Ambiente de homologação/produção;
+- Roadmap de deploy contínuo;
+- Evidência de deploy contínuo.
 
 **Product Owner:**
-- Construir, aperfeiçoar e manter o Backlog da equipe;
-- Coordenar e gerenciar reuniões de planejamento de Sprints;
-- Ser a maior fonte de informações sobre as prioridades do projeto;
-- Indicar claramente os itens necessários do Product Backlog;
-- Encomendar os itens do Product Backlog e ajudar a atingir as metas;
-- Assegurar que o Product Backlog esteja visível, claro e transparente a todos;
-- Otimizar o valor do trabalho entregue pelo time de desenvolvimento;
-- Assegurar a qualidade da entrega do produto.
+- Visão de produto;
+- Retorno de Investimento (ROI);
+- Plano de negócio - Canvas;
+- Priorização das issues - visão de produto;
+- Guia de usabilidade/protótipos de identidade visual - identidade visual;
+- Roadmap de produto - MVP + Pitch de venda.
 
 **Scrum Master:**
-- Encontrar técnicas para uma gestão eficaz do Product Backlog;
-- Comunicar claramente a visão, metas e itens do Product Backlog para a equipe de desenvolvimento;
-- Ensinar a equipe a criar itens de Backlog claros e sucintos;
-- Abranger o planejamento de longo prazo do produto em um ambiente empírico;
-- Compreender e praticar a agilidade;
-- Facilitar eventos Scrum conforme solicitado ou necessário;
-- Ensinar e liderar a equipe de desenvolvimento para criar produtos de alto valor;
-- Remover impedimentos para o progresso do desenvolvimento;
-- Auxiliar a equipe de desenvolvimento em ambientes organizacionais em que o processo Scrum ainda não esteja totalmente aprovado e compreendido;
-- Liderar e treinar a organização na sua adoção ao processo Scrum;
-- Planejar implementações do Scrum dentro da organização;
-- Ajudar os funcionários e as partes interessadas a entender e aprovar o Scrum de forma empírica;
-- Causar transformações que aumentem a produtividade da equipe Scrum;
-- Trabalhar com outros ScrumMaster para aumentar a eficácia da aplicação do Scrum na organização.
+- Comunicação;
+- Indicadores e métricas de produtividade;
+- Metas de entrega contínua;
+- Monitoramento e controle Ágil;
+- Roadmap para alcancar a produtividade máxima do time;
 
 
 ### 4. Planejamento do projeto
@@ -143,16 +129,112 @@ Desenvolver um sistema que apresente e colete informações dos usuários por me
 | Evolução | Transferência de conhecimento e melhoria contínua. Vem logo após a etapa de criação e também se repete em loop |
 
 #### 4.2 Cronograma
-
+[![Cronograma](img/cronograma.png "Cronograma")](https://ibb.co/fxrGWWq)
 
 #### 4.3 Planejamento de Recursos
+**Release 1**
 
+| Papel | Data de início | Data final | Esforço |
+| :---: | :------------: | :--------: | :-----: |
+| Arquiteto | 12/08/2019 | 29/09/2019 | 100% |
+| Desenvolvedor | 12/08/2019 | 29/09/2019 | 80% |
+| DevOps | 12/08/2019 | 29/09/2019 | 100% |
+| Product Owner | 12/08/2019 | 29/09/2019 | 100% |
+| Scrum Master | 12/08/2019 | 29/09/2019 | 100% |
+
+**Release 2**
+
+| Papel | Data de início | Data final | Esforço |
+| :---: | :------------: | :--------: | :-----: |
+| Arquiteto | 30/09/2019 | 01/12/2019 | 80% |
+| Desenvolvedor | 30/09/2019 | 01/12/2019 | 100% |
+| DevOps | 30/09/2019 | 01/12/2019 | 100% |
+| Product Owner | 30/09/2019 | 01/12/2019 | 80% |
+| Scrum Master | 30/09/2019 | 01/12/2019 | 100% |
+
+**Release 3**
+
+| Papel | Data de início | Data final | Esforço |
+| :---: | :------------: | :--------: | :-----: |
+| Arquiteto | 02/12/2019 | 26/01/2020 | 60% |
+| Desenvolvedor | 02/12/2019 | 26/01/2020 | 100% |
+| DevOps | 02/12/2019 | 26/01/2020 | 80% |
+| Product Owner |02/12/2019  | 26/01/2020 | 60% |
+| Scrum Master | 02/12/2019 | 26/01/2020 | 100% |
+
+**Release 4**
+
+| Papel | Data de início | Data final | Esforço |
+| :---: | :------------: | :--------: | :-----: |
+| Arquiteto | 27/01/2020 | 29/03/2020 | 40% |
+| Desenvolvedor | 27/01/2020 | 29/03/2020 | 100% |
+| DevOps | 27/01/2020 | 29/03/2020 | 80% |
+| Product Owner | 27/01/2020 | 29/03/2020 | 60% |
+| Scrum Master | 27/01/2020 | 29/03/2020 | 100% |
+
+Nas sprints 2, 3 e 4 os papéis que estiverem com menos esforço em suas funções usaram do tempo que estiverem livre para dar suporte ao time de desenvolvimento, trabalhando junto a eles.
 
 #### 4.4 Planejamento Financeiro
+O custo do projeto será calculado levando em consideração 4 premissas:
+- Tempo fixo de desenvolvimento de 8 meses. Os 2 primeiros meses com trabalho de 10 horas semanais por membro e os 6 meses subsequentes com trabalho de 20 horas semanais por membro;
+- Trabalho sendo realizado 100% remoto;
+- Escopo do software definido com base no tempo determinado de trabalho dos 2 pontos anteriores;
+- Número de membros da equipe não irá aumentar e se diminuir o trabalho será redistribuido entre os outros membros assim como o valor ganho pelo membro que saiu.
 
+Tomando como base essas 3 premissas podemos fazer o cálculo de quanto custará esse projeto.<br>
+O custo do projeto será calculado com base no salário da mão de obra de desenvolvedores full stack apontado pelo site do stackoverflow. O site calcula os valores antes da taxação de impostos de ganhos anuais em média com desenvolvimento de software. Ele possui filtros de posição, localização, educação, anos de experiência e tecnologias. Para o cálculo de nosso custo levaremos em consideração os critérios apontados na tabela abaixo.
+
+| Posição | Localização | Educação | Anos de experiência | tecnologias |
+| :-----: | :---------: | :------: | :-----------------: | :----------------: |
+| Full Stack | Brasília - Distrito Federal | Menos que bacharelado | 0 | <ul><li>css</li><li>html</li><li>javascript</li><li>ruby</li><li>reactjs</li></ul> |
+| DevOps | Brasília - Distrito Federal | Menos que bacharelado | 2 | <ul><li>css</li><li>html</li><li>javascript</li><li>ruby</li><li>reactjs</li></ul> |
+
+<dl>
+    <dt>Explicação dos critérios:</dt>
+        <dd>Posição: arquiteto, product owner e scrum master foram colocados como devops, pois o filtro de posições do stackoverflow não possui essas divisões e o restante da equipe que é de desenvolvimento foi colocada como full stack.</dd>
+        <dd>Localização: como somos todos de Brasília o valor foi colocado como mão de obra de nossa localização.</dd>
+        <dd>Educação: o que mais se aproxima de graduando nos filtros é o de menos que bacharelado.</dd>
+        <dd>Anos de experiência: com 0 anos de experiência colocamos os membros da matéria de MDS e com 2 anos de experiência colocamos os membros da matéria de EPS.</dd>
+        <dd>Tecnologias: colocamos as tecnologias que tinham no stackoverflow e terão em nosso projeto.</dd>
+</dl>
+
+Após pedido para calcular o salário a calculadora nos retorna salários em 3 bases: os que ganham menos do que 75% dos desenvolvedores, os que ganham na média e os que ganham mais do que 75% dos desenvolvedores. Levando em consideração o nível do estudo que temos na Universidade de Brasília, a UnB nos da base para ganhar no espaço dos que ganham mais do que 75% dos desenvolvedores e será nesse bloco que faremos os cálculos da mão de obra. No quadro abaixo podemos ver a quantidade de pessoas por posição, experiência e o valor hora que será cobrado.
+
+| Quantidade | Posição | Valor/Hora |
+| :--------: | :-----: | :--------: |
+| 5 | Full stack | 31,77 |
+| 4 | DevOps | 40,62 |
+
+Considerando as premissas colocadas e o valor/hora definido por membro já podemos fazer o cálculo de quanto será o desenvolvimento do software no período determinado. A quantidade de horas total trabalhadas no projeto será de (sabendo que em um mês tem em média 4 semanas):
+
+Quantidade total projeto/membro = (40 * 2) + (80 * 6) = 560 horas
+
+```
+Custo = Horas total projeto * valor/hora * Número membros
+
+5 desenvolvedores full stack com 0 anos de experiência:
+    Custo = 560 * 31,77 * 5 = R$ 88.956,00
+
+4 devops (1 arquiteto, 1 product owner e 1 scrum master) com 2 anos de experiência:
+    Custo = 560 * 40,62 * 4 = R$ 90.988,80
+
+Custo Total = 88.956 + 90.988,8 = R$ 179.944,80
+```
+
+O projeto terá um custo de **R$ 179.944,80** mais custos adicionais por meio de apresentação de notas fiscais em casos de necessidade de deslocamentos e alimentações.
 
 #### 4.5 Planejamento de Qualidade
-
+| Processo | Descrição |
+| :------: | :-------- |
+| Gerenciamento de integração | Bastante comunicação entre todos para que como um grupo saibamos o que está acontecendo em todas as pontas |
+| Gerenciamento de escopo | Manter escopo similar ao que foi acordado no início do projeto |
+| Gerencimento do cronograma | Cumprimento dos prazos com o que foi combinado no cronograma, manter eventos com a sequência precisa e atualizada |
+| Gerenciamento de custo | Manter os custos do projeto dentro do que foi acordado no início do projeto, fazer uso dos recursos dentro do orçamento e do tempo de projeto |
+| Gerenciamento da qualidade | Revisão de todo trabalho realizado, templates para issue e pull request, folha de estilo e boas práticas de desenvolvimento de software |
+| Gerenciamento de recurso | Utilizar membros com eficiência, sabendo alocar duplas de pareamento de acordo com o conhecimento, experiência e habilidade de cada um |
+| Gerenciamento de comunicação | Montar estrutura de comunicação eficiente, rápida e fazer o controle de informações de todos os membros |
+| Gerenciamento de risco | Identificar, analisar e controlar riscos, elaborando um plano para que haja resposta rápidas quando surgir |
+| Gerenciamento de projeto | Solução de problemas no momento que eles acontecerem, sempre motivando a equipe e tirando a pressão sobre os membros para que eles possam atingir a melhor produtividade possível |
 
 
 ### 5. Considerações do Projeto
@@ -179,3 +261,4 @@ Desenvolver um sistema que apresente e colete informações dos usuários por me
 
 1. [www.projectmanager.com](https://www.projectmanager.com/templates/project-charter-template?a=downloadGateUnlock&r=5d7ac3d9ae36e&e=Y2F1ZW1hdGV1c0Bob3RtYWlsLmNvbQ==)<br>
 2. [Apresentação da bxblue no youtube](https://www.youtube.com/watch?v=yGntclHFnxg&feature=youtu.be)
+3. [stackoverflow calculator salary](https://stackoverflow.com/jobs/salary)
