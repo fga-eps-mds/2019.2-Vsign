@@ -1,43 +1,16 @@
-import React, {Component} from 'react';
+import React from 'react';
+import './App.css';
+import { BrowserRouter as Router, Route, Link } from "react-router-dom";
 
-import Toolbar from './components/Toolbar/Toolbar';
-
-import SideDrawer from './components/SideDrawer/SideDrawer';
-
-import Backdrop from './components/Backdrop/Backdrop';
- 
-
-class App extends Component{
-  state = {
-    sideDrawerOpen: false
-  };
-
-  drawerToggleClickHandler = () =>{
-    this.setState((prevState)=>{
-      return {sideDrawerOpen: !prevState.sideDrawerOpen};
-    });
-  };
-
-  backdropClickHandler = () => {
-    this.setState({sideDrawerOpen: false});
-  };
-  render() {
-    let sideDrawer;
-    let backdrop;
-
-    if(this.state.sideDrawerOpen){
-      sideDrawer =<SideDrawer/>;
-      backdrop = <Backdrop click={this.backdropClickHandler}/>
-    }
-    return (
-      <div  style={{height: '100%'}}>
-        <Toolbar drawerToggleClickHandler ={this.drawerToggleClickHandler}/>
-        {sideDrawer}
-        {backdrop}
-      </div>
-      
-      
-    );
-  }
+function App() {
+  return (
+    <div className="App">
+        {/* Import and route your components just like the model */}
+        {/* <Route exact path="/" component={Home} />
+        <Route path="/about" component={About} />
+        <Route path="/topics" component={Topics} />  */}
+    </div>
+  );
 }
+
 export default App;
