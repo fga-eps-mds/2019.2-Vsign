@@ -1,0 +1,34 @@
+.container {
+    display: flex;
+    flex-direction: column;
+    align-items: center
+}
+
+.rowOnTop {
+    flex-direction: row;
+    justify-content: space-between;
+    align-items: center
+}
+.seeInstructionsBtn {
+    order: 1;
+    height: 55px;
+    width: 337px;
+    background-color: white;
+    border-color: black;
+    border-width: 1px;
+    border-radius: 28px;
+    border-style: dashed;
+    padding-top: 20%;
+    align-self: center
+}
+
+.seeIntructionsTextBtn {
+    font-size: 30;
+    font-weight: bold;
+    font-family: Arial, Helvetica, sans-serif;
+    color: black
+}
+
+.recordingAlert {
+    background-color: "#1592E6"
+}
