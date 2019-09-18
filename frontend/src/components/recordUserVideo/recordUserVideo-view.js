@@ -3,7 +3,7 @@ import { withRouter, Redirect } from 'react-router-dom';
 // import { bindActionCreators } from 'redux';
 // import { connect } from 'react-redux';
 import styled from 'styled-components'
-import { Container, RowOnTop, IntructionTextBtn, InstructionBtn, VideoDiv } from "./styled_components.js"
+import { Container, RowOnTop, IntructionTextBtn, InstructionBtn, VideoDiv, ScriptBlock, ScriptBlockDiv , ScriptBlockNextBtn, ScriptBlockNextBtnText} from "./styled_components.js"
 import 'video.js/dist/video-js.css';
 import videojs from 'video.js';
 import 'webrtc-adapter';
@@ -16,7 +16,7 @@ const videoJsOptions = {
     screen: true,
     width: 852,
     height: 521,
-    fluid: true,
+    fluid: false,
     plugins: {
         /*
         // wavesurfer section is only needed when recording audio-only
@@ -43,7 +43,8 @@ class recordUserVideo extends Component {
     constructor(props) {
         super(props);
         this.state = {
-
+            scriptBlock: "Bloco de roteiro 1",
+            scriptPosition: 1
         }
     }
 
@@ -136,9 +137,9 @@ class recordUserVideo extends Component {
                         </IntructionTextBtn>
                             </div>
                         </InstructionBtn>
-                        <RecordingAlert>
+                        {/* <RecordingAlert>
                             <IntructionTextBtn> Gravando </IntructionTextBtn>
-                        </RecordingAlert>
+                        </RecordingAlert> */}
 
                     </RowOnTop>
                     <VideoDiv>
@@ -148,6 +149,16 @@ class recordUserVideo extends Component {
                             </video>
                         </div>
                     </VideoDiv>
+                    <ScriptBlockDiv>
+                        <ScriptBlock>
+                            {this.state.scriptBlock}
+                        </ScriptBlock>
+                        <ScriptBlockNextBtn >
+                            <ScriptBlockNextBtnText>
+                                {this.state.spriptPosition}
+                            </ScriptBlockNextBtnText>
+                        </ScriptBlockNextBtn>
+                    </ScriptBlockDiv>
                     <button onClick={()=> this._record()}>Play</button>
                 </Container>
             </div>
