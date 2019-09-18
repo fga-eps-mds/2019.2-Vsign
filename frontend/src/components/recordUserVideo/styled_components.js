@@ -31,5 +31,12 @@ export const RowOnTop = styled.div`
     flex-direction: row;
     justify-content: space-around;
     align-items: center;
+    padding-bottom: 10%
+    `;
 
+export const VideoDiv = styled.div`
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border: solid 5px red
     `;
