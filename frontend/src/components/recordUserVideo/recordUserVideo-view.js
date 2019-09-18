@@ -12,10 +12,11 @@ import 'videojs-record/dist/css/videojs.record.css';
 import Record from 'videojs-record/dist/videojs.record.js';
 
 const videoJsOptions = {
-    controls: true  ,
+    controls: true,
+    screen: true,
     width: 852,
     height: 521,
-    fluid: false,
+    fluid: true,
     plugins: {
         /*
         // wavesurfer section is only needed when recording audio-only
@@ -82,6 +83,8 @@ class recordUserVideo extends Component {
         this.player.on('deviceError', () => {
             console.error('device error:', this.player.deviceErrorCode);
         });
+
+        // this.player.record().getDevice();
     }
 
     // destroy player on unmount
@@ -95,9 +98,11 @@ class recordUserVideo extends Component {
         console.log("Go to instructions")
     }
         _record = () => {
-            this.player.on('startRecord', function() {
-                console.log('started recording!');
-            });
+            
+            this.player.record().start()
+            
+                console.log("era pra dar play")
+
         }
     
 
@@ -143,7 +148,7 @@ class recordUserVideo extends Component {
                             </video>
                         </div>
                     </VideoDiv>
-                    <button onClick={()=> {this._record()}}>Play</button>
+                    <button onClick={()=> this._record()}>Play</button>
                 </Container>
             </div>
         );
