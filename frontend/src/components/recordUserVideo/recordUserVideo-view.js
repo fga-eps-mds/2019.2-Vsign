@@ -54,7 +54,7 @@ class recordUserVideo extends Component {
     constructor(props) {
         super(props);
         this.state = {
-            scriptBlock: "Bloco de roteiro 1",
+            scriptBlock: ["Bloco de roteiro 0", "Bloco de roteiro 1", "Bloco de roteiro 2"],
             scriptPosition: 1
         }
     }
@@ -155,14 +155,16 @@ class recordUserVideo extends Component {
                     </RowOnTop>
                     <VideoDiv>
                         <div data-vjs-player>
-                            <video style={{backgroundColor: "#ACB2F2"}} ref={node => this.videoNode = node} className="video-js vjs-default-skin" playsInline>
+                            <video style={{backgroundColor: "white"}} ref={node => this.videoNode = node} className="video-js vjs-default-skin" playsInline>
 
                             </video>
                         </div>
                     </VideoDiv>
                     <ScriptBlockDiv>
                         <ScriptBlock>
-                            {this.state.scriptBlock}
+                        { this.state.scriptPosition === 1 ? this.state.scriptBlock[0] : 
+                                        this.state.scriptPosition === 2 ? this.state.scriptBlock[1]:
+                                            this.state.scriptPosition === 3 ? this.state.scriptBlock[2] : null }
                         </ScriptBlock>
                     </ScriptBlockDiv>
                     <NextBtnDiv>

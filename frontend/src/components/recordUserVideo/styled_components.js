@@ -24,7 +24,7 @@ export const IntructionTextBtn = styled.p`
     font-family: Arial, Helvetica, sans-serif;
     color: black;
     align-self: center;
-    flex: 3
+    flex: 4
     `;
 
 export const RowOnTop = styled.div`
@@ -41,7 +41,7 @@ export const VideoDiv = styled.div`
     align-items: center;
     justify-content: center;
     border: solid 5px red;
-    flex: 3
+    flex: 4
     `;
 
 export const ScriptBlockDiv = styled.div`
@@ -66,7 +66,7 @@ export const ScriptBlockDiv = styled.div`
 
 export const ScriptBlock = styled.p`
     display: flex;
-    font-size: 30;
+    font-size: 30px;
     font-weight: bold;
     font-family: Arial, Helvetica, sans-serif;
     color: black;
@@ -83,16 +83,23 @@ export const ScriptBlockNextBtn = styled.div`
     height: 65px;
     background-color: #1592E6;
     align-self: flex-end;
+    align-items: center;
+    justify-content: center;
     padding: 10px
 `;
 
 export const ScriptBlockNextBtnText = styled.p`
-
+    align-self: center;
+    font-family: Arial;
+    font-weight: bold;
+    font-size: 30px;
+    color: white;
 `;
 
 export const NextBtnDiv = styled.div`
     display: flex;
     align-items: flex-end;
     justify-content: flex-end;
-    flex: 3
+    margin-right: 15%;
+    padding: 10px
 `;
