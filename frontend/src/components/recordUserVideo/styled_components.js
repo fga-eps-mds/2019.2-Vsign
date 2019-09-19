@@ -46,13 +46,13 @@ export const VideoDiv = styled.div`
 
 export const ScriptBlockDiv = styled.div`
     display: flex;
-    flex: 3
+    flex: 4
     flex-direction: row;
     align-self: center;
     justify-content: space-around;
     align-items: center;
     padding-bottom: 3%;
-    margin-top: 3%;
+    margin: 10px
     background-color: white;
     border-style: solid;
     border-color: black;
@@ -85,7 +85,7 @@ export const ScriptBlockNextBtn = styled.div`
     align-self: flex-end;
     align-items: center;
     justify-content: center;
-    padding: 10px
+    padding: 10px;
 `;
 
 export const ScriptBlockNextBtnText = styled.p`
@@ -100,6 +100,8 @@ export const NextBtnDiv = styled.div`
     display: flex;
     align-items: flex-end;
     justify-content: flex-end;
-    margin-right: 15%;
-    padding: 10px
+
+    padding: 10px;
+    flex: 5;
+    border: solid 4px red
 `;

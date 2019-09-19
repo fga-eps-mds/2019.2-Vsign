@@ -23,7 +23,7 @@ import 'videojs-record/dist/css/videojs.record.css';
 import Record from 'videojs-record/dist/videojs.record.js';
 
 const videoJsOptions = {
-    controls: true,
+    controls: false,
     screen: true,
     width: 852,
     height: 521,
@@ -55,7 +55,7 @@ class recordUserVideo extends Component {
         super(props);
         this.state = {
             scriptBlock: ["Bloco de roteiro 0", "Bloco de roteiro 1", "Bloco de roteiro 2"],
-            scriptPosition: 1
+            scriptPosition: 3
         }
     }
 
@@ -117,7 +117,14 @@ class recordUserVideo extends Component {
 
         }
     
-
+    _nextScriptBlock = () => {
+        // const scriptBlock = this.state.scriptBlock 
+        //  for (let i = 0; i < scriptBlock.length; i++) {
+        //      if (this.state.scriptPosition === i) {
+        //          this.setState({scriptPosition: scriptPosition + 1})
+        //      }
+        //  }
+    }
     render() {
         
 
@@ -168,7 +175,7 @@ class recordUserVideo extends Component {
                         </ScriptBlock>
                     </ScriptBlockDiv>
                     <NextBtnDiv>
-                        <ScriptBlockNextBtn >
+                        <ScriptBlockNextBtn onClick={() => this._nextScriptBlock()}>
                                 <ScriptBlockNextBtnText>
                                     { this.state.scriptPosition === 1 ? "Passo 1, próximo" : 
                                         this.state.scriptPosition === 2 ? "Passo 2, próximo":
