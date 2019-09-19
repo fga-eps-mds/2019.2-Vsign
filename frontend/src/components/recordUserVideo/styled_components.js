@@ -60,7 +60,8 @@ export const ScriptBlockDiv = styled.div`
     border-radius: 40px;
     width: 852px;
     height: 188px;
-    padding: 1%
+    justify-content: center;
+    align-items: center
 `;
 
 export const ScriptBlock = styled.p`
@@ -70,4 +71,28 @@ export const ScriptBlock = styled.p`
     font-family: Arial, Helvetica, sans-serif;
     color: black;
     align-self: center
+`;
+
+export const ScriptBlockNextBtn = styled.div`
+    display: flex;
+    border-style: solid;
+    border-color: #1592E6;
+    border-width: 1px;
+    border-radius: 23px;
+    width: 373px;
+    height: 65px;
+    background-color: #1592E6;
+    align-self: flex-end;
+    padding: 10px
+`;
+
+export const ScriptBlockNextBtnText = styled.p`
+
+`;
+
+export const NextBtnDiv = styled.div`
+    display: flex;
+    align-items: flex-end;
+    justify-content: flex-end;
+    flex: 3
 `;

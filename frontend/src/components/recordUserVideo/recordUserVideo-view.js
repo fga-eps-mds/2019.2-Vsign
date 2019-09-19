@@ -3,7 +3,18 @@ import { withRouter, Redirect } from 'react-router-dom';
 // import { bindActionCreators } from 'redux';
 // import { connect } from 'react-redux';
 import styled from 'styled-components'
-import { Container, RowOnTop, IntructionTextBtn, InstructionBtn, VideoDiv, ScriptBlock, ScriptBlockDiv , ScriptBlockNextBtn, ScriptBlockNextBtnText} from "./styled_components.js"
+import { Container, 
+         RowOnTop, 
+         IntructionTextBtn, 
+         InstructionBtn, 
+         VideoDiv, 
+         ScriptBlock, 
+         ScriptBlockDiv , 
+         ScriptBlockNextBtn, 
+         ScriptBlockNextBtnText, 
+         NextBtnDiv
+        } from "./styled_components.js"
+
 import 'video.js/dist/video-js.css';
 import videojs from 'video.js';
 import 'webrtc-adapter';
@@ -153,13 +164,16 @@ class recordUserVideo extends Component {
                         <ScriptBlock>
                             {this.state.scriptBlock}
                         </ScriptBlock>
-                        <ScriptBlockNextBtn >
-                            <ScriptBlockNextBtnText>
-                                {this.state.spriptPosition}
-                            </ScriptBlockNextBtnText>
-                        </ScriptBlockNextBtn>
                     </ScriptBlockDiv>
-                    <button onClick={()=> this._record()}>Play</button>
+                    <NextBtnDiv>
+                        <ScriptBlockNextBtn >
+                                <ScriptBlockNextBtnText>
+                                    { this.state.scriptPosition === 1 ? "Passo 1, próximo" : 
+                                        this.state.scriptPosition === 2 ? "Passo 2, próximo":
+                                            this.state.scriptPosition === 3 ? "Finalizar e checar" : null }
+                                </ScriptBlockNextBtnText>
+                        </ScriptBlockNextBtn>
+                    </NextBtnDiv>
                 </Container>
             </div>
         );
