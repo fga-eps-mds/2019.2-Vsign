@@ -55,8 +55,10 @@ class recordUserVideo extends Component {
         super(props);
         this.state = {
             scriptBlock: ["Bloco de roteiro 0", "Bloco de roteiro 1", "Bloco de roteiro 2"],
-            scriptPosition: 3
+            scriptPosition: 1
         }
+
+        this._nextScriptBlock = this._nextScriptBlock.bind(this);
     }
 
     
@@ -117,13 +119,14 @@ class recordUserVideo extends Component {
 
         }
     
-    _nextScriptBlock = () => {
-        // const scriptBlock = this.state.scriptBlock 
-        //  for (let i = 0; i < scriptBlock.length; i++) {
-        //      if (this.state.scriptPosition === i) {
-        //          this.setState({scriptPosition: scriptPosition + 1})
-        //      }
-        //  }
+    _nextScriptBlock = async () => {
+        const scriptBlock = this.state.scriptBlock 
+         for (let i = 0; i < scriptBlock.length; i++) {
+             if (this.state.scriptPosition === i) {
+                this.setState({ scriptPosition: this.state.scriptPosition+1 })
+             }
+         }
+         console.log(this.state.scriptPosition)
     }
     render() {
         
