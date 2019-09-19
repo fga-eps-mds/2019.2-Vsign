@@ -1,0 +1,11 @@
+.container {
+  height: 100%;
+}
+
+.header {
+  width: 100%;
+}
+
+.borderize {
+  border: 1px solid red;
+}
