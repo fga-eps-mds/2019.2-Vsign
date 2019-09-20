@@ -1,19 +1,20 @@
 import React, { Component } from 'react'
-import './LandingPage.css';
+import './ScriptPage.css';
 import camera_icon from '../assets/images/camera-icon.png';
 import user_icon from '../assets/images/user-icon.png';
+import {
+    BrowserRouter as Router,
+    withRouter
+  } from "react-router-dom";
 
-
-let i = null;
-function mostraTexto() {
-    i++;
-    console.log(i);
+function recordVideo(props){
+    props.history.push('/teste')
 }
+
 function relataErro(){
-
 }
 
-export class LandingPage extends Component {
+export class ScriptPage extends Component {
     render() {
         return (
             <div className='container borda'>
@@ -34,11 +35,12 @@ export class LandingPage extends Component {
                     <h2>Roteiro</h2>
                     <p>(exibir o roteiro aqui)</p>
                 </div>
-                    
-                <button className="gravar borda" onClick={() => mostraTexto()}>
+
+                <button className="gravar borda" onClick={() => recordVideo(this.props)}>
                     <p>Gravar</p>
                     <img src={camera_icon} alt="" />
                 </button>
+
                 <button className='erro borda' onClick={() => relataErro()}>
                     <p>Relatar erro no texto do roteiro</p>
                 </button>
@@ -47,4 +49,4 @@ export class LandingPage extends Component {
     }
 }
 
-export default LandingPage
+export default withRouter(ScriptPage);
