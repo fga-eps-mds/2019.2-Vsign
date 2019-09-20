@@ -85,19 +85,18 @@ p {
 }
 
 @media only screen and (min-width: 600px) {
+  .contract-info-left-div {
+    display: flex;
+    justify-content: space-around;
+    align-content: space-around;
+    width: 55%;
+  }
 
-.contract-info-left-div {
-  display: flex;
-  justify-content: space-around;
-  align-content: space-around;
-  width: 55%;
-}
+  .contract-info-right-div {
+    width: 20%;
+  }
 
-.contract-info-right-div {
-  width: 20%;
-}
-
-.contract-info button {
-  width: 20%;
-}
+  .contract-info button {
+    width: 20%;
+  }
 }
