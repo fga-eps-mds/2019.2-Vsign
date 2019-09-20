@@ -1,20 +1,21 @@
-class ContractsController < ApplicationController
+class V1::ContractsController < V1Controller
 
-    before_action :set_company
+    before_action :set_script, :set_user
 
     def create
+        order = params[:order]
+        contract = Contract.find_or_create_by(company: @company, order: order) do |contract|
+            content = params[:content]
+            contract.script = @script.format_content(content)
+            contract.user = @user
+        end
     end
 
     private
 
-        def set_company
-            api_key = params[:api_key]
-            @company = Company.find(api_key: api_key)
-        end
-
         def set_script
             kind = params[:kind]
-            @script = Script.query(company: @company, kind: kind).order("RANDOM()").first
+            @script = Script.where(company: @company, kind: kind).order("RANDOM()").first
         end
 
         def set_user
@@ -24,17 +25,21 @@ class ContractsController < ApplicationController
                 user.password = '123456',
                 user.password_confirmation = '123456'
             end
+            sign_in @user
+            sign_in @user, bypass: true 
         end
 
         def contract_params
-            params.require(:contract).permit(
+            contract_params = params.require(:contract).permit(
                 :order,
                 :name,
                 :email,
                 :api_key,
                 :kind,
-                :content
+                content: [:installments, :amount]
             )
+            contract_params[:content_attributes] = contract_params.delete :content
+            contract_params.permit!
         end
 
 end
