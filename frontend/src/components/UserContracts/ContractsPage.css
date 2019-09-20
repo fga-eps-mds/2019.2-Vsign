@@ -30,6 +30,10 @@ p {
   border-radius: 8px;
 }
 
+.borderize {
+    border: 1px solid red;
+}
+
 .contract-info {
   display: flex;
   justify-content: space-around;
@@ -56,23 +60,44 @@ p {
 
 @media only screen and (max-width: 600px) {
   .contract-info {
-    
+    display: flex;
+    flex-direction: column;
+    box-shadow: 10px;
+  }
+
+  .contract-info p {
+    margin: 5px;
+  }
+
+  .contract-info button {
+    display: none;
+  }
+
+  .contract-info-left-div {
+    display: flex;
+    justify-content: space-around;
+  }
+
+  .contract-info-right-div {
+    display: flex;
+    justify-content: center;
   }
 }
 
 @media only screen and (min-width: 600px) {
-  .contract-info-left-div {
-    display: flex;
-    justify-content: space-around;
-    align-content: space-around;
-    width: 55%;
-  }
 
-  .contract-info-right-div {
-    width: 20%;
-  }
+.contract-info-left-div {
+  display: flex;
+  justify-content: space-around;
+  align-content: space-around;
+  width: 55%;
+}
 
-  .contract-info button {
-    width: 20%;
-  }
+.contract-info-right-div {
+  width: 20%;
+}
+
+.contract-info button {
+  width: 20%;
+}
 }
