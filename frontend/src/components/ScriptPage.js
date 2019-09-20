@@ -8,7 +8,7 @@ import {
   } from "react-router-dom";
 
 function recordVideo(props){
-    props.history.push('/teste')
+    props.history.push('/')
 }
 
 function relataErro(){
