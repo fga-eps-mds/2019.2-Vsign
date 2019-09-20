@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2019_09_20_040629) do
+ActiveRecord::Schema.define(version: 2019_09_20_042643) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -20,6 +20,17 @@ ActiveRecord::Schema.define(version: 2019_09_20_040629) do
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.string "api_key"
+  end
+
+  create_table "contracts", force: :cascade do |t|
+    t.bigint "company_id"
+    t.string "script"
+    t.bigint "user_id"
+    t.string "order"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["company_id"], name: "index_contracts_on_company_id"
+    t.index ["user_id"], name: "index_contracts_on_user_id"
   end
 
   create_table "scripts", force: :cascade do |t|
@@ -44,5 +55,7 @@ ActiveRecord::Schema.define(version: 2019_09_20_040629) do
     t.index ["reset_password_token"], name: "index_users_on_reset_password_token", unique: true
   end
 
+  add_foreign_key "contracts", "companies"
+  add_foreign_key "contracts", "users"
   add_foreign_key "scripts", "companies"
 end
