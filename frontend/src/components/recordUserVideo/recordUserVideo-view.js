@@ -55,7 +55,8 @@ class recordUserVideo extends Component {
         super(props);
         this.state = {
             scriptBlock: ["Bloco de roteiro 0", "Bloco de roteiro 1", "Bloco de roteiro 2", "Bloco de roteiro 3", "Bloco de roteiro 4"],
-            scriptPosition: 1
+            scriptPosition: 1,
+            signatureVideo: null
         }
 
         this._nextScriptBlock = this._nextScriptBlock.bind(this);
@@ -86,7 +87,8 @@ class recordUserVideo extends Component {
         this.player.on('finishRecord', () => {
             // recordedData is a blob object containing the recorded data that
             // can be downloaded by the user, stored on server etc.
-            console.log('finished recording: ', this.player.recordedData);
+            console.log('beblade HEHEHE finished recording: ', this.player.recordedData);
+            this.setState({signatureVideo: this.player.recordedData})
         });
 
         // error handling
@@ -98,32 +100,44 @@ class recordUserVideo extends Component {
             console.error('device error:', this.player.deviceErrorCode);
         });
 
-        // this.player.record().getDevice();
+        // console.log(this.player.recordedData)
+        this.player.record().getDevice();
+        //console.log(this.state.signatureVideo)
     }
 
     // destroy player on unmount
     componentWillUnmount() {
+        console.log(this.state.signatureVideo)
         if (this.player) {
             this.player.dispose();
         }
     }
 
-    handleClick = () => {
-        console.log("Go to instructions")
+    _goToIntructions = () => {
+       console.log("Going to intructions screen")
     }
-        _record = () => {
-            
-            this.player.record().start()
-            
-                console.log("era pra dar play")
 
-        }
-    
+    _record = () => {
+        this.player.record().getDevice();
+        this.player.record().start()
+        console.log("era pra dar play")
+    }
+
+    _fetchScriptBlock = () => {
+        console.log("Get the script block user data")
+    }
+
+    _goToReviewVideo = () => {
+        console.log("Going to review video")
+    }
+
     _nextScriptBlock = async () => {
         const scriptBlock = this.state.scriptBlock 
-         for (let i = 0; i < scriptBlock.length; i++) {
+         for (let i = -1; i <= scriptBlock.length; i++) {
              if (this.state.scriptPosition === i) {
                 this.setState({ scriptPosition: this.state.scriptPosition+1 })
+             }else if(this.state.scriptPosition === scriptBlock.length){
+                this._goToReviewVideo()
              }
          }
          console.log(this.state.scriptBlock[this.state.scriptPosition])
@@ -160,12 +174,10 @@ class recordUserVideo extends Component {
             <div>
                 <Container>
                     <RowOnTop>
-                        <InstructionBtn>
-                            <div onClick={() => { this.handleClick() }} x>
+                        <InstructionBtn onClick={() => { this._goToIntructions() }}>
                                 <IntructionTextBtn>
                                     Ver instruções
                         </IntructionTextBtn>
-                            </div>
                         </InstructionBtn>
                         {/* <RecordingAlert>
                             <IntructionTextBtn> Gravando </IntructionTextBtn>
@@ -174,7 +186,7 @@ class recordUserVideo extends Component {
                     </RowOnTop>
                     <VideoDiv>
                         <div data-vjs-player>
-                            <video style={{backgroundColor: "white"}} ref={node => this.videoNode = node} className="video-js vjs-default-skin" playsInline>
+                            <video style={{backgroundColor: "#556073"}} ref={node => this.videoNode = node} className="video-js vjs-default-skin" playsInline>
 
                             </video>
                         </div>
@@ -183,6 +195,9 @@ class recordUserVideo extends Component {
                         {scriptText}
                     </ScriptBlockDiv>
                     <NextBtnDiv>
+                        <ScriptBlockNextBtn onClick={() => this._record()}>
+                            <ScriptBlockNextBtnText> Iniciar gravação</ScriptBlockNextBtnText>
+                        </ScriptBlockNextBtn>
                         <ScriptBlockNextBtn onClick={() => this._nextScriptBlock()}>
                                 {textNext}
                         </ScriptBlockNextBtn>

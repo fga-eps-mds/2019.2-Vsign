@@ -24,7 +24,6 @@ export const IntructionTextBtn = styled.p`
     font-family: Arial, Helvetica, sans-serif;
     color: black;
     align-self: center;
-    flex: 4
     `;
 
 export const RowOnTop = styled.div`
@@ -33,14 +32,13 @@ export const RowOnTop = styled.div`
     justify-content: space-around;
     align-items: center;
     padding-bottom: 3%;
-    margin-top: 3%
+    margin-top: 3
     `;
 
 export const VideoDiv = styled.div`
     display: flex;
     align-items: center;
     justify-content: center;
-    border: solid 5px red;
     flex: 4
     `;
 
@@ -99,9 +97,9 @@ export const ScriptBlockNextBtnText = styled.p`
 export const NextBtnDiv = styled.div`
     display: flex;
     align-items: flex-end;
-    justify-content: flex-end;
+    justify-content: space-between;
 
     padding: 10px;
     flex: 5;
-    border: solid 4px red
+    
 `;
