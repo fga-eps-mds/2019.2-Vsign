@@ -118,12 +118,12 @@ class recordUserVideo extends Component {
         }
     
     _nextScriptBlock = () => {
-        const scriptBlock = this.state.scriptBlock 
-         for (let i = 0; i < scriptBlock.length; i++) {
-             if (this.state.scriptPosition === i) {
-                 this.setState({scriptPosition: scriptPosition + 1})
-             }
-         }
+        //const scriptBlock = this.state.scriptBlock 
+        // for (let i = 0; i < scriptBlock.length; i++) {
+        //     if (this.state.scriptPosition === i) {
+        //         this.setState({scriptPosition: scriptPosition + 1})
+        //     }
+        // }
     }
     render() {
         
