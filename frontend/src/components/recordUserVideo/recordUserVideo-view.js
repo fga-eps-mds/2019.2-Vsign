@@ -23,8 +23,9 @@ import 'videojs-record/dist/css/videojs.record.css';
 import Record from 'videojs-record/dist/videojs.record.js';
 
 const videoJsOptions = {
-    controls: false,
+    controls: true,
     screen: true,
+    image: true,
     width: 852,
     height: 521,
     fluid: false,
@@ -56,7 +57,8 @@ class recordUserVideo extends Component {
         this.state = {
             scriptBlock: ["Bloco de roteiro 0", "Bloco de roteiro 1", "Bloco de roteiro 2", "Bloco de roteiro 3", "Bloco de roteiro 4"],
             scriptPosition: 1,
-            signatureVideo: null
+            signatureVideo: null,
+            signatureAudio: null
         }
 
         this._nextScriptBlock = this._nextScriptBlock.bind(this);
@@ -87,13 +89,16 @@ class recordUserVideo extends Component {
         this.player.on('finishRecord', () => {
             // recordedData is a blob object containing the recorded data that
             // can be downloaded by the user, stored on server etc.
-            console.log('beblade HEHEHE finished recording: ', this.player.recordedData);
+            console.log(typeof(this.player.recordedData));
+            console.log(this.player.recordedData);
             this.setState({signatureVideo: this.player.recordedData})
+            this.player.record().saveAs({'video': 'my-video-file-name.webm'});
+            this._audioManipulation()
         });
 
         // error handling
         this.player.on('error', (element, error) => {
-            console.warn(error);
+            alert("Erro")
         });
 
         this.player.on('deviceError', () => {
@@ -113,12 +118,19 @@ class recordUserVideo extends Component {
         }
     }
 
+    _audioManipulation = () => {
+        const myMediaElement = this.state.signatureVideo
+        var audioCtx = new AudioContext();
+        var source = audioCtx.createMediaElementSource(myMediaElement);
+        this.setState({signatureAudio: source})
+        console.log(this.state.signatureAudio)
+    }
+
     _goToIntructions = () => {
        console.log("Going to intructions screen")
     }
 
     _record = () => {
-        this.player.record().getDevice();
         this.player.record().start()
         console.log("era pra dar play")
     }
@@ -128,6 +140,8 @@ class recordUserVideo extends Component {
     }
 
     _goToReviewVideo = () => {
+        this.player.record().stop()
+        console.log(this.state.signatureVideo)
         console.log("Going to review video")
     }
 
@@ -187,7 +201,7 @@ class recordUserVideo extends Component {
                     <VideoDiv>
                         <div data-vjs-player>
                             <video style={{backgroundColor: "#556073"}} ref={node => this.videoNode = node} className="video-js vjs-default-skin" playsInline>
-
+                        
                             </video>
                         </div>
                     </VideoDiv>
