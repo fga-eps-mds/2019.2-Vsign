@@ -54,7 +54,7 @@ class recordUserVideo extends Component {
     constructor(props) {
         super(props);
         this.state = {
-            scriptBlock: ["Bloco de roteiro 0", "Bloco de roteiro 1", "Bloco de roteiro 2"],
+            scriptBlock: ["Bloco de roteiro 0", "Bloco de roteiro 1", "Bloco de roteiro 2", "Bloco de roteiro 3", "Bloco de roteiro 4"],
             scriptPosition: 1
         }
 
@@ -126,7 +126,7 @@ class recordUserVideo extends Component {
                 this.setState({ scriptPosition: this.state.scriptPosition+1 })
              }
          }
-         console.log(this.state.scriptPosition)
+         console.log(this.state.scriptBlock[this.state.scriptPosition])
     }
     render() {
         
@@ -143,9 +143,18 @@ class recordUserVideo extends Component {
             align-items: center
             justify-content: center
         `;
+        let textNext;
+        if (this.state.scriptPosition === (this.state.scriptBlock.length )) {
+            textNext = <ScriptBlockNextBtnText>Revisar</ScriptBlockNextBtnText>;
+        }else {
+            textNext = <ScriptBlockNextBtnText> Passo {this.state.scriptPosition}</ScriptBlockNextBtnText>;
+        }
 
-
-
+        let scriptText;
+        if (this.state.scriptPosition > 0) {
+            var index = this.state.scriptPosition -1
+            scriptText = <ScriptBlock> {this.state.scriptBlock[index]}</ScriptBlock>
+        }
 
         return (
             <div>
@@ -171,22 +180,14 @@ class recordUserVideo extends Component {
                         </div>
                     </VideoDiv>
                     <ScriptBlockDiv>
-                        <ScriptBlock>
-                        { this.state.scriptPosition === 1 ? this.state.scriptBlock[0] : 
-                                        this.state.scriptPosition === 2 ? this.state.scriptBlock[1]:
-                                            this.state.scriptPosition === 3 ? this.state.scriptBlock[2] : null }
-                        </ScriptBlock>
+                        {scriptText}
                     </ScriptBlockDiv>
                     <NextBtnDiv>
                         <ScriptBlockNextBtn onClick={() => this._nextScriptBlock()}>
-                                <ScriptBlockNextBtnText>
-                                    { this.state.scriptPosition === 1 ? "Passo 1, próximo" : 
-                                        this.state.scriptPosition === 2 ? "Passo 2, próximo":
-                                            this.state.scriptPosition === 3 ? "Finalizar e checar" : null }
-                                </ScriptBlockNextBtnText>
+                                {textNext}
                         </ScriptBlockNextBtn>
                     </NextBtnDiv>
-                </Container>
+                </Container>    
             </div>
         );
     }
