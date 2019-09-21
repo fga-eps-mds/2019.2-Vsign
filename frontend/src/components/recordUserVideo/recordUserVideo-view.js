@@ -14,13 +14,19 @@ import { Container,
          ScriptBlockNextBtnText, 
          NextBtnDiv
         } from "./styled_components.js"
-
+import { ReactMic } from 'react-mic';
 import 'video.js/dist/video-js.css';
 import videojs from 'video.js';
 import 'webrtc-adapter';
 import RecordRTC from 'recordrtc';
 import 'videojs-record/dist/css/videojs.record.css';
 import Record from 'videojs-record/dist/videojs.record.js';
+import '@mattiasbuelens/web-streams-polyfill/dist/polyfill.min.js';
+import 'videojs-record/dist/plugins/videojs.record.webm-wasm.js';
+import 'videojs-record/dist/plugins/videojs.record.ts-ebml.js';
+import WaveSurfer from 'wavesurfer.js';
+import MicrophonePlugin from 'wavesurfer.js/dist/plugin/wavesurfer.microphone.js';
+// WaveSurfer.microphone = MicrophonePlugin;
 
 const videoJsOptions = {
     controls: true,
@@ -43,13 +49,26 @@ const videoJsOptions = {
         },
         */
         record: {
-            audio: true,
+            audio: false,
             video: true,
             maxLength: 10,
-            debug: true
+            debug: true,
+            // convertEngine: 'ts-ebml',
+            convertEngine: 'ts-ebml',
+            // convert recorded data to MP3
+            convertOptions: ['-f', 'mp3', '-codec:a', 'libmp3lame', '-qscale:a', '2'],
+            // specify MP3 output mime-type
+            pluginLibraryOptions: {
+                outputType: 'audio/mp3'
+            },
+            // use MP4 encoding worker (H.264 & AAC & MP3 encoders)
+            // convertWorkerURL: '../../node_modules/ffmpeg.js/ffmpeg-worker-mp4.js'
+            // or use WebM encoding worker (VP8 & Opus encoders)
+            convertWorkerURL: '../../node_modules/ffmpeg.js/ffmpeg-worker-webm.js'
+        }
         }
     }
-};
+
 
 class recordUserVideo extends Component {
     constructor(props) {
@@ -58,7 +77,9 @@ class recordUserVideo extends Component {
             scriptBlock: ["Bloco de roteiro 0", "Bloco de roteiro 1", "Bloco de roteiro 2", "Bloco de roteiro 3", "Bloco de roteiro 4"],
             scriptPosition: 1,
             signatureVideo: null,
-            signatureAudio: null
+            signatureAudio: null,
+            convertedData: null,
+            recordAudio: false,
         }
 
         this._nextScriptBlock = this._nextScriptBlock.bind(this);
@@ -83,6 +104,7 @@ class recordUserVideo extends Component {
         // user clicked the record button and started recording
         this.player.on('startRecord', () => {
             console.log('started recording!');
+            this.startRecording()
         });
 
         // user completed recording and stream is available
@@ -92,8 +114,11 @@ class recordUserVideo extends Component {
             console.log(typeof(this.player.recordedData));
             console.log(this.player.recordedData);
             this.setState({signatureVideo: this.player.recordedData})
-            this.player.record().saveAs({'video': 'my-video-file-name.webm'});
-            this._audioManipulation()
+            // this.player.record().saveAs({'video': 'my-video-file-name.webm'});
+            // console.log('finished converting: ', this.player.convertedData);
+            // this.setState({covertedData: this.player.convertedData})
+            // this._audioManipulation()
+            this.stopRecording()
         });
 
         // error handling
@@ -118,12 +143,36 @@ class recordUserVideo extends Component {
         }
     }
 
+    startRecording = () => {
+        this.setState({
+          record: true
+        });
+      }
+     
+      stopRecording = () => {
+        this.setState({
+          record: false
+        });
+      }
+     
+      onData(recordedBlob) {
+        console.log('chunk of real-time data is: ', recordedBlob);
+      }
+      
+      onStop = (recordedBlob) => {
+        console.log('recordedBlob is: ', recordedBlob);
+        // console.log("Signature audio is:", this.state.signatureVideo)
+        this.setState({signatureAudio: recordedBlob})
+      }
+
     _audioManipulation = () => {
         const myMediaElement = this.state.signatureVideo
         var audioCtx = new AudioContext();
         var source = audioCtx.createMediaElementSource(myMediaElement);
         this.setState({signatureAudio: source})
-        console.log(this.state.signatureAudio)
+        console.log(myMediaElement)
+        console.log(audioCtx)
+        console.log(source)
     }
 
     _goToIntructions = () => {
@@ -203,6 +252,13 @@ class recordUserVideo extends Component {
                             <video style={{backgroundColor: "#556073"}} ref={node => this.videoNode = node} className="video-js vjs-default-skin" playsInline>
                         
                             </video>
+                            <ReactMic
+                                record={this.state.record}
+                                className="sound-wave"
+                                onStop={this.onStop}
+                                onData={this.onData}
+                                strokeColor="#000000"
+                                backgroundColor="#FF4081" />
                         </div>
                     </VideoDiv>
                     <ScriptBlockDiv>
