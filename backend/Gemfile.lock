@@ -128,6 +128,9 @@ GEM
       rspec-support (~> 3.8.0)
     rspec-support (3.8.2)
     ruby_dep (1.5.0)
+    ruby_http_client (3.3.0)
+    sendgrid-ruby (6.0.0)
+      ruby_http_client (~> 3.3.0)
     spring (2.1.0)
     spring-watcher-listen (2.0.1)
       listen (>= 2.7, < 4.0)
@@ -159,6 +162,7 @@ DEPENDENCIES
   puma (~> 3.11)
   rails (~> 5.2.3)
   rspec-rails (~> 3.8)
+  sendgrid-ruby
   spring
   spring-watcher-listen (~> 2.0.0)
   tzinfo-data
