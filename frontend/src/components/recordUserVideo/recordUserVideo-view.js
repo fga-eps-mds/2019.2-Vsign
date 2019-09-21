@@ -37,18 +37,6 @@ const videoJsOptions = {
     height: 521,
     fluid: false,
     plugins: {
-        /*
-        // wavesurfer section is only needed when recording audio-only
-        wavesurfer: {
-            src: 'live',
-            waveColor: '#36393b',
-            progressColor: 'black',
-            debug: true,
-            cursorWidth: 1,
-            msDisplayMax: 20,
-            hideScrollbar: true
-        },
-        */
         record: {
             audio: false,
             video: true,
@@ -81,6 +69,7 @@ class recordUserVideo extends Component {
             signatureAudio: null,
             convertedData: null,
             recordAudio: false,
+            maxTime: 10
         }
 
         this._nextScriptBlock = this._nextScriptBlock.bind(this);
@@ -178,6 +167,7 @@ class recordUserVideo extends Component {
 
     _goToIntructions = () => {
        console.log("Going to intructions screen")
+       //Go to intructions screen
     }
 
     _record = () => {
@@ -186,6 +176,7 @@ class recordUserVideo extends Component {
     }
 
     _fetchScriptBlock = () => {
+        // Function to fetch the script block on the API
         console.log("Get the script block user data")
     }
 
@@ -193,6 +184,7 @@ class recordUserVideo extends Component {
         this.player.record().stop()
         console.log(this.state.signatureVideo)
         console.log("Going to review video")
+        // Now navigate do review screen video
     }
 
     _nextScriptBlock = async () => {
