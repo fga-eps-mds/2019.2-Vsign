@@ -12,7 +12,8 @@ import { Container,
          ScriptBlockDiv , 
          ScriptBlockNextBtn, 
          ScriptBlockNextBtnText, 
-         NextBtnDiv
+         NextBtnDiv,
+         SquareDiv
         } from "./styled_components.js"
 import { ReactMic } from 'react-mic';
 import 'video.js/dist/video-js.css';
@@ -160,7 +161,7 @@ class recordUserVideo extends Component {
       }
       
       onStop = (recordedBlob) => {
-        console.log('recordedBlob is: ', recordedBlob);
+        console.log('recordedBlob is of the audio: ', recordedBlob);
         // console.log("Signature audio is:", this.state.signatureVideo)
         this.setState({signatureAudio: recordedBlob})
       }
@@ -259,6 +260,7 @@ class recordUserVideo extends Component {
                                 onData={this.onData}
                                 strokeColor="#000000"
                                 backgroundColor="#FF4081" />
+                        <SquareDiv/>
                         </div>
                     </VideoDiv>
                     <ScriptBlockDiv>

@@ -103,3 +103,12 @@ export const NextBtnDiv = styled.div`
     flex: 5;
     
 `;
+
+export const SquareDiv = styled.div`
+    position: absolute;
+    border: 5px solid red;
+    top: 25%;
+    left: 25%;
+    width: 70%;
+    height: 70%
+`;
