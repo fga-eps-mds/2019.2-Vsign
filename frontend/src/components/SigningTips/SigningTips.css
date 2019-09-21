@@ -1,0 +1,71 @@
+.borderize {
+  border: 1px solid red;
+}
+
+.container {
+  margin: 0px;
+  padding: 0px;
+}
+
+.header {
+  border-bottom: 1px solid black;
+  display: flex;
+  justify-content: center;
+  margin-bottom: 40px;
+}
+
+.header h2 {
+  margin: 0px;
+  padding: 10px;
+}
+
+.body {
+  display: flex;
+  justify-content: center;
+}
+
+.steps {
+  width: 60%;
+}
+
+.steps h3{
+  font-size: 24px;
+}
+
+.steps button {
+  margin: auto;
+}
+
+.guide {
+  width: 80%;
+}
+
+.sign-button {
+  display: flex;
+  justify-content: center;
+}
+
+.sign-button button {
+  background: lightblue;
+  border: 1px solid blue;
+  padding: 0px 50px;
+  border-radius: 8px;
+}
+
+.sign-button button:active {
+  background-color: rgb(146, 183, 195);
+}
+
+.sign-button button:focus {
+  outline: 0px;
+  outline-offset: 8px
+}
+
+.sign-button button:visited {
+  outline: 0px;
+}
+
+.sign-button button p {
+  font-size: 18px;
+  font-weight: bold;
+}
