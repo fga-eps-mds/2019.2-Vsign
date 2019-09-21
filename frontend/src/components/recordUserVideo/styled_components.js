@@ -108,7 +108,7 @@ export const SquareDiv = styled.div`
     position: absolute;
     border: 5px solid red;
     top: 9%;
-    left: 16%;
+    left: 15.33%;
     width: 70%;
     height: 76%;
 `;
