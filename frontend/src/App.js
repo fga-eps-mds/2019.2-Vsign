@@ -2,6 +2,7 @@ import React from 'react';
 import './App.css';
 import { BrowserRouter as Router, Route, Link } from "react-router-dom";
 import Script from './components/Script';
+
 function App() {
   return (
     <Router>
@@ -13,5 +14,4 @@ function App() {
     </Router>
   );
 }
-
 export default App;

@@ -87,34 +87,21 @@ function Modal({history }) {
     };
   
     return (
-      <div
-        onClick={back}
-        style={{
-          position: "absolute",
-          top: 50,
-          left: 0,
-          bottom: 0,
-          right: 0,
-          background: "rgba(0, 0, 0, 0.15)"
-        }}
-      >
-        <div
-          className="modal"
-          style={{
-            position: "absolute",
-            background: "#fff",
-            top: 25,
-            left: "10%",
-            right: "10%",
-            padding: 15,
-            border: "2px solid #444"
-          }}
-        >
-          <h1>Meu texto</h1>
-          <p>oq eu quiser que apareça</p>
-          <button type="button" onClick={back}>
-            Close
-          </button>
+      <div className='modalbk'>
+        <div className="modal">
+          <h1>Relate o erro encontrado</h1>
+          <div className='relatar'>
+            <p>Descreva aqui o erro encontrado</p>
+          </div>
+          <div className='Buttons'>
+              <button className='cancelButton' onClick={back}>
+                <p>Cancelar</p>
+              </button>
+              <button className='sendButton'>
+                <p>Enviar</p>
+              </button>
+          </div>
+            
         </div>
       </div>
     );
