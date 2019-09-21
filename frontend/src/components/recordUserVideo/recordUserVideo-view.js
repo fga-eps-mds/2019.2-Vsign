@@ -104,7 +104,7 @@ class recordUserVideo extends Component {
             console.log(typeof(this.player.recordedData));
             console.log(this.player.recordedData);
             this.setState({signatureVideo: this.player.recordedData})
-            // this.player.record().saveAs({'video': 'my-video-file-name.webm'});
+            this.player.record().saveAs({'video': 'my-video-file-name_teste.webm'});
             // console.log('finished converting: ', this.player.convertedData);
             // this.setState({covertedData: this.player.convertedData})
             // this._audioManipulation()
