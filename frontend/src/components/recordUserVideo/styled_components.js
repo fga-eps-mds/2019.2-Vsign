@@ -107,8 +107,8 @@ export const NextBtnDiv = styled.div`
 export const SquareDiv = styled.div`
     position: absolute;
     border: 5px solid red;
-    top: 25%;
-    left: 25%;
+    top: 9%;
+    left: 16%;
     width: 70%;
-    height: 70%
+    height: 76%;
 `;
