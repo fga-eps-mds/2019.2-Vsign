@@ -3,11 +3,16 @@
   "version": "0.1.0",
   "private": true,
   "dependencies": {
+    "@types/react": "^16.9.2",
+    "apollo-boost": "^0.4.4",
+    "graphql": "^14.5.7",
     "react": "^16.9.0",
+    "react-apollo": "^3.1.1",
     "react-dom": "^16.9.0",
     "react-router-dom": "^5.0.1",
     "react-scripts": "3.1.1",
-    "set-value": "3.0.1"
+    "set-value": "3.0.1",
+    "typescript": "^3.6.3"
   },
   "scripts": {
     "start": "PORT=3001 react-scripts start",
@@ -29,5 +34,9 @@
       "last 1 firefox version",
       "last 1 safari version"
     ]
+  },
+  "devDependencies": {
+    "eslint": "^6.4.0",
+    "eslint-plugin-react": "^7.14.3"
   }
 }
