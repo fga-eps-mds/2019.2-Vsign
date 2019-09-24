@@ -7,8 +7,8 @@ import {
     withRouter,
     Switch,
     Route,
-    Link,
   } from "react-router-dom";
+
 
 
 function recordVideo(props){
@@ -21,7 +21,6 @@ function relataErro(props){
       state: { modal: true }
     })
   }
-
 
 export class Script extends Component {
     previousLocation = this.props.location;
@@ -69,7 +68,7 @@ export class Script extends Component {
                     <Switch location={isModal ? this.previousLocation : location}>
                         <div>
                             <button className='erro borda' onClick={() => relataErro(this.props)}>
-                                <p>Relatar erro no texto do roteiro</p>
+                                <p>Reportar erro no texto do roteiro</p>
                             </button>
                         </div>
                     </Switch>
@@ -90,14 +89,14 @@ function Modal({history }) {
       <div className='modalbk'>
         <div className="modal">
           <h1>Relate o erro encontrado</h1>
-          <div className='relatar'>
-            <p>Descreva aqui o erro encontrado</p>
+          <div>
+            <input id='mytext' className='relatar' type='text'/>
           </div>
           <div className='Buttons'>
               <button className='cancelButton' onClick={back}>
                 <p>Cancelar</p>
               </button>
-              <button className='sendButton'>
+              <button className='sendButton' onClick={back}>
                 <p>Enviar</p>
               </button>
           </div>
