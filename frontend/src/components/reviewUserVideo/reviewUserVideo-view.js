@@ -10,15 +10,29 @@ import {Container,
         ScriptBlockStartBtn,
         ScriptBlockPauseBtn,
         ScriptBlockRestartBtn,
-        SpecialContainer} from './styled_components_review.js';
+        SpecialContainer,
+        FinishSignatureText,
+        RestartRecordingText
+    } from './styled_components_review.js';
 
 class reviewUserVideo extends Component {
     constructor(props) {
         super(props);
         this.state = {
-        
+            signatureVideo: {},
+            signatureAudio: {}
         }
+        this._getTheSignatureObjects = this._getTheSignatureObjects.bind(this);
     }
+
+    componentDidMount(){
+        this._getTheSignatureObjects();
+    }
+
+    componentWillMount() {
+        this._getTheSignatureObjects();
+    }    
+
     _startVideo = () =>{
 
     }
@@ -31,8 +45,20 @@ class reviewUserVideo extends Component {
     _endTheOperation = () => {
         
     }
-    _redoTheOperation = () => {
-        
+    _redoTheOperation = () => {   
+    }
+
+    _getTheSignatureObjects = () => {
+        // console.log(this.props.location)
+        const signatureAudioAux = this.props.location.state.signatureAudio
+        const signatureVideoAux = this.props.location.state.signatureVideo
+        // console.log(signatureAudioAux)
+        // console.log(signatureVideoAux)
+        this.setState({
+            signatureAudio: signatureAudioAux,
+            signatureVideo: signatureVideoAux
+        })
+        console.log(this.state.signatureAudio)
     }
     render() {
         return (
@@ -58,7 +84,9 @@ class reviewUserVideo extends Component {
                             </Parent>
                             <BtnDivRedo>
                                 <ScriptBlockBtn onClick={() => this._endTheOperation()}>
-                                    
+                                    <FinishSignatureText>
+                                        Finalizar assinatura
+                                    </FinishSignatureText>
                                 </ScriptBlockBtn>
                             </BtnDivRedo>
                        
@@ -69,7 +97,9 @@ class reviewUserVideo extends Component {
                             </ScriptBlockDivReview>
                             <BtnDivEnd>
                                 <ScriptBlockBtn onClick={() => this._redoTheOperation()}>
-                                    
+                                    <RestartRecordingText>
+                                        Desejo regravar o vídeo
+                                    </RestartRecordingText>
                                 </ScriptBlockBtn>
                             </BtnDivEnd>
                         </SpecialContainer>

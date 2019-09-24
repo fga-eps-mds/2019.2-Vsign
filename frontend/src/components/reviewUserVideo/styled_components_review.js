@@ -54,11 +54,14 @@ export const ScriptBlock = styled.p`
 `;
 export const ScriptBlockBtn = styled.div`
     display: flex;
-    width: 100px;
-    height: 25px;
     background-color: #1592E6;
     align-self: flex;
     padding: 10px;
+    justify-content: center;
+    border: solid 1px #1592E6;
+    border-radius: 53px;
+    width: 491px;
+    height: 105px:
 `;
 
 export const ScriptBlockStartBtn = styled.div`
@@ -111,3 +114,18 @@ export const Parent = styled.div`
     flex: 4
 `;
 
+export const RestartRecordingText = styled.p`
+    color: white;
+    font-size: 35px;
+    font-weight: bold;
+    align-self: center;
+    font-family: Arial
+`;
+
+export const FinishSignatureText = styled.p`
+    color: white;
+    font-size: 35px;
+    font-weight: bold;
+    align-self: center;
+    font-family: Arial
+`;

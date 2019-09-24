@@ -38,7 +38,7 @@ const videoJsOptions = {
     fluid: false,
     plugins: {
         record: {
-            audio: false,
+            audio: true,
             video: true,
             maxLength: 10,
             debug: true,
@@ -184,6 +184,13 @@ class recordUserVideo extends Component {
         this.player.record().stop()
         console.log(this.state.signatureVideo)
         console.log("Going to review video")
+        this.props.history.push({
+            pathname: '/review',
+            state: { 
+                signatureAudio: this.state.signatureAudio,
+                signatureVideo: this.state.signatureVideo
+             }
+          })
         // Now navigate do review screen video
     }
 
