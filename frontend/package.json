@@ -3,15 +3,20 @@
   "version": "0.1.0",
   "private": true,
   "dependencies": {
+    "@mattiasbuelens/web-streams-polyfill": "^0.3.2",
+    "ffmpeg.js": "^3.1.9001",
     "react": "^16.9.0",
     "react-dom": "^16.9.0",
+    "react-mic": "^12.4.1",
     "react-redux": "^7.1.1",
     "react-router-dom": "^5.0.1",
     "react-scripts": "3.1.1",
     "recordrtc": "^5.5.8",
     "set-value": "3.0.1",
     "styled-components": "^4.3.2",
-    "videojs-record": "^3.8.0"
+    "ts-ebml": "^2.0.2",
+    "videojs-record": "^3.8.0",
+    "webm-wasm": "^0.4.1"
   },
   "scripts": {
     "start": "PORT=3001 react-app-rewired start",
