@@ -14,7 +14,6 @@ import {Container,
         FinishSignatureText,
         RestartRecordingText
     } from './styled_components_review.js';
-
 class reviewUserVideo extends Component {
     constructor(props) {
         super(props);
@@ -27,10 +26,12 @@ class reviewUserVideo extends Component {
 
     componentDidMount(){
         this._getTheSignatureObjects();
+    
     }
 
     componentWillMount() {
         this._getTheSignatureObjects();
+
     }    
 
     _startVideo = () =>{
@@ -58,19 +59,29 @@ class reviewUserVideo extends Component {
             signatureAudio: signatureAudioAux,
             signatureVideo: signatureVideoAux
         })
-        console.log(this.state.signatureAudio)
+        // console.log(this.state.signatureAudio)
+        console.log(this.state.signatureVideo)
+        
     }
+    
     render() {
+        const signatureVideo = this.state.signatureVideo
+        const videoConfig = {
+
+        }
+        const url = URL.createObjectURL(signatureVideo);
         return (
             <div>
                 <Container>
                     <Parent>
                         <SpecialContainer>
                             <VideoDivReview>
-
+                                <video controls autoplay name="media">
+                                    <source src={url} type="video/webm" />
+                                </video>
                             </VideoDivReview>
                             <Parent>
-                            
+{/*                             
                                 <ScriptBlockStartBtn onClick={() => this._startVideo()}>
                                             
                                 </ScriptBlockStartBtn>
@@ -80,7 +91,7 @@ class reviewUserVideo extends Component {
                                 <ScriptBlockRestartBtn onClick={() => this._restartVideo()}>
                                         
                                 </ScriptBlockRestartBtn>
-                            
+                             */}
                             </Parent>
                             <BtnDivRedo>
                                 <ScriptBlockBtn onClick={() => this._endTheOperation()}>

@@ -25,9 +25,6 @@ import Record from 'videojs-record/dist/videojs.record.js';
 import '@mattiasbuelens/web-streams-polyfill/dist/polyfill.min.js';
 import 'videojs-record/dist/plugins/videojs.record.webm-wasm.js';
 import 'videojs-record/dist/plugins/videojs.record.ts-ebml.js';
-import WaveSurfer from 'wavesurfer.js';
-import MicrophonePlugin from 'wavesurfer.js/dist/plugin/wavesurfer.microphone.js';
-// WaveSurfer.microphone = MicrophonePlugin;
 
 const videoJsOptions = {
     controls: true,
@@ -38,6 +35,7 @@ const videoJsOptions = {
     fluid: false,
     plugins: {
         record: {
+            timeSlice: 2000,
             audio: true,
             video: true,
             maxLength: 10,
@@ -103,12 +101,19 @@ class recordUserVideo extends Component {
             // can be downloaded by the user, stored on server etc.
             console.log(typeof(this.player.recordedData));
             console.log(this.player.recordedData);
+            var blobUrl = URL.createObjectURL(this.player.recordedData);
+            console.log("---Blob url")
+            console.log(blobUrl)
             this.setState({signatureVideo: this.player.recordedData})
-            this.player.record().saveAs({'video': 'my-video-file-name_teste.webm'});
+            // this.player.record().saveAs({'video': 'my-video-file-name_teste.webm'});
             // console.log('finished converting: ', this.player.convertedData);
             // this.setState({covertedData: this.player.convertedData})
             // this._audioManipulation()
             this.stopRecording()
+            var data = this.player.recordedData;
+            var formData = new FormData();
+            formData.append('file', data, data.name);
+            console.log(formData)
         });
 
         // error handling
@@ -146,13 +151,14 @@ class recordUserVideo extends Component {
       }
      
       onData(recordedBlob) {
-        console.log('chunk of real-time data is: ', recordedBlob);
+        // console.log('chunk of real-time data is: ', recordedBlob);
       }
       
       onStop = (recordedBlob) => {
         console.log('recordedBlob is of the audio: ', recordedBlob);
         // console.log("Signature audio is:", this.state.signatureVideo)
         this.setState({signatureAudio: recordedBlob})
+        
       }
 
     _audioManipulation = () => {

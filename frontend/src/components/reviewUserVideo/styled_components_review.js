@@ -3,7 +3,7 @@ import styled from 'styled-components'
 export const Container = styled.div`
     display: flex;
     flex-direction: column;
-    
+    flex: 2
 `;
 
 export const SpecialContainer = styled.div`
@@ -11,19 +11,22 @@ export const SpecialContainer = styled.div`
     flex-direction: column;
     align-items: center;
     justify-content: center;
+    padding: 20px;
+    flex: 2
 `;
 
 export const VideoDivReview = styled.div`
     display: flex;
-    flex: 4
+    flex: 1
     align-self: center;
-    justify-content: space-around;
+    justify-content: center;
     align-items: center;
     background-color: white;
     border-style: solid;
-    border-color: black;
-    border-width: 4px;   
+    border-color: red;
+    border-width: 2px;   
     justify-content: center;
+    padding-left:35%
 `;
 export const ScriptBlockDivReview = styled.div`
     display: flex;
