@@ -25,7 +25,8 @@ import Record from 'videojs-record/dist/videojs.record.js';
 import '@mattiasbuelens/web-streams-polyfill/dist/polyfill.min.js';
 import 'videojs-record/dist/plugins/videojs.record.webm-wasm.js';
 import 'videojs-record/dist/plugins/videojs.record.ts-ebml.js';
-
+import {Button, FlexboxGrid} from 'rsuite';
+import 'rsuite/dist/styles/rsuite-default.css';
 const videoJsOptions = {
     controls: true,
     screen: true,
@@ -271,14 +272,21 @@ class recordUserVideo extends Component {
                     <ScriptBlockDiv>
                         {scriptText}
                     </ScriptBlockDiv>
-                    <NextBtnDiv>
-                        <ScriptBlockNextBtn onClick={() => this._record()}>
-                            <ScriptBlockNextBtnText> Iniciar gravação</ScriptBlockNextBtnText>
-                        </ScriptBlockNextBtn>
-                        <ScriptBlockNextBtn onClick={() => this._nextScriptBlock()}>
-                                {textNext}
-                        </ScriptBlockNextBtn>
-                    </NextBtnDiv>
+                    <FlexboxGrid justify="space-around">
+                    <FlexboxGrid.Item colspan={2}>
+                        <Button appearance='primary' size='md' onClick={() => this._record()}>
+                        <ScriptBlockNextBtnText> Iniciar gravação</ScriptBlockNextBtnText>                       
+                        </Button>
+
+                    </FlexboxGrid.Item>
+                    <FlexboxGrid.Item colspan={2}>
+                        <Button appearance='primary' size='md' onClick={() => this._nextScriptBlock()}>   
+                            {textNext}
+                        </Button>
+                    </FlexboxGrid.Item>
+                      
+                 </FlexboxGrid>
+                    
                 </Container>    
             </div>
         );

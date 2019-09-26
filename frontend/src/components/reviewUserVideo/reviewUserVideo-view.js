@@ -3,17 +3,17 @@ import { withRouter, Redirect } from 'react-router-dom';
 import {Container,
         VideoDivReview, 
         ScriptBlockDivReview, 
-        BtnDivRedo,
-        BtnDivEnd,
         Parent,
-        ScriptBlockBtn,
-        ScriptBlockStartBtn,
-        ScriptBlockPauseBtn,
-        ScriptBlockRestartBtn,
+        ScriptBlock,
         SpecialContainer,
         FinishSignatureText,
-        RestartRecordingText
-    } from './styled_components_review.js';
+        RestartRecordingText,
+        Space
+        } from './styled_components_review.js';
+import {Button, FlexboxGrid} from 'rsuite';
+import 'rsuite/dist/styles/rsuite-default.css';
+
+
 class reviewUserVideo extends Component {
     constructor(props) {
         super(props);
@@ -34,19 +34,24 @@ class reviewUserVideo extends Component {
 
     }    
 
-    _startVideo = () =>{
-
-    }
-    _pauseVideo = () =>{
-        
-    }
-    _restartVideo = () =>{
-        
-    }
     _endTheOperation = () => {
+        this.props.history.push({
+            pathname: '/review',
+            state: { 
+                signatureAudio: this.state.signatureAudio,
+                signatureVideo: this.state.signatureVideo
+             }
+        })
         
     }
     _redoTheOperation = () => {   
+        this.props.history.push({
+            pathname: '/record',
+            state: { 
+                signatureAudio: null,
+                signatureVideo: null
+             }
+        })
     }
 
     _getTheSignatureObjects = () => {
@@ -64,12 +69,18 @@ class reviewUserVideo extends Component {
         
     }
     
+
+
     render() {
         const signatureVideo = this.state.signatureVideo
         const videoConfig = {
 
         }
-        const url = URL.createObjectURL(signatureVideo);
+        var createObjectURL = (window.URL || window.webkitURL || {}).createObjectURL || function(){};
+        const url = createObjectURL(signatureVideo);
+
+        
+
         return (
             <div>
                 <Container>
@@ -80,43 +91,44 @@ class reviewUserVideo extends Component {
                                     <source src={url} type="video/webm" />
                                 </video>
                             </VideoDivReview>
-                            <Parent>
-{/*                             
-                                <ScriptBlockStartBtn onClick={() => this._startVideo()}>
-                                            
-                                </ScriptBlockStartBtn>
-                                <ScriptBlockPauseBtn onClick={() => this._pauseVideo()}>
-                                        
-                                </ScriptBlockPauseBtn>
-                                <ScriptBlockRestartBtn onClick={() => this._restartVideo()}>
-                                        
-                                </ScriptBlockRestartBtn>
-                             */}
-                            </Parent>
-                            <BtnDivRedo>
-                                <ScriptBlockBtn onClick={() => this._endTheOperation()}>
-                                    <FinishSignatureText>
-                                        Finalizar assinatura
-                                    </FinishSignatureText>
-                                </ScriptBlockBtn>
-                            </BtnDivRedo>
+                            
                        
                         </SpecialContainer>
                         <SpecialContainer>
                             <ScriptBlockDivReview>
-
+                                <ScriptBlock>
+                                    Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nam semper, felis in commodo aliquet, nisl dui fringilla urna, vel commodo nibh tortor nec est. Integer venenatis, justo semper blandit rhoncus, metus neque pretium massa, quis aliquam quam orci id lacus. Phasellus in quam at tortor commodo ullamcorper id vel ligula. Curabitur tristique tortor sed tellus dignissim, et vestibulum massa dapibus. Phasellus tincidunt feugiat orci vitae ultrices. Suspendisse potenti. Sed enim lacus, ultricies vitae finibus in, placerat non nunc. Pellentesque dictum purus tempus, fermentum ante non, lobortis ex. Mauris malesuada nulla non nibh lacinia, at dapibus ante molestie. Pellentesque consectetur turpis ligula. Nullam et purus feugiat, hendrerit lectus a, convallis lacus.
+                                </ScriptBlock>
                             </ScriptBlockDivReview>
-                            <BtnDivEnd>
-                                <ScriptBlockBtn onClick={() => this._redoTheOperation()}>
-                                    <RestartRecordingText>
-                                        Desejo regravar o vídeo
-                                    </RestartRecordingText>
-                                </ScriptBlockBtn>
-                            </BtnDivEnd>
+                            
+                            
                         </SpecialContainer>
                     </Parent>
-
+                    
+                        
+                   
                 </Container>
+                
+                <FlexboxGrid justify="space-around">
+                    <FlexboxGrid.Item colspan={2}>
+                        <Button appearance='primary' size='md' onClick={() => this._redoTheOperation()}>
+                            <RestartRecordingText>
+                                Desejo regravar o vídeo     
+                            </RestartRecordingText>                            
+                        </Button>
+
+                    </FlexboxGrid.Item>
+                    <FlexboxGrid.Item colspan={2}>
+                        <Button appearance='primary' size='md' onClick={() => this._endTheOperation()}>   
+                            <FinishSignatureText>
+                                Finalizar assinatura     
+                            </FinishSignatureText>
+                        </Button>
+                    </FlexboxGrid.Item>
+                      
+                 </FlexboxGrid>
+       
+                       
             </div>
         )
     }
