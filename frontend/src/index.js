@@ -1,25 +1,40 @@
+
 import React from 'react';
 import ReactDOM from 'react-dom';
 import './index.css';
-import App from './App';
 import * as serviceWorker from './serviceWorker';
-import ApolloClient from "apollo-boost";
-import { gql } from "apollo-boost";
+import { gql} from "apollo-boost";
+import App from './App';
+import { ApolloProvider, useQuery, useMutation } from '@apollo/react-hooks'
+import { ApolloClient } from "apollo-boost";
+import { InMemoryCache } from 'apollo-cache-inmemory';
+import { HttpLink } from 'apollo-link-http';
 
+const cache = new InMemoryCache();
+const link = new HttpLink({
+  uri: 'http://localhost:3000/graphql'
+})
+const client = new ApolloClient({
+  cache,
+  link
+})
+ReactDOM.render(
+  <ApolloProvider client={client}>
+    <App />
+  </ApolloProvider>,
+  document.getElementById('root')
+);
 
-const asd = new ApolloClient({
-    uri: 'https://48p1r2roz4.sse.codesandbox.io' 
-});
-
-asd.query({
+client.query({
     query: gql`
       {
-        rates(currency: "USD") {
-          currency
-        }
       }
     `
 }).then(result => console.log(result));
+
+
+
+
 
 ReactDOM.render(<App />, document.getElementById('root'));
 
