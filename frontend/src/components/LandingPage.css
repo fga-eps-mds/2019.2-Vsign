@@ -37,3 +37,8 @@
 .header-info a {
   font-size: 16px;
 }
+
+.header-info button {
+  background-color: white;
+  font-size: 16px;
+}
