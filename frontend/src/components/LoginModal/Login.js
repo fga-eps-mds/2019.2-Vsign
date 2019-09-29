@@ -17,16 +17,16 @@ const Login = props => (
         <div>
           <div className='input-div'>
             <label htmlFor="email">Email</label>
-            <input type="text" id="email" onChange={e => {console.log(e.target.value); props.setEmail(e.target.value)}} />
+            <input type="text" id="email" onChange={e => {props.setEmail(e.target.value)}} />
           </div>
 
           <div className='input-div'>
             <label htmlFor="password">Password</label>
-            <input type="password" id="password" onChange={e => {console.log(e.target.value); props.setPassword(e.target.value)}} />
+            <input type="password" id="password" onChange={e => {props.setPassword(e.target.value)}} />
           </div>
         </div>
 
-        <button onClick={() => handleLogin(props.email, props.password)}>
+        <button disabled={props.email === '' || props.password === ''} onClick={() => handleLogin(props.email, props.password)}>
           Login
         </button>
       </div>
@@ -36,7 +36,8 @@ const Login = props => (
 
 const handleLogin = (email, password) => {
   alert("Tudo pronto, só esperando PR de usuário ser aceito...")
-  if(email != '' && password != '') {
+  console.log("email: ", email, "password: ", password)
+  if(email !== '' && password !== '') {
     try {
       fetch('http://localhost:3000/user/login', {
         method: 'POST',
