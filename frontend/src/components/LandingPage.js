@@ -1,6 +1,6 @@
 import React, { useState } from 'react'
-import { Container, Content, Grid, Row, Panel } from 'rsuite';
-import {FirstRow} from './LandingPageComponents';
+import { Container, Content, Grid, Row, Panel, Button } from 'rsuite';
+import {FirstRow, FirstRowText} from './LandingPageComponents';
 import './LandingPage.css';
 import Login from './LoginModal/Login';
 
@@ -21,12 +21,14 @@ const LandingPage = () => {
                 </div>
             </div>
             <Content>
-               <FirstRow>
+               {/* <FirstRow>
                    <FirstRowText>
                        Nunca foi tão fácil assinar seus contratos
                    </FirstRowText>
-               </FirstRow>
+               </FirstRow> */}
+                
             </Content>
+            <Button>Default</Button>
 
             {loginModal ? (
                 <Login 
