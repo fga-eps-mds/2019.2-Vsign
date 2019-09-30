@@ -7,6 +7,18 @@
   padding: 0px 40px;
 }
 
+.red {
+  border: 1px solid red;
+}
+
+.green {
+  border: 1px solid green;
+}
+
+.blue {
+  border: 1px solid blue;
+}
+
 .header-bar-logo {
   width: 150px;
 }
@@ -41,4 +53,25 @@
 .header-info button {
   background-color: white;
   font-size: 16px;
+}
+
+.devs-container {
+  margin: 0px 20px;
+}
+
+.devs {
+  display: flex;
+  justify-content: center;
+  margin: auto
+}
+
+.dev {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
+
+.avatar {
+  margin: 0px 20px;
 }
