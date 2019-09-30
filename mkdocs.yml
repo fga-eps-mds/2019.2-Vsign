@@ -3,6 +3,7 @@ nav:
     - Home: README.md
     - Projeto:
         - 'Termo de Abertura de Projeto': 'project/tap.md'
+        - 'Roadmap': 'project/roadmap.md'
         - 'Documento de Arquitetura': 'project/architectureDocument.md'
         - 'Documento de Visão': 'project/vision-document.md'
     - Gerenciamento de Projeto:
