@@ -1,5 +1,5 @@
 import React, { useState } from 'react'
-import { Container, Content, Avatar, Panel } from 'rsuite';
+import { Container, Content, Avatar, Panel, Button} from 'rsuite';
 import { FirstRow, 
         FirstRowText,
         DivForText, 
@@ -8,7 +8,10 @@ import { FirstRow,
         AboutDiv, 
         WhyUseDiv, 
         AboutTitle, 
-        WhyUseTitle } from './LandingPageComponents';
+        WhyUseTitle,
+        AboutText,
+        PanelDiv
+     } from './LandingPageComponents';
 import './LandingPage.css';
 import signImage from "../../assets/images/sign_contract.png"
 import Login from '../LoginModal/Login';
@@ -73,14 +76,22 @@ const _SecondRow = () => {
                     <AboutTitle>
                         Sobre:
                     </AboutTitle>
-                    <Panel  bordered>
-                        Blablabla
-                    </Panel>
+                    <PanelDiv>
+                        <Panel styles={{padding: "10"}} bordered>
+                            <AboutText>VSign é a sua plataforma para assinatura de contratos online e 100% segura. 
+                                O processo é extremamente rápido e ocorrerá dentro de minutos e tudo que você tem que fazer 
+                                é gravar um pequeno video em nossa plataforma</AboutText>
+                                <Button color="black" >
+                                    Clique para mais
+                                </Button>
+                        </Panel>
+                    </PanelDiv>
                 </AboutDiv>
                 <WhyUseDiv>
                     <WhyUseTitle>
                         Porque usar <br/> VSign?
                     </WhyUseTitle>
+                    
                 </WhyUseDiv>
             </SecondRow>
         </div>

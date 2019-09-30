@@ -39,17 +39,35 @@ export const SecondRow = styled.div`
 export const AboutDiv = styled.div`
     display: flex;
     flex: 2;
-    justify-content: center;
+    justify-content: space-around;
     align-items: center;
     flex-direction: column;
-    width: 50vw
+    height: 100%;
+    margin: 15px
+`;
+
+export const PanelDiv = styled.div`
+    display: flex;
+    flex: 1;
+    justify-content: space-around;
+    align-items: center;
+    flex-direction: column;
+    height: 100%;
 `;
 
 export const AboutTitle = styled.p`
     color: white;
     font-weight: bold;
     font-size: 30px;
-    align-self: center
+    aligm-self: flex-start
+`;
+
+export const AboutText = styled.p`
+    color: black;
+    font-weight: bold;
+    font-size: 25px;
+    align-self: center;
+    padding-bottom: 10px
 `;
 
 export const WhyUseDiv = styled.div`
