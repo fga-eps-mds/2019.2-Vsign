@@ -1,7 +1,8 @@
 import React, { useState } from 'react'
-import { Container, Content, Grid, Row, Panel, Avatar, Col } from 'rsuite';
+import { Container, Content, Avatar } from 'rsuite';
+import {FirstRow, FirstRowText} from './LandingPageComponents';
 import './LandingPage.css';
-import Login from './LoginModal/Login';
+import Login from '../LoginModal/Login';
 
 const LandingPage = () => {
     const [loginModal, setLoginModal] = useState(false);
@@ -20,13 +21,11 @@ const LandingPage = () => {
                 </div>
             </div>
             <Content>
-                <Grid fluid>
-                    <Row className="show-grid">
-                        <Panel bordered>
-                            <p>Lorem ipsum dolor, sit amet consectetur adipisicing elit. Suscipit ducimus excepturi impedit ipsam doloribus quis facilis ipsa quas architecto quod dolor soluta itaque, perferendis molestiae repellat, cupiditate, et in provident.</p>
-                        </Panel>
-                    </Row>
-                </Grid>
+               <FirstRow>
+                   <FirstRowText>
+                       Nunca foi tão fácil assinar seus contratos
+                   </FirstRowText>
+               </FirstRow>
             </Content>
 
             {developers()}
