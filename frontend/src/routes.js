@@ -1,6 +1,6 @@
 import React from 'react';
 import { BrowserRouter, Route } from "react-router-dom";
-import LandingPage from './components/LandingPage';
+import LandingPage from './components/LandingPage/LandingPage';
 import UserContracts from './components/UserContracts/ContractsPage';
 
 export default function Routes() {

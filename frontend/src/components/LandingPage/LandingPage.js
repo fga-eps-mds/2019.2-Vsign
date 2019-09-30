@@ -1,14 +1,22 @@
 import React, { useState } from 'react'
-import { Container, Content, Avatar } from 'rsuite';
-import {FirstRow, FirstRowText} from './LandingPageComponents';
+import { Container, Content, Avatar, Panel } from 'rsuite';
+import { FirstRow, 
+        FirstRowText,
+        DivForText, 
+        DivForImg, 
+        SecondRow, 
+        AboutDiv, 
+        WhyUseDiv, 
+        AboutTitle, 
+        WhyUseTitle } from './LandingPageComponents';
 import './LandingPage.css';
+import signImage from "../../assets/images/sign_contract.png"
 import Login from '../LoginModal/Login';
 
 const LandingPage = () => {
     const [loginModal, setLoginModal] = useState(false);
     const [email, setEmail] = useState('');
     const [password, setPassword] = useState('');
-
     return (
         <Container>
             <div className="header-bar">
@@ -21,11 +29,10 @@ const LandingPage = () => {
                 </div>
             </div>
             <Content>
-               <FirstRow>
-                   <FirstRowText>
-                       Nunca foi tão fácil assinar seus contratos
-                   </FirstRowText>
-               </FirstRow>
+                <div>
+                    {_FirstRow()}
+                    {_SecondRow()}
+                </div>
             </Content>
 
             {developers()}
@@ -40,6 +47,43 @@ const LandingPage = () => {
                 />
             ) : null}
         </Container>
+    )
+}
+
+const _FirstRow = () => {
+    return (
+        <div>
+            <FirstRow>
+                <DivForText>
+                <FirstRowText>Nunca <br/> foi tão fácil <br/> assinar contratos!!!</FirstRowText>
+                </DivForText>
+                <DivForImg>
+                    <img src={signImage} style={{width: "50%", height: "50%"}}alt="signImage"/>
+                </DivForImg>
+            </FirstRow>
+        </div>
+    )
+}
+
+const _SecondRow = () => {
+    return (
+        <div>
+            <SecondRow>
+                <AboutDiv>
+                    <AboutTitle>
+                        Sobre:
+                    </AboutTitle>
+                    <Panel  bordered>
+                        Blablabla
+                    </Panel>
+                </AboutDiv>
+                <WhyUseDiv>
+                    <WhyUseTitle>
+                        Porque usar <br/> VSign?
+                    </WhyUseTitle>
+                </WhyUseDiv>
+            </SecondRow>
+        </div>
     )
 }
 
@@ -59,7 +103,7 @@ const fetchDevPictureGithub = async username => {
         })
 }
 
-const developersList = ['Foxtrot40', 'kairon-v', 'ViniciusPuuerto']
+const developersList = ['Foxtrot40', 'kairon-v', 'ViniciusPuerto']
 const developers = () => (
     <div className='devs-container red'>
         <h2>Criadores</h2>
