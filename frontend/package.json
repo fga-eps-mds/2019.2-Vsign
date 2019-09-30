@@ -4,12 +4,15 @@
   "private": true,
   "dependencies": {
     "@apollo/react-hooks": "^3.1.1",
+    "@mattiasbuelens/web-streams-polyfill": "^0.3.2",
     "@types/react": "^16.9.2",
     "@typescript-eslint/eslint-plugin": "^2.3.1",
     "apollo-boost": "^0.4.4",
-    "graphql": "^14.5.7",
-    "@mattiasbuelens/web-streams-polyfill": "^0.3.2",
+    "customize-cra": "^0.8.0",
     "ffmpeg.js": "^3.1.9001",
+    "graphql": "^14.5.7",
+    "less": "^3.10.3",
+    "less-loader": "^5.0.0",
     "react": "^16.9.0",
     "react-dom": "^16.9.0",
     "react-mic": "^12.4.1",
@@ -29,7 +32,7 @@
     "start": "PORT=3001 react-app-rewired start",
     "build": "react-app-rewired build",
     "test": "react-app-rewired test --env=jsdom",
-    "eject": "react-scripts eject"
+    "eject": "react-app-rewired eject"
   },
   "eslintConfig": {
     "extends": "react-app"
@@ -51,12 +54,12 @@
     "eslint-plugin-react": "^7.14.3"
   },
   "optionalDependencies": {
-    "react-app-rewired": "^2.1.3",
     "eslint": "^6.4.0",
     "eslint-config-airbnb": "18.0.1",
     "eslint-plugin-import": "^2.18.2",
     "eslint-plugin-jsx-a11y": "^6.2.3",
     "eslint-plugin-react": "^7.14.3",
-    "eslint-plugin-react-hooks": "^1.7.0"
+    "eslint-plugin-react-hooks": "^1.7.0",
+    "react-app-rewired": "^2.1.3"
   }
 }
