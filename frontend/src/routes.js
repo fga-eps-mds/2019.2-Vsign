@@ -3,6 +3,7 @@ import { BrowserRouter, Route } from "react-router-dom";
 import LandingPage from './components/LandingPage';
 import LoginPage from './components/LoginPage';
 import ContractsPage from './components/ContractsPage';
+import RecordVideoPage from './components/recordUserVideo';
 
 export default function Routes() {
   return (
@@ -10,6 +11,7 @@ export default function Routes() {
       <Route path="/" exact component={LandingPage} />
       <Route path="/login" exact component={LoginPage} />
       <Route path="/contracts" component={ContractsPage} />
+      <Route path="/record" component={RecordVideoPage} />
     </BrowserRouter>
   );
 }
