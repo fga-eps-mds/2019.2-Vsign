@@ -63,7 +63,7 @@ jobs:
       - run:
           name: Deploy Backend to Heroku
           command: |
-            git push https://heroku:$HEROKU_API_KEY@git.heroku.com/vsign-api-staging.git `git subtree split --prefix backend us19/#81_auto_deploy`:refs/heads/master --force
+            git push https://heroku:$HEROKU_API_KEY@git.heroku.com/vsign-api-staging.git `git subtree split --prefix backend develop`:refs/heads/master --force
   deploy_production:
     docker:
       - image: buildpack-deps:trusty
@@ -72,7 +72,7 @@ jobs:
       - run:
           name: Deploy Backend to Heroku
           command: |
-            git push https://heroku:$HEROKU_API_KEY@git.heroku.com/vsign-api.git `git subtree split --prefix backend master`:master --force
+            git push https://heroku:$HEROKU_API_KEY@git.heroku.com/vsign-api.git `git subtree split --prefix backend master`:refs/heads/master --force
   test:
     #parallelism: 3
     docker:
@@ -139,4 +139,4 @@ workflows:
             - build
           filters:
             branches:
-              only: us19/#81_auto_deploy
+              only: develop
