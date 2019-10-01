@@ -1,6 +1,6 @@
 import React from 'react';
 import { FlexboxGrid, Panel, Col } from 'rsuite';
-import { SectionTitle, Section, SectionSubTitle, PricingSection } from './styles';
+import { SectionTitle, SectionSubTitle, PricingSection } from './styles';
 
 export default function Pricing() {
     return (

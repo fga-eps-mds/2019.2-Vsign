@@ -148,8 +148,26 @@ export const StepItem = styled(Timeline.Item)`
 export const SectionSubTitle = styled.p`
     font-size: 1.125rem;
     font-weight: 300;
-    font-family: "Open Sans",sans-serif;
+    font-family: "Open Sans", sans-serif;
     margin-bottom: 1rem;
     line-height: 1.9;
     color: #757575;
-`;
+    `;
+
+    export const TeamSection = styled(Section)`
+    h5 {
+        font-weight: 400;
+        color: #323d47;
+        letter-spacing: 0.5px;
+        font-size: 1;
+        margin-bottom: .5rem;
+        font-family: Dosis,sans-serif;
+        line-height: 1.5;
+    }
+    
+    p {
+        font-family: "Open Sans", sans-serif;
+        line-height: 1.9;
+        color: #757575;
+    }
+`

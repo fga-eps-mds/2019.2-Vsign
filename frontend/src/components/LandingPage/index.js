@@ -1,38 +1,27 @@
-import React, { useState } from 'react'
-import { Container, Content, Grid, Row, Panel, Button } from 'rsuite';
-// import Login from './LoginModal/Login';
+import React from 'react';
+import { Container, Content } from 'rsuite';
 import Navbar from './Navbar';
+import Hero from './Hero';
+import Team from './Team';
+import Customers from './Customers';
+import API from './API';
+import HowItWorks from './HowItWorks';
+import Pricing from './Pricing';
+import SignUp from './SignUp';
 
-const LandingPage = () => {
-    const [loginModal, setLoginModal] = useState(false);
-    const [email, setEmail] = useState('');
-    const [password, setPassword] = useState('');
-
+export default function LandingPage() {
     return (
         <Container>
             <Navbar />
             <Content>
-                <Grid fluid>
-                    <Row className="show-grid">
-                        <Button>Default</Button>
-                        <Panel bordered>
-                            {/* <Paragraph /> */}
-                        </Panel>
-                    </Row>
-                </Grid>
+                <Hero />
+                <HowItWorks />
+                <Pricing />
+                <API />
+                <Customers />
+                <SignUp />
+                <Team />
             </Content>
-
-            {/* {loginModal ? (
-                <Login 
-                    setLoginModal={setLoginModal} 
-                    email={email} 
-                    password={password} 
-                    setEmail={setEmail} 
-                    setPassword={setPassword} 
-                />
-             ) : null} */}
         </Container>
     )
-}
-
-export default LandingPage;
+};

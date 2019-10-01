@@ -18,19 +18,19 @@ export default function HowItWorks() {
 						</FlexboxGrid.Item>
                     	<FlexboxGrid.Item componentClass={Col} colspan={24} md={10} mdPull={2}>
                     		<Timeline className="how-it-works">
-    							<Timeline.Item dot={<Icon icon="check-circle" style={{ color: 'green' }} />}>
+    							<Timeline.Item dot={<Icon icon="check-circle" style={{ color: '#ff6583' }} />}>
       								<StepTitle>Integração</StepTitle>
       								<StepText>Integre seu sistema com a Vsign através de nossa API.</StepText>
     							</Timeline.Item>
-								<Timeline.Item dot={<Icon icon="exclamation-triangle" style={{ color: 'orange' }} />}>
+								<Timeline.Item dot={<Icon icon="exclamation-triangle" style={{ color: '#6d64fe' }} />}>
 									<StepTitle>Envio</StepTitle>
 									<StepText>Envie seus contratos para nossa plataforma.</StepText>
 								</Timeline.Item>
-								<Timeline.Item dot={<Icon icon="info-circle" style={{ color: 'blue' }} />}>
+								<Timeline.Item dot={<Icon icon="info-circle" style={{ color: '#ff6583' }} />}>
 									<StepTitle>Assinatura</StepTitle>
 									<StepText>Seus clientes realizam a assinatura através da gravação de um vídeo em nossa plataforma.</StepText>
 								</Timeline.Item>
-								<Timeline.Item dot={<Icon icon="check-circle" style={{ color: 'green' }} />}>
+								<Timeline.Item dot={<Icon icon="check-circle" style={{ color: '#6d64fe' }} />}>
 									<StepTitle>Resultado</StepTitle>
 									<StepText>Notificamos você logo após a assinatura do contrato.</StepText>
 								</Timeline.Item>
