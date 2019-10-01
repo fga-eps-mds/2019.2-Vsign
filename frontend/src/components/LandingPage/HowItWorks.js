@@ -5,7 +5,7 @@ import HowItWorksImage from '../../assets/images/how-it-works.png';
 
 export default function HowItWorks() {
     return (
-        <Section>
+        <Section id="como-funciona">
             <FlexboxGrid justify="space-around">
                 <FlexboxGrid.Item colspan={15}>
 					<SectionHeader>

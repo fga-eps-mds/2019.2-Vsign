@@ -19,7 +19,7 @@ const NavBarInstance = ({ onSelect, activeKey, ...props }) => {
                                 <Nav.Item href="/" appearance="link">Início</Nav.Item>
                                 <Nav.Item href="#como-funciona">Como Funciona</Nav.Item>
                                 <Nav.Item href="#precos">Preços</Nav.Item>
-                                <Nav.Item href="https://web.postman.co/workspaces/94d6f612-917e-498a-b8cd-5381e28cc0cc/collections" target="_blank">
+                                <Nav.Item href="#api" >
                                     Documentação
                                 </Nav.Item>
                                 <Nav.Item href="/login" icon={<Icon icon="lock" />}>

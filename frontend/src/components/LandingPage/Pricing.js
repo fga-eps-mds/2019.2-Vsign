@@ -4,7 +4,7 @@ import { SectionTitle, SectionSubTitle, PricingSection } from './styles';
 
 export default function Pricing() {
     return (
-        <PricingSection>
+        <PricingSection id="precos">
             <FlexboxGrid justify="center">
                 <FlexboxGrid.Item colspan={15}>
                 <FlexboxGrid justify="space-between" align="middle">

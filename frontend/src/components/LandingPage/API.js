@@ -5,7 +5,7 @@ import APIIntegrationImage from '../../assets/images/api-integration.png';
 
 export default function API() {
     return (
-        <Section>
+        <Section id="api">
             <FlexboxGrid justify="center">
                 <FlexboxGrid.Item colspan={15}>
                     <FlexboxGrid justify="space-between" align="middle">
@@ -16,7 +16,7 @@ export default function API() {
                             <SectionTitle>Integração Automática</SectionTitle>
                             <SectionSubTitle>Com nossa API a integração com seu sistema é 100% automática.</SectionSubTitle>
                             <Button
-                                href="https://web.postman.co/workspaces/94d6f612-917e-498a-b8cd-5381e28cc0cc/collections"
+                                href="https://documenter.getpostman.com/view/5536571/SVtPXAiw?version=latest"
                                 appearance="primary"
                             >Confira a nossa documentação</Button>
                         </FlexboxGrid.Item>
