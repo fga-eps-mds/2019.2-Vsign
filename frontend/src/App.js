@@ -1,7 +1,12 @@
 import React from 'react';
-import './App.css';
-import 'rsuite/dist/styles/rsuite-default.css';
+import Routes from './routes';
+import GlobalStyle from './styles';
 
-const App = () => <Routes />
+const App = () => (
+    <React.Fragment>
+        <GlobalStyle />
+        <Routes />
+    </React.Fragment>
+);
 
 export default App;
