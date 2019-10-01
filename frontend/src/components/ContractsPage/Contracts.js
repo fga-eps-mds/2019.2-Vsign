@@ -1,28 +1,16 @@
 import React from 'react';
 import { FlexboxGrid, Table, Panel, Icon, IconButton, Badge } from 'rsuite';
 import { Section } from './styles';
+import data from './contracts.json';
 
 const { Column, HeaderCell, Cell } = Table;
 
-const data = [{
-	'id': 1,
-	'company': 'BxBlue',
-	'createdAt': '30/09/2019',
-	'expiresAt': '15/10/2019',
-	'status': 'pending',
-	'kind': 'Empréstimo',
-	'result': 'approved'
-}];
-
 const ActionCell = ({ rowData, dataKey, ...props }) => {
-	function handleAction() {
-	  alert(`id:${rowData[dataKey]}`);
-	}
 	return (
 	  <Cell {...props} className="link-group">
 		<IconButton
 		  appearance="subtle"
-		  onClick={handleAction}
+		  href="/record"
 		  icon={<Icon icon="edit2" />}
 		/>
 	  </Cell>

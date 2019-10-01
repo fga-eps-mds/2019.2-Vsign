@@ -8,29 +8,13 @@ export default function Hero() {
         <StyledHero>
             <FlexboxGrid justify="center">
                 <FlexboxGrid.Item colspan={15}>
-                <FlexboxGrid justify="space-between" align="middle">
-                    <FlexboxGrid.Item componentClass={Col} colspan={24} md={10}>
-                        <Title>Meus Contratos</Title>
-                    </FlexboxGrid.Item>
-                </FlexboxGrid>
-            </FlexboxGrid.Item>
-                </FlexboxGrid>
-
-            {/* <FlexboxGrid justify="center">
-                <FlexboxGrid.Item colspan={12}>
-                    <Grid fluid>
-                        <Row className="show-grid">
-                            <Col xs={12} lg={6}>
-                                <Title>Assine contratos com segurança</Title>
-                                <p>Com o Vsign, seus usuários estão em segurança.</p>
-                            <Col xs={12} lg={6}>
-                                Imagem topzera
-                            </Col>
-                            </Col>
-                        </Row>
-                    </Grid>
+                    <FlexboxGrid justify="space-between" align="middle">
+                        <FlexboxGrid.Item componentClass={Col} colspan={24} md={10}>
+                            <Title>Meus Contratos</Title>
+                        </FlexboxGrid.Item>
+                    </FlexboxGrid>
                 </FlexboxGrid.Item>
-            </FlexboxGrid> */}
+            </FlexboxGrid>
         </StyledHero>
     );
 };
