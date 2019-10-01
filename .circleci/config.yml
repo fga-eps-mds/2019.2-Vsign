@@ -63,9 +63,7 @@ jobs:
         - run:
             name: Deploy Backend to Heroku
             command: |
-              git subtree push --prefix pythonapp heroku master
-              git push heroku `git subtree split --prefix backend master`:master --force
-              git push https://heroku:$HEROKU_API_KEY@git.heroku.com/vsign-api-staging.git `git subtree split --prefix backend master`:master --force
+              git push https://heroku:$HEROKU_API_KEY@git.heroku.com/vsign-api-staging.git `git subtree split --prefix backend develop`:develop --force
     deploy_production:
       docker:
         - image: buildpack-deps:trusty
@@ -74,8 +72,6 @@ jobs:
         - run:
             name: Deploy Backend to Heroku
             command: |
-              git subtree push --prefix pythonapp heroku master
-              git push heroku `git subtree split --prefix backend master`:master --force
               git push https://heroku:$HEROKU_API_KEY@git.heroku.com/vsign-api.git `git subtree split --prefix backend master`:master --force
   test:
     #parallelism: 3
