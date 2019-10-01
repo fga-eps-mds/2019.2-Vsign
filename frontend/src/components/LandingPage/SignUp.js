@@ -1,7 +1,7 @@
 import React from 'react';
-import { FlexboxGrid, Button, Col } from 'rsuite';
+import { FlexboxGrid, Col } from 'rsuite';
 import { SignUpSection } from './styles';
-import { Title, StyledButton } from './styles';
+import { StyledButton } from './styles';
 
 export default function Hero() {
     return (

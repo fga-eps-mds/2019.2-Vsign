@@ -10,7 +10,7 @@ export default function API() {
                 <FlexboxGrid.Item colspan={15}>
                     <FlexboxGrid justify="space-between" align="middle">
                         <FlexboxGrid.Item className="text-center" componentClass={Col} colspan={24} md={10} mdPush={2}>
-                            <img src={APIIntegrationImage} width="100%" />
+                            <img src={APIIntegrationImage} width="100%" alt="Ilustração Integração API" />
                         </FlexboxGrid.Item>
                         <FlexboxGrid.Item componentClass={Col} colspan={24} md={10}>
                             <SectionTitle>Integração Automática</SectionTitle>

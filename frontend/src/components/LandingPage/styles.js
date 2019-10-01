@@ -1,5 +1,5 @@
 import styled from 'styled-components';
-import { Header, Nav, Button, Timeline } from 'rsuite';
+import { Header, Nav, Button } from 'rsuite';
 
 export const StyledHero = styled.div`
     height: 80vh;
@@ -140,10 +140,6 @@ export const StepText = styled.p`
     color: #757575;
     margin-bottom: 1rem;
 `;
-
-export const StepItem = styled(Timeline.Item)`
-    margin-left: 1rem;
-`; 
 
 export const SectionSubTitle = styled.p`
     font-size: 1.125rem;

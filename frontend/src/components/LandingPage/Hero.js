@@ -16,7 +16,7 @@ export default function Hero() {
                             <Button size="lg">Contrate Agora</Button>
                         </FlexboxGrid.Item>
                         <FlexboxGrid.Item componentClass={Col} colspan={24} md={13} mdPush={1}>
-                            <img src={HeroImage} width="100%" />
+                            <img src={HeroImage} width="100%" alt="Ilustração Vsign" />
                         </FlexboxGrid.Item>
                     </FlexboxGrid>
                 </FlexboxGrid.Item>

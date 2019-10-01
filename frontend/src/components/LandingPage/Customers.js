@@ -8,8 +8,8 @@ const customersList = [BxBlueLogo];
 const Columns = () => {
     return customersList.map(customer => {
         return (
-            <FlexboxGrid.Item className="center" componentClass={Col} colspan={24} md={3}>
-                <img src={customer} width="150px" />
+            <FlexboxGrid.Item key={customer} className="center" componentClass={Col} colspan={24} md={3}>
+                <img src={customer} width="150px" alt="logo cliente" />
             </FlexboxGrid.Item>
         );
     });

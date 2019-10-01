@@ -1,6 +1,6 @@
 import React from 'react';
 import { FlexboxGrid, Timeline, Icon, Col } from 'rsuite';
-import { SectionHeader, Section, SectionTitle, SectionSubTitle, StepTitle, StepText, StepItem } from './styles';
+import { SectionHeader, Section, SectionTitle, SectionSubTitle, StepTitle, StepText } from './styles';
 import HowItWorksImage from '../../assets/images/how-it-works.png';
 
 export default function HowItWorks() {
@@ -14,7 +14,7 @@ export default function HowItWorks() {
                     </SectionHeader>
                 	<FlexboxGrid justify="space-between" align="middle">
 						<FlexboxGrid.Item componentClass={Col} colspan={24} md={12} className="text-center">
-							<img src={HowItWorksImage} width="90%" />
+							<img src={HowItWorksImage} width="90%" alt="Como funciona ilustração" />
 						</FlexboxGrid.Item>
                     	<FlexboxGrid.Item componentClass={Col} colspan={24} md={10} mdPull={2}>
                     		<Timeline className="how-it-works">
