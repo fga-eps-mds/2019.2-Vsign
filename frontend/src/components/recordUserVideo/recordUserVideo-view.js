@@ -53,7 +53,8 @@ const videoJsOptions = {
             // use MP4 encoding worker (H.264 & AAC & MP3 encoders)
             // convertWorkerURL: '../../node_modules/ffmpeg.js/ffmpeg-worker-mp4.js'
             // or use WebM encoding worker (VP8 & Opus encoders)
-            convertWorkerURL: '../../node_modules/ffmpeg.js/ffmpeg-worker-webm.js'
+            convertWorkerURL: '../../node_modules/ffmpeg.js/ffmpeg-worker-webm.js',
+            timeSlice: 2000
         }
         }
     }
@@ -67,7 +68,7 @@ class recordUserVideo extends Component {
             scriptPosition: 1,
             signatureVideo: null,
             signatureAudio: null,
-            convertedData: null,
+            signatureImage: [],
             recordAudio: false,
             maxTime: 10
         }
@@ -95,6 +96,7 @@ class recordUserVideo extends Component {
         this.player.on('startRecord', () => {
             console.log('started recording!');
             this.startRecording()
+            this._getTimeStamps()
         });
 
         // user completed recording and stream is available
@@ -104,16 +106,14 @@ class recordUserVideo extends Component {
             console.log(typeof(this.player.recordedData));
             console.log(this.player.recordedData);
             this.setState({signatureVideo: this.player.recordedData})
-            this.player.record().saveAs({'video': 'my-video-file-name_teste.webm'});
-            // console.log('finished converting: ', this.player.convertedData);
-            // this.setState({covertedData: this.player.convertedData})
+            // this.player.record().saveAs({'video': 'my-video-file-name_teste.webm'});
             // this._audioManipulation()
-            this.stopRecording()
+            this.stopRecording();
         });
 
         // error handling
         this.player.on('error', (element, error) => {
-            alert("Erro")
+            console.log(error)
         });
 
         this.player.on('deviceError', () => {
@@ -133,6 +133,21 @@ class recordUserVideo extends Component {
         }
     }
 
+
+    _getTimeStamps = async () => {
+        this.player.on('timestamp', () => {
+            console.log(this.player.currentTimeStamp)
+            console.log("All timestampps")
+            console.log(this.player.allTimestamps)
+            const signatureImageAux = this.state.signatureImage
+            signatureImageAux.push(this.player.currentTimeStamp);
+            this.setState({signatureImage: this.player.allTimestamps});
+            console.log("Log dos timeStamps\n" + this.state.signatureImage)
+
+            console.log('array of blobs: ', this.player.recordedData);
+            console.log('---------------------------------------');
+        });
+    }
     startRecording = () => {
         this.setState({
           record: true
@@ -168,6 +183,7 @@ class recordUserVideo extends Component {
     _goToIntructions = () => {
        console.log("Going to intructions screen")
        //Go to intructions screen
+       console.log(this.state.signatureImage)
     }
 
     _record = () => {
