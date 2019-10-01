@@ -6,26 +6,26 @@ export const StyledHero = styled.div`
     background-image: linear-gradient(135deg, #168af0 0%, #764ba2 100%);
     color: #fff;
     padding-top: 12rem;
-    `;
+`;
     
-    export const StyledHeader = styled(Header)`
+export const StyledHeader = styled(Header)`
     z-index: 1;
     position: absolute;
     top: 0;
     right: 0;
     left: 0;
     color: #FFF;
-    `;
+`;
     
     export const StyledNavItem = styled(Nav.Item)`
     color: #FFF;
     `;
     
-    export const Title = styled.h1`
+export const Title = styled.h1`
     font-family: 'Dosis', sans-serif;
     font-size: 2.57813rem;
-    margin-bottom: .5rem;
-    `;
+    margin-bottom: 1rem;
+`;
     
 export const SectionTitle = styled.h2`
     color: #323d47;
@@ -116,8 +116,8 @@ export const SubTitle = styled.p`
     font-weight: 300;
     line-height: 1.9;
     font-size: 1.17188rem;
-    margin-bottom: 1rem;
-    `;
+    margin-bottom: 2rem !important;
+`;
     
 export const StyledButton = styled(Button)`
     font-weight: 600;
