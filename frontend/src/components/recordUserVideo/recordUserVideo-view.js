@@ -3,18 +3,19 @@ import { withRouter, Redirect } from 'react-router-dom';
 // import { bindActionCreators } from 'redux';
 // import { connect } from 'react-redux';
 import styled from 'styled-components'
-import { Container, 
-         RowOnTop, 
-         IntructionTextBtn, 
-         InstructionBtn, 
-         VideoDiv, 
-         ScriptBlock, 
-         ScriptBlockDiv , 
-         ScriptBlockNextBtn, 
-         ScriptBlockNextBtnText, 
-         NextBtnDiv,
-         SquareDiv
-        } from "./styled_components.js"
+import {
+    Container,
+    RowOnTop,
+    IntructionTextBtn,
+    InstructionBtn,
+    VideoDiv,
+    ScriptBlock,
+    ScriptBlockDiv,
+    ScriptBlockNextBtn,
+    ScriptBlockNextBtnText,
+    NextBtnDiv,
+    SquareDiv
+} from "./styled_components.js"
 import { ReactMic } from 'react-mic';
 import 'video.js/dist/video-js.css';
 import videojs from 'video.js';
@@ -56,8 +57,8 @@ const videoJsOptions = {
             convertWorkerURL: '../../node_modules/ffmpeg.js/ffmpeg-worker-webm.js',
             timeSlice: 1000
         }
-        }
     }
+}
 
 
 class recordUserVideo extends Component {
@@ -76,7 +77,7 @@ class recordUserVideo extends Component {
         this._nextScriptBlock = this._nextScriptBlock.bind(this);
     }
 
-    
+
     componentDidMount() {
         // instantiate Video.js
         this.player = videojs(this.videoNode, videoJsOptions, () => {
@@ -101,13 +102,26 @@ class recordUserVideo extends Component {
 
         // user completed recording and stream is available
         this.player.on('finishRecord', () => {
-            console.log(typeof(this.player.recordedData));
+            console.log(typeof (this.player.recordedData));
             console.log(this.player.recordedData);
-            this.setState({signatureVideo: this.player.recordedData})
+            this.setState({ signatureVideo: this.player.recordedData })
             this.stopRecording();
-            this._getTimeStamps();
+            // this._getTimeStamps();
 
-            
+            var createObjectURL = (window.URL || window.webkitURL || {}).createObjectURL || function () { };
+            const auxData = this.player.recordedData;
+            const blobUrl = createObjectURL(auxData)
+
+            const duration = this.player.record().getDuration();
+            console.log(duration)
+            this.getVideoImage(blobUrl, 10 ,(img, secs, event) => {
+                const signatureImageAux = this.state.signatureImage
+                signatureImageAux.push(img)
+                this.setState({ signatureImage: signatureImageAux })
+                console.log(img)
+            })
+
+
         });
 
         // error handling
@@ -132,81 +146,75 @@ class recordUserVideo extends Component {
         }
     }
 
-    getVideoImage(path, secs, callback) {
+    getVideoImage = (path, secs, callback) => {
         var me = this, video = document.createElement('video');
-        video.onloadedmetadata = function() {
-          if ('function' === typeof secs) {
-            secs = secs(this.duration);
-          }
-          this.currentTime = Math.min(Math.max(0, (secs < 0 ? this.duration : 0) + secs), this.duration);
+        video.onloadedmetadata = function () {
+            if ('function' === typeof secs) {
+                secs = secs(this.duration);
+            }
+            this.currentTime = Math.min(Math.max(0, (secs < 0 ? this.duration : 0) + secs), this.duration);
         };
-        video.onseeked = function(e) {
-          var canvas = document.createElement('canvas');
-          canvas.height = video.videoHeight;
-          canvas.width = video.videoWidth;
-          var ctx = canvas.getContext('2d');
-          ctx.drawImage(video, 0, 0, canvas.width, canvas.height);
-          var img = new Image();
-          img.src = canvas.toDataURL();
-          callback.call(me, img, this.currentTime, e);
+        video.onseeked = function (e) {
+            var canvas = document.createElement('canvas');
+            canvas.height = video.videoHeight;
+            canvas.width = video.videoWidth;
+            var ctx = canvas.getContext('2d');
+            ctx.drawImage(video, 0, 0, canvas.width, canvas.height);
+            var img = "";
+            img = canvas.toDataURL();
+            callback.call(me, img, this.currentTime, e);
         };
-        video.onerror = function(e) {
-          callback.call(me, undefined, undefined, e);
+        video.onerror = function (e) {
+            callback.call(me, undefined, undefined, e);
         };
         video.src = path;
-      }
-
+    }
 
 
     _getTimeStamps = async () => {
-        var createObjectURL = (window.URL || window.webkitURL || {}).createObjectURL || function(){};
+        var createObjectURL = (window.URL || window.webkitURL || {}).createObjectURL || function () { };
         const blobUrl = createObjectURL(this.player.recordedData)
-        const duration = this.player.record().getDuration();
-       for (let i = 0; i < duration; i++) {
-        this.getVideoImage(blobUrl, (img , secs, event) => {
-            const signatureImageAux = this.state.signatureImage
-            signatureImageAux.push(img)
-            this.setState({signatureImage: signatureImageAux})
-            console.log(img)
-        }) 
-       }
+
+        const duration = parseInt(this.player.record().getDuration());
+        console.log(duration)
+        for (let time = 0; time < duration; time++) {
+            this.getVideoImage(blobUrl, time ,(img, secs, event) => {
+                const signatureImageAux = this.state.signatureImage
+                signatureImageAux.push(img)
+                this.setState({ signatureImage: signatureImageAux })
+                console.log(img)
+            })  
+        }
+        
+
     }
     startRecording = () => {
         this.setState({
-          record: true
+            record: true
         });
-      }
-     
-      stopRecording = () => {
+    }
+
+    stopRecording = () => {
         this.setState({
-          record: false
+            record: false
         });
-      }
-     
-      onData(recordedBlob) {
+    }
+
+    onData(recordedBlob) {
         console.log('chunk of real-time data is: ', recordedBlob);
-      }
-      
-      onStop = (recordedBlob) => {
+    }
+
+    onStop = (recordedBlob) => {
         console.log('recordedBlob is of the audio: ', recordedBlob);
         // console.log("Signature audio is:", this.state.signatureVideo)
-        this.setState({signatureAudio: recordedBlob})
-      }
-
-    _audioManipulation = () => {
-        const myMediaElement = this.state.signatureVideo
-        var audioCtx = new AudioContext();
-        var source = audioCtx.createMediaElementSource(myMediaElement);
-        this.setState({signatureAudio: source})
-        console.log(myMediaElement)
-        console.log(audioCtx)
-        console.log(source)
+        this.setState({ signatureAudio: recordedBlob })
     }
 
     _goToIntructions = () => {
-       console.log("Going to intructions screen")
-       //Go to intructions screen
-       console.log(this.state.signatureImage)
+        console.log("Going to intructions screen")
+        //Go to intructions screen
+        this._getTimeStamps();
+        console.log(this.state.signatureImage)
     }
 
     _record = () => {
@@ -221,24 +229,25 @@ class recordUserVideo extends Component {
 
     _goToReviewVideo = () => {
         this.player.record().stop()
-        console.log(this.state.signatureVideo)
+        console.log(this.state.signatureImage)
         console.log("Going to review video")
         // Now navigate do review screen video
+        // remember to pass the data
     }
 
     _nextScriptBlock = async () => {
-        const scriptBlock = this.state.scriptBlock 
-         for (let i = -1; i <= scriptBlock.length; i++) {
-             if (this.state.scriptPosition === i) {
-                this.setState({ scriptPosition: this.state.scriptPosition+1 })
-             }else if(this.state.scriptPosition === scriptBlock.length){
+        const scriptBlock = this.state.scriptBlock
+        for (let i = -1; i <= scriptBlock.length; i++) {
+            if (this.state.scriptPosition === i) {
+                this.setState({ scriptPosition: this.state.scriptPosition + 1 })
+            } else if (this.state.scriptPosition === scriptBlock.length) {
                 this._goToReviewVideo()
-             }
-         }
-         console.log(this.state.scriptBlock[this.state.scriptPosition])
+            }
+        }
+        console.log(this.state.scriptBlock[this.state.scriptPosition])
     }
     render() {
-        
+
 
         const RecordingAlert = styled.div`
             display: flex;
@@ -253,15 +262,15 @@ class recordUserVideo extends Component {
             justify-content: center
         `;
         let textNext;
-        if (this.state.scriptPosition === (this.state.scriptBlock.length )) {
+        if (this.state.scriptPosition === (this.state.scriptBlock.length)) {
             textNext = <ScriptBlockNextBtnText>Revisar</ScriptBlockNextBtnText>;
-        }else {
+        } else {
             textNext = <ScriptBlockNextBtnText> Passo {this.state.scriptPosition}</ScriptBlockNextBtnText>;
         }
 
         let scriptText;
         if (this.state.scriptPosition > 0) {
-            var index = this.state.scriptPosition -1
+            var index = this.state.scriptPosition - 1
             scriptText = <ScriptBlock> {this.state.scriptBlock[index]}</ScriptBlock>
         }
 
@@ -270,8 +279,8 @@ class recordUserVideo extends Component {
                 <Container>
                     <RowOnTop>
                         <InstructionBtn onClick={() => { this._goToIntructions() }}>
-                                <IntructionTextBtn>
-                                    Ver instruções
+                            <IntructionTextBtn>
+                                Ver instruções
                         </IntructionTextBtn>
                         </InstructionBtn>
                         {/* <RecordingAlert>
@@ -281,8 +290,8 @@ class recordUserVideo extends Component {
                     </RowOnTop>
                     <VideoDiv>
                         <div data-vjs-player>
-                            <video style={{backgroundColor: "#556073"}} ref={node => this.videoNode = node} className="video-js vjs-default-skin" playsInline>
-                        
+                            <video style={{ backgroundColor: "#556073" }} ref={node => this.videoNode = node} className="video-js vjs-default-skin" playsInline>
+
                             </video>
                             <ReactMic
                                 record={this.state.record}
@@ -291,7 +300,7 @@ class recordUserVideo extends Component {
                                 onData={this.onData}
                                 strokeColor="#000000"
                                 backgroundColor="#FF4081" />
-                        <SquareDiv/>
+                            <SquareDiv />
                         </div>
                     </VideoDiv>
                     <ScriptBlockDiv>
@@ -302,10 +311,10 @@ class recordUserVideo extends Component {
                             <ScriptBlockNextBtnText> Iniciar gravação</ScriptBlockNextBtnText>
                         </ScriptBlockNextBtn>
                         <ScriptBlockNextBtn onClick={() => this._nextScriptBlock()}>
-                                {textNext}
+                            {textNext}
                         </ScriptBlockNextBtn>
                     </NextBtnDiv>
-                </Container>    
+                </Container>
             </div>
         );
     }
