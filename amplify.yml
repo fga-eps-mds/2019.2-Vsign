@@ -6,7 +6,7 @@ frontend:
       commands:
         - cd frontend
         - echo frontend
-        - npm install
+        - npm ci
     build:
       commands:
         - npm run build
