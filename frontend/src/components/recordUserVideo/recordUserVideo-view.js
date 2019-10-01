@@ -54,7 +54,7 @@ const videoJsOptions = {
             // convertWorkerURL: '../../node_modules/ffmpeg.js/ffmpeg-worker-mp4.js'
             // or use WebM encoding worker (VP8 & Opus encoders)
             convertWorkerURL: '../../node_modules/ffmpeg.js/ffmpeg-worker-webm.js',
-            timeSlice: 2000
+            timeSlice: 1000
         }
         }
     }
@@ -96,19 +96,18 @@ class recordUserVideo extends Component {
         this.player.on('startRecord', () => {
             console.log('started recording!');
             this.startRecording()
-            this._getTimeStamps()
+            // this._getTimeStamps()
         });
 
         // user completed recording and stream is available
         this.player.on('finishRecord', () => {
-            // recordedData is a blob object containing the recorded data that
-            // can be downloaded by the user, stored on server etc.
             console.log(typeof(this.player.recordedData));
             console.log(this.player.recordedData);
             this.setState({signatureVideo: this.player.recordedData})
-            // this.player.record().saveAs({'video': 'my-video-file-name_teste.webm'});
-            // this._audioManipulation()
             this.stopRecording();
+            this._getTimeStamps();
+
+            
         });
 
         // error handling
@@ -133,20 +132,44 @@ class recordUserVideo extends Component {
         }
     }
 
+    getVideoImage(path, secs, callback) {
+        var me = this, video = document.createElement('video');
+        video.onloadedmetadata = function() {
+          if ('function' === typeof secs) {
+            secs = secs(this.duration);
+          }
+          this.currentTime = Math.min(Math.max(0, (secs < 0 ? this.duration : 0) + secs), this.duration);
+        };
+        video.onseeked = function(e) {
+          var canvas = document.createElement('canvas');
+          canvas.height = video.videoHeight;
+          canvas.width = video.videoWidth;
+          var ctx = canvas.getContext('2d');
+          ctx.drawImage(video, 0, 0, canvas.width, canvas.height);
+          var img = new Image();
+          img.src = canvas.toDataURL();
+          callback.call(me, img, this.currentTime, e);
+        };
+        video.onerror = function(e) {
+          callback.call(me, undefined, undefined, e);
+        };
+        video.src = path;
+      }
+
+
 
     _getTimeStamps = async () => {
-        this.player.on('timestamp', () => {
-            console.log(this.player.currentTimeStamp)
-            console.log("All timestampps")
-            console.log(this.player.allTimestamps)
+        var createObjectURL = (window.URL || window.webkitURL || {}).createObjectURL || function(){};
+        const blobUrl = createObjectURL(this.player.recordedData)
+        const duration = this.player.record().getDuration();
+       for (let i = 0; i < duration; i++) {
+        this.getVideoImage(blobUrl, (img , secs, event) => {
             const signatureImageAux = this.state.signatureImage
-            signatureImageAux.push(this.player.currentTimeStamp);
-            this.setState({signatureImage: this.player.allTimestamps});
-            console.log("Log dos timeStamps\n" + this.state.signatureImage)
-
-            console.log('array of blobs: ', this.player.recordedData);
-            console.log('---------------------------------------');
-        });
+            signatureImageAux.push(img)
+            this.setState({signatureImage: signatureImageAux})
+            console.log(img)
+        }) 
+       }
     }
     startRecording = () => {
         this.setState({
