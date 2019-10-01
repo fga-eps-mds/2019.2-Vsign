@@ -1,3 +1,4 @@
+  
 import React from 'react';
 import { BrowserRouter, Route } from "react-router-dom";
 import LandingPage from './components/LandingPage';
@@ -8,6 +9,7 @@ export default function Routes() {
     <BrowserRouter>
       <Route path="/" exact component={LandingPage} />
       <Route path="/contracts" component={UserContracts} />
+      <Route exact location={this.props.location} path='/record' component={recordUserVideo}/>
     </BrowserRouter>
   );
 }
