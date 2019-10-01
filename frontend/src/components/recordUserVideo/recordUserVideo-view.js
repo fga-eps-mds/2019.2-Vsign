@@ -108,19 +108,19 @@ class recordUserVideo extends Component {
             this.stopRecording();
             // this._getTimeStamps();
 
-            var createObjectURL = (window.URL || window.webkitURL || {}).createObjectURL || function () { };
-            const auxData = this.player.recordedData;
-            const blobUrl = createObjectURL(auxData)
+            // var createObjectURL = (window.URL || window.webkitURL || {}).createObjectURL || function () { };
+            // const auxData = this.player.recordedData;
+            // const blobUrl = createObjectURL(auxData)
 
-            const duration = this.player.record().getDuration();
-            console.log(duration)
-            this.getVideoImage(blobUrl, 10 ,(img, secs, event) => {
-                const signatureImageAux = this.state.signatureImage
-                signatureImageAux.push(img)
-                this.setState({ signatureImage: signatureImageAux })
-                console.log(img)
-            })
-
+            // const duration = this.player.record().getDuration();
+            // console.log(duration)
+            // this.getVideoImage(blobUrl, 10 ,(img, secs, event) => {
+            //     const signatureImageAux = this.state.signatureImage
+            //     signatureImageAux.push(img)
+            //     this.setState({ signatureImage: signatureImageAux })
+            //     console.log(img)
+            // })
+            this._getTimeStamps();
 
         });
 
@@ -185,6 +185,8 @@ class recordUserVideo extends Component {
                 console.log(img)
             })  
         }
+
+        console.log(this.state.signatureImage)
         
 
     }
