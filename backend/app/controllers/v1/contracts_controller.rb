@@ -39,7 +39,7 @@ class V1::ContractsController < V1Controller
                 :email,
                 :api_key,
                 :kind,
-                content: [:installments, :amount]
+                content: [:name, :installments, :amount]
             )
             contract_params[:content_attributes] = contract_params.delete :content
             contract_params.permit!
