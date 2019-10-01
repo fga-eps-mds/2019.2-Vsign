@@ -55,6 +55,28 @@ jobs:
       #     key: rails-demo-yarn-{{ checksum "yarn.lock" }}
       #     paths:
       #       - ~/.cache/yarn
+    deploy_staging:
+      docker:
+        - image: buildpack-deps:trusty
+      steps:
+        - checkout
+        - run:
+            name: Deploy Backend to Heroku
+            command: |
+              git subtree push --prefix pythonapp heroku master
+              git push heroku `git subtree split --prefix backend master`:master --force
+              git push https://heroku:$HEROKU_API_KEY@git.heroku.com/vsign-api-staging.git `git subtree split --prefix backend master`:master --force
+    deploy_production:
+      docker:
+        - image: buildpack-deps:trusty
+      steps:
+        - checkout
+        - run:
+            name: Deploy Backend to Heroku
+            command: |
+              git subtree push --prefix pythonapp heroku master
+              git push heroku `git subtree split --prefix backend master`:master --force
+              git push https://heroku:$HEROKU_API_KEY@git.heroku.com/vsign-api.git `git subtree split --prefix backend master`:master --force
   test:
     #parallelism: 3
     docker:
@@ -104,3 +126,21 @@ workflows:
       - test:
           requires:
             - build
+  build_and_deploy_production:
+    jobs:
+      - build
+      - deploy_production:
+          requires:
+            - build
+          filters:
+            branches:
+              only: master
+  build_and_deploy_staging:
+    jobs:
+      - build
+      - deploy_staging:
+          requires:
+            - build
+          filters:
+            branches:
+              only: develop
