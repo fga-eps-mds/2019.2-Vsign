@@ -10,6 +10,7 @@ frontend:
     build:
       commands:
         - npm run build
+        - pwd
   artifacts:
     baseDirectory: frontend/build
     files:
