@@ -6,7 +6,7 @@ import VsignLogo from '../../assets/images/vsign.png';
 const NavBarInstance = ({ onSelect, activeKey, ...props }) => {
     return (
         <StyledHeader>
-            <Navbar style={{ 'background-color': 'transparent' }}>
+            <Navbar style={{ 'backgroundColor': 'transparent' }}>
                 <FlexboxGrid justify="center">
                     <FlexboxGrid.Item colspan={15}>
                         <Navbar.Header>
