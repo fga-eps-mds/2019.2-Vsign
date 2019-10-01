@@ -65,6 +65,7 @@ export const PricingSection = styled(Section)`
         .rs-panel-heading {
             text-transform: uppercase;
             font-weight: 600;
+            font-family: 'Dosis', sans-serif;
         }
 
         h3 {
