@@ -92,10 +92,18 @@ export const SignUpSection = styled(Section)`
     background-position: center center;
     background-size: cover;
     background-repeat: no-repeat;
-    padding-top: 7rem;
-    padding-bottom: 7rem;
-    background-image: linear-gradient(135deg, #168af0 0%, #764ba2 100%);
+    padding-top: 3rem;
+    padding-bottom: 3rem;
+    background-image: linear-gradient(135deg, #9C27B0 0%, #E91E63 100%);
     color: #FFF;
+
+    h1 {
+        font-family: 'Dosis', sans-serif;
+        font-weight: 400;
+        letter-spacing: 0.5px;
+        font-size: 2rem;
+        margin-bottom: .5rem;
+    }
 `;
 
 export const Logo = styled.img`

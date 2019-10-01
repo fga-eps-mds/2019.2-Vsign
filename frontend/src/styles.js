@@ -15,6 +15,15 @@ const GlobalStyle = createGlobalStyle`
         text-align: center;
     }
 
+    .text-right {
+        text-align: right;
+    }
+
+    .rs-btn {
+        font-family: 'Open Sans', sans-serif;
+        font-weigth: 600;
+    }
+
     .rs-nav-item-text {
         color: #fff;
         padding-top: 0;
