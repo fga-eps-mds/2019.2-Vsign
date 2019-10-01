@@ -1,0 +1,12 @@
+
+version: 1.0
+frontend:
+	phases:
+		preBuild:
+			commands:
+				- cd frontend
+				- echo frontend
+				- npm ci
+    	build:
+				commands:
+					- npm run build
