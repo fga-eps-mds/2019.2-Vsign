@@ -1,7 +1,7 @@
 import React, { useState } from 'react'
-import { Container, Content, Grid, Row, Panel } from 'rsuite';
-import './LandingPage.css';
-import Login from './LoginModal/Login';
+import { Container, Content, Grid, Row, Panel, Button } from 'rsuite';
+// import Login from './LoginModal/Login';
+import Navbar from './Navbar';
 
 const LandingPage = () => {
     const [loginModal, setLoginModal] = useState(false);
@@ -10,18 +10,11 @@ const LandingPage = () => {
 
     return (
         <Container>
-            <div className="header-bar">
-                <div className='header-bar-logo'>
-                    <a href="/">VSign</a>
-                </div>
-                <div className='header-info'>
-                    <a href="#about">About |</a>
-                    <button onClick={() => setLoginModal(!loginModal)}> Login</button>
-                </div>
-            </div>
+            <Navbar />
             <Content>
                 <Grid fluid>
                     <Row className="show-grid">
+                        <Button>Default</Button>
                         <Panel bordered>
                             {/* <Paragraph /> */}
                         </Panel>
@@ -29,7 +22,7 @@ const LandingPage = () => {
                 </Grid>
             </Content>
 
-            {loginModal ? (
+            {/* {loginModal ? (
                 <Login 
                     setLoginModal={setLoginModal} 
                     email={email} 
@@ -37,7 +30,7 @@ const LandingPage = () => {
                     setEmail={setEmail} 
                     setPassword={setPassword} 
                 />
-             ) : null}
+             ) : null} */}
         </Container>
     )
 }
