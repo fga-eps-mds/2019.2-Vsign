@@ -118,16 +118,19 @@ export const StyledNavItem = styled(Nav.Item)`
     color: #FFF;
 `;
 
-export const StyledHero = styled.div`
-    height: 20vh;
-    background-image: linear-gradient(135deg, #168af0 0%, #764ba2 100%);
-    color: #fff;
-    padding-top: 4rem;
-    `;
-
 export const Title = styled.h1`
     font-family: 'Dosis', sans-serif;
     font-size: 2.57813rem;
     margin-bottom: .5rem;
 `;
     
+
+export const Section = styled.div`
+    position: relative;
+    border-bottom: none;
+    background-position: center center;
+    background-size: cover;
+    background-repeat: no-repeat;
+    padding-top: 3rem;
+    padding-bottom: 3rem;
+`;

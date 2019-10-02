@@ -1,12 +1,12 @@
 import React from 'react';
 import { Navbar, Nav, FlexboxGrid, Icon } from 'rsuite';
 import { Link } from 'react-router-dom';
-import { StyledNavItem } from './styled_components';
+import { StyledNavItem } from './styles';
 import Logo from '../../assets/images/vsign.png';
 
 const NavBarInstance = ({ onSelect, activeKey, ...props }) => {
     return (
-        <Navbar>
+        <Navbar appearance="inverse">
             <FlexboxGrid justify="center">
                 <FlexboxGrid.Item colspan={15}>
                     <Navbar.Header>
