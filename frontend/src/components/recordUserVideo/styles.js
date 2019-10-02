@@ -20,10 +20,10 @@ export const InstructionBtn = styled.div`
 `;
 export const IntructionTextBtn = styled.p`
     display: flex;
-    font-size: 30;
+    font-size: 30px;
     font-weight: bold;
     font-family: Arial, Helvetica, sans-serif;
-    color: black;
+    color: white;
     align-self: center;
     `;
 

@@ -35,7 +35,7 @@ const videoJsOptions = {
     image: true,
     width: 852,
     height: 521,
-    fluid: false,
+    fluid: true,
     plugins: {
         record: {
             timeSlice: 2000,
@@ -296,7 +296,7 @@ class recordUserVideo extends Component {
         if (this.state.scriptPosition === (this.state.scriptBlock.length)) {
             textNext = <ScriptBlockNextBtnText>Revisar</ScriptBlockNextBtnText>;
         } else {
-            textNext = <ScriptBlockNextBtnText> Passo {this.state.scriptPosition}</ScriptBlockNextBtnText>;
+            textNext = <ScriptBlockNextBtnText> Proximo {this.state.scriptPosition}</ScriptBlockNextBtnText>;
         }
 
         let scriptText;
@@ -318,36 +318,44 @@ class recordUserVideo extends Component {
                                         <div data-vjs-player>
                                             <video style={{ backgroundColor: "#556073" }} ref={node => this.videoNode = node} className="video-js vjs-default-skin" playsInline>
                                             </video>
+                                            <div style={{display: "none" }}>
                                             <ReactMic
+                                                style={{display: "none" }}
                                                 record={this.state.record}
                                                 className="sound-wave"
                                                 onStop={this.onStop}
                                                 onData={this.onData}
                                                 strokeColor="#000000"
                                                 backgroundColor="#FF4081" />
+                                            </div>
                                             <SquareDiv />
                                         </div>
                                     </VideoDiv>
                                 </FlexboxGrid.Item>
                                 <FlexboxGrid.Item componentClass={Col} colspan={24} md={10}>
                                     <ButtonGroup style={{ marginBottom: '1rem'}} justified>
-                                        <Button size="lg" appearance="primary">
-                                            <Icon
-                                                icon="arrow-right"
-                                                style={{ fontSize: '2rem', marginBottom: '1rem' }}
-                                            />
-                                            <p style={{ fontSize: '.5rem' }}>Gravar</p>
+                                        <Button size="sm" style={{display: "flex", justifyContent: "center", flexDirection: "row", alignItems: "center"}}appearance="primary" onClick={() => this._record()}>
+                                            
+                                            {/* <p style={{ fontSize: '.5rem' }}>Gravar</p> */}
+                                            <IntructionTextBtn>
+                                                 Gravar 
+                                                 <Icon
+                                                    icon="arrow-right"
+                                                    style={{ fontSize: '2rem', marginBottom: '1rem' }}
+                                                />
+                                            </IntructionTextBtn>
                                         </Button>
-                                        <Button size="lg" appearance="primary">Middle</Button>
-                                        <Button size="lg" appearance="primary">Bottom</Button>
+                                        {/* <Button size="lg" appearance="primary">Middle</Button>
+                                        <Button size="lg" appearance="primary">Bottom</Button> */}
                                     </ButtonGroup>
-                                    <Panel header="Panel title" bordered>
+                                    <Panel bordered>
                                         {scriptText}
                                     </Panel>
                                     <Progress.Line percent={80} showInfo={false} />
                                     <Button
                                         style={{ marginTop: '1rem' }}
                                         icon={<Icon icon="arrow-right" />}
+                                        onClick={() => this._nextScriptBlock()}
                                         placement="right"
                                         size="lg"
                                         appearance='primary'

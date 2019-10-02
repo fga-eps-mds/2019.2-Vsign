@@ -1,5 +1,5 @@
 import React, { Component } from 'react'
-import { Progress } from 'rsuite';
+import { Progress, Button, ButtonGroup } from 'rsuite';
 
 const { Circle, Line } = Progress;
 
