@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import { withRouter, Redirect } from 'react-router-dom';
+import { withRouter } from 'react-router-dom';
 import styled from 'styled-components'
 import {
     Container,
@@ -26,8 +26,10 @@ import 'videojs-record/dist/plugins/videojs.record.webm-wasm.js';
 import 'videojs-record/dist/plugins/videojs.record.ts-ebml.js';
 import { ButtonGroup, Button, FlexboxGrid, Content, Col, Panel, Icon, Progress } from 'rsuite';
 import Navbar from './Navbar';
-import Steps from './Steps';
+import SigningSteps from '../Shared/SigningSteps';
 import 'rsuite/dist/styles/rsuite-default.css';
+import ActionButtons from './ActionButtons.js';
+import ScriptControl from './ScriptControl.js';
 const videoJsOptions = {
     controls: false,
     screen: true,
@@ -240,7 +242,7 @@ class recordUserVideo extends Component {
     }
 
     _record = () => {
-        this.player.record().start()
+        this.player.record().start();
         console.log("era pra dar play")
     }
 
@@ -303,7 +305,7 @@ class recordUserVideo extends Component {
         return (
             <Container>
                 <Navbar />
-                <Steps />
+                <SigningSteps />
                 <Content>
                     <FlexboxGrid justify="center">
                         <FlexboxGrid.Item colspan={15}>
@@ -325,28 +327,14 @@ class recordUserVideo extends Component {
                                     </VideoDiv>
                                 </FlexboxGrid.Item>
                                 <FlexboxGrid.Item componentClass={Col} colspan={24} md={10}>
-                                    <ButtonGroup style={{ marginBottom: '1rem'}} justified>
-                                        <Button size="lg" appearance="primary">
-                                            <Icon
-                                                icon="arrow-right"
-                                                style={{ fontSize: '2rem', marginBottom: '1rem' }}
-                                            />
-                                            <p style={{ fontSize: '.5rem' }}>Gravar</p>
-                                        </Button>
-                                        <Button size="lg" appearance="primary">Middle</Button>
-                                        <Button size="lg" appearance="primary">Bottom</Button>
-                                    </ButtonGroup>
+                                    <ActionButtons
+                                        record={this._record}
+                                        isRecording={this.state.record}
+                                    />
                                     <Panel header="Panel title" bordered>
                                         {scriptText}
                                     </Panel>
-                                    <Progress.Line percent={80} showInfo={false} />
-                                    <Button
-                                        style={{ marginTop: '1rem' }}
-                                        icon={<Icon icon="arrow-right" />}
-                                        placement="right"
-                                        size="lg"
-                                        appearance='primary'
-                                        block>Próximo</Button>
+                                    <ScriptControl />
                                 </FlexboxGrid.Item>
                             </FlexboxGrid>
                                 
@@ -354,10 +342,6 @@ class recordUserVideo extends Component {
                 </FlexboxGrid>
 
                     {/* <FlexboxGrid justify="space-around">
-                    <FlexboxGrid.Item colspan={2}>
-                        <Button appearance='primary' size='md' onClick={() => this._record()}>
-                        <ScriptBlockNextBtnText> Iniciar gravação</ScriptBlockNextBtnText>                       
-                        </Button>
 
                     </FlexboxGrid.Item>
                     <FlexboxGrid.Item colspan={2}>
