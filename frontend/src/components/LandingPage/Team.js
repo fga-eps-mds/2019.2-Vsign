@@ -56,7 +56,7 @@ class Developer extends Component {
   }
 
 const Developers = () => {
-    return developersList.map(username => <Developer username={username} />);
+    return developersList.map(username => <Developer key={username} username={username} />);
 }
 
 export default function Team() {
