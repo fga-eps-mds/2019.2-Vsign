@@ -41,7 +41,9 @@ export const VideoDiv = styled.div`
     align-items: center;
     justify-content: center;
     width: 100%;
-    height: 100%
+    height: 100%;
+    transform: scale(-1, 1);
+ 
     `;
 
 export const ScriptBlockDiv = styled(Panel)`
@@ -107,10 +109,10 @@ export const NextBtnDiv = styled.div`
 export const SquareDiv = styled.div`
     position: absolute;
     border: 5px solid red;
-    top: 9%;
-    left: 15.33%;
-    width: 70%;
-    height: 76%;
+    top: 15%;
+    left: 30.33%;
+    width: 94%;
+    height: 107%;
 `;
 
 export const StyledNavItem = styled(Nav.Item)`

@@ -11,6 +11,7 @@ import {Container,
         Space
         } from './styled_components_review.js';
 import {Button, FlexboxGrid} from 'rsuite';
+import SigningSteps from '../Shared/SigningSteps';
 import 'rsuite/dist/styles/rsuite-default.css';
 
 
@@ -87,6 +88,7 @@ class reviewUserVideo extends Component {
         return (
             <div>
                 <Container>
+                    <SigningSteps history={this.props.history} />
                     <Parent>
                         <SpecialContainer>
                             <VideoDivReview>

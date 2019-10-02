@@ -314,11 +314,11 @@ class recordUserVideo extends Component {
                 <Content>
                     <FlexboxGrid justify="center">
                         <FlexboxGrid.Item colspan={15}>
-                            <FlexboxGrid justify="space-between">
-                                <FlexboxGrid.Item componentClass={Col} colspan={24} md={12}>
+                            <FlexboxGrid justify="space-around">
+                                <FlexboxGrid.Item componentClass={Col} colspan={22} md={10}>
                                     <VideoDiv>
                                         <div data-vjs-player>
-                                            <video style={{ backgroundColor: "#556073", width: "100%", height: "100%" }} ref={node => this.videoNode = node} className="video-js vjs-default-skin" playsInline>
+                                            <video style={{ backgroundColor: "#556073", width: "150%", height: "150%" }} ref={node => this.videoNode = node} className="video-js vjs-default-skin" playsInline>
                                             </video>
                                             <div style={{display: "none" }}>
                                             <ReactMic
@@ -334,7 +334,7 @@ class recordUserVideo extends Component {
                                         </div>
                                     </VideoDiv>
                                 </FlexboxGrid.Item>
-                                <FlexboxGrid.Item componentClass={Col} colspan={24} md={10}>
+                                <FlexboxGrid.Item componentClass={Col} colspan={22} md={10}>
                                     <ActionButtons
                                         record={this._record}
                                         isRecording={this.state.record}
