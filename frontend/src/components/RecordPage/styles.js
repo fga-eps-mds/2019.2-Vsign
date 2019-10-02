@@ -19,12 +19,12 @@ export const InstructionBtn = styled.div`
     justify-content: center;
 `;
 export const IntructionTextBtn = styled.p`
-    display: flex;
-    font-size: 30px;
+   
+    font-size: 14px;
     font-weight: bold;
-    font-family: Arial, Helvetica, sans-serif;
+    font-family: 'Open Sans', sans-serif;
     color: white;
-    align-self: center;
+
     `;
 
 export const RowOnTop = styled.div`
@@ -40,7 +40,8 @@ export const VideoDiv = styled.div`
     display: flex;
     align-items: center;
     justify-content: center;
-    flex: 4
+    width: 100%;
+    height: 100%
     `;
 
 export const ScriptBlockDiv = styled(Panel)`
