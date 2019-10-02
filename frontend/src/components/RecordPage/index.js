@@ -66,7 +66,7 @@ class recordUserVideo extends Component {
     constructor(props) {
         super(props);
         this.state = {
-            scriptBlock: ["Bloco de roteiro 0", "Bloco de roteiro 1", "Bloco de roteiro 2", "Bloco de roteiro 3", "Bloco de roteiro 4"],
+            scriptBlock: ["Bloco de roteiro 0Bloco de roteiro 0Bloco de roteiro 0Bloco de roteiro 0", "Bloco de roteiro 1", "Bloco de roteiro 2", "Bloco de roteiro 3", "Bloco de roteiro 4"],
             scriptPosition: 1,
             signatureVideo: null,
             signatureAudio: null,
@@ -310,7 +310,7 @@ class recordUserVideo extends Component {
         return (
             <Container>
                 <Navbar />
-                <SigningSteps />
+                <SigningSteps history={this.props.history} />
                 <Content>
                     <FlexboxGrid justify="center">
                         <FlexboxGrid.Item colspan={15}>

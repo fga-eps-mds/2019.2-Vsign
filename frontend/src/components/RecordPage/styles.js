@@ -64,12 +64,10 @@ export const ScriptBlockDiv = styled(Panel)`
 `;
 
 export const ScriptBlock = styled(Panel)`
-    display: flex;
-    font-size: 30px;
+    font-size: 25px;
     font-weight: bold;
-    font-family: Arial, Helvetica, sans-serif;
+    font-family: 'Open Sans', sans-serif;
     color: black;
-    align-self: center
 `;
 
 export const ScriptBlockNextBtn = styled.div`
