@@ -19,7 +19,8 @@ class reviewUserVideo extends Component {
         super(props);
         this.state = {
             signatureVideo: {},
-            signatureAudio: {}
+            signatureAudio: {},
+            signatureImage: []
         }
         this._getTheSignatureObjects = this._getTheSignatureObjects.bind(this);
     }
@@ -55,31 +56,33 @@ class reviewUserVideo extends Component {
     }
 
     _getTheSignatureObjects = () => {
-        // console.log(this.props.location)
+        console.log(this.props.location)
         const signatureAudioAux = this.props.location.state.signatureAudio
         const signatureVideoAux = this.props.location.state.signatureVideo
+        const signatureImageAux = this.props.location.state.signatureImage
         // console.log(signatureAudioAux)
         // console.log(signatureVideoAux)
         this.setState({
             signatureAudio: signatureAudioAux,
-            signatureVideo: signatureVideoAux
+            signatureVideo: signatureVideoAux,
+            signatureImage: signatureImageAux
         })
         // console.log(this.state.signatureAudio)
         console.log(this.state.signatureVideo)
         
     }
     
+    _setUrlForTheVideo =  () => {
+        let url = ""
+        const videoAux = this.state.signatureVideo
+        // var createObjectURL = (window.URL || window.webkitURL || {}).createObjectURL || function () { };
+        // const url = createObjectURL(this.state.signatureVideo);
+        url = URL.createObjectURL(videoAux);
+        return url
+    }
 
-
-    render() {
-        const signatureVideo = this.state.signatureVideo
-        const videoConfig = {
-
-        }
-        var createObjectURL = (window.URL || window.webkitURL || {}).createObjectURL || function(){};
-        const url = createObjectURL(signatureVideo);
-
-        
+    render() {     
+        const url = this.props.location.state.url
 
         return (
             <div>
@@ -87,7 +90,7 @@ class reviewUserVideo extends Component {
                     <Parent>
                         <SpecialContainer>
                             <VideoDivReview>
-                                <video controls autoplay name="media">
+                                <video controls autoPlay name="media">
                                     <source src={url} type="video/webm" />
                                 </video>
                             </VideoDivReview>

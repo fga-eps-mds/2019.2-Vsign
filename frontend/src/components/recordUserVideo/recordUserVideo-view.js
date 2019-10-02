@@ -54,7 +54,6 @@ const videoJsOptions = {
             // convertWorkerURL: '../../node_modules/ffmpeg.js/ffmpeg-worker-mp4.js'
             // or use WebM encoding worker (VP8 & Opus encoders)
             convertWorkerURL: '../../node_modules/ffmpeg.js/ffmpeg-worker-webm.js',
-            timeSlice: 1000
         }
     }
 }
@@ -102,20 +101,30 @@ class recordUserVideo extends Component {
         // user completed recording and stream is available
         this.player.on('finishRecord', () => {
             console.log(typeof (this.player.recordedData));
-            console.log(this.player.recordedData);
-            var blobUrl = URL.createObjectURL(this.player.recordedData);
-            console.log("---Blob url")
-            console.log(blobUrl)
-            this.setState({signatureVideo: this.player.recordedData})
-            // this.player.record().saveAs({'video': 'my-video-file-name_teste.webm'});
-            // console.log('finished converting: ', this.player.convertedData);
-            // this.setState({covertedData: this.player.convertedData})
-            // this._audioManipulation()
+            // console.log(this.player.recordedData);
+            // var blobUrl = URL.createObjectURL(this.player.recordedData);
+            // console.log(blobUrl)
             this.stopRecording()
-            var data = this.player.recordedData;
-            var formData = new FormData();
-            formData.append('file', data, data.name);
-            console.log(formData)
+            this.setState({signatureVideo: this.player.recordedData})
+            this._getTimeStamps();
+            console.log(this.state.signatureVideo)
+            console.log(this.player.recordedData)
+            let last = this.player.recordedData
+            console.log("Going to review video")
+            var binaryData = [];
+            binaryData.push(last);
+            let url = ""
+            url = URL.createObjectURL(new Blob(binaryData, {type: "video/webm"}));
+            console.log(url)
+            this.props.history.push({
+                pathname: '/review',
+                state: { 
+                    signatureAudio: this.state.signatureAudio,
+                    signatureVideo: this.state.signatureVideo,
+                    signatureImage: this.state.signatureImage,
+                    url: url
+                }
+            })
         });
 
         // error handling
@@ -207,20 +216,11 @@ class recordUserVideo extends Component {
         
       }
 
-    _audioManipulation = () => {
-        const myMediaElement = this.state.signatureVideo
-        var audioCtx = new AudioContext();
-        var source = audioCtx.createMediaElementSource(myMediaElement);
-        this.setState({signatureAudio: source})
-        console.log(myMediaElement)
-        console.log(audioCtx)
-        console.log(source)
-    }
 
     _goToIntructions = () => {
+        this.stopTheRecording()
         console.log("Going to intructions screen")
         //Go to intructions screen
-        this._getTimeStamps();
         console.log(this.state.signatureImage)
     }
 
@@ -234,25 +234,21 @@ class recordUserVideo extends Component {
         console.log("Get the script block user data")
     }
 
-    _goToReviewVideo = () => {
-        this.player.record().stop()
-        console.log(this.state.signatureImage)
-        console.log("Going to review video")
-        this.props.history.push({
-            pathname: '/review',
-            state: { 
-                signatureAudio: this.state.signatureAudio,
-                signatureVideo: this.state.signatureVideo,
-                signatureImage: this.state.signatureImage
-             }
-          })
-        // Now navigate do review screen video
-        // remember to pass the data
+    stopTheRecording() {
+        this.player.record().stop();
+    }
+
+    _goToReviewVideo = async () => {
+        this.stopTheRecording()
+        // this._getTimeStamps()
+        
+        // // Now navigate do review screen video
+        // // remember to pass the data
     }
 
     _nextScriptBlock = async () => {
         const scriptBlock = this.state.scriptBlock
-        for (let i = -1; i <= scriptBlock.length; i++) {
+        for (let i = 0; i <= scriptBlock.length; i++) {
             if (this.state.scriptPosition === i) {
                 this.setState({ scriptPosition: this.state.scriptPosition + 1 })
             } else if (this.state.scriptPosition === scriptBlock.length) {
