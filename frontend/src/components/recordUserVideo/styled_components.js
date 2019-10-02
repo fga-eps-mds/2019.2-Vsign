@@ -1,5 +1,5 @@
 import styled from 'styled-components';
-import { Header, Nav } from 'rsuite';
+import { Header, Nav, Panel } from 'rsuite';
 
 export const Container = styled.div`
     display: flex;
@@ -43,7 +43,7 @@ export const VideoDiv = styled.div`
     flex: 4
     `;
 
-export const ScriptBlockDiv = styled.div`
+export const ScriptBlockDiv = styled(Panel)`
     display: flex;
     flex: 4
     flex-direction: row;
@@ -55,15 +55,14 @@ export const ScriptBlockDiv = styled.div`
     background-color: white;
     border-style: solid;
     border-color: black;
-    border-width: 4px;
-    border-radius: 40px;
+    border-width: 1px;
     width: 852px;
     height: 188px;
     justify-content: center;
     align-items: center
 `;
 
-export const ScriptBlock = styled.p`
+export const ScriptBlock = styled(Panel)`
     display: flex;
     font-size: 30px;
     font-weight: bold;

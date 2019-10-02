@@ -28,6 +28,7 @@ import {Button, FlexboxGrid, Content} from 'rsuite';
 import Navbar from './Navbar';
 import Hero from './Hero';
 import 'rsuite/dist/styles/rsuite-default.css';
+import ScriptProgress from './ScriptProgress.js';
 const videoJsOptions = {
     controls: true,
     screen: true,
@@ -231,6 +232,10 @@ class recordUserVideo extends Component {
         })
       }
 
+      returnScriptProgress = () => {
+          const stepSize = ((this.state.scriptBlock).length)/100
+          return < ScriptProgress stepSize={stepSize}/>
+      }
 
     _goToIntructions = () => {
         this.stopTheRecording()
