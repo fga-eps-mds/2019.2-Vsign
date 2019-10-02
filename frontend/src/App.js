@@ -1,22 +1,12 @@
-import React, { Component } from 'react';
-import recordUserVideo from './components/recordUserVideo/recordUserVideo-view.js'
-import { BrowserRouter, Route } from 'react-router-dom';
-import './App.css';
+import React from 'react';
+import Routes from './routes';
+import GlobalStyle from './styles';
 
-class App extends Component {
-  constructor(props){
-    super(props);
-  }
-  render() {
-    
-    return (
-      <BrowserRouter>
-        <div>
-          <Route exact location={this.props.location} path='/record' component={recordUserVideo}/>
-        </div>
-      </BrowserRouter>
-    );
-  }
-}
+const App = () => (
+    <React.Fragment>
+        <GlobalStyle />
+        <Routes />
+    </React.Fragment>
+);
 
 export default App;
