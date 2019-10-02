@@ -99,32 +99,34 @@ class recordUserVideo extends Component {
         });
 
         // user completed recording and stream is available
-        this.player.on('finishRecord', () => {
-            console.log(typeof (this.player.recordedData));
+        this.player.on('finishRecord',  () => {
+            // console.log(typeof (this.player.recordedData));
             // console.log(this.player.recordedData);
             // var blobUrl = URL.createObjectURL(this.player.recordedData);
             // console.log(blobUrl)
             this.stopRecording()
             this.setState({signatureVideo: this.player.recordedData})
             this._getTimeStamps();
-            console.log(this.state.signatureVideo)
-            console.log(this.player.recordedData)
+            // console.log(this.state.signatureVideo)
+            // console.log(this.player.recordedData)
             let last = this.player.recordedData
-            console.log("Going to review video")
+            // console.log("Going to review video")
             var binaryData = [];
             binaryData.push(last);
             let url = ""
             url = URL.createObjectURL(new Blob(binaryData, {type: "video/webm"}));
-            console.log(url)
-            this.props.history.push({
-                pathname: '/review',
-                state: { 
-                    signatureAudio: this.state.signatureAudio,
-                    signatureVideo: this.state.signatureVideo,
-                    signatureImage: this.state.signatureImage,
-                    url: url
-                }
-            })
+            
+            console.log("Audio:::")
+            console.log(this.state.signatureAudio)
+            // this.props.history.push({
+            //     pathname: '/review',
+            //     state: { 
+            //         signatureAudio: this.state.signatureAudio,
+            //         signatureVideo: this.state.signatureVideo,
+            //         signatureImage: this.state.signatureImage,
+            //         url: url
+            //     }
+            // })
         });
 
         // error handling
@@ -135,15 +137,13 @@ class recordUserVideo extends Component {
         this.player.on('deviceError', () => {
             console.error('device error:', this.player.deviceErrorCode);
         });
-
-        // console.log(this.player.recordedData)
         this.player.record().getDevice();
-        //console.log(this.state.signatureVideo)
+
     }
 
     // destroy player on unmount
     componentWillUnmount() {
-        console.log(this.state.signatureVideo)
+        // console.log(this.state.signatureVideo)
         if (this.player) {
             this.player.dispose();
         }
@@ -185,7 +185,7 @@ class recordUserVideo extends Component {
                 const signatureImageAux = this.state.signatureImage
                 signatureImageAux.push(img)
                 this.setState({ signatureImage: signatureImageAux })
-                console.log(img)
+                // console.log(img)
             })  
         }
 
@@ -209,11 +209,26 @@ class recordUserVideo extends Component {
         // console.log('chunk of real-time data is: ', recordedBlob);
       }
       
-      onStop = (recordedBlob) => {
+      onStop =  (recordedBlob) => {
         console.log('recordedBlob is of the audio: ', recordedBlob);
-        // console.log("Signature audio is:", this.state.signatureVideo)
-        this.setState({signatureAudio: recordedBlob})
         
+        this.setState({signatureAudio: recordedBlob})
+
+        console.log("Signature audio is:", this.state.signatureAudio)
+        let last = this.state.signatureVideo
+        var binaryData = [];
+        binaryData.push(last);
+        let url = ""
+        url = URL.createObjectURL(new Blob(binaryData, {type: "video/webm"}));
+        this.props.history.push({
+            pathname: '/review',
+            state: { 
+                signatureAudio: this.state.signatureAudio,
+                signatureVideo: this.state.signatureVideo,
+                signatureImage: this.state.signatureImage,
+                url: url
+            }
+        })
       }
 
 
