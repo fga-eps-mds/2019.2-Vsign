@@ -1,22 +1,11 @@
-import React, { Component } from 'react';
-import recordUserVideo from './components/recordUserVideo/recordUserVideo-view.js'
-import { BrowserRouter, Route } from 'react-router-dom';
+import React from 'react';
 import './App.css';
+import Routes from './routes';
 
-class App extends Component {
-  constructor(props){
-    super(props);
-  }
-  render() {
-    
-    return (
-      <BrowserRouter>
-        <div>
-          <Route exact location={this.props.location} path='/record' component={recordUserVideo}/>
-        </div>
-      </BrowserRouter>
-    );
-  }
-}
+// import rsuite default style
+// import 'rsuite/lib/styles/index.less'; // or 'rsuite/dist/styles/rsuite-default.css'
+import 'rsuite/dist/styles/rsuite-default.css';
+
+const App = () => <Routes />
 
 export default App;
