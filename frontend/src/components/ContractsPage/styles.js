@@ -20,7 +20,7 @@ export const StyledHeader = styled(Header)`
 export const StyledNavItem = styled(Nav.Item)`
     color: #FFF;
 `;
-    
+     
 export const Title = styled.h1`
     font-family: 'Dosis', sans-serif;
     font-size: 2.57813rem;

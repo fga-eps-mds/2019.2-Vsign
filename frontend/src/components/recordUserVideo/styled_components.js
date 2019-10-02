@@ -1,4 +1,5 @@
 import styled from 'styled-components';
+import { Header, Nav } from 'rsuite';
 
 export const Container = styled.div`
     display: flex;
@@ -32,7 +33,7 @@ export const RowOnTop = styled.div`
     justify-content: space-around;
     align-items: center;
     padding-bottom: 3%;
-    margin-top: 3
+    margin-top: 10vh
     `;
 
 export const VideoDiv = styled.div`
@@ -92,6 +93,7 @@ export const ScriptBlockNextBtnText = styled.p`
     font-weight: bold;
     font-size: 30px;
     color: white;
+    justify-content: center
 `;
 
 export const NextBtnDiv = styled.div`
@@ -112,3 +114,21 @@ export const SquareDiv = styled.div`
     width: 70%;
     height: 76%;
 `;
+
+export const StyledNavItem = styled(Nav.Item)`
+    color: #FFF;
+`;
+
+export const StyledHero = styled.div`
+    height: 20vh;
+    background-image: linear-gradient(135deg, #168af0 0%, #764ba2 100%);
+    color: #fff;
+    padding-top: 4rem;
+    `;
+
+export const Title = styled.h1`
+    font-family: 'Dosis', sans-serif;
+    font-size: 2.57813rem;
+    margin-bottom: .5rem;
+`;
+    

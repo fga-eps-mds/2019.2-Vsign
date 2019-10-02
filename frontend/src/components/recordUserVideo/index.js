@@ -1,7 +1,5 @@
 import React, { Component } from 'react';
 import { withRouter, Redirect } from 'react-router-dom';
-// import { bindActionCreators } from 'redux';
-// import { connect } from 'react-redux';
 import styled from 'styled-components'
 import {
     Container,
@@ -26,7 +24,9 @@ import Record from 'videojs-record/dist/videojs.record.js';
 import '@mattiasbuelens/web-streams-polyfill/dist/polyfill.min.js';
 import 'videojs-record/dist/plugins/videojs.record.webm-wasm.js';
 import 'videojs-record/dist/plugins/videojs.record.ts-ebml.js';
-import {Button, FlexboxGrid} from 'rsuite';
+import {Button, FlexboxGrid, Content} from 'rsuite';
+import Navbar from './Navbar';
+import Hero from './Hero';
 import 'rsuite/dist/styles/rsuite-default.css';
 const videoJsOptions = {
     controls: true,
@@ -303,50 +303,45 @@ class recordUserVideo extends Component {
         return (
             <div>
                 <Container>
-                    <RowOnTop>
-                        <InstructionBtn onClick={() => { this._goToIntructions() }}>
-                            <IntructionTextBtn>
-                                Ver instruções
-                        </IntructionTextBtn>
-                        </InstructionBtn>
-                        {/* <RecordingAlert>
-                            <IntructionTextBtn> Gravando </IntructionTextBtn>
-                        </RecordingAlert> */}
+                    <Navbar />
+                    <Content>
+                        <Hero/>
+                        <RowOnTop>
+                            <Button color="blue" onClick={() => { this._goToIntructions() }} size="lg">Ver instruções</Button>
+                        </RowOnTop>
+                        <VideoDiv>
+                            <div data-vjs-player>
+                                <video style={{ backgroundColor: "#556073" }} ref={node => this.videoNode = node} className="video-js vjs-default-skin" playsInline>
 
-                    </RowOnTop>
-                    <VideoDiv>
-                        <div data-vjs-player>
-                            <video style={{ backgroundColor: "#556073" }} ref={node => this.videoNode = node} className="video-js vjs-default-skin" playsInline>
+                                </video>
+                                <ReactMic
+                                    record={this.state.record}
+                                    className="sound-wave"
+                                    onStop={this.onStop}
+                                    onData={this.onData}
+                                    strokeColor="#000000"
+                                    backgroundColor="#FF4081" />
+                                <SquareDiv />
+                            </div>
+                        </VideoDiv>
+                        <ScriptBlockDiv>
+                            {scriptText}
+                        </ScriptBlockDiv>
+                        <FlexboxGrid justify="space-around">
+                        <FlexboxGrid.Item colspan={2}>
+                            <Button appearance='primary' size='md' onClick={() => this._record()}>
+                            <ScriptBlockNextBtnText> Iniciar gravação</ScriptBlockNextBtnText>                       
+                            </Button>
 
-                            </video>
-                            <ReactMic
-                                record={this.state.record}
-                                className="sound-wave"
-                                onStop={this.onStop}
-                                onData={this.onData}
-                                strokeColor="#000000"
-                                backgroundColor="#FF4081" />
-                            <SquareDiv />
-                        </div>
-                    </VideoDiv>
-                    <ScriptBlockDiv>
-                        {scriptText}
-                    </ScriptBlockDiv>
-                    <FlexboxGrid justify="space-around">
-                    <FlexboxGrid.Item colspan={2}>
-                        <Button appearance='primary' size='md' onClick={() => this._record()}>
-                        <ScriptBlockNextBtnText> Iniciar gravação</ScriptBlockNextBtnText>                       
-                        </Button>
-
-                    </FlexboxGrid.Item>
-                    <FlexboxGrid.Item colspan={2}>
-                        <Button appearance='primary' size='md' onClick={() => this._nextScriptBlock()}>   
-                            {textNext}
-                        </Button>
-                    </FlexboxGrid.Item>
-                      
-                 </FlexboxGrid>
-                    
+                        </FlexboxGrid.Item>
+                        <FlexboxGrid.Item colspan={2}>
+                            <Button appearance='primary' size='lg' onClick={() => this._nextScriptBlock()}>   
+                                {textNext}
+                            </Button>
+                        </FlexboxGrid.Item>
+                        
+                    </FlexboxGrid>
+                 </Content>
                 </Container>    
             </div>
         );
