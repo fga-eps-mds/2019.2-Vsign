@@ -31,6 +31,8 @@ import 'rsuite/dist/styles/rsuite-default.css';
 import ScriptProgress from './ScriptProgress.js';
 import ActionButtons from './ActionButtons.js';
 import ScriptControl from './ScriptControl.js';
+import Tour from 'reactour'
+import "./recordUserVideo.css"
 const videoJsOptions = {
     controls: false,
     screen: true,
@@ -72,7 +74,9 @@ class recordUserVideo extends Component {
             signatureAudio: null,
             signatureImage: [],
             recordAudio: false,
-            maxTime: 10
+            maxTime: 10,
+            isTourOpen: false
+
         }
 
         this._nextScriptBlock = this._nextScriptBlock.bind(this);
@@ -80,6 +84,7 @@ class recordUserVideo extends Component {
 
 
     componentDidMount() {
+
         // instantiate Video.js
         this.player = videojs(this.videoNode, videoJsOptions, () => {
             // print version information at startup
@@ -102,13 +107,13 @@ class recordUserVideo extends Component {
         });
 
         // user completed recording and stream is available
-        this.player.on('finishRecord',  () => {
+        this.player.on('finishRecord', () => {
             // console.log(typeof (this.player.recordedData));
             // console.log(this.player.recordedData);
             // var blobUrl = URL.createObjectURL(this.player.recordedData);
             // console.log(blobUrl)
             this.stopRecording()
-            this.setState({signatureVideo: this.player.recordedData})
+            this.setState({ signatureVideo: this.player.recordedData })
             this._getTimeStamps();
             // console.log(this.state.signatureVideo)
             // console.log(this.player.recordedData)
@@ -117,8 +122,8 @@ class recordUserVideo extends Component {
             var binaryData = [];
             binaryData.push(last);
             let url = ""
-            url = URL.createObjectURL(new Blob(binaryData, {type: "video/webm"}));
-            
+            url = URL.createObjectURL(new Blob(binaryData, { type: "video/webm" }));
+
             console.log("Audio:::")
             console.log(this.state.signatureAudio)
             // this.props.history.push({
@@ -130,6 +135,7 @@ class recordUserVideo extends Component {
             //         url: url
             //     }
             // })
+
         });
 
         // error handling
@@ -141,7 +147,6 @@ class recordUserVideo extends Component {
             console.error('device error:', this.player.deviceErrorCode);
         });
         this.player.record().getDevice();
-
     }
 
     // destroy player on unmount
@@ -184,21 +189,21 @@ class recordUserVideo extends Component {
         const duration = parseInt(this.player.record().getDuration());
         console.log(duration)
         for (let time = 0; time < duration; time++) {
-            this.getVideoImage(blobUrl, time ,(img, secs, event) => {
+            this.getVideoImage(blobUrl, time, (img, secs, event) => {
                 const signatureImageAux = this.state.signatureImage
                 signatureImageAux.push(img)
                 this.setState({ signatureImage: signatureImageAux })
                 // console.log(img)
-            })  
+            })
         }
 
         console.log(this.state.signatureImage)
-        
+
 
     }
     startRecording = () => {
         this.setState({
-            record: true
+            record: true,
         });
     }
 
@@ -206,38 +211,38 @@ class recordUserVideo extends Component {
         this.setState({
             record: false
         });
-      }
-     
-      onData(recordedBlob) {
+    }
+
+    onData(recordedBlob) {
         // console.log('chunk of real-time data is: ', recordedBlob);
-      }
-      
-      onStop =  (recordedBlob) => {
+    }
+
+    onStop = (recordedBlob) => {
         console.log('recordedBlob is of the audio: ', recordedBlob);
-        
-        this.setState({signatureAudio: recordedBlob})
+
+        this.setState({ signatureAudio: recordedBlob })
 
         console.log("Signature audio is:", this.state.signatureAudio)
         let last = this.state.signatureVideo
         var binaryData = [];
         binaryData.push(last);
         let url = ""
-        url = URL.createObjectURL(new Blob(binaryData, {type: "video/webm"}));
+        url = URL.createObjectURL(new Blob(binaryData, { type: "video/webm" }));
         this.props.history.push({
             pathname: '/review',
-            state: { 
+            state: {
                 signatureAudio: this.state.signatureAudio,
                 signatureVideo: this.state.signatureVideo,
                 signatureImage: this.state.signatureImage,
                 url: url
             }
         })
-      }
+    }
 
-      returnScriptProgress = () => {
-          const stepSize = ((this.state.scriptBlock).length)/100
-          return < ScriptProgress stepSize={stepSize}/>
-      }
+    returnScriptProgress = () => {
+        const stepSize = ((this.state.scriptBlock).length) / 100
+        return < ScriptProgress stepSize={stepSize} />
+    }
 
     _goToIntructions = () => {
         this.stopTheRecording()
@@ -263,11 +268,17 @@ class recordUserVideo extends Component {
     _goToReviewVideo = async () => {
         this.stopTheRecording()
         // this._getTimeStamps()
-        
+
         // // Now navigate do review screen video
         // // remember to pass the data
     }
 
+    _startTour = () => {
+        this.setState({ isTourOpen: true })
+    }
+    closeTour = () => {
+        this.setState({ isTourOpen: false })
+    }
     _nextScriptBlock = () => {
         const scriptBlock = this.state.scriptBlock
         for (let i = 0; i <= scriptBlock.length; i++) {
@@ -280,7 +291,34 @@ class recordUserVideo extends Component {
         console.log(this.state.scriptBlock[this.state.scriptPosition])
     }
     render() {
+        const steps = [
+            {
+                selector: '[data-tour="step0"]',
+                content: 'Aqui é onde você gravará seu vídeo de assinatura'
+            },
+            {
+                selector: '[data-tour="step1"]',
+                content: 'Aqui é onde você deve aparecer para gravar!',
+            },
+            {
+                selector: '[data-tour="step2"]',
+                content: 'Posicione sempre seu rosto dentro da marcação',
+            },
+            {
+                selector: '[data-tour="step3"]',
+                content: 'Nesses botões você inicia a gravacão e revê as dicas, ',
+            },
+            {
+                selector: '[data-tour="step4"]',
+                content: 'mas não se preocupe, aqui você poderá ler seu roteiro',
+            },
+            {
+                selector: '[data-tour="step5"]',
+                content: 'e passar para o próximo bloco aqui e no fim de tudo revise seu video na proxima etapa!!',
+            },
 
+
+        ]
 
         const RecordingAlert = styled.div`
             display: flex;
@@ -307,62 +345,69 @@ class recordUserVideo extends Component {
             scriptText = <ScriptBlock> {this.state.scriptBlock[index]}</ScriptBlock>
         }
 
+        const accentColor = 'linear-gradient(to right, #1c8f9e, #5cb7b7)'
         return (
-            <Container>
+            <Container data-tour='step0'>
                 <Navbar />
                 <SigningSteps history={this.props.history} />
                 <Content>
                     <FlexboxGrid justify="center">
                         <FlexboxGrid.Item colspan={15}>
                             <FlexboxGrid justify="space-around">
-                                <FlexboxGrid.Item componentClass={Col} colspan={22} md={10}>
-                                    <VideoDiv>
+                                <FlexboxGrid.Item componentClass={Col} colspan={22} md={10} >
+                                    <VideoDiv >
                                         <div data-vjs-player>
-                                            <video style={{ backgroundColor: "#556073", width: "150%", height: "150%" }} ref={node => this.videoNode = node} className="video-js vjs-default-skin" playsInline>
+                                            <video  data-tour='step1' style={{ backgroundColor: "#556073", width: "150%", height: "150%" }} ref={node => this.videoNode = node} className="video-js vjs-default-skin" playsInline>
                                             </video>
-                                            <div style={{display: "none" }}>
-                                            <ReactMic
-                                                style={{display: "none" }}
-                                                record={this.state.record}
-                                                className="sound-wave"
-                                                onStop={this.onStop}
-                                                onData={this.onData}
-                                                strokeColor="#000000"
-                                                backgroundColor="#FF4081" />
+                                            <div style={{ display: "none" }}>
+                                                <ReactMic
+                                                    style={{ display: "none" }}
+                                                    record={this.state.record}
+                                                    className="sound-wave"
+                                                    onStop={this.onStop}
+                                                    onData={this.onData}
+                                                    strokeColor="#000000"
+                                                    backgroundColor="#FF4081" />
                                             </div>
-                                            <SquareDiv />
+                                            <SquareDiv data-tour='step2' />
                                         </div>
                                     </VideoDiv>
                                 </FlexboxGrid.Item>
                                 <FlexboxGrid.Item componentClass={Col} colspan={22} md={10}>
-                                    <ActionButtons
+                                    <div data-tour='step3'>
+                                    <ActionButtons 
                                         record={this._record}
+                                        startTour={this._startTour}
                                         isRecording={this.state.record}
                                     />
-                                    <Panel bordered>
+                                    </div>
+                                    <Panel bordered data-tour='step4'>
                                         {scriptText}
                                     </Panel>
+                                    <div data-tour='step5'>
                                     <ScriptControl 
                                         isRecording={this.state.record}
                                         nextScriptBlock={this._nextScriptBlock}
-                                     />
+                                    />
+                                    </div>
                                 </FlexboxGrid.Item>
                             </FlexboxGrid>
-                                
-                </FlexboxGrid.Item>
-                </FlexboxGrid>
 
-                    {/* <FlexboxGrid justify="space-around">
-
-                    </FlexboxGrid.Item>
-                    <FlexboxGrid.Item colspan={2}>
-                        <Button appearance='primary' size='lg' onClick={() => this._nextScriptBlock()}>   
-                            {textNext}
-                        </Button>
-                    </FlexboxGrid.Item> */}
-                    
+                        </FlexboxGrid.Item>
+                    </FlexboxGrid>
                 </Content>
-            </Container>    
+                <Tour
+                    steps={steps}
+                    isOpen={this.state.isTourOpen}
+                    onRequestClose={this.closeTour}
+                    onBeforeClose={target => (document.body.style.overflowY = 'auto')} 
+                    maskClassName="mask"
+                    className="helper"
+                    rounded={5}
+                    accentColor={accentColor}/>
+            </Container>
+
+
         );
     }
 }

@@ -16,7 +16,7 @@ export default class ActionButtons extends Component {
 
     handleInstructionsClick() {
         if (!this.props.isRecording) {
-            // Mostrar instruçÕes
+            this.props.startTour()
         }
     }
 
