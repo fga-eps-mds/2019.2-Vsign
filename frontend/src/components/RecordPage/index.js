@@ -322,18 +322,6 @@ class recordUserVideo extends Component {
 
         ]
 
-        const RecordingAlert = styled.div`
-            display: flex;
-            background-color: red;
-            height: 55px;
-            width: 337px;
-            border-style: solid;
-            border-color: black;
-            border-width: 1px;
-            border-radius: 28px;
-            align-items: center
-            justify-content: center
-        `;
         let textNext;
         if (this.state.scriptPosition === (this.state.scriptBlock.length)) {
             textNext = <ScriptBlockNextBtnText>Revisar</ScriptBlockNextBtnText>;
@@ -353,13 +341,12 @@ class recordUserVideo extends Component {
                 <Navbar />
                 <SigningSteps history={this.props.history} />
                 <Content>
-                    <FlexboxGrid justify="center">
-                        <FlexboxGrid.Item colspan={15}>
-                            <FlexboxGrid justify="space-around">
-                                <FlexboxGrid.Item componentClass={Col} colspan={22} md={10} >
+                    
+                            <FlexboxGrid justify="center">
+                                <FlexboxGrid.Item  componentClass={Col} colspan={52} md={10} >
                                     <VideoDiv >
                                         <div data-vjs-player>
-                                            <video  data-tour='step1' style={{ backgroundColor: "#556073", width: "150%", height: "150%" }} ref={node => this.videoNode = node} className="video-js vjs-default-skin" playsInline>
+                                            <video  data-tour='step1' style={{ backgroundColor: "#556073" }} ref={node => this.videoNode = node} className="video-js vjs-default-skin" playsInline>
                                             </video>
                                             <div style={{ display: "none" }}>
                                                 <ReactMic
@@ -395,9 +382,6 @@ class recordUserVideo extends Component {
                                     </div>
                                 </FlexboxGrid.Item>
                             </FlexboxGrid>
-
-                        </FlexboxGrid.Item>
-                    </FlexboxGrid>
                 </Content>
                 <Tour
                     steps={steps}
