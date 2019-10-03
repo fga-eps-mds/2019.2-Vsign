@@ -2,7 +2,7 @@
 
 [![CircleCI](https://circleci.com/gh/fga-eps-mds/2019.2-Vsign.svg?style=svg)](https://circleci.com/gh/fga-eps-mds/2019.2-Vsign)
 
-## ![Vsign](project/img/vsign_logo.png)
+<div style="text-align:center"><img src="project/img/vsign_logo.png" /></div>
 
 
 ## 🐳 Guia para rodar o projeto com o Docker
