@@ -147,6 +147,7 @@ class recordUserVideo extends Component {
             console.error('device error:', this.player.deviceErrorCode);
         });
         this.player.record().getDevice();
+        console.log(((this.state.scriptBlock).length))
     }
 
     // destroy player on unmount
@@ -291,6 +292,7 @@ class recordUserVideo extends Component {
         console.log(this.state.scriptBlock[this.state.scriptPosition])
     }
     render() {
+        const stepSize = (100 / (this.state.scriptBlock).length)
         const steps = [
             {
                 selector: '[data-tour="step0"]',
@@ -388,6 +390,7 @@ class recordUserVideo extends Component {
                                     <ScriptControl 
                                         isRecording={this.state.record}
                                         nextScriptBlock={this._nextScriptBlock}
+                                        stepSize={stepSize}
                                     />
                                     </div>
                                 </FlexboxGrid.Item>
