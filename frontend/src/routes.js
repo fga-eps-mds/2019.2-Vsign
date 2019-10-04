@@ -4,7 +4,7 @@ import LandingPage from './components/LandingPage';
 import LoginPage from './components/LoginPage';
 import ContractsPage from './components/ContractsPage';
 import RecordPage from './components/RecordPage';
-import ReviewVideoPage from './components/reviewUserVideo/reviewUserVideo-view';
+import ReviewVideoPage from './components/reviewUserVideo/';
 import React, { Component } from 'react'
 
 export class routes extends Component {
