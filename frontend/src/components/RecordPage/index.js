@@ -305,7 +305,7 @@ class recordUserVideo extends Component {
         return (
             <Container>
                 <Navbar />
-                <SigningSteps />
+                <SigningSteps history={this.props.history} />
                 <Content>
                     <FlexboxGrid justify="center">
                         <FlexboxGrid.Item colspan={15}>
