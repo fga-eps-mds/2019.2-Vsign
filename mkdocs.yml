@@ -4,6 +4,7 @@ nav:
     - Projeto:
         - 'Termo de Abertura de Projeto': 'project/tap.md'
         - 'Identidade Visual': 'project/identidadeVisual.md'
+        - 'Plano de Negócios': 'project/canvas.md'
         - 'Roadmap': 'project/roadmap.md'
         - 'Documento de Arquitetura': 'project/architectureDocument.md'
         - 'Documento de Visão': 'project/vision-document.md'
