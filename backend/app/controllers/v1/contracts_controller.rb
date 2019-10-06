@@ -1,6 +1,6 @@
 class V1::ContractsController < V1Controller
 
-    before_action :set_script, :set_user
+    before_action :set_script, :set_user, :set_contract
 
     def create
         order = params[:order]
@@ -8,6 +8,16 @@ class V1::ContractsController < V1Controller
             content = params[:content]
             contract.script = @script.format_content(content)
             contract.user = @user
+        end
+    end
+
+    def show
+        contract = Contract.where(token: params[:token])
+
+        if contract
+            render json: {contract: contract}, status: :ok
+        else
+            render json: {}, status: 404
         end
     end
 
@@ -45,4 +55,7 @@ class V1::ContractsController < V1Controller
             contract_params.permit!
         end
 
+        def set_contract
+            @contract = Contract.where(token: params[:token])
+        end
 end
