@@ -3,7 +3,7 @@ Rails.application.routes.draw do
   post "/graphql", to: "graphql#execute"
   
   namespace :v1 do
-    resources :contracts, only: [:create]
+    resources :contracts, only: [:create, :show], param: :token
   end
 
   devise_for :users,
