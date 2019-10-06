@@ -74,7 +74,7 @@ class recordUserVideo extends Component {
             signatureAudio: null,
             signatureImage: [],
             recordAudio: false,
-            maxTime: 10,
+            maxTime: 30,
             isTourOpen: false
 
         }
