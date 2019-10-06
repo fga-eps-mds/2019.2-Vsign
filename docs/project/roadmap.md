@@ -1,5 +1,3 @@
-# Roadmap
-
 ## Histórico de Versão
 
 | <center>Versão</center> | <center>Descrição</center> | <center>Autor</center> |
@@ -8,14 +6,18 @@
 
 ---
 
-### Roadmap dos Papeis
+# Roadmap dos Papeis
 
+## Versão 1
 [![Roadmap dos Papeis](img/Roadmap_Papeis.png)](https://ibb.co/Y8SwrcS)
 
-### Roadmap do Projeto
+## Versão 2
+[![Roadmap dos Papeis](img/Roadmap_Papeis_V2.png)](https://ibb.co/Y8SwrcS)
+
+# Roadmap do Projeto
 
 [![Roadmap do Projeto](img/Roadmap_Projeto.png)](https://ibb.co/qDn50WD)
 
-### Roadmap de Código
+# Roadmap de Código
 
 [![Roadmap de Código](img/Roadmap_Codigo.png)](https://ibb.co/n11k0QJ)
