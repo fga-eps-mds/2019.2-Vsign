@@ -1,5 +1,5 @@
 import styled from 'styled-components';
-import { Header, Nav, Panel } from 'rsuite';
+import {Nav, Panel } from 'rsuite';
 
 export const Container = styled.div`
     display: flex;

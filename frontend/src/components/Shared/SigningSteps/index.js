@@ -9,13 +9,16 @@ export default function SigningSteps(history) {
     switch (url) {
         case "instructions":
             current = 0
+            break;
         case "documents":
             current = 1
+            break;
         case "/record":
             current = 2
             break;
         case "/review":
             current = 3
+            break;
         default:
             break;
     }

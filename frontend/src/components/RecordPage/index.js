@@ -1,17 +1,10 @@
 import React, { Component } from 'react';
 import { withRouter } from 'react-router-dom';
-import styled from 'styled-components'
 import {
     Container,
-    RowOnTop,
-    IntructionTextBtn,
-    InstructionBtn,
     VideoDiv,
     ScriptBlock,
-    ScriptBlockDiv,
-    ScriptBlockNextBtn,
     ScriptBlockNextBtnText,
-    NextBtnDiv,
     SquareDiv
 } from "./styles.js"
 import { ReactMic } from 'react-mic';
@@ -20,11 +13,10 @@ import videojs from 'video.js';
 import 'webrtc-adapter';
 import RecordRTC from 'recordrtc';
 import 'videojs-record/dist/css/videojs.record.css';
-import Record from 'videojs-record/dist/videojs.record.js';
 import '@mattiasbuelens/web-streams-polyfill/dist/polyfill.min.js';
 import 'videojs-record/dist/plugins/videojs.record.webm-wasm.js';
 import 'videojs-record/dist/plugins/videojs.record.ts-ebml.js';
-import { ButtonGroup, Button, FlexboxGrid, Content, Col, Panel, Icon, Progress } from 'rsuite';
+import {  FlexboxGrid, Content, Col, Panel} from 'rsuite';
 import Navbar from './Navbar';
 import SigningSteps from '../Shared/SigningSteps';
 import 'rsuite/dist/styles/rsuite-default.css';
@@ -121,9 +113,7 @@ class recordUserVideo extends Component {
             // console.log("Going to review video")
             var binaryData = [];
             binaryData.push(last);
-            let url = ""
-            url = URL.createObjectURL(new Blob(binaryData, { type: "video/webm" }));
-
+           let url = URL.createObjectURL(new Blob(binaryData, { type: "video/webm" }));
             console.log("Audio:::")
             console.log(this.state.signatureAudio)
             // this.props.history.push({

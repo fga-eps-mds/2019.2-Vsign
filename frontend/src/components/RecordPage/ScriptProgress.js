@@ -1,7 +1,7 @@
 import React, { Component } from 'react'
-import { Progress, Button, ButtonGroup } from 'rsuite';
+import { Progress } from 'rsuite';
 
-const { Circle, Line } = Progress;
+const {  Line } = Progress;
 
 export class ScriptProgress extends Component {
     constructor(props) {

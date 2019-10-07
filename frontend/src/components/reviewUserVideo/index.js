@@ -1,18 +1,15 @@
 import React, { Component } from 'react';
-import { withRouter, Redirect } from 'react-router-dom';
+import { withRouter} from 'react-router-dom';
 import {
     VideoDivReview,
     ScriptBlockDivReview,
     Parent,
-    ScriptBlock,
     SpecialContainer,
     FinishSignatureText,
     RestartRecordingText,
-    Space,
     StylePanal
 } from './styles.js';
 import { Button, FlexboxGrid, Container, Content } from 'rsuite';
-import { Panel, PanelGroup } from 'rsuite';
 import 'rsuite/dist/styles/rsuite-default.css';
 import SigningSteps from '../Shared/SigningSteps';
 import Navbar from './Navbar';

@@ -1,5 +1,5 @@
-import React, { Component, forwardRef, useRef, useImperativeHandle } from 'react';
-import { Grid, IconButton, Row, Col, Icon, Progress } from 'rsuite';
+import React, { Component } from 'react';
+import { Grid, IconButton, Row, Col, Icon} from 'rsuite';
 import ScriptProgress from './ScriptProgress';
 
 export default class ScriptControl extends Component {
@@ -31,7 +31,7 @@ export default class ScriptControl extends Component {
                         {/* <Progress.Line style={{ marginTop: '.5rem' }} percent={80} showInfo={false} /> */}
                         <ScriptProgress ref={this.child} stepSize={this.props.stepSize} onClickNxt={this.handleScriptClick}/>
                     </Col>
-                    <Col xs={12} xs={12}>
+                    <Col xs={12}>
                         <IconButton
                             appearance="primary"
                             placement="right"
