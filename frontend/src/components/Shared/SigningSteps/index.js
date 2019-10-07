@@ -3,8 +3,8 @@ import { FlexboxGrid, Steps } from 'rsuite';
 import { Section } from './styles';
 
 export default function SigningSteps(history) {
-
-    let url = history.history.location.pathname
+   
+    let url =  history.history.location.pathname
     let current = 0
     switch (url) {
         case "instructions":
