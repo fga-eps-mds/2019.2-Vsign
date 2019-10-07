@@ -13,6 +13,7 @@ import videojs from 'video.js';
 import 'webrtc-adapter';
 import RecordRTC from 'recordrtc';
 import 'videojs-record/dist/css/videojs.record.css';
+import Record from 'videojs-record/dist/videojs.record.js';
 import '@mattiasbuelens/web-streams-polyfill/dist/polyfill.min.js';
 import 'videojs-record/dist/plugins/videojs.record.webm-wasm.js';
 import 'videojs-record/dist/plugins/videojs.record.ts-ebml.js';
@@ -113,7 +114,9 @@ class recordUserVideo extends Component {
             // console.log("Going to review video")
             var binaryData = [];
             binaryData.push(last);
-           let url = URL.createObjectURL(new Blob(binaryData, { type: "video/webm" }));
+            let url = ""
+            url = URL.createObjectURL(new Blob(binaryData, { type: "video/webm" }));
+
             console.log("Audio:::")
             console.log(this.state.signatureAudio)
             // this.props.history.push({
