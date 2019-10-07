@@ -9,6 +9,8 @@ class V1::ContractsController < V1Controller
             contract.script = @script.format_content(content)
             contract.user = @user
         end
+
+        SendgridMailer.send(contract.user.email, { name: contract.user.name, buttonURL: "http://localhost:3001/v1/contracts/" + contract.token} , 'd-977dd6915e8a430bbed0ab92c9a4421a')
     end
 
     def show
