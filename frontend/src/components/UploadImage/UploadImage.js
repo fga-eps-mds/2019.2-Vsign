@@ -100,7 +100,7 @@ class Uploadimage extends React.Component {
                     >
                         Enviar
                     </Button>
-                    <Link to="/record">
+                    <Link to="/script">
                         <Button
                             style={{
                                 fontSize: 18,
