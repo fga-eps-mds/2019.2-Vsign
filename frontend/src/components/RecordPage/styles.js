@@ -41,7 +41,9 @@ export const VideoDiv = styled.div`
     align-items: center;
     justify-content: center;
     width: 100%;
-    height: 100%
+    height: 100%;
+    transform: scale(-1, 1);
+    align-self: flex-start
     `;
 
 export const ScriptBlockDiv = styled(Panel)`
@@ -64,12 +66,10 @@ export const ScriptBlockDiv = styled(Panel)`
 `;
 
 export const ScriptBlock = styled(Panel)`
-    display: flex;
-    font-size: 30px;
+    font-size: 25px;
     font-weight: bold;
-    font-family: Arial, Helvetica, sans-serif;
+    font-family: 'Open Sans', sans-serif;
     color: black;
-    align-self: center
 `;
 
 export const ScriptBlockNextBtn = styled.div`
@@ -109,10 +109,10 @@ export const NextBtnDiv = styled.div`
 export const SquareDiv = styled.div`
     position: absolute;
     border: 5px solid red;
-    top: 9%;
-    left: 15.33%;
-    width: 70%;
-    height: 76%;
+    top: 12%;
+    left: 19.33%;
+    width: 64%;
+    height: 68%;
 `;
 
 export const StyledNavItem = styled(Nav.Item)`

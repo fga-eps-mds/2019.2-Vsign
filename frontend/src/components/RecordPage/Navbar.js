@@ -16,18 +16,23 @@ const NavBarInstance = ({ onSelect, activeKey, ...props }) => {
                     </Navbar.Header>
                     <Navbar.Body>
                         <Nav pullRight>
-                            <Nav.Item eventKey="3">Meus Contratos</Nav.Item>
-                            <Link to="/login">
-                                <StyledNavItem icon={<Icon icon="cog" />}>
+
+                            <Nav.Item eventKey="3">
+                                <Link to="/contracts">
+                                    Meus Contratos
+                                    </Link>
+                            </Nav.Item>
+                            <StyledNavItem icon={<Icon icon="cog" />}>
+                                <Link to="/login">
                                     Sair
-                                </StyledNavItem>
-                            </Link>
+                                </Link>
+                            </StyledNavItem>
                         </Nav>
                     </Navbar.Body>
                 </FlexboxGrid.Item>
             </FlexboxGrid>
         </Navbar>
     );
-  };
+};
 
-  export default NavBarInstance;
+export default NavBarInstance;
