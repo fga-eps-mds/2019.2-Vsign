@@ -11,6 +11,7 @@ nav:
         - "EAP": "project/eap.md"
     - Gerenciamento de Projeto:
         - 'Plano de Gerenciamento de Configuração de Software': 'managementProject/gcs.md'
+        - 'Folha de Estilo': 'managementProject/styleGuide.md'
     - Documentar Sprint:
         - 'Sprint 0': 'sprints/sprint0.md'
 theme: readthedocs
