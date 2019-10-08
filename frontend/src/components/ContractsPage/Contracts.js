@@ -10,7 +10,7 @@ const ActionCell = ({ rowData, dataKey, ...props }) => {
 	  <Cell {...props} className="link-group">
 		<IconButton
 		  appearance="subtle"
-		  href="/record"
+		  href="/introduction"
 		  icon={<Icon icon="edit2" />}
 		/>
 	  </Cell>
