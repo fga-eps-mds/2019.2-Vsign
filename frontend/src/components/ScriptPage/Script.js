@@ -1,5 +1,6 @@
 import React, { Component } from 'react'
 import './ScriptPage.css';
+import { Divider, Paragraph } from 'rsuite';
 import camera_icon from '../../assets/images/camera-icon.png';
 import user_icon from '../../assets/images/user-icon.png';
 import logo from '../../assets/images/vsign.png'
@@ -72,23 +73,24 @@ export class Script extends Component {
               </div>
               <div className='steps borda'>
                 <Steps current={1}>
-                  <Steps.Item title="Finished"/>
-                  <Steps.Item title="In Progress"/>
-                  <Steps.Item title="Waiting"/>
-                  <Steps.Item title="Waiting"/>
+                  <Steps.Item title="Instruções" description='Saiba como assinar o contrato'/>
+                  <Steps.Item title="Documento" description='Importe o seu documento de identificação'/>
+                  <Steps.Item title="Assinatura" description='Grave o video de assinatura do contrato'/>
+                  <Steps.Item title="Revisão" description='Revise a sua assinatura'/>
                 </Steps>
               </div>
                 <div className='cabecalho borda'>
                     <img src={user_icon} alt=''/>
                     <p>Contrato Nº###</p>
-
                 </div>
                 <div className='instrucao borda'>
                     <p>Para assinar o contrato você deve ler o roteiro
                         abaixo e gravar um video aqui mesmo na nossa plataforma.
                     </p>
                 </div>
-
+                <div className='div'>
+                  <Divider />
+                </div>
                 <div className='roteiro borda'>
                   <div className="tela borda">
                       <h2>Roteiro</h2>
