@@ -116,7 +116,7 @@ export const SquareDiv = styled.div`
 `;
 
 export const StyledNavItem = styled(Nav.Item)`
-    color: #FFF;
+    color: '#FFF';
 `;
 
 export const Title = styled.h1`

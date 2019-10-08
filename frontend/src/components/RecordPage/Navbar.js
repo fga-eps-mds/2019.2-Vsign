@@ -16,7 +16,6 @@ const NavBarInstance = ({ onSelect, activeKey, ...props }) => {
                     </Navbar.Header>
                     <Navbar.Body>
                         <Nav pullRight>
-
                             <Nav.Item eventKey="3">
                                 <Link to="/contracts">
                                     Meus Contratos
