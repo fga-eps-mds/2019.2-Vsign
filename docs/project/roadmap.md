@@ -8,7 +8,11 @@
 
 # Roadmap dos Papeis
 
+## Versão 1
 [![Roadmap dos Papeis](img/Roadmap_Papeis.png)](https://ibb.co/Y8SwrcS)
+
+## Versão 2
+[![Roadmap dos Papeis](img/Roadmap_Papeis_V2.png)](https://ibb.co/Y8SwrcS)
 
 # Roadmap do Projeto
 
