@@ -7,7 +7,9 @@
 import React from 'react';
 import Dropzone from './Dropzone';
 import { Button, Progress } from 'rsuite';
+import Navbar from '../RecordPage/Navbar';
 import './UploadImage.css';
+import SigningSteps from '../Shared/SigningSteps';
 
 class Uploadimage extends React.Component {
     constructor(props) {
@@ -29,29 +31,33 @@ class Uploadimage extends React.Component {
         const { Line } = Progress;
 
         return (
-            <div className="container">
-                <div className="card">
-                    <div className="Upload">
-                        <span className='Title'>Enviar Documento</span>
-                        <div className="Content">
-                            <div>
-                                <Dropzone
-                                    onFilesAdded={this.onFilesAdded}
-                                    disabled={this.state.uploading || this.state.successfullUploaded}
-                                />
+            <div>
+                <Navbar />
+                <SigningSteps history={this.props.history} />
+                <div className="container">
+                    <div className="card">
+                        <div className="Upload">
+                            <span className='Title'>Enviar Documento</span>
+                            <div className="Content">
+                                <div>
+                                    <Dropzone
+                                        onFilesAdded={this.onFilesAdded}
+                                        disabled={this.state.uploading || this.state.successfullUploaded}
+                                    />
+                                </div>
+                                <div className="Files">
+                                    {this.state.files.map(file => {
+                                        return (
+                                            <div key={file.name} className="Row">
+                                                <span className="Filename">{file.name}</span>
+                                                <Line percent={30} />
+                                            </div>
+                                        );
+                                    })}
+                                </div>
                             </div>
-                            <div className="Files">
-                                {this.state.files.map(file => {
-                                    return (
-                                        <div key={file.name} className="Row">
-                                            <span className="Filename">{file.name}</span>
-                                            <Line percent={30} />
-                                        </div>
-                                    );
-                                })}
-                            </div>
+                            <div className="Actions">{this.renderActions()}</div>
                         </div>
-                        <div className="Actions">{this.renderActions()}</div>
                     </div>
                 </div>
             </div>
