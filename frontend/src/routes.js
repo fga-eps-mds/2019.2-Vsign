@@ -5,7 +5,8 @@ import LoginPage from './components/LoginPage';
 import ContractsPage from './components/ContractsPage';
 import RecordPage from './components/RecordPage';
 import ReviewVideoPage from './components/reviewUserVideo/';
-import React, { Component } from 'react'
+import React, { Component } from 'react';
+import Introduction from './components/Instructions/Introduction';
 
 export class routes extends Component {
   constructor(props) {
@@ -21,6 +22,7 @@ export class routes extends Component {
           <Route exact location={this.props.location} path='/record' component={RecordPage}/>
           <Route path="/login" exact component={LoginPage} />
           <Route exact location={this.props.location} path='/review' component={ReviewVideoPage} />
+          <Route path='/introduction' component={Introduction} />
         </BrowserRouter>
       </div>
     )
