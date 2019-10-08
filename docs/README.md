@@ -2,8 +2,7 @@
 
 [![CircleCI](https://circleci.com/gh/fga-eps-mds/2019.2-Vsign.svg?style=svg)](https://circleci.com/gh/fga-eps-mds/2019.2-Vsign)
 
-
-## 🔵  VSign
+<div style="text-align:center"><img src="project/img/vsign_logo.png" /></div>
 
 
 ## 🐳 Guia para rodar o projeto com o Docker
@@ -38,8 +37,8 @@ Entre na pasta raíz do projeto em que está localizado o __docker-compose.yml__
 ```
   docker-compose run backend rake db:create
 ```
- &emsp;&emsp; Espere até que todos os serviços estejam disponíveis, acesse os servidores com os seguintes endereço: 
-    
+ &emsp;&emsp; Espere até que todos os serviços estejam disponíveis, acesse os servidores com os seguintes endereço:
+
 * #### Rails : https://localhost:3000
 * #### React : https://localhost:3001
 
