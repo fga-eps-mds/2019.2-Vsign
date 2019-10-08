@@ -2,6 +2,8 @@ import React, { Component } from 'react'
 import './ScriptPage.css';
 import camera_icon from '../../assets/images/camera-icon.png';
 import user_icon from '../../assets/images/user-icon.png';
+import logo from '../../assets/images/vsign.png'
+import { Container, Header, Content, Footer, Navbar, Nav, Dropdown, Icon } from 'rsuite';
 import {
     BrowserRouter as Router,
     withRouter,
@@ -45,6 +47,27 @@ export class Script extends Component {
         );
         return (
             <div className='container borda'>
+              <div>
+                <div className="show-fake-browser navbar-page">
+                  <Container>
+                    <Header>
+                      <Navbar appearance="inverse">
+                        <Navbar.Header>
+                          <a className="navbar-brand logo"><img src={logo} alt=''/></a>
+                        </Navbar.Header>
+                        <Navbar.Body>
+                          <Nav pullRight>
+                            <Nav.Item icon={<Icon icon="home" />}>Inicio</Nav.Item>
+                            <Nav.Item>Meus contratos</Nav.Item>
+                            <Nav.Item icon={<Icon icon="cog" />}>Configurações</Nav.Item>
+                            <Nav.Item>Sair</Nav.Item>
+                          </Nav>
+                        </Navbar.Body>
+                      </Navbar>
+                    </Header>
+                  </Container>
+                </div>
+              </div>
                 <div className='cabecalho borda'>
                     <img src={user_icon} alt=''/>
                     <p>Contrato Nº###</p>

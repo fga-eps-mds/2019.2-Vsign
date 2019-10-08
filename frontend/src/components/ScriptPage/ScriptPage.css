@@ -4,6 +4,10 @@
 .borda{
     border: 1px solid black;
 }
+.navbar-brand img{
+    width: 16.3%;
+    margin-left: 10%;
+}
 
 .cabecalho{
     color: #2699FB;
