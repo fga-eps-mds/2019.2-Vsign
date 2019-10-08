@@ -1,5 +1,3 @@
-# Termo de abertura do projeto
-
 ## Histórico de Versão
 
 | <center>Versão</center> | <center>Descrição</center> | <center>Autor</center> |
@@ -11,7 +9,7 @@
 
 ---
 
-### 1. Resumo Executivo
+# 1. Resumo Executivo
 - Definição do projeto (visão, objetivos, escopo e entregáveis);
 - Organização do projeto (usuários, stakeholders, papéis, responsabilidades);
 - Planejamento do projeto (abordagem, cronograma, planejamento de recursos, financeiro e de qualidade);
@@ -19,12 +17,12 @@
 - Referências.
 
 
-### 2. Definição do Projeto
+# 2. Definição do Projeto
 
-#### 2.1 Visão
+## 2.1 Visão
 Desenvolver um sistema que apresente e colete informações dos usuários por meio de informações cadastrais e as transporte para a nuvem. Informações armazenadas serão confrontadas com vídeo e áudio produzido pelo usuário para se fazer a assinatura do contrato de empréstimo consignado após a extração e análise dos dados;
 
-#### 2.2 Objetivos
+## 2.2 Objetivos
 **Objetivos de negócio:**
 - Sistema funcional/desenvolvido por completo;
 - Facilitar processo de assinatura de contrato para crédito consignado;
@@ -34,21 +32,21 @@ Desenvolver um sistema que apresente e colete informações dos usuários por me
 - Desenvolver um sistema de validação de assinatura de contrato por vídeo e áudio com 100% de confiabilidade;
 - Extração, análise e validação das informações de vídeo e áudio em segundos;
 
-#### 2.3 Escopo
+## 2.3 Escopo
 - Automatização e facilitação (por parte do usuário e da bxblue) no processo de assinatura do contrato;
 - Desenvolvimento de sistema web para cadastro de informações do usuário e gravação de vídeo e áudio para contratação de empréstimo consignado;
 - Utilização de tecnologias de armazenamento das informações em nuvem, análise de vídeo e análise de voz.
 
-#### 2.4 Entregáveis
+## 2.4 Entregáveis
 | <center>Item</center> | <center>Componentes</center> | <center>Descrição</center> |
 | :--: | :--------- | :-------- |
 | Documentação | 1. Protótipo<br> 2. Documento de Visão<br> 3. Documento de Arquitetura<br> 4. Earned Value Management | 1. Simulação do produto final<br> 2. Visão ampla do software<br> 3. Arquitetura que foi desenvolvido o software<br> 4. Medir desempenho e progresso do projeto |
 | Código | 1. Primeira versão<br> 2. Segunda versão | 1. Entrega das funcionalidades funcionando<br> 2. Entrega do software com as funcionalidades aprimoradas |
 
 
-### 3. Organização do Projeto
+# 3. Organização do Projeto
 
-#### 3.1 Usuários
+## 3.1 Usuários
 | <center>Usuário</center> |
 | :-----: |
 | Aposentados e pensionistas do INSS |
@@ -56,7 +54,7 @@ Desenvolver um sistema que apresente e colete informações dos usuários por me
 | Trabalhadores com carteira assinada |
 | Militares das Forças Armadas |
 
-#### 3.2 Stakeholders
+## 3.2 Stakeholders
 | <center>Stakeholders</center> | <center>Interessado em</center> |
 | :----------: | :------------- |
 | Fenasbac | Soluções inovadores que serão desenvolvidas |
@@ -64,7 +62,7 @@ Desenvolver um sistema que apresente e colete informações dos usuários por me
 | bxblue | Aproveitando da solução desenvolvida para integração no software próprio deles |
 | Sociedade brasileira | Facilitação em contratação de crédito consignado |
 
-#### 3.3 Papéis
+## 3.3 Papéis
 | Nome | Papel |
 | :--: | :---: |
 |[Cauê Mateus](https://github.com/caue96)| Product Owner |
@@ -77,7 +75,7 @@ Desenvolver um sistema que apresente e colete informações dos usuários por me
 |[Vinicius Porto](https://github.com/ViniciusPuerto)| Desenvolvedor |
 |[William Viera](https://github.com/williamtpv)| Desenvolvedor |
 
-#### 3.4 Responsabilidades
+## 3.4 Responsabilidades
 **Arquiteto:**
 - Levantamento de roadmap de requisitos;
 - Proposta de arquitetura micro serviços;
@@ -118,9 +116,9 @@ Desenvolver um sistema que apresente e colete informações dos usuários por me
 - Roadmap para alcancar a produtividade máxima do time;
 
 
-### 4. Planejamento do projeto
+# 4. Planejamento do projeto
 
-#### 4.1 Abordagem
+## 4.1 Abordagem
 | Fase | Abordagem |
 | :--: | :-------- |
 | Iniciação | Autorização para início do projeto |
@@ -128,10 +126,10 @@ Desenvolver um sistema que apresente e colete informações dos usuários por me
 | Criação | Planejamento, desenvolvimento, teste e revisão. Processo se repete em loop |
 | Evolução | Transferência de conhecimento e melhoria contínua. Vem logo após a etapa de criação e também se repete em loop |
 
-#### 4.2 Cronograma
+## 4.2 Cronograma
 [![Cronograma](img/cronograma.png "Cronograma")](https://ibb.co/fxrGWWq)
 
-#### 4.3 Planejamento de Recursos
+## 4.3 Planejamento de Recursos
 **Release 1**
 
 | Papel | Data de início | Data final | Esforço |
@@ -174,7 +172,7 @@ Desenvolver um sistema que apresente e colete informações dos usuários por me
 
 Nas sprints 2, 3 e 4 os papéis que estiverem com menos esforço em suas funções usaram do tempo que estiverem livre para dar suporte ao time de desenvolvimento, trabalhando junto a eles.
 
-#### 4.4 Planejamento Financeiro
+## 4.4 Planejamento Financeiro
 O custo do projeto será calculado levando em consideração 4 premissas:
 - Tempo fixo de desenvolvimento de 8 meses. Os 2 primeiros meses com trabalho de 10 horas semanais por membro e os 6 meses subsequentes com trabalho de 20 horas semanais por membro;
 - Trabalho sendo realizado 100% remoto;
@@ -223,7 +221,7 @@ Custo Total = 88.956 + 90.988,8 = R$ 179.944,80
 
 O projeto terá um custo de **R$ 179.944,80** mais custos adicionais por meio de apresentação de notas fiscais em casos de necessidade de deslocamentos e alimentações.
 
-#### 4.5 Planejamento de Qualidade
+## 4.5 Planejamento de Qualidade
 | Processo | Descrição |
 | :------: | :-------- |
 | Gerenciamento de integração | Bastante comunicação entre todos para que como um grupo saibamos o que está acontecendo em todas as pontas |
@@ -237,9 +235,9 @@ O projeto terá um custo de **R$ 179.944,80** mais custos adicionais por meio de
 | Gerenciamento de projeto | Solução de problemas no momento que eles acontecerem, sempre motivando a equipe e tirando a pressão sobre os membros para que eles possam atingir a melhor produtividade possível |
 
 
-### 5. Considerações do Projeto
+# 5. Considerações do Projeto
 
-#### 5.1 Riscos
+## 5.1 Riscos
 | Descrição | Probabilidade | Impacto | Ações de mitigação |
 | :-------- | :-----------: | :-----: | :----------------- |
 | Desistência de membro | Média | Alto | Acúmulo de função por membro que tiver com menos trabalho para fazer |
@@ -248,16 +246,16 @@ O projeto terá um custo de **R$ 179.944,80** mais custos adicionais por meio de
 | Problemas com computadores de membro da equipe | Média | Baixo | Procurar outro computador para membro com problemas continuar o trabalho |
 | Falta de comunicação | Alta | Médio | Motivar a equipe a se comunicar melhor, encorajar a comunicação, deixar claro a importância da comunicação e reforçar os meios de comunicação oficiais da equipe |
 
-#### 5.2 Suposições
+## 5.2 Suposições
 - Escopo não irá mudar durante o desenvolvimento do software;
 - Algum stakeholder da bxblue sempre estará disponível para nos atender;
 
-#### 5.3 Restrições
+## 5.3 Restrições
 - A quantidade de pessoas participantes no projeto não será aumentada até final dos desafios do projeto;
 - Restrição de custo com desenvolvimento;
 
 
-### 6. Referências
+# 6. Referências
 
 1. [www.projectmanager.com](https://www.projectmanager.com/templates/project-charter-template?a=downloadGateUnlock&r=5d7ac3d9ae36e&e=Y2F1ZW1hdGV1c0Bob3RtYWlsLmNvbQ==)<br>
 2. [Apresentação da bxblue no youtube](https://www.youtube.com/watch?v=yGntclHFnxg&feature=youtu.be)
