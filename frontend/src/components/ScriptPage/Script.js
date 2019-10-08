@@ -3,7 +3,8 @@ import './ScriptPage.css';
 import camera_icon from '../../assets/images/camera-icon.png';
 import user_icon from '../../assets/images/user-icon.png';
 import logo from '../../assets/images/vsign.png'
-import { Container, Header, Content, Footer, Navbar, Nav, Dropdown, Icon } from 'rsuite';
+import { Container, Header, Navbar, Nav, Icon } from 'rsuite';
+import { Steps } from 'rsuite';
 import {
     BrowserRouter as Router,
     withRouter,
@@ -13,8 +14,9 @@ import {
 
 
 
+//Modal structure
 function recordVideo(props){
-    props.history.push('/')
+    props.history.push('/record')
 }
 
 function relataErro(props){
@@ -67,6 +69,14 @@ export class Script extends Component {
                     </Header>
                   </Container>
                 </div>
+              </div>
+              <div className='steps borda'>
+                <Steps current={1}>
+                  <Steps.Item title="Finished"/>
+                  <Steps.Item title="In Progress"/>
+                  <Steps.Item title="Waiting"/>
+                  <Steps.Item title="Waiting"/>
+                </Steps>
               </div>
                 <div className='cabecalho borda'>
                     <img src={user_icon} alt=''/>

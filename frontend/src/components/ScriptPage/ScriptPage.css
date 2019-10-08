@@ -1,14 +1,16 @@
 .container{
     font-family: 'Open Sans', sans-serif;
 }
-.borda{
+/* .borda{
     border: 1px solid black;
-}
+} */
 .navbar-brand img{
     width: 16.3%;
     margin-left: 10%;
 }
-
+.steps{
+    margin: 1% 8%;
+}
 .cabecalho{
     color: #2699FB;
     display: flex;
@@ -63,14 +65,14 @@
 .gravar p{
     font-weight: bold;
     margin-top: 3.8%;
-    margin-right: 13%;
+    margin-right: 10%;
     
 }
 .gravar img{
     width: 30px;
     height: 25px;
     margin-top: 4%;
-    margin-right: 2%;
+    margin-right: 7%;
 }
 
 .erro{
