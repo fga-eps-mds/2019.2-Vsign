@@ -4,6 +4,10 @@ Rails.application.routes.draw do
   
   namespace :v1 do
     resources :contracts, only: [:create]
+
+    scope :user do
+      post "upload_document", to: "users#upload_document"
+    end
   end
 
   devise_for :users,

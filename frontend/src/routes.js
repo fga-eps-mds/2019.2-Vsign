@@ -1,6 +1,7 @@
 
 import { BrowserRouter, Route } from "react-router-dom";
-import LandingPage from './components/LandingPage';
+import LandingPage from './components/LandingPage/index';
+import Uploadimage from './components/UploadImage/UploadImage';
 import LoginPage from './components/LoginPage';
 import ContractsPage from './components/ContractsPage';
 import RecordPage from './components/RecordPage';
@@ -25,7 +26,7 @@ export class routes extends Component {
                     <Route exact location={this.props.location} path='/review' component={ReviewVideoPage} />
                     <Route path='/introduction' component={Introduction} />
                     <Route path='/tips' component={SigningTips} />
-                    {/* <Route path='/upload_document' component={} /> */}
+                    <Route path='/upload_document' component={Uploadimage} />
                 </BrowserRouter>
             </div>
         )
