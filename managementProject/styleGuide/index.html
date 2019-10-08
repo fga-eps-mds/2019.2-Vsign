@@ -8,7 +8,7 @@
   
   
   <link rel="shortcut icon" href="../../img/favicon.ico">
-  <title>Sprint 0 - Vsign</title>
+  <title>Folha de Estilo - Vsign</title>
   <link href='https://fonts.googleapis.com/css?family=Lato:400,700|Roboto+Slab:400,700|Inconsolata:400,700' rel='stylesheet' type='text/css'>
 
   <link rel="stylesheet" href="../../css/theme.css" type="text/css" />
@@ -17,8 +17,8 @@
   
   <script>
     // Current page data
-    var mkdocs_page_name = "Sprint 0";
-    var mkdocs_page_input_path = "sprints/sprint0.md";
+    var mkdocs_page_name = "Folha de Estilo";
+    var mkdocs_page_input_path = "managementProject/styleGuide.md";
     var mkdocs_page_url = null;
   </script>
   
@@ -94,11 +94,29 @@
     <ul class="subnav">
                 <li class="">
                     
-    <a class="" href="../../managementProject/gcs/">Plano de Gerenciamento de Configuração de Software</a>
+    <a class="" href="../gcs/">Plano de Gerenciamento de Configuração de Software</a>
                 </li>
-                <li class="">
+                <li class=" current">
                     
-    <a class="" href="../../managementProject/styleGuide/">Folha de Estilo</a>
+    <a class="current" href="./">Folha de Estilo</a>
+    <ul class="subnav">
+            
+    <li class="toctree-l3"><a href="#folha-de-estilo">Folha de Estilo</a></li>
+    
+        <ul>
+        
+            <li><a class="toctree-l4" href="#historico-de-revisoes">Histórico de Revisões</a></li>
+        
+            <li><a class="toctree-l4" href="#1-introducao">1. Introdução</a></li>
+        
+            <li><a class="toctree-l4" href="#2-ruby">2. Ruby</a></li>
+        
+            <li><a class="toctree-l4" href="#3-react">3. React</a></li>
+        
+        </ul>
+    
+
+    </ul>
                 </li>
     </ul>
 	    </li>
@@ -107,15 +125,9 @@
 		
     <span class="caption-text">Documentar Sprint</span>
     <ul class="subnav">
-                <li class=" current">
+                <li class="">
                     
-    <a class="current" href="./">Sprint 0</a>
-    <ul class="subnav">
-            
-    <li class="toctree-l3"><a href="#sprint-0">Sprint 0</a></li>
-    
-
-    </ul>
+    <a class="" href="../../sprints/sprint0/">Sprint 0</a>
                 </li>
     </ul>
 	    </li>
@@ -142,11 +154,11 @@
     
       
         
-          <li>Documentar Sprint &raquo;</li>
+          <li>Gerenciamento de Projeto &raquo;</li>
         
       
     
-    <li>Sprint 0</li>
+    <li>Folha de Estilo</li>
     <li class="wy-breadcrumbs-aside">
       
     </li>
@@ -156,7 +168,46 @@
           <div role="main">
             <div class="section">
               
-                <h2 id="sprint-0">Sprint 0</h2>
+                <h1 id="folha-de-estilo">Folha de Estilo</h1>
+<h2 id="historico-de-revisoes">Histórico de Revisões</h2>
+<table>
+<thead>
+<tr>
+<th align="center">Data</th>
+<th align="center">Versão</th>
+<th align="center">Descrição</th>
+<th align="center">Autor</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td align="center">19/09/2019</td>
+<td align="center">0.1</td>
+<td align="center">Abertura do documento</td>
+<td align="center">Thiago Pereira</td>
+</tr>
+<tr>
+<td align="center">24/09/2019</td>
+<td align="center">0.2</td>
+<td align="center">Inserção das ferramentas lint e ajustes</td>
+<td align="center">Thiago Pereira</td>
+</tr>
+</tbody>
+</table>
+<h2 id="1-introducao">1. Introdução</h2>
+<p>Este documento busca fornece diretrizes de como o código deve ser implementado.</p>
+<h2 id="2-ruby">2. Ruby</h2>
+<p>Utilizamos o guia de estilo: Ruby on Rails Style Guide e o Rubocop como linter.</p>
+<ul>
+<li><a href="https://rubystyle.guide/">Ruby on Rails Style Guide</a></li>
+<li><a href="https://github.com/rubocop-hq/rubocop">Rubocop</a></li>
+</ul>
+<h2 id="3-react">3. React</h2>
+<p>Utilizamos o guia de estilo do Airbnb que é baseado principalmente nos padrões que atualmente prevalecem no JavaScript e o Eslint como linter .</p>
+<ul>
+<li><a href="https://github.com/airbnb/javascript/tree/master/react">Airbnb React/JSX Style Guide</a>.</li>
+<li><a href="https://eslint.org/">Eslint</a>.</li>
+</ul>
               
             </div>
           </div>
@@ -164,8 +215,10 @@
   
     <div class="rst-footer-buttons" role="navigation" aria-label="footer navigation">
       
+        <a href="../../sprints/sprint0/" class="btn btn-neutral float-right" title="Sprint 0">Next <span class="icon icon-circle-arrow-right"></span></a>
       
-        <a href="../../managementProject/styleGuide/" class="btn btn-neutral" title="Folha de Estilo"><span class="icon icon-circle-arrow-left"></span> Previous</a>
+      
+        <a href="../gcs/" class="btn btn-neutral" title="Plano de Gerenciamento de Configuração de Software"><span class="icon icon-circle-arrow-left"></span> Previous</a>
       
     </div>
   
@@ -191,8 +244,10 @@
     <span class="rst-current-version" data-toggle="rst-current-version">
       
       
-        <span><a href="../../managementProject/styleGuide/" style="color: #fcfcfc;">&laquo; Previous</a></span>
+        <span><a href="../gcs/" style="color: #fcfcfc;">&laquo; Previous</a></span>
       
+      
+        <span style="margin-left: 15px"><a href="../../sprints/sprint0/" style="color: #fcfcfc">Next &raquo;</a></span>
       
     </span>
 </div>
