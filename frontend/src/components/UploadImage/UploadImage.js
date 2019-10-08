@@ -8,8 +8,10 @@ import React from 'react';
 import Dropzone from './Dropzone';
 import { Button, Progress } from 'rsuite';
 import Navbar from '../RecordPage/Navbar';
-import './UploadImage.css';
 import SigningSteps from '../Shared/SigningSteps';
+import { Link } from 'react-router-dom';
+
+import './UploadImage.css';
 
 class Uploadimage extends React.Component {
     constructor(props) {
@@ -87,16 +89,30 @@ class Uploadimage extends React.Component {
             );
         } else {
             return (
-                <Button
-                    style={{
-                        fontSize: 18
-                    }}
-                    appearance="primary"
-                    active={this.state.files.length < 0 || this.state.uploading}
-                    onClick={this.uploadFiles}
-                >
-                    Enviar
-                </Button>
+                <div>
+                    <Button
+                        style={{
+                            fontSize: 18
+                        }}
+                        appearance="primary"
+                        active={this.state.files.length < 0 || this.state.uploading}
+                        onClick={this.uploadFiles}
+                    >
+                        Enviar
+                    </Button>
+                    <Link to="/record">
+                        <Button
+                            style={{
+                                fontSize: 18,
+                                marginLeft: 10
+                            }}
+                            appearance='primary'
+
+                        >
+                            Próximo Passo
+                        </Button>
+                    </Link>
+                </div>
             );
         }
     }
