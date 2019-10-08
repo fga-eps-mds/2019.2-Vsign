@@ -1,0 +1,9 @@
+[{
+	"id": 1,
+	"company": "BxBlue",
+	"createdAt": "30/09/2019",
+	"expiresAt": "15/10/2019",
+	"status": "pending",
+	"kind": "Empréstimo",
+	"result": "approved"
+}]
