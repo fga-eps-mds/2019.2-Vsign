@@ -1,14 +1,15 @@
 site_name: Vsign
 nav:
-    - Home: README.md
-    - Projeto:
-        - 'Termo de Abertura de Projeto': 'project/tap.md'
-        - 'Plano de Negócios': 'project/canvas.md'
-        - 'Roadmap': 'project/roadmap.md'
-        - 'Documento de Arquitetura': 'project/architectureDocument.md'
-        - 'Documento de Visão': 'project/vision-document.md'
-    - Gerenciamento de Projeto:
-        - 'Plano de Gerenciamento de Configuração de Software': 'managementProject/gcs.md'
-    - Documentar Sprint:
-        - 'Sprint 0': 'sprints/sprint0.md'
+  - Home: README.md
+  - Projeto:
+      - "Termo de Abertura de Projeto": "project/tap.md"
+      - "Plano de Negócios": "project/canvas.md"
+      - "Roadmap": "project/roadmap.md"
+      - "Documento de Arquitetura": "project/architectureDocument.md"
+      - "Documento de Visão": "project/vision-document.md"
+      - "EAP": "project/eap.md"
+  - Gerenciamento de Projeto:
+      - "Plano de Gerenciamento de Configuração de Software": "managementProject/gcs.md"
+  - Documentar Sprint:
+      - "Sprint 0": "sprints/sprint0.md"
 theme: readthedocs
