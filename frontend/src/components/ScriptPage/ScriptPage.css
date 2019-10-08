@@ -1,9 +1,9 @@
 .container{
     font-family: 'Open Sans', sans-serif;
 }
-/* .borda{
+.borda{
     border: 1px solid black;
-} */
+}
 
 .cabecalho{
     color: #2699FB;
@@ -25,53 +25,57 @@
     font-size: 14px;
     margin: 0px 20%;
 }
+.roteiro{
+    display: flex;
+}
 
 .tela{
     text-align: center;
-    height: 350px;
+    height: 300px;
+    width: 45%;
     border-radius: 10px;
-    margin: 10px 20%;
+    margin: 10px 0%;
+    margin-left: 20%;
     border: 5px solid #2699FB;
 }
 .tela p{
-    margin-top: 100px;
+    margin-top: 10%;
 }
 
 
 .gravar{
     color: white;
-    font-size: 14px;
+    font-size: 15px;
     width: 200px;
     background-color: #2699FB;
     display: flex;
     justify-content: right;
     text-align: center;
     border-radius: 10px;
-    margin-top: 75px;
-    margin-left: 43%;
+    margin-top: 35%;
+    margin-left: 20%;
 }
 .gravar p{
+    font-weight: bold;
+    margin: 7% 6%;
     
 }
 .gravar img{
-    width: 20px;
-    height: 20px;
-    margin-left: 10px;
-    margin-right: 20px;
+    width: 30px;
+    height: 25px;
+    margin: 5% 5%;
 }
 
 .erro{
     color: #2699FB;
     font-weight: bold;
-    font-size: 17px;
+    font-size: 10px;
     width: 350px;
     height: 25px;
-    margin-left: 41%;
-    margin-top: 30px;
+    margin-left: 0%;
+    margin-top: 1%;
     margin-bottom: 70px;
     background-color: white;
-    border: 0px;
-    
 }
 .erro p{
     margin: 0px 0px;

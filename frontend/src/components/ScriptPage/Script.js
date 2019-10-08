@@ -55,25 +55,31 @@ export class Script extends Component {
                         abaixo e gravar um video aqui mesmo na nossa plataforma.
                     </p>
                 </div>
-                <div className="tela borda">
-                    <h2>Roteiro</h2>
-                    <p>(exibir o roteiro aqui)</p>
+
+                <div className='roteiro borda'>
+                  <div className="tela borda">
+                      <h2>Roteiro</h2>
+                      <p>(exibir o roteiro aqui)</p>
+                  </div>
+                  <div className='botoes borda'>
+                    <button className="gravar borda" onClick={() => recordVideo(this.props)}>
+                        <p>Próximo</p>
+                        <img src={camera_icon} alt="" />
+                    </button>
+                    <div>
+                        <Switch location={isModal ? this.previousLocation : location}>
+                            <div>
+                                <button className='erro borda' onClick={() => relataErro(this.props)}>
+                                    <p>Reportar erro no texto do roteiro</p>
+                                </button>
+                            </div>
+                        </Switch>
+                        {isModal ? <Route path="/scriptpage" component={Modal} /> : null}
+                    </div>
+                  </div>
                 </div>
 
-                <button className="gravar borda" onClick={() => recordVideo(this.props)}>
-                    <p>Próximo</p>
-                    <img src={camera_icon} alt="" />
-                </button>
-                <div>
-                    <Switch location={isModal ? this.previousLocation : location}>
-                        <div>
-                            <button className='erro borda' onClick={() => relataErro(this.props)}>
-                                <p>Reportar erro no texto do roteiro</p>
-                            </button>
-                        </div>
-                    </Switch>
-                    {isModal ? <Route path="/scriptpage" component={Modal} /> : null}
-                </div>
+
             </div>
         )
     }
