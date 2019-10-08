@@ -6,6 +6,7 @@ import LoginPage from './components/LoginPage';
 import ContractsPage from './components/ContractsPage';
 import RecordPage from './components/RecordPage';
 import ReviewVideoPage from './components/reviewUserVideo/';
+import ScriptPage from './components/ScriptPage/Script.js'
 import React, { Component } from 'react';
 import Introduction from './components/Instructions/Introduction';
 
@@ -23,8 +24,9 @@ export class routes extends Component {
                     <Route exact location={this.props.location} path='/record' component={RecordPage} />
                     <Route path="/login" exact component={LoginPage} />
                     <Route exact location={this.props.location} path='/review' component={ReviewVideoPage} />
-                    <Route path='/introduction' component={Introduction} />
-                    <Route path='/upload_document' component={Uploadimage} />
+                    <Route path='/introduction' location={this.props.location} component={Introduction} />
+                    <Route path='/upload_document' location={this.props.location} component={Uploadimage} />
+                    <Route path="/script" component={ScriptPage} />
                 </BrowserRouter>
             </div>
         )
