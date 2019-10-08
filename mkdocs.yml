@@ -8,6 +8,7 @@ nav:
         - 'Roadmap': 'project/roadmap.md'
         - 'Documento de Arquitetura': 'project/architectureDocument.md'
         - 'Documento de Visão': 'project/vision-document.md'
+        - "EAP": "project/eap.md"
     - Gerenciamento de Projeto:
         - 'Plano de Gerenciamento de Configuração de Software': 'managementProject/gcs.md'
     - Documentar Sprint:
