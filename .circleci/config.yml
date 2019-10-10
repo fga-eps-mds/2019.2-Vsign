@@ -16,7 +16,7 @@ references:
     image: circleci/postgres:10.3
     environment:
       POSTGRES_USER: vsign
-      POSTGRES_DB: vsing_test
+      POSTGRES_DB: vsign_test
       POSTGRES_PASSWORD: ""
 
 jobs:
