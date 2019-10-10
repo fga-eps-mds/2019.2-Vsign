@@ -11,6 +11,7 @@ references:
       PGUSER: vsign
       PGPASSWORD: ""
       RAILS_ENV: test
+      CC_TEST_REPORTER_ID: a2b3d9b3f56055d821bcf096662502532ca97f19975414753b3011d6054a16bb
   postgres: &postgres
     image: circleci/postgres:10.3
     environment:
@@ -125,6 +126,12 @@ jobs:
 
       - store_artifacts:
           path: backend/test-artifacts
+
+      - run:
+          name: Upload Code Climate
+          working_directory: ./backend
+          command: |
+            ./cc-test-reporter sum-coverage --output - coverage/codeclimate.*.json | ./cc-test-reporter upload-coverage --debug --input -
 
 workflows:
   version: 2
