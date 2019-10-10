@@ -54,3 +54,7 @@ gem 'tzinfo-data', platforms: [:mingw, :mswin, :x64_mingw, :jruby]
 
 # Lint tool
 gem 'rubocop' , '~> 0.74.0' , require:  false
+
+# Code coverage analysis
+gem 'simplecov', require: false, group: :test
+gem 'rspec_junit_formatter'
