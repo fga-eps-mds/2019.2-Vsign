@@ -18,28 +18,22 @@ export const SpecialContainer = styled.div`
 
 export const VideoDivReview = styled.div`
     display: flex;
-    flex: 1
-    align-self: center;
-    justify-content: center;
-    align-items: center;
-    background-color: white;   
-    justify-content: center;
-    margin: 10px;
-    // transform: scale(-1, 1)
+    flex: 4;
+    flex-direction: row;
+    justify-content: space-around;
+    padding-bottom: 5%;
+    background-color: white;
+    max-width: 100%;
+    max-height: 100%;
 `;
 export const ScriptBlockDivReview = styled.div`
     display: flex;
     flex: 4;
     flex-direction: row;
     justify-content: space-around;
-    padding-bottom: 3%;
-    margin: 10px;
+    padding-bottom: 5%;
     background-color: white;
-    border-style: solid;
-    border-color: black;
-    border-width: 4px;
     max-width: 500px;
-    max-height: 480px;
     overflow:auto;
 
 `;
@@ -89,4 +83,11 @@ export const StylePanal = styled(Panel)`
     width: 100%;
     height: 100%;
 `;
+export const IntructionTextBtn = styled.p`
+   
+    font-size: 14px;
+    font-weight: bold;
+    font-family: 'Open Sans', sans-serif;
+    color: white;
 
+`;
