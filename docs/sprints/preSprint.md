@@ -10,6 +10,8 @@
 
 * **Período: 12/08/19 - 31/08/19**
 
+***
+
 Foi de consenso geral do grupo que esta fosse considerada uma pré-Sprint, e não uma Sprint convencional. Apresentam-se como motivos:
 
 * Iniciou-se no primeiro dia do semestre letivo e teve uma duração de 3 semanas, diferente do padrão de duração definido para outras Sprints, que é de uma semana;
