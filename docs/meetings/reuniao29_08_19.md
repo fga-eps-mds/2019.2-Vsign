@@ -8,9 +8,9 @@
 |1.0|Estruturação e detalhamento|Victor Gomide|
 
 ## Descrição
-* **Tipo: Remota (via Zoom)**
-* **Início: 12:00**
-* **Fim: 12:30**
+* **Tipo:** Remota (via Zoom)
+* **Início:** 12:00
+* **Fim:** 12:30
 
 ***
 
