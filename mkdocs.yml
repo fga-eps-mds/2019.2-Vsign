@@ -5,11 +5,12 @@ nav:
         - 'Termo de Abertura de Projeto': 'project/tap.md'
         - 'Identidade Visual': 'project/identidadeVisual.md'
         - 'Plano de Negócios': 'project/canvas.md'
+        - 'Plano de Comunicação Interna': 'project/planoComunicacao.md'
         - 'Roadmap': 'project/roadmap.md'
-        - 'Documento de Arquitetura': 'project/architectureDocument.md'
+        - 'EAP': 'project/eap.md'
         - 'Documento de Visão': 'project/vision-document.md'
-        - "EAP": "project/eap.md"
-        - "Plano de Comunicação Interna": 'project/planoComunicacao.md'
+        - 'Documento de Arquitetura': 'project/architectureDocument.md'
+        - 'Diagrama de casos de uso': 'project/useCasesDiagram.md'
     - Gerenciamento de Projeto:
         - 'Plano de Gerenciamento de Configuração de Software': 'managementProject/gcs.md'
         - 'Folha de Estilo': 'managementProject/styleGuide.md'

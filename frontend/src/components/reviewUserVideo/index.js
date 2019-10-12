@@ -3,13 +3,11 @@ import { withRouter} from 'react-router-dom';
 import {
     VideoDivReview,
     ScriptBlockDivReview,
-    Parent,
     SpecialContainer,
-    FinishSignatureText,
-    RestartRecordingText,
-    StylePanal
+    IntructionTextBtn,
+    
 } from './styles.js';
-import { Button, FlexboxGrid, Container, Content } from 'rsuite';
+import { Button, FlexboxGrid, Container, Content, Panel, ButtonGroup } from 'rsuite';
 import 'rsuite/dist/styles/rsuite-default.css';
 import SigningSteps from '../Shared/SigningSteps';
 import Navbar from './Navbar';
@@ -92,47 +90,42 @@ class reviewUserVideo extends Component {
                     <Navbar />
                     <SigningSteps history={this.props.history} />
                     <Content>
-                        <Parent>
-                            <FlexboxGrid justify="space-around">
-                                <SpecialContainer>
+                        <FlexboxGrid justify="center">
+                            <FlexboxGrid.Item   >
                                     <VideoDivReview>
                                         <video controls autoPlay name="media">
                                             <source src={url} type="video/webm" />
                                         </video>
                                     </VideoDivReview>
-                                </SpecialContainer>
-                            </FlexboxGrid>
-                            <FlexboxGrid justify="space-around">
+                            </FlexboxGrid.Item>
+                            <FlexboxGrid.Item >
                                 <SpecialContainer>
                                     <ScriptBlockDivReview>
-                                        {/* <ScriptBlock> */}
-                                        <StylePanal>
-                                            Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nam semper, felis in commodo aliquet, nisl dui fringilla urna, vel commodo nibh tortor nec est. Integer venenatis, justo semper blandit rhoncus, metus neque pretium massa, quis aliquam quam orci id lacus. Phasellus in quam at tortor commodo ullamcorper id vel ligula. Curabitur tristique tortor sed tellus dignissim, et vestibulum massa dapibus. Phasellus tincidunt feugiat orci vitae ultrices. Suspendisse potenti. Sed enim lacus, ultricies vitae finibus in, placerat non nunc. Pellentesque dictum purus tempus, fermentum ante non, lobortis ex. Mauris malesuada nulla non nibh lacinia, at dapibus ante molestie. Pellentesque consectetur turpis ligula. Nullam et purus feugiat, hendrerit lectus a, convallis lacus.
-                                        </StylePanal>
-                                        {/* </ScriptBlock> */}
+                                        <Panel bordered expanded>
+                                        Lorem ipsum dolor sit amet, consectetur adipiscing elit. Quisque non sem sed erat luctus cursus congue in eros. Etiam venenatis dui at faucibus commodo. Etiam vel finibus erat, a dapibus purus. Integer pharetra vulputate enim, non elementum urna faucibus non. In vel tellus bibendum, tincidunt dolor ut, posuere urna. Integer tempor, augue vitae molestie tincidunt, tortor dolor facilisis ante, non mollis mi purus scelerisque arcu. Proin quis risus non nibh placerat bibendum a id diam. Nullam sollicitudin rutrum euismod. Fusce vitae malesuada eros. Donec sollicitudin luctus ex id blandit. In orci ex, posuere gravida eleifend eget, sodales et nisi. Donec augue lorem, iaculis eget bibendum ut, aliquam non sapien. Vivamus quis mi tristique, imperdiet dolor ut, pretium ipsum. Nam ex risus, dignissim ut accumsan rhoncus, congue a erat.
+                                        </Panel>
                                     </ScriptBlockDivReview>
+                                
+                                    <ButtonGroup justified>
+                                        <Button appearance='primary' size='md' color='green'  onClick={() => this._redoTheOperation()}>
+                                            <IntructionTextBtn>
+                                                Regravar o vídeo
+                                            </IntructionTextBtn>
+                                        </Button>
+
+                                        <Button appearance='primary' size='md' color='blue'  onClick={() => this._endTheOperation()}>
+                                            <IntructionTextBtn>
+                                                Finalizar assinatura 
+                                            </IntructionTextBtn>  
+                                        </Button>
+                                    </ButtonGroup>  
+
                                 </SpecialContainer>
-                            </FlexboxGrid>
-                        </Parent>
-
-                        <FlexboxGrid justify="space-around">
-                            <FlexboxGrid.Item colspan={2}>
-                                <Button appearance='primary' size='md' onClick={() => this._redoTheOperation()}>
-                                    <RestartRecordingText>
-                                        Desejo regravar o vídeo
-                            </RestartRecordingText>
-                                </Button>
-
                             </FlexboxGrid.Item>
-                            <FlexboxGrid.Item colspan={2}>
-                                <Button appearance='primary' size='md' onClick={() => this._endTheOperation()}>
-                                    <FinishSignatureText>
-                                        Finalizar assinatura
-                            </FinishSignatureText>
-                                </Button>
-                            </FlexboxGrid.Item>
-
+                            
                         </FlexboxGrid>
+                        
+                        
                     </Content>
 
                 </Container>
