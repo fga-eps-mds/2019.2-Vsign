@@ -14,6 +14,7 @@
 A 3ª Sprint foi marcada pela implementação de Histórias de Usuário variadas, relacionadas à gravação de vídeo, apresentação de roteiro e interação com o usuário. 
 
 As Histórias planejadas para o time de desenvolvimento (MDS) foram:
+
 * US02 - Gravar Vídeo de Assinatura; 
     - [Issue](https://github.com/fga-eps-mds/2019.2-Vsign/issues/51)
 * US03 - Tirar fotos durante gravação de vídeo; 
@@ -39,7 +40,7 @@ A pontuação total da Sprint foi de **28** pontos, desconsideradas as dívidas 
 
 ## Resultados
 
-O desempenho da Sprint a nível de pontuação não foi tão satisfatório, com apenas 3 issues de 1 ponto cada concluídas, totalizando **3** pontos obtidos. Entretanto, houve um avanço significativo na grande maioria das issues da Sprint, inclusive em dívidas técnicas. Em 5 delas faltou apenas a revisão. Apenas uma delas não foi iniciada. A Folha de Estilo foi definida e configurada pelo DevOps, embora não tivesse sido definida uma ![issue](https://github.com/fga-eps-mds/2019.2-Vsign/issues/71) para tal na Sprint Planning.
+O desempenho da Sprint a nível de pontuação não foi tão satisfatório, com apenas 3 issues de 1 ponto cada concluídas, totalizando **3** pontos obtidos. Entretanto, houve um avanço significativo na grande maioria das issues da Sprint, inclusive em dívidas técnicas. Em 5 delas faltou apenas a revisão. Apenas uma delas não foi iniciada. A Folha de Estilo foi definida e configurada pelo DevOps, embora não tivesse sido definida uma [issue](https://github.com/fga-eps-mds/2019.2-Vsign/issues/71) para tal na Sprint Planning.
 
 ### Sprint Retrospective
 
@@ -52,7 +53,6 @@ O desempenho da Sprint a nível de pontuação não foi tão satisfatório, com 
     - Esforço da equipe;
     - Boa organização da equipe;
     - Boa comunicação da equipe.
-
 * Pontos negativos:
     - Dívidas técnicas;
     - Proximidade da Release 1;
@@ -62,7 +62,6 @@ O desempenho da Sprint a nível de pontuação não foi tão satisfatório, com 
     - Falta de empenho de alguns membros;
     - Problemas pessoais de alguns membros;
     - Baixa quantidade de pareamentos.
-    
 * Para as próximas Sprints:
     - Quitar dívidas técnicas;
     - Melhorar organização individual;

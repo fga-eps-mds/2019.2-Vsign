@@ -49,7 +49,6 @@ Em termos de pontuação, essa foi uma Sprint totalmente improdutiva (**0** pont
     - Evolução do projeto;
     - Disponibilidade de alguns membros;
     - Semana Universitária.
-
 * Pontos negativos:
     - Comunicação falha;
     - Demanda de tempo por outras disciplinas e/ou projetos;
@@ -59,7 +58,6 @@ Em termos de pontuação, essa foi uma Sprint totalmente improdutiva (**0** pont
     - Má utilização do Kanban;
     - Muitas issues não finalizadas;
     - Falta de iniciativa de alguns membros.
-
 * Para as próximas Sprints:
     - Melhorar a comunicação;
     - Se programar para avaliar os PRs com mais frequência;
