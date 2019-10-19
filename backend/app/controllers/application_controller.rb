@@ -12,7 +12,7 @@ class ApplicationController < ActionController::API
     else
       validation_error(resource)
     end
-  end
+end
 
   def validation_error(resource)
     render json: {
