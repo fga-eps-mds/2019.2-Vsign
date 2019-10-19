@@ -2,10 +2,6 @@
 
 # Controller que trata as requests GraphQL.
 class GraphqlController < ApplicationController
-  before_action do
-    ActiveStorage::Current.host = request.base_url
-  end
-
   def execute
     result = execute_schema
     render json: result
