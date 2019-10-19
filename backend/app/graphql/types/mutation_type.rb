@@ -1,4 +1,7 @@
 module Types
-  class MutationType < Types::BaseObject
+  class MutationType < BaseObject
+
+    field :create_direct_upload, mutation: Mutations::CreateDirectUpload
+
   end
 end

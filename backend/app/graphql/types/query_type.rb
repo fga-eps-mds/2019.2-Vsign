@@ -1,4 +1,4 @@
 module Types
-  class QueryType < Types::BaseObject
+  class QueryType < BaseObject
   end
 end
