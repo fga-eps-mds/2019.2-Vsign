@@ -8,4 +8,4 @@
 
 Aqui se encontram as classes e seus métodos e propriedades, que foram adotados no projeto VSign.
 
-![Diagrama](/docs/img/../project/img/diagrama_de_classes_vsign.png)
+![Diagrama](./img/diagrama_de_classes_vsign.png)
