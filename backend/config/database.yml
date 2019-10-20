@@ -1,9 +1,10 @@
+# Ref: https://github.com/CircleCI-Public/circleci-demo-ruby-rails/blob/master/config/database.yml
 default: &default
   adapter: postgresql
   encoding: unicode
-  host: db
+  host: <%= ENV.fetch("POSTGRES_HOST", 'localhost') %>
   username: postgres
-  password:
+  password: postgres
   pool: 5
 
 development:
@@ -13,4 +14,6 @@ development:
 
 test:
   <<: *default
+  user: <%= ENV.fetch("PGUSER") %>
+  user: <%= ENV.fetch("PGPASSWORD") %>
   database: vsign_test

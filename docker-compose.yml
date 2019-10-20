@@ -1,10 +1,12 @@
-version: '3'
+version: "3"
 services:
-
   db:
     image: postgres
     volumes:
       - ./tmp/db:/var/lib/postgresql/data
+    restart: always
+    env_file:
+      - ./backend/db.env
 
   backend:
     build: ./backend
@@ -15,16 +17,17 @@ services:
       - "3000:3000"
     depends_on:
       - db
-
+    env_file:
+      - ./backend/app.env
 
   frontend:
-    build: 
+    build:
       context: ./frontend
       dockerfile: Dockerfile
     volumes:
-      - './frontend:/app'
+      - "./frontend:/app"
       # One-way volume to use node_modules from inside image
-      - '/app/node_modules'
+      - "/app/node_modules"
     ports:
       - "3001:3001"
     environment:
