@@ -3,11 +3,10 @@
 # Use this hook to configure devise mailer, warden hooks and so forth.
 # Many of these configuration options can be set straight in your model.
 Devise.setup do |config|
-
   config.jwt do |jwt|
     # jwt.secret = Rails.application.credentials.secret_key_base
-    jwt.secret = "teste123"
-      
+    jwt.secret = 'teste123'
+
     jwt.dispatch_requests = [
       ['POST', %r{ˆ/login$}]
     ]

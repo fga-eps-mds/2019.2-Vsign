@@ -11,6 +11,8 @@ import { Button, FlexboxGrid, Container, Content, Panel, ButtonGroup } from 'rsu
 import 'rsuite/dist/styles/rsuite-default.css';
 import SigningSteps from '../Shared/SigningSteps';
 import Navbar from './Navbar';
+import { uploadMutation } from '../../graphql/mutations';
+import { directUpload, getFileMetadata } from '../../utils/activestorage';
 
 class reviewUserVideo extends Component {
     constructor(props) {
@@ -35,6 +37,19 @@ class reviewUserVideo extends Component {
     }
 
     _endTheOperation = () => {
+        const file = this.state.signatureVideo;
+        // console.log(this.state.signatureVideo);
+        getFileMetadata(file).then((input) => {
+            return uploadMutation({ input }).then(({ data }) => {
+                const { createDirectUpload } = data;
+                const { url, headers, signedBlobId } = createDirectUpload;
+                return directUpload(url, JSON.parse(headers), file).then((response) => {
+                    console.log(response);
+                    // do smth with signedBlobId – our file has been uploaded!
+                });
+            });
+        });
+
         this.props.history.push({
             pathname: '/review',
             state: {

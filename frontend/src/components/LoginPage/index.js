@@ -1,21 +1,19 @@
 import React, { useState } from 'react';
 import { Content, ButtonToolbar, Button, FlexboxGrid, Container, Form, FormGroup, ControlLabel, FormControl } from 'rsuite';
 import { LoginPanel } from './styles';
+import { loginUser } from '../../graphql/mutations';
 
-export default function LoginPage() {
+export default function LoginPage({ history }) {
 	const [email, setEmail] = useState("");
 	const [password, setPassword] = useState("");
 
-	const LOGIN = gql`
-		mutation login($email: String!, $password: String!) {
-			login(
-				email: $email
-				password: $password
-			) {
-				token
-			}
-		}
-	`
+	const handleLogin = (email, password) => {
+		loginUser({email, password}).then(({ data }) => {
+			console.log(data);
+			history.push("/contracts")
+		})
+	}
+
 	return (
 		<Container>
 			<Content>
@@ -25,15 +23,15 @@ export default function LoginPage() {
 							<Form fluid>
 								<FormGroup>
 									<ControlLabel>Email</ControlLabel>
-									<FormControl name="email" />
+									<FormControl name="email" type='email' onChange={event => setEmail(event)} />
 								</FormGroup>
 								<FormGroup>
 									<ControlLabel>Senha</ControlLabel>
-									<FormControl onChangeText={event => console.log(event.target.value)} name="password" type="password" />
+									<FormControl onChange={event => setPassword(event)} name="password" type="password" />
 								</FormGroup>
 								<FormGroup>
 									<ButtonToolbar>
-										<Button href="/contracts" appearance="primary">Entrar</Button>
+										<Button appearance="primary" onClick={() => handleLogin(email, password)}>Entrar</Button>
 										<Button href="/recover-password" appearance="link">Esqueceu sua senha?</Button>
 									</ButtonToolbar>
 								</FormGroup>

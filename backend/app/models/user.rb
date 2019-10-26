@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 class User < ApplicationRecord
   extend Devise::Models
   include Tokenizable
@@ -9,4 +11,3 @@ class User < ApplicationRecord
 
   has_one_attached :user_document
 end
-  
