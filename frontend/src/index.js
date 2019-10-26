@@ -6,7 +6,7 @@ import { ConnectedRouter } from 'connected-react-router';
 import * as serviceWorker from './serviceWorker';
 import App from './App';
 import { ApolloProvider } from '@apollo/react-hooks'
-import { client } from './graphql';
+import { client } from './graphql/client';
 import store, { history, sagaMiddleware } from './store';
 import rootSaga from './sagas';
 
