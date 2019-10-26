@@ -37,26 +37,55 @@ class reviewUserVideo extends Component {
     }
 
     _endTheOperation = () => {
-        const file = this.state.signatureVideo;
+        const videoFile = this.state.signatureVideo;
         // console.log(this.state.signatureVideo);
-        getFileMetadata(file).then((input) => {
+        getFileMetadata(videoFile).then((input) => {
             return uploadMutation({ input }).then(({ data }) => {
                 const { createDirectUpload } = data;
                 const { url, headers, signedBlobId } = createDirectUpload;
-                return directUpload(url, JSON.parse(headers), file).then((response) => {
+                return directUpload(url, JSON.parse(headers), videoFile).then((response) => {
                     console.log(response);
                     // do smth with signedBlobId – our file has been uploaded!
                 });
             });
         });
 
-        this.props.history.push({
-            pathname: '/review',
-            state: {
-                signatureAudio: this.state.signatureAudio,
-                signatureVideo: this.state.signatureVideo
-            }
-        })
+        const audioFile = this.state.signatureAudio;
+        // console.log(this.state.signatureAudio);
+        getFileMetadata(audioFile).then((input) => {
+            return uploadMutation({ input }).then(({ data }) => {
+                const { createDirectUpload } = data;
+                const { url, headers, signedBlobId } = createDirectUpload;
+                return directUpload(url, JSON.parse(headers), audioFile).then((response) => {
+                    console.log(response);
+                    // do smth with signedBlobId – our file has been uploaded!
+                });
+            });
+        });
+
+        var numberOfImages = this.state.signatureImage.length;
+        for(var i=0;i<numberOfImages;i++){
+            const imageFile = this.state.signatureImage[i];
+            // console.log(this.state.signatureImage[i]);
+            getFileMetadata(imageFile).then((input) => {
+                return uploadMutation({ input }).then(({ data }) => {
+                    const { createDirectUpload } = data;
+                    const { url, headers, signedBlobId } = createDirectUpload;
+                    return directUpload(url, JSON.parse(headers), imageFile).then((response) => {
+                        console.log(response);
+                        // do smth with signedBlobId – our file has been uploaded!
+                    });
+                });
+            });
+        }
+        
+        //this.props.history.push({
+        //    pathname: '/review',
+        //    state: {
+        //        signatureAudio: this.state.signatureAudio,
+        //        signatureVideo: this.state.signatureVideo
+        //    }
+        //})
 
     }
     _redoTheOperation = () => {
@@ -101,7 +130,6 @@ class reviewUserVideo extends Component {
         return (
             <div>
                 <Container>
-
                     <Navbar />
                     <SigningSteps history={this.props.history} />
                     <Content>
@@ -117,10 +145,9 @@ class reviewUserVideo extends Component {
                                 <SpecialContainer>
                                     <ScriptBlockDivReview>
                                         <Panel bordered expanded>
-                                        Lorem ipsum dolor sit amet, consectetur adipiscing elit. Quisque non sem sed erat luctus cursus congue in eros. Etiam venenatis dui at faucibus commodo. Etiam vel finibus erat, a dapibus purus. Integer pharetra vulputate enim, non elementum urna faucibus non. In vel tellus bibendum, tincidunt dolor ut, posuere urna. Integer tempor, augue vitae molestie tincidunt, tortor dolor facilisis ante, non mollis mi purus scelerisque arcu. Proin quis risus non nibh placerat bibendum a id diam. Nullam sollicitudin rutrum euismod. Fusce vitae malesuada eros. Donec sollicitudin luctus ex id blandit. In orci ex, posuere gravida eleifend eget, sodales et nisi. Donec augue lorem, iaculis eget bibendum ut, aliquam non sapien. Vivamus quis mi tristique, imperdiet dolor ut, pretium ipsum. Nam ex risus, dignissim ut accumsan rhoncus, congue a erat.
+                                            Lorem ipsum dolor sit amet, consectetur adipiscing elit. Quisque non sem sed erat luctus cursus congue in eros. Etiam venenatis dui at faucibus commodo. Etiam vel finibus erat, a dapibus purus. Integer pharetra vulputate enim, non elementum urna faucibus non. In vel tellus bibendum, tincidunt dolor ut, posuere urna. Integer tempor, augue vitae molestie tincidunt, tortor dolor facilisis ante, non mollis mi purus scelerisque arcu. Proin quis risus non nibh placerat bibendum a id diam. Nullam sollicitudin rutrum euismod. Fusce vitae malesuada eros. Donec sollicitudin luctus ex id blandit. In orci ex, posuere gravida eleifend eget, sodales et nisi. Donec augue lorem, iaculis eget bibendum ut, aliquam non sapien. Vivamus quis mi tristique, imperdiet dolor ut, pretium ipsum. Nam ex risus, dignissim ut accumsan rhoncus, congue a erat.
                                         </Panel>
                                     </ScriptBlockDivReview>
-                                
                                     <ButtonGroup justified>
                                         <Button appearance='primary' size='md' color='green'  onClick={() => this._redoTheOperation()}>
                                             <IntructionTextBtn>
@@ -134,15 +161,10 @@ class reviewUserVideo extends Component {
                                             </IntructionTextBtn>  
                                         </Button>
                                     </ButtonGroup>  
-
                                 </SpecialContainer>
-                            </FlexboxGrid.Item>
-                            
+                            </FlexboxGrid.Item>   
                         </FlexboxGrid>
-                        
-                        
                     </Content>
-
                 </Container>
             </div>
         )

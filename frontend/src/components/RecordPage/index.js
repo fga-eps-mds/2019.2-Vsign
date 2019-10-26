@@ -349,7 +349,8 @@ class recordUserVideo extends Component {
                                                     onStop={this.onStop}
                                                     onData={this.onData}
                                                     strokeColor="#000000"
-                                                    backgroundColor="#FF4081" />
+                                                    backgroundColor="#FF4081"
+                                                    mimeType="audio/wav" />
                                             </div>
                                             <SquareDiv data-tour='step2' />
                                         </div>
