@@ -3,6 +3,6 @@ module Types
 
     # field :create_direct_upload, mutation: Mutations::CreateDirectUpload
     field :create_user, mutation: Mutations::CreateUser
-
+    field :login, mutation: Mutations::LogUser
   end
 end

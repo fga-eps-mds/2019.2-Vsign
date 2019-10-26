@@ -3,13 +3,20 @@ import { Content, ButtonToolbar, Button, FlexboxGrid, Container, Form, FormGroup
 import { LoginPanel } from './styles';
 
 export default function LoginPage() {
-    return (
-        <Container>
-      		<Content>
-        		<FlexboxGrid justify="center">
-          			<FlexboxGrid.Item colspan={8}>
-            			<LoginPanel>
-              				<Form fluid>
+	let query = client.query({
+		query: gql`
+			{
+				logUser
+			}
+		`
+	})
+	return (
+		<Container>
+			<Content>
+				<FlexboxGrid justify="center">
+					<FlexboxGrid.Item colspan={8}>
+						<LoginPanel>
+							<Form fluid>
 								<FormGroup>
 									<ControlLabel>Email</ControlLabel>
 									<FormControl name="email" />
@@ -27,8 +34,8 @@ export default function LoginPage() {
 							</Form>
 						</LoginPanel>
 					</FlexboxGrid.Item>
-        		</FlexboxGrid>
-      		</Content>
-    	</Container>
-    );
+				</FlexboxGrid>
+			</Content>
+		</Container>
+	);
 };

@@ -14,17 +14,5 @@ Rails.application.routes.draw do
     end
   end
 
-  # devise_for :users,
-  #            path: '',
-  #            path_names: {
-  #             #  sign_in: 'login',
-  #              sign_out: 'logout',
-  #              registration: 'signup'
-  #            },
-  #            controllers: {
-  #             #  sessions: 'sessions',
-  #              registrations: 'registrations'
-  #            }, skip: :sessions
-
-  devise_for :users, skip: :sessions
+  devise_for :users
 end
