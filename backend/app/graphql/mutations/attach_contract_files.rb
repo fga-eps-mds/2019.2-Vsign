@@ -1,10 +1,14 @@
-module Mutations
-    class AttachContractFiles < BaseMutation
-        argument :input, Types::CreateDirectUploadInputType, required: true
-        type Types::UploadType
+# frozen_string_literal: true
 
-        def resolve(blob_id: )
-            if
-            @contract.contract_video.attach(blob_id)
-        end
+module Mutations
+  # AttachContractFiles
+  class AttachContractFiles < BaseMutation
+    argument :contract_id, Int, required: true
+    argument :files, Types::AttachContractFilesInputType, required: true
+    type Types::AttachContractFilesType
+
+    def resolve(contract_id, files)
+      # implement
     end
+  end
+end
