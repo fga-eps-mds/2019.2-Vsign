@@ -1,8 +1,8 @@
 class IdCheckJob < ApplicationJob
   queue_as :default
-
+  
   def perform(*args)
-     client = Aws::Rekognition::Client.new({
+    client = Aws::Rekognition::Client.new({
       region: Rails.application.credentials.dig(:aws, :region),
       credentials: Aws::Credentials.new(
         Rails.application.credentials.dig(:aws, :access_key_id),
@@ -15,6 +15,6 @@ class IdCheckJob < ApplicationJob
           name: 'file'
         },
       },
-    })  
+    })
   end
 end
