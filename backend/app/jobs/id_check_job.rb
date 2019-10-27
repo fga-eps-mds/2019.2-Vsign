@@ -1,21 +1,20 @@
 class IdCheckJob < ApplicationJob
   queue_as :default
 
-  require 'aws-sdk'
-
-  client = Aws::Reckgnition::Client.new
-
   def perform(*args)
-    # Do something later
+     client = Aws::Rekognition::Client.new({
+      region: Rails.application.credentials.dig(:aws, :region),
+      credentials: Aws::Credentials.new(
+        Rails.application.credentials.dig(:aws, :access_key_id),
+        Rails.application.credentials.dig(:aws, :secret_access_key))
+    })
     resp = client.detect_text({
-    image: { # required
-      bytes: "data",
-      s3_object: {
-        bucket: "S3Bucket",
-        name: "S3ObjectName",
-        version: "S3ObjectVersion",
+      image: {
+        s3_object: {
+          bucket: Rails.application.credentials[Rails.env.to_sym][:aws][:bucket],
+          name: 'file'
+        },
       },
-    },
-  })
+    })  
   end
 end
