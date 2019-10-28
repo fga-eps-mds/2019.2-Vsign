@@ -13,7 +13,7 @@ import SigningSteps from '../Shared/SigningSteps';
 import Navbar from './Navbar';
 import { uploadMutation } from '../../graphql/mutations';
 import { directUpload, getFileMetadata } from '../../utils/activestorage';
-
+import { upload } from './services'
 class reviewUserVideo extends Component {
     constructor(props) {
         super(props);
@@ -37,18 +37,7 @@ class reviewUserVideo extends Component {
     }
 
     _endTheOperation = () => {
-        const file = this.state.signatureVideo;
-        // console.log(this.state.signatureVideo);
-        getFileMetadata(file).then((input) => {
-            return uploadMutation({ input }).then(({ data }) => {
-                const { createDirectUpload } = data;
-                const { url, headers, signedBlobId } = createDirectUpload;
-                return directUpload(url, JSON.parse(headers), file).then((response) => {
-                    console.log(response);
-                    // do smth with signedBlobId – our file has been uploaded!
-                });
-            });
-        });
+        
 
         this.props.history.push({
             pathname: '/review',
@@ -59,6 +48,31 @@ class reviewUserVideo extends Component {
         })
 
     }
+
+    _uploadVideo = () => {
+        const file = this.state.signatureVideo;
+        upload(file)
+    }
+
+    _uploadAudio = () => {
+        const file = this.state.signatureAudio;
+        upload(file)
+    }
+
+    _uploadImages = () => {
+        const image_array_size = this.state.signatureImage.length
+        let image_to_upload = []
+        for (let index = 0; index < 3; index++) {
+            const randomIndex = Math.floor(Math.random() * (image_array_size - 1 ));   
+            image_to_push = this.state.signatureImage[randomIndex]
+            image_to_upload.push(image_to_push)
+        }
+         
+        image_to_upload.map((image) => {
+            upload(image) 
+        })
+    }
+
     _redoTheOperation = () => {
         this.props.history.push({
             pathname: '/record',

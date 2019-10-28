@@ -18,3 +18,24 @@ export async function uploadMutation(variables) {
     });
     return response;
 }
+
+export async function attachContractFilesMutation(variables) {
+    const ATTACH_CONTRACT_FILES_MUTATION = gql`
+        mutation AttachContractFilesMutation($input: AttachContractFiles!) {
+            attachContractFiles(input: $input) {
+                contractId,
+                files(input: $input) {
+                    video,
+                    images,
+                    audio
+                }
+            }
+        }
+    `;
+
+    const response = await apollo.mutate({
+        mutation: ATTACH_CONTRACT_FILES_MUTATION,
+        variables
+    });
+    return response
+}
