@@ -11,19 +11,15 @@ import React, { Component } from 'react';
 import Introduction from './components/Instructions/Introduction';
 
 export class routes extends Component {
-    constructor(props) {
-        super(props);
-        this.state = {}
-    }
     render() {
         return (
             <div>
                 <BrowserRouter>
                     <Route path="/" exact component={LandingPage} />
                     <Route path="/contracts" component={ContractsPage} />
-                    <Route exact location={this.props.location} path='/record' component={RecordPage} />
-                    <Route path="/login" exact component={LoginPage} />
-                    <Route exact location={this.props.location} path='/review' component={ReviewVideoPage} />
+                    <Route path='/record' location={this.props.location} component={RecordPage} />
+                    <Route path="/login" component={LoginPage} />
+                    <Route path='/review' location={this.props.location} component={ReviewVideoPage} />
                     <Route path='/introduction' location={this.props.location} component={Introduction} />
                     <Route path='/upload_document' location={this.props.location} component={Uploadimage} />
                     <Route path="/script" component={ScriptPage} />
