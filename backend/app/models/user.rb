@@ -10,4 +10,5 @@ class User < ApplicationRecord
          jwt_revocation_strategy: JWTBlacklist
 
   has_one_attached :user_document
+  has_many :contracts
 end

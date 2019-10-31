@@ -8,7 +8,7 @@ class GraphqlController < ApplicationController
     operation_name = params[:operationName]
     context = {
       current_user: current_user,
-      login: method(:sign_in)
+      login: method(:sign_in),
     }
     result = Schema.execute(
       query, 
@@ -65,8 +65,8 @@ class GraphqlController < ApplicationController
 
     render json: { 
       error: { 
-        message: e.message, 
-        backtrace: e.backtrace 
+        message: error.message, 
+        backtrace: error.backtrace 
       }, 
       data: {} 
     }, status: 500
