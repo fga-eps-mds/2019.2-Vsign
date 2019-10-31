@@ -12,9 +12,17 @@ class IdCheckJob < ApplicationJob
       image: {
         s3_object: {
           bucket: Rails.application.credentials[Rails.env.to_sym][:aws][:bucket],
-          name: 'file'
+          name: 'file' # 'file' =  'IMAGE 2019-10-26 18:26:52.jpg'
         },
       },
     })
+
+    resp.text_detections.each do |text|
+      if text.type = "line"
+        puts "#{text.detected_text}-#{text.id}"
+      end
+    end
+
   end
+  
 end
