@@ -1,17 +1,17 @@
 import React, { useState } from 'react';
 import { Content, ButtonToolbar, Button, FlexboxGrid, Container, Form, FormGroup, ControlLabel, FormControl } from 'rsuite';
-import { LoginPanel } from './styles';
+import { LoginPanel, InvalidSpan } from './styles';
 import { loginUser } from '../../graphql/mutations';
 
 export default function LoginPage({ history }) {
 	const [email, setEmail] = useState("");
 	const [password, setPassword] = useState("");
+	const [wrongPassword, setWrongPassword] = useState(false);
 
 	const handleLogin = (email, password) => {
-		loginUser({email, password}).then(({ data }) => {
-			console.log(data);
-			history.push("/contracts")
-		})
+		loginUser({email, password}).then(({ data }) => (
+			data.login === null ? setWrongPassword(true) : history.push("/contracts")
+		))
 	}
 
 	return (
@@ -28,6 +28,7 @@ export default function LoginPage({ history }) {
 								<FormGroup>
 									<ControlLabel>Senha</ControlLabel>
 									<FormControl onChange={event => setPassword(event)} name="password" type="password" />
+								{ wrongPassword ? <InvalidSpan>Login/Senha inválidos</InvalidSpan> : null}
 								</FormGroup>
 								<FormGroup>
 									<ButtonToolbar>
