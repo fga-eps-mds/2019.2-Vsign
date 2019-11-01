@@ -17,7 +17,7 @@ export default function Introduction({ history, ...props }) {
     return (
       <Container>
         <Navbar />
-        <SigningSteps history={props.history} />
+        <SigningSteps history={history} />
         <SigningTips />
       </Container>
     )

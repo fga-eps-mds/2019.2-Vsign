@@ -7,15 +7,15 @@ const { Column, HeaderCell, Cell } = Table;
 
 const ActionCell = ({ rowData, dataKey, ...props }) => {
 	return (
-	  <Cell {...props} className="link-group">
-		<IconButton
-		  appearance="subtle"
-		  href="/introduction"
-		  icon={<Icon icon="edit2" />}
-		/>
-	  </Cell>
+		<Cell {...props} className="link-group">
+			<IconButton
+				appearance="subtle"
+				href={`/introduction/${dataKey}`}
+				icon={<Icon icon="edit2" />}
+			/>
+		</Cell>
 	);
-  };
+};
 
 const StatusCell = ({ rowData, dataKey, ...props }) => {
 	const results = {
@@ -40,10 +40,10 @@ const StatusCell = ({ rowData, dataKey, ...props }) => {
 	return (
 		<Cell {...props}>
 			<Badge style={{ 'background': result.background }} content={result.text} />
-	  	</Cell>
+		</Cell>
 	);
-  };
-  
+};
+
 const ResultCell = ({ rowData, dataKey, ...props }) => {
 	const results = {
 		'approved': {
@@ -67,60 +67,60 @@ const ResultCell = ({ rowData, dataKey, ...props }) => {
 	return (
 		<Cell {...props}>
 			<Badge style={{ 'background': result.background }} content={result.text} />
-	  	</Cell>
+		</Cell>
 	);
-  };
-  
+};
+
 
 export default function Contracts() {
-    return (
-        <Section>
-            <FlexboxGrid justify="center">
-                <FlexboxGrid.Item colspan={15}>
-                <Panel bodyFill>
-					<Table height={400} data={data}>
-						<Column flexGrow={1} align="center" fixed>
-							<HeaderCell>Id</HeaderCell>
-							<Cell dataKey="id" />
-						</Column>
+	return (
+		<Section>
+			<FlexboxGrid justify="center">
+				<FlexboxGrid.Item colspan={15}>
+					<Panel bodyFill>
+						<Table height={400} data={data}>
+							<Column flexGrow={1} align="center" fixed>
+								<HeaderCell>Id</HeaderCell>
+								<Cell dataKey="id" />
+							</Column>
 
-						<Column flexGrow={2}>
-							<HeaderCell>Empresa</HeaderCell>
-							<Cell dataKey="company" />
-						</Column>
+							<Column flexGrow={2}>
+								<HeaderCell>Empresa</HeaderCell>
+								<Cell dataKey="company" />
+							</Column>
 
-						<Column flexGrow={2}>
-							<HeaderCell>Data de Abertura</HeaderCell>
-							<Cell dataKey="createdAt" />
-						</Column>
-						<Column flexGrow={2}>
-							<HeaderCell>Data de Vencimento</HeaderCell>
-							<Cell dataKey="expiresAt" />
-						</Column>
+							<Column flexGrow={2}>
+								<HeaderCell>Data de Abertura</HeaderCell>
+								<Cell dataKey="createdAt" />
+							</Column>
+							<Column flexGrow={2}>
+								<HeaderCell>Data de Vencimento</HeaderCell>
+								<Cell dataKey="expiresAt" />
+							</Column>
 
-						<Column flexGrow={1}>
-							<HeaderCell>Tipo</HeaderCell>
-							<Cell dataKey="kind" />
-						</Column>
+							<Column flexGrow={1}>
+								<HeaderCell>Tipo</HeaderCell>
+								<Cell dataKey="kind" />
+							</Column>
 
-						<Column flexGrow={1}>
-							<HeaderCell>Status</HeaderCell>
-							<StatusCell dataKey="status" />
-						</Column>
-				
-						<Column flexGrow={1}>
-							<HeaderCell>Resultado</HeaderCell>
-							<ResultCell dataKey="result" />
-						</Column>
+							<Column flexGrow={1}>
+								<HeaderCell>Status</HeaderCell>
+								<StatusCell dataKey="status" />
+							</Column>
 
-						<Column>
-							<HeaderCell>Assinatura</HeaderCell>
-							<ActionCell dataKey="id" />
-						</Column>
-				    </Table>
-  				</Panel>
-			</FlexboxGrid.Item>
-		</FlexboxGrid>
-	</Section>
-    );
+							<Column flexGrow={1}>
+								<HeaderCell>Resultado</HeaderCell>
+								<ResultCell dataKey="result" />
+							</Column>
+
+							<Column>
+								<HeaderCell>Assinatura</HeaderCell>
+								<ActionCell dataKey="token" />
+							</Column>
+						</Table>
+					</Panel>
+				</FlexboxGrid.Item>
+			</FlexboxGrid>
+		</Section>
+	);
 };

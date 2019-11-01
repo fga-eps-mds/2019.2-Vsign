@@ -21,6 +21,7 @@ class reviewUserVideo extends Component {
         
         if (!checkToken) {
             restrictedAccess(this.props.history);
+            return undefined;
         }
 
         this.state = {

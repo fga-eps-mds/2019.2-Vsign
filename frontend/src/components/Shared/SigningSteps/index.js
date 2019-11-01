@@ -2,9 +2,8 @@ import React from 'react';
 import { FlexboxGrid, Steps } from 'rsuite';
 import { Section } from './styles';
 
-export default function SigningSteps(history) {
-   
-    let url =  history.history.location.pathname
+export default function SigningSteps(props) {
+    let url = props.history.location.pathname
     let current = 0
     switch (url) {
         case "/introduction":
