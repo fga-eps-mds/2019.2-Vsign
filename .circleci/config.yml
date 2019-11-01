@@ -133,6 +133,19 @@ jobs:
           command: |
             ./cc-test-reporter sum-coverage --output - coverage/codeclimate.*.json | ./cc-test-reporter upload-coverage --debug --input -
 
+  mkdocs:
+    docker:
+      - image: circleci/python:3.6-jessie-browsers
+    steps:
+      - checkout
+      - run:
+          name: Install and configure dependencies
+          command: |
+            git config user.email "ci-buildd@vsign.com"
+            git config user.name "ci-build"
+            sudo pip install mkdocs
+  
+
 workflows:
   version: 2
   build_and_test:
@@ -159,3 +172,9 @@ workflows:
           filters:
             branches:
               only: develop
+  deploy_mkdocs:
+    jobs:
+      - doc:
+          filters:
+            branches:
+              only: master
