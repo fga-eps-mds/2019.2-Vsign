@@ -144,6 +144,13 @@ jobs:
             git config user.email "ci-buildd@vsign.com"
             git config user.name "ci-build"
             sudo pip install mkdocs
+      - add_ssh_keys:
+          fingerprints:
+            - "54:92:51:fb:31:89:aa:2f:07:98:d8:6c:51:38:31:eb"
+      - run:
+          name: Before Deploy
+          command: mkdocs build --clean
+      
   
 
 workflows:
@@ -174,7 +181,7 @@ workflows:
               only: develop
   deploy_mkdocs:
     jobs:
-      - doc:
+      - mkdocs:
           filters:
             branches:
               only: master
