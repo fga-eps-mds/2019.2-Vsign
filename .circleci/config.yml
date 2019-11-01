@@ -150,8 +150,10 @@ jobs:
       - run:
           name: Before Deploy
           command: mkdocs build --clean
+      - run:
+          name: Deploy Docs
+          command: mkdocs gh-deploy
       
-  
 
 workflows:
   version: 2
