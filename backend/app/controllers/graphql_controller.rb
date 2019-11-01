@@ -16,7 +16,7 @@ class GraphqlController < ApplicationController
       context: context, 
       operation_name: operation_name
     )
-    result = execute_schema
+    # result = execute_schema
     render json: result
   rescue StandardError => e
     raise e unless Rails.env.development?
