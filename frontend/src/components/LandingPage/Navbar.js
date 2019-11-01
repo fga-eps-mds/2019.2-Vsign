@@ -2,8 +2,12 @@ import React from 'react';
 import { Navbar, Nav, FlexboxGrid, Icon } from 'rsuite';
 import { StyledHeader, Logo } from './styles';
 import VsignLogo from '../../assets/images/vsign.png';
+import { connect } from 'react-redux';
 
 const NavBarInstance = ({ onSelect, activeKey, ...props }) => {
+    const token = localStorage.getItem("userToken");
+    const { name } = props;
+
     return (
         <StyledHeader>
             <Navbar style={{ 'backgroundColor': 'transparent' }}>
@@ -22,8 +26,8 @@ const NavBarInstance = ({ onSelect, activeKey, ...props }) => {
                                 <Nav.Item href="#api" >
                                     Documentação
                                 </Nav.Item>
-                                <Nav.Item href="/login" icon={<Icon icon="lock" />}>
-                                    Login
+                                <Nav.Item href={token ? "/contracts" : "/login"} icon={<Icon icon="lock" />}>
+                                    {token ? name : "Login"}
                                 </Nav.Item>
                             </Nav>
                         </Navbar.Body>
@@ -32,6 +36,9 @@ const NavBarInstance = ({ onSelect, activeKey, ...props }) => {
             </Navbar>
         </StyledHeader>
     );
-  };
+};
 
-  export default NavBarInstance;
+const mapStateToProps = store => ({
+    name: store.user.name
+})
+export default connect(mapStateToProps)(NavBarInstance);

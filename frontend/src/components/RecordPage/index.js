@@ -17,7 +17,7 @@ import Record from 'videojs-record/dist/videojs.record.js';
 import '@mattiasbuelens/web-streams-polyfill/dist/polyfill.min.js';
 import 'videojs-record/dist/plugins/videojs.record.webm-wasm.js';
 import 'videojs-record/dist/plugins/videojs.record.ts-ebml.js';
-import {  FlexboxGrid, Content, Col, Panel} from 'rsuite';
+import { FlexboxGrid, Content, Col, Panel } from 'rsuite';
 import Navbar from './Navbar';
 import SigningSteps from '../Shared/SigningSteps';
 import 'rsuite/dist/styles/rsuite-default.css';
@@ -26,6 +26,7 @@ import ActionButtons from './ActionButtons.js';
 import ScriptControl from './ScriptControl.js';
 import Tour from 'reactour'
 import "./recordUserVideo.css"
+import { checkToken, restrictedAccess } from '../../utils/checkToken.js';
 const videoJsOptions = {
     controls: false,
     screen: true,
@@ -60,6 +61,11 @@ const videoJsOptions = {
 class recordUserVideo extends Component {
     constructor(props) {
         super(props);
+
+        if (!checkToken) {
+            restrictedAccess(this.props.history)
+        }
+        
         this.state = {
             scriptBlock: ["Bloco de roteiro 0Bloco de roteiro 0Bloco de roteiro 0Bloco de roteiro 0", "Bloco de roteiro 1", "Bloco de roteiro 2", "Bloco de roteiro 3", "Bloco de roteiro 4"],
             scriptPosition: 1,
@@ -328,66 +334,65 @@ class recordUserVideo extends Component {
             scriptText = <ScriptBlock> {this.state.scriptBlock[index]}</ScriptBlock>
         }
 
-        const accentColor = 'linear-gradient(to right, #1c8f9e, #5cb7b7)'
+        const accentColor = 'linear-gradient(to right, #1c8f9e, #5cb7b7)';
+
         return (
             <Container data-tour='step0'>
                 <Navbar />
                 <SigningSteps history={this.props.history} />
                 <Content>
-                    
-                            <FlexboxGrid justify="center">
-                                <FlexboxGrid.Item  componentClass={Col} colspan={52} md={10} >
-                                    <VideoDiv >
-                                        <div data-vjs-player>
-                                            <video  data-tour='step1' style={{ backgroundColor: "#556073" }} ref={node => this.videoNode = node} className="video-js vjs-default-skin" playsInline>
-                                            </video>
-                                            <div style={{ display: "none" }}>
-                                                <ReactMic
-                                                    style={{ display: "none" }}
-                                                    record={this.state.record}
-                                                    className="sound-wave"
-                                                    onStop={this.onStop}
-                                                    onData={this.onData}
-                                                    strokeColor="#000000"
-                                                    backgroundColor="#FF4081" />
-                                            </div>
-                                            <SquareDiv data-tour='step2' />
-                                        </div>
-                                    </VideoDiv>
-                                </FlexboxGrid.Item>
-                                <FlexboxGrid.Item componentClass={Col} colspan={22} md={10}>
-                                    <div data-tour='step3'>
-                                    <ActionButtons 
-                                        record={this._record}
-                                        startTour={this._startTour}
-                                        isRecording={this.state.record}
-                                    />
+
+                    <FlexboxGrid justify="center">
+                        <FlexboxGrid.Item componentClass={Col} colspan={52} md={10} >
+                            <VideoDiv >
+                                <div data-vjs-player>
+                                    <video data-tour='step1' style={{ backgroundColor: "#556073" }} ref={node => this.videoNode = node} className="video-js vjs-default-skin" playsInline>
+                                    </video>
+                                    <div style={{ display: "none" }}>
+                                        <ReactMic
+                                            style={{ display: "none" }}
+                                            record={this.state.record}
+                                            className="sound-wave"
+                                            onStop={this.onStop}
+                                            onData={this.onData}
+                                            strokeColor="#000000"
+                                            backgroundColor="#FF4081" />
                                     </div>
-                                    <Panel bordered data-tour='step4'>
-                                        {scriptText}
-                                    </Panel>
-                                    <div data-tour='step5'>
-                                    <ScriptControl 
-                                        isRecording={this.state.record}
-                                        nextScriptBlock={this._nextScriptBlock}
-                                        stepSize={stepSize}
-                                    />
-                                    </div>
-                                </FlexboxGrid.Item>
-                            </FlexboxGrid>
+                                    <SquareDiv data-tour='step2' />
+                                </div>
+                            </VideoDiv>
+                        </FlexboxGrid.Item>
+                        <FlexboxGrid.Item componentClass={Col} colspan={22} md={10}>
+                            <div data-tour='step3'>
+                                <ActionButtons
+                                    record={this._record}
+                                    startTour={this._startTour}
+                                    isRecording={this.state.record}
+                                />
+                            </div>
+                            <Panel bordered data-tour='step4'>
+                                {scriptText}
+                            </Panel>
+                            <div data-tour='step5'>
+                                <ScriptControl
+                                    isRecording={this.state.record}
+                                    nextScriptBlock={this._nextScriptBlock}
+                                    stepSize={stepSize}
+                                />
+                            </div>
+                        </FlexboxGrid.Item>
+                    </FlexboxGrid>
                 </Content>
                 <Tour
                     steps={steps}
                     isOpen={this.state.isTourOpen}
                     onRequestClose={this.closeTour}
-                    onBeforeClose={target => (document.body.style.overflowY = 'auto')} 
+                    onBeforeClose={target => (document.body.style.overflowY = 'auto')}
                     maskClassName="mask"
                     className="helper"
                     rounded={5}
-                    accentColor={accentColor}/>
+                    accentColor={accentColor} />
             </Container>
-
-
         );
     }
 }

@@ -13,10 +13,16 @@ import SigningSteps from '../Shared/SigningSteps';
 import Navbar from './Navbar';
 import { uploadMutation } from '../../graphql/mutations';
 import { directUpload, getFileMetadata } from '../../utils/activestorage';
+import { checkToken, restrictedAccess } from '../../utils/checkToken.js';
 
 class reviewUserVideo extends Component {
     constructor(props) {
         super(props);
+        
+        if (!checkToken) {
+            restrictedAccess(this.props.history);
+        }
+
         this.state = {
             signatureVideo: {},
             signatureAudio: {},
@@ -28,12 +34,10 @@ class reviewUserVideo extends Component {
 
     componentDidMount() {
         this._getTheSignatureObjects();
-
     }
 
     componentWillMount() {
         this._getTheSignatureObjects();
-
     }
 
     _endTheOperation = () => {

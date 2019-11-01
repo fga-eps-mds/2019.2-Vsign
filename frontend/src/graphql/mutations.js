@@ -19,6 +19,23 @@ export async function uploadMutation(variables) {
     return response;
 }
 
+export async function current_user() {
+    const CURRENT_USER = gql`
+        query currentUser {
+            currentUser {
+                id
+                name
+            }
+        }
+    `;
+
+    const response = await apollo.query({
+        query: CURRENT_USER
+    })
+
+    return response;
+}
+
 export async function loginUser(variables) {
     const LOGIN_USER = gql`
         mutation login($email: String!, $password: String!) {

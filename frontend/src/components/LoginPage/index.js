@@ -2,16 +2,28 @@ import React, { useState } from 'react';
 import { Content, ButtonToolbar, Button, FlexboxGrid, Container, Form, FormGroup, ControlLabel, FormControl } from 'rsuite';
 import { LoginPanel, InvalidSpan } from './styles';
 import { loginUser } from '../../graphql/mutations';
+import { connect } from 'react-redux';
+import { bindActionCreators } from 'redux';
+import { setUserName } from '../../actions/user/user_actions';
 
-export default function LoginPage({ history }) {
+function LoginPage({ history, ...props }) {
 	const [email, setEmail] = useState("");
 	const [password, setPassword] = useState("");
 	const [wrongPassword, setWrongPassword] = useState(false);
+	const { setUserName } = props;
 
 	const handleLogin = (email, password) => {
-		loginUser({email, password}).then(({ data }) => (
-			data.login === null ? setWrongPassword(true) : history.push("/contracts")
-		))
+		const token = localStorage.getItem("userToken");
+
+		token ? history.push("/contracts") : loginUser({email, password}).then(({ data }) => {
+			if (data.login) {
+				localStorage.setItem("userToken", data.login.token);
+				setUserName(data.login.name);
+				history.push("/contracts");
+			} else {
+				setWrongPassword(true);
+			}
+		})
 	}
 
 	return (
@@ -44,3 +56,7 @@ export default function LoginPage({ history }) {
 		</Container>
 	);
 };
+
+const mapDispatchToProps = dispatch => bindActionCreators({ setUserName }, dispatch);
+
+export default connect(null, mapDispatchToProps)(LoginPage);
