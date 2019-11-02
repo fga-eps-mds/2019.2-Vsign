@@ -1,7 +1,7 @@
 import { SET_NAME } from "../actions/user/user_types";
 
 const initialState = {
-  name: "marcos"
+  name: ""
 };
 
 export const userReducer = (state = initialState, action) => {
