@@ -18,14 +18,17 @@ references:
       POSTGRES_USER: vsign
       POSTGRES_DB: vsign_test
       POSTGRES_PASSWORD: ""
+  default_docker_node_executor: &default_docker_node_executor
+    image: circleci/node:12.2.0
 
 jobs:
   build:
     docker:
       - *default_docker_ruby_executor
+      - *default_docker_node_executor
     steps:
       - checkout
-      # Which version of bundler?
+      # RAILS - Which version of bundler?
       - run:
           name: Which bundler?
           command: bundle -v
@@ -36,13 +39,31 @@ jobs:
             - vsign-
       - run:
           working_directory: ./backend
-          name: Bundle Install
+          name: Rails - Bundle Install
           command: bundle check || bundle install
       # Store bundle cache
       - save_cache:
           key: vsign-{{ checksum "backend/Gemfile.lock" }}
           paths:
             - vendor/bundle
+            
+       # REACT - Download and cache dependencies
+      - restore_cache:
+          keys:
+            - vsign-{{ checksum "frontend/package.json" }}
+            # fallback to using the latest cache if no exact match is found
+            - vsign-
+
+      - run: 
+          working_directory: ./frontend
+          name: React - Yarn Install
+          command: yarn install
+
+      - save_cache:
+          paths:
+            - node_modules
+          key: vsign-{{ checksum "frontend/package.json" }}
+
 
   deploy_staging:
     docker:
