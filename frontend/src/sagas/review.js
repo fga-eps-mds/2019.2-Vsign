@@ -1,6 +1,6 @@
 import { all, select, call, takeEvery } from 'redux-saga/effects';
 import { FINISH_SIGNATURE_REVIEW } from '../constants/review';
-import { upload } from '../components/reviewUserVideo/services';
+import { upload } from '../components/ReviewPage/services';
 
 function* handleFinishSignatureReview(action) {
     const { video } = yield select(state => state.record);
@@ -14,6 +14,6 @@ function * watchFinishSignatureReview() {
 
 export default function* rootSessionSaga() {
     yield all([
-        watchFinishSignatureReview(),
+        watchFinishSignatureReview()
     ]);
 }
