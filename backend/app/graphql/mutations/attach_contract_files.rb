@@ -17,7 +17,7 @@ module Mutations
       contract.audio.attach(files[audio])
 
       images.each {|image| contract.image.attach(image)}
-      ExtractAudioTextJob.perform_later contract
+      ExtractAudioTextJob.perform_later contract.id
     end
   end
 end
