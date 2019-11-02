@@ -1,5 +1,5 @@
 
-import { BrowserRouter, Route } from "react-router-dom";
+import { BrowserRouter, Route, Switch } from "react-router-dom";
 import LandingPage from './components/LandingPage/index';
 import Uploadimage from './components/UploadImage/UploadImage';
 import LoginPage from './components/LoginPage';
@@ -17,8 +17,8 @@ export class routes extends Component {
     }
     render() {
         return (
-            <div>
-                <BrowserRouter>
+            <BrowserRouter>
+                <Switch>
                     <Route path="/" exact component={LandingPage} />
                     <Route path="/contracts" component={ContractsPage} />
                     <Route exact location={this.props.location} path='/record' component={RecordPage} />
@@ -27,8 +27,8 @@ export class routes extends Component {
                     <Route path='/introduction' location={this.props.location} component={Introduction} />
                     <Route path='/upload_document' location={this.props.location} component={Uploadimage} />
                     <Route path="/script" component={ScriptPage} />
-                </BrowserRouter>
-            </div>
+                </Switch>
+            </BrowserRouter>
         )
     }
 }

@@ -1,6 +1,6 @@
-import { SET_RECORD_ASSETS } from '../constants/record';
+import { SET_SIGNATURE_ASSETS } from '../constants/record';
 
 export const setSignatureAssetsAction = (payload) => ({
-    type: SET_RECORD_ASSETS,
+    type: SET_SIGNATURE_ASSETS,
     payload
 });
