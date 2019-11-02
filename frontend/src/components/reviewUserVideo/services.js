@@ -2,12 +2,17 @@ import { uploadMutation } from '../../graphql/mutations';
 import { directUpload, getFileMetadata } from '../../utils/activestorage';
 
 
-export default upload =  async (file) => {
-        const input = await getFileMetadata(file);
-        const { data } = await uploadMutation({ input });
-        const { createDirectUpload } = data;
-        const { url, headers, signedBlobId } = createDirectUpload;
-        const response = await directUpload(url, JSON.parse(headers), file)
-        return {response, signedBlobId}
-        // do smth with signedBlobId – our file has been uploaded!
+export const upload = async (file) => {
+    console.log(file);
+    getFileMetadata(file).then(a => console.log(a));
+    // console.log(input);
+    const input = {};
+    const { data } = await uploadMutation({ input });
+    const { createDirectUpload } = data;
+    const { url, headers, signedBlobId } = createDirectUpload;
+    const response = await directUpload(url, JSON.parse(headers), file)
+    return {
+        response,
+        signedBlobId
+    };
 }

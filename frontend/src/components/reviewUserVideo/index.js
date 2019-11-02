@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import { withRouter} from 'react-router-dom';
+import { connect} from 'react-redux';
 import {
     VideoDivReview,
     ScriptBlockDivReview,
@@ -11,13 +11,18 @@ import { Button, FlexboxGrid, Container, Content, Panel, ButtonGroup } from 'rsu
 import 'rsuite/dist/styles/rsuite-default.css';
 import SigningSteps from '../Shared/SigningSteps';
 import Navbar from './Navbar';
-import { uploadMutation } from '../../graphql/mutations';
-import { directUpload, getFileMetadata } from '../../utils/activestorage';
-import { upload } from './services'
+// import { attachContractFilesMutation } from '../../graphql/mutations';
+// import { directUpload, getFileMetadata } from '../../utils/activestorage';
+// import { upload } from './services';
+import FinishButton from './FinishButton.js';
+import { finishSignatureReviewAction } from '../../actions/review';
+
+
 class reviewUserVideo extends Component {
     constructor(props) {
         super(props);
         this.state = {
+            files: {},
             signatureVideo: {},
             signatureAudio: {},
             signatureImage: [],
@@ -37,41 +42,82 @@ class reviewUserVideo extends Component {
     }
 
     _endTheOperation = () => {
-        
+        this.props.finishSignatureReviewAction();
+        // this.props.history.push({
+        //     pathname: '/review',
+        //     state: {
+        //         signatureAudio: this.state.signatureAudio,
+        //         signatureVideo: this.state.signatureVideo
+        //     }
+        // });
+        // await this._uploadAudio();
+        // await this._uploadImages();
+        // await this._uploadVideo();
 
-        this.props.history.push({
-            pathname: '/review',
-            state: {
-                signatureAudio: this.state.signatureAudio,
-                signatureVideo: this.state.signatureVideo
-            }
-        })
-
+        // this._attachContactFiles();
     }
 
-    _uploadVideo = () => {
-        const file = this.state.signatureVideo;
-        upload(file)
-    }
+    // _attachContactFiles = async () => {
+    //     try {
+    //         const variables = {
+    //             contractId: 1,
+    //             files: this.state.files
+    //         };
+    //         const attachment = await attachContractFilesMutation(variables);
+    //     } catch (err) {
+    //         console.log("Não foi possível anexar os arquivos ao contrato.");
+    //     }
+    // }
 
-    _uploadAudio = () => {
-        const file = this.state.signatureAudio;
-        upload(file)
-    }
+    // _uploadVideo = async () => {
+    //     console.log('aaaa');
+    //     const file = this.state.signatureVideo;
+    //     const { signedBlobId } = await upload(file);
+    //     console.log(signedBlobId);
+    //     this.setState({
+    //         files: {
+    //             ...this.state.files,
+    //             video: signedBlobId
+    //         }
+    //     });
+    // }
 
-    _uploadImages = () => {
-        const image_array_size = this.state.signatureImage.length
-        let image_to_upload = []
-        for (let index = 0; index < 3; index++) {
-            const randomIndex = Math.floor(Math.random() * (image_array_size - 1 ));   
-            image_to_push = this.state.signatureImage[randomIndex]
-            image_to_upload.push(image_to_push)
-        }
-         
-        image_to_upload.map((image) => {
-            upload(image) 
-        })
-    }
+    // _uploadAudio = async () => {
+    //     console.log('upload audio');
+    //     const file = this.state.signatureAudio;
+    //     console.log(file);
+    //     const { signedBlobId } = await upload(file);
+    //     console.log(signedBlobId);
+    //     this.setState({
+    //         files: {
+    //             ...this.state.files,
+    //             audio: signedBlobId
+    //         }
+    //     });
+    // }
+
+    // _uploadImages = async () => {
+    //     const image_array_size = this.state.signatureImage.length
+    //     let image_to_upload = []
+    //     for (let index = 0; index < 3; index++) {
+    //         const randomIndex = Math.floor(Math.random() * (image_array_size - 1 ));   
+    //         const image_to_push = this.state.signatureImage[randomIndex]
+    //         image_to_upload.push(image_to_push)
+    //     }
+
+    //     const ref = this;
+    //     image_to_upload.map( async (image) => {
+    //         let { signedBlobId } = await upload(image);
+    //         ref.setState({
+    //             files: {
+    //                 ...ref.state.files,
+    //                 images: [
+    //                     ...ref.state.images, signedBlobId
+    //                 ]
+    //             }
+    //         });
+    //     })
+    // }
 
     _redoTheOperation = () => {
         this.props.history.push({
@@ -141,12 +187,7 @@ class reviewUserVideo extends Component {
                                                 Regravar o vídeo
                                             </IntructionTextBtn>
                                         </Button>
-
-                                        <Button appearance='primary' size='md' color='blue'  onClick={() => this._endTheOperation()}>
-                                            <IntructionTextBtn>
-                                                Finalizar assinatura 
-                                            </IntructionTextBtn>  
-                                        </Button>
+                                        <FinishButton />  
                                     </ButtonGroup>  
 
                                 </SpecialContainer>
@@ -163,4 +204,9 @@ class reviewUserVideo extends Component {
     }
 }
 
-export default withRouter(reviewUserVideo);
+const mapStateToProps = {};
+const mapDispatchToProps = {
+    finishSignatureReviewAction
+};
+
+export default connect(mapStateToProps, mapDispatchToProps)(reviewUserVideo);

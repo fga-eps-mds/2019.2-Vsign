@@ -1,0 +1,1 @@
+export const SET_RECORD_ASSETS = 'SET_RECORD_ASSETS';

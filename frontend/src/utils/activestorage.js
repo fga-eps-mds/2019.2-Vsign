@@ -1,20 +1,20 @@
 import { FileChecksum } from "activestorage/src/file_checksum";
 import { BlobUpload } from "activestorage/src/blob_upload";
 
-function calculateChecksum(file) {
+async function calculateChecksum(file) {
   return new Promise((resolve, reject) => {
     FileChecksum.create(file, (error, checksum) => {
       if (error) {
         reject(error);
         return;
       }
-
       resolve(checksum);
     });
   });
 }
 
-export const getFileMetadata = (file) => {
+export const getFileMetadata = async (file) => {
+  console.log(file);
   return new Promise((resolve) => {
     calculateChecksum(file).then((checksum) => {
       resolve({
@@ -24,7 +24,7 @@ export const getFileMetadata = (file) => {
         byteSize: file.size
       });
     });
-  });
+  }).then(metadata => metadata);
 };
 
 export const directUpload = (url, headers, file) => {

@@ -1,5 +1,7 @@
 import React, { Component } from 'react';
 import { withRouter } from 'react-router-dom';
+import { connect } from 'react-redux';
+import { setSignatureAssetsAction } from '../../actions/record';
 import {
     Container,
     VideoDiv,
@@ -117,8 +119,8 @@ class recordUserVideo extends Component {
             let url = ""
             url = URL.createObjectURL(new Blob(binaryData, { type: "video/webm" }));
 
-            console.log("Audio:::")
-            console.log(this.state.signatureAudio)
+            // console.log("Audio:::")
+            // console.log(this.state.signatureAudio)
             // this.props.history.push({
             //     pathname: '/review',
             //     state: { 
@@ -222,14 +224,12 @@ class recordUserVideo extends Component {
         binaryData.push(last);
         let url = ""
         url = URL.createObjectURL(new Blob(binaryData, { type: "video/webm" }));
-        this.props.history.push({
-            pathname: '/review',
-            state: {
-                signatureAudio: this.state.signatureAudio,
-                signatureVideo: this.state.signatureVideo,
-                signatureImage: this.state.signatureImage,
-                url: url
-            }
+        
+        this.props.setSignatureAssetsAction({
+            url,
+            audio: this.state.signatureAudio,
+            video: this.state.signatureVideo,
+            images: this.state.signatureImage,
         })
     }
 
@@ -332,7 +332,7 @@ class recordUserVideo extends Component {
         return (
             <Container data-tour='step0'>
                 <Navbar />
-                <SigningSteps history={this.props.history} />
+                {/* <SigningSteps /> */}
                 <Content>
                     
                             <FlexboxGrid justify="center">
@@ -392,4 +392,10 @@ class recordUserVideo extends Component {
     }
 }
 
-export default withRouter(recordUserVideo);
+const mapStateToProps = {};
+
+const mapDispatchToProps = {
+    setSignatureAssetsAction
+};
+
+export default connect(null, mapDispatchToProps)(recordUserVideo);

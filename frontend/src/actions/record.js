@@ -1,20 +1,6 @@
-export const setRecordVideoAction = (video) => ({
-    type: 'SET_VIDEO',
-    payload: {
-        video
-    }
-});
+import { SET_RECORD_ASSETS } from '../constants/record';
 
-export const setRecordAudioAction = (video) => ({
-    type: 'SET_VIDEO',
-    payload: {
-        video
-    }
-});
-
-export const setRecordImagesAction = (video) => ({
-    type: 'SET_IMAGES',
-    payload: {
-        video
-    }
+export const setSignatureAssetsAction = (payload) => ({
+    type: SET_RECORD_ASSETS,
+    payload
 });
