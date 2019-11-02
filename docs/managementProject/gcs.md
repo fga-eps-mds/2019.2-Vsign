@@ -1,9 +1,9 @@
-### Histórico de Revisões
+### Histórico de Versão
 
 | Versão | Descrição     | Autor   |
 |:------:|:-------------:|:-------:|
 |  0.1   | Introdução, Uso de Issues | Thiago Ribeiro|
-|  0.2   | Templates de Issues | @caue96 |
+|  0.2   | Templates de Issues | [Cauê](https://github.com/caue96) |
 
 -----
 

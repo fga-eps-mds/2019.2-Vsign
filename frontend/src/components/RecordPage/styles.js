@@ -1,4 +1,5 @@
 import styled from 'styled-components';
+import {Nav, Panel } from 'rsuite';
 
 export const Container = styled.div`
     display: flex;
@@ -18,12 +19,12 @@ export const InstructionBtn = styled.div`
     justify-content: center;
 `;
 export const IntructionTextBtn = styled.p`
-    display: flex;
-    font-size: 30;
+   
+    font-size: 14px;
     font-weight: bold;
-    font-family: Arial, Helvetica, sans-serif;
-    color: black;
-    align-self: center;
+    font-family: 'Open Sans', sans-serif;
+    color: white;
+
     `;
 
 export const RowOnTop = styled.div`
@@ -32,17 +33,20 @@ export const RowOnTop = styled.div`
     justify-content: space-around;
     align-items: center;
     padding-bottom: 3%;
-    margin-top: 3
+    margin-top: 10vh
     `;
 
 export const VideoDiv = styled.div`
     display: flex;
     align-items: center;
     justify-content: center;
-    flex: 4
+    width: 100%;
+    height: 100%;
+    transform: scale(-1, 1);
+    align-self: flex-start
     `;
 
-export const ScriptBlockDiv = styled.div`
+export const ScriptBlockDiv = styled(Panel)`
     display: flex;
     flex: 4
     flex-direction: row;
@@ -54,21 +58,18 @@ export const ScriptBlockDiv = styled.div`
     background-color: white;
     border-style: solid;
     border-color: black;
-    border-width: 4px;
-    border-radius: 40px;
+    border-width: 1px;
     width: 852px;
     height: 188px;
     justify-content: center;
     align-items: center
 `;
 
-export const ScriptBlock = styled.p`
-    display: flex;
-    font-size: 30px;
+export const ScriptBlock = styled(Panel)`
+    font-size: 25px;
     font-weight: bold;
-    font-family: Arial, Helvetica, sans-serif;
+    font-family: 'Open Sans', sans-serif;
     color: black;
-    align-self: center
 `;
 
 export const ScriptBlockNextBtn = styled.div`
@@ -92,6 +93,7 @@ export const ScriptBlockNextBtnText = styled.p`
     font-weight: bold;
     font-size: 30px;
     color: white;
+    justify-content: center
 `;
 
 export const NextBtnDiv = styled.div`
@@ -107,8 +109,29 @@ export const NextBtnDiv = styled.div`
 export const SquareDiv = styled.div`
     position: absolute;
     border: 5px solid red;
-    top: 9%;
-    left: 15.33%;
-    width: 70%;
-    height: 76%;
+    top: 12%;
+    left: 19.33%;
+    width: 64%;
+    height: 68%;
+`;
+
+export const StyledNavItem = styled(Nav.Item)`
+    color: '#FFF';
+`;
+
+export const Title = styled.h1`
+    font-family: 'Dosis', sans-serif;
+    font-size: 2.57813rem;
+    margin-bottom: .5rem;
+`;
+    
+
+export const Section = styled.div`
+    position: relative;
+    border-bottom: none;
+    background-position: center center;
+    background-size: cover;
+    background-repeat: no-repeat;
+    padding-top: 3rem;
+    padding-bottom: 3rem;
 `;

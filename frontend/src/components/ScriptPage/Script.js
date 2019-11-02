@@ -11,14 +11,13 @@ import {
     withRouter,
     Switch,
     Route,
+    Link
   } from "react-router-dom";
+import SigningSteps from '../Shared/SigningSteps';
 
 
 
 //Modal structure
-function recordVideo(props){
-    props.history.push('/record')
-}
 
 function relataErro(props){
     props.history.push({
@@ -29,6 +28,11 @@ function relataErro(props){
 
 export class Script extends Component {
     previousLocation = this.props.location;
+
+  recordVideo(){
+      this.props.history.push({
+        pathname: "/record"})
+  }
 
   componentWillUpdate(nextProps) {
     let { location } = this.props;
@@ -49,8 +53,9 @@ export class Script extends Component {
         this.previousLocation !== location
         );
         return (
-            <div className='container borda'>
+            <div >
               <div>
+
                 <div className="show-fake-browser navbar-page">
                   <Container>
                     <Header>
@@ -71,14 +76,7 @@ export class Script extends Component {
                   </Container>
                 </div>
               </div>
-              <div className='steps borda'>
-                <Steps current={1}>
-                  <Steps.Item title="Instruções" description='Saiba como assinar o contrato'/>
-                  <Steps.Item title="Documento" description='Importe o seu documento de identificação'/>
-                  <Steps.Item title="Assinatura" description='Grave o video de assinatura do contrato'/>
-                  <Steps.Item title="Revisão" description='Revise a sua assinatura'/>
-                </Steps>
-              </div>
+                <SigningSteps history={this.props.history} />
                 <div className='cabecalho borda'>
                     <img src={user_icon} alt=''/>
                     <p>Contrato Nº###</p>
@@ -97,10 +95,12 @@ export class Script extends Component {
                       <p>(exibir o roteiro aqui)</p>
                   </div>
                   <div className='botoes borda'>
-                    <button className="gravar borda" onClick={() => recordVideo(this.props)}>
-                        <p>Próximo</p>
-                        <img src={camera_icon} alt="" />
-                    </button>
+                    <Link to="/record">
+                      <button className="gravar borda" onClick={() => this.recordVideo(this.props)}>
+                          <p>Próximo</p>
+                          <img src={camera_icon} alt="" />
+                      </button>
+                    </Link>
                     <div>
                         <Switch location={isModal ? this.previousLocation : location}>
                             <div>
@@ -155,4 +155,4 @@ function Modal({history }) {
     );
   }
   
-export default ScriptPage;
+export default withRouter(ScriptPage);
