@@ -18,7 +18,7 @@ class IdCheckJob < ApplicationJob
     })
 
     resp.text_detections.each do |text|
-      if text.type = "line"
+      if text.type === "line"
         puts "#{text.detected_text}-#{text.id}"
       end
     end
