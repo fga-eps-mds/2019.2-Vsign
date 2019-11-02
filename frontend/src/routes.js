@@ -1,5 +1,5 @@
 
-import { BrowserRouter, Route, Switch } from "react-router-dom";
+import { Route, Switch, withRouter } from "react-router-dom";
 import LandingPage from './components/LandingPage/index';
 import Uploadimage from './components/UploadImage/UploadImage';
 import LoginPage from './components/LoginPage';
@@ -17,18 +17,16 @@ export class routes extends Component {
     }
     render() {
         return (
-            <BrowserRouter>
-                <Switch>
-                    <Route path="/" exact component={LandingPage} />
-                    <Route path="/contracts" component={ContractsPage} />
-                    <Route path="/record" component={RecordPage} />
-                    <Route path="/login" exact component={LoginPage} />
-                    <Route path="/review" component={ReviewVideoPage} />
-                    <Route path='/introduction' location={this.props.location} component={Introduction} />
-                    <Route path='/upload_document' location={this.props.location} component={Uploadimage} />
-                    <Route path="/script" component={ScriptPage} />
-                </Switch>
-            </BrowserRouter>
+            <Switch>
+                <Route path="/" exact component={LandingPage} />
+                <Route path="/contracts" component={ContractsPage} />
+                <Route path="/record" component={withRouter(RecordPage)} />
+                <Route path="/login" exact component={LoginPage} />
+                <Route path="/review" component={withRouter(ReviewVideoPage)} />
+                <Route path='/introduction' location={this.props.location} component={Introduction} />
+                <Route path='/upload_document' location={this.props.location} component={Uploadimage} />
+                <Route path="/script" component={ScriptPage} />
+            </Switch>
         )
     }
 }

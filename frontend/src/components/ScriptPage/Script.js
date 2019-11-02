@@ -146,14 +146,6 @@ function Modal({history }) {
         </div>
       </div>
     );
-  }
+}
   
-  function ScriptPage() {
-    return (
-      <Router>
-        <Route component={Script} />
-      </Router>
-    );
-  }
-  
-export default withRouter(ScriptPage);
+export default withRouter(Script);

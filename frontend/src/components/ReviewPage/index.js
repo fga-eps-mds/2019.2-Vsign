@@ -8,14 +8,10 @@ import FinishButton from './FinishButton';
 import RedoButton from './RedoButton';
 
 export default class ReviewPage extends Component {
-    constructor(props) {
-        super(props);
-    }
-
     render() {
         return (
             <Container>
-                <Navbar />
+                {/* <Navbar /> */}
                 {/* <SigningSteps history={this.props.history} /> */}
                 <Content>
                     <FlexboxGrid justify="center">

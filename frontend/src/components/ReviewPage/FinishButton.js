@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
-import { IntructionTextBtn, } from './styles.js';
+import { IntructionTextBtn, } from './styles';
 import { Button } from 'rsuite';
 import { finishSignatureReviewAction } from '../../actions/review';
 
@@ -26,10 +26,8 @@ class reviewUserVideo extends Component {
     }
 }
 
-const mapStateToProps = {};
-
 const mapDispatchToProps = {
     finishSignatureReviewAction
 };
 
-export default connect(mapStateToProps, mapDispatchToProps)(reviewUserVideo);
+export default connect(null, mapDispatchToProps)(reviewUserVideo);

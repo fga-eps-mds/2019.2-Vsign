@@ -230,7 +230,8 @@ class recordUserVideo extends Component {
             audio: this.state.signatureAudio,
             video: this.state.signatureVideo,
             images: this.state.signatureImage,
-        })
+        });
+        this.props.history.push('/review');
     }
 
     returnScriptProgress = () => {
@@ -398,4 +399,4 @@ const mapDispatchToProps = {
     setSignatureAssetsAction
 };
 
-export default connect(null, mapDispatchToProps)(recordUserVideo);
+export default withRouter(connect(null, mapDispatchToProps)(recordUserVideo));

@@ -3,7 +3,7 @@ import { SET_SIGNATURE_ASSETS } from '../constants/record';
 import { history } from '../store';
 
 function* handleSetSignatureAssets(action) {
-    history.push('/review');
+    // history.push('/review');
 }
 
 function * watchSetSignatureAssets() {
