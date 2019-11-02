@@ -2,7 +2,7 @@ module Queries
   class GetContract < BaseQuery
     description "Finds contract by token or id"
     
-    argument :id, ID, required: true
+    argument :id, ID, required: false
     argument :token, String, required: false
 
     type Types::ContractType, null: true

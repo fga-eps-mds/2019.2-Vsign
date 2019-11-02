@@ -71,7 +71,6 @@ const ResultCell = ({ rowData, dataKey, ...props }) => {
 	);
 };
 
-
 export default function Contracts() {
 	return (
 		<Section>
