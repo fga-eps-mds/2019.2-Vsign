@@ -1,7 +1,14 @@
 class FaceMatchJob < ApplicationJob
   queue_as :default
-
-  def perform(*args)
+  
+  def perform(contract_id)
+    @contract = Contract.find(contract_id)
+    @contract.image.each |image_to_perform| face_matching(image_to_perform.download)
+  end
+  
+  private 
+  
+  def face_matching(video_image)
     client = Aws::Rekognition::Client.new({
       region: Rails.application.credentials.dig(:aws, :region),
       credentials: Aws::Credentials.new(
@@ -13,13 +20,15 @@ class FaceMatchJob < ApplicationJob
       source_image: {
         s3_object: {
           bucket: Rails.application.credentials[Rails.env.to_sym][:aws][:bucket],
-          name: 'file'
+          bytes: video_image
+          # name: 'file'
         },
       },
       target_image: {
         s3_object: {
           bucket: Rails.application.credentials[Rails.env.to_sym][:aws][:bucket],
-          name: 'file'
+          bytes: video_image 
+          # name: videoimage
         },
       },
       similarity_threshold: 80
@@ -31,5 +40,19 @@ class FaceMatchJob < ApplicationJob
       similarity = face_match.similarity
       puts "#{position.left}, #{position.top} matches with #{similarity}"
     end
+  
   end
+
+
+  def perform_next_job(similarity)
+    
+    if similarity >= 80
+      ExtractAudioTextJob.perform_later contract.id
+    else
+      @contract.status = "error, face matching fail"
+     end
+     
+  end
+
 end
+# contact.images.each
