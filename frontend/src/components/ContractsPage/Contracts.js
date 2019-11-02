@@ -10,7 +10,7 @@ const ActionCell = ({ rowData, dataKey, ...props }) => {
 		<Cell {...props} className="link-group">
 			<IconButton
 				appearance="subtle"
-				href={`/introduction/${dataKey}`}
+				href={`/introduction/1`}
 				icon={<Icon icon="edit2" />}
 			/>
 		</Cell>
@@ -114,7 +114,7 @@ export default function Contracts() {
 
 							<Column>
 								<HeaderCell>Assinatura</HeaderCell>
-								<ActionCell dataKey="token" />
+								<ActionCell dataKey="id" />
 							</Column>
 						</Table>
 					</Panel>

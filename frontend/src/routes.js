@@ -20,7 +20,7 @@ export class routes extends Component {
                     <Route path='/record' location={this.props.location} component={RecordPage} />
                     <Route path="/login" component={LoginPage} />
                     <Route path='/review' location={this.props.location} component={ReviewVideoPage} />
-                    <Route path='/introduction/t=:contract_token' location={this.props.location} component={Introduction} />
+                    <Route path='/introduction/:id' location={this.props.location} component={Introduction} />
                     <Route path='/upload_document' location={this.props.location} component={Uploadimage} />
                     <Route path="/script" component={ScriptPage} />
                 </BrowserRouter>

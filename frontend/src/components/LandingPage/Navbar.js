@@ -7,6 +7,7 @@ import { connect } from 'react-redux';
 const NavBarInstance = ({ onSelect, activeKey, ...props }) => {
     const token = localStorage.getItem("userToken");
     const { name } = props;
+    console.log(name);
 
     return (
         <StyledHeader>

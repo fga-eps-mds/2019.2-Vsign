@@ -8,12 +8,13 @@ export async function getContract(id, token) {
         id: $id
         token: $token
       ) {
-        id
-        script
-        order
-        user {
-          name
-        }
+          id
+          script
+          order
+          user {
+            name
+            token
+          }
       }
     }
   `;
