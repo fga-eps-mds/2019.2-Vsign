@@ -50,9 +50,8 @@ class FaceMatchJob < ApplicationJob
       ExtractAudioTextJob.perform_later contract.id
     else
       @contract.status = "error, face matching fail"
-     end
-     
+    end
+
   end
 
 end
-# contact.images.each
