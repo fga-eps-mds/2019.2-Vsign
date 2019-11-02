@@ -1,11 +1,12 @@
 class ExtractAudioTextJob < ApplicationJob
   queue_as :default
-  contract = Contract.find(contract_id)
 
 
   def perform(contract_id)
-    if contract.audio.attached?
-      binary = contract.audio.download
+    @contract = Contract.find(contract_id)
+
+    if @contract.audio.attached?
+      binary = @contract.audio.download
       speech = Google::Cloud::Speech.new
       config = { encoding: :FLAC,
           audio_channel_count: 2,
@@ -32,10 +33,12 @@ class ExtractAudioTextJob < ApplicationJob
   end  
 
   def chage_contract_status(percent)
+    
     if percent >= 0.75
-      contract.status = "Contract validated"
+      @contract.status = "Contract validated"
     else
-      contract.status = "Audio error, parameter not satisfied"
+      @contract.status = "Audio error, parameter not satisfied"
     end
   end
+
 end
