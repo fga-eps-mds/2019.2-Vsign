@@ -20,8 +20,11 @@ export function logUser(token, name, setUserName) {
     description: "Usuário logado com sucesso"
   })
 
-  localStorage.setItem("userToken", token);
+  try {
+    localStorage.setItem("userToken", token)
+  } catch (error) {
+    console.log("Erro ", error);
+  }
   // eslint-disable-next-line
-  setUserName(name) ? console.log("Success") : console.log("Error");
-  console.log("Success");
+  setUserName(name);
 }
