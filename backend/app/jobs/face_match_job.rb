@@ -1,9 +1,11 @@
 class FaceMatchJob < ApplicationJob
   queue_as :default
   
-  def perform(contract_id)
+  def perform(contract_id, user_id)
+    user = User.find(contract.user_id)
     @contract = Contract.find(contract_id)
     @contract.image.each |image_to_perform| face_matching(image_to_perform.download)
+    
   end
   
   private 
@@ -20,7 +22,7 @@ class FaceMatchJob < ApplicationJob
       source_image: {
         s3_object: {
           bucket: Rails.application.credentials[Rails.env.to_sym][:aws][:bucket],
-          bytes: video_image
+          bytes: user.user_document.download
           # name: 'file'
         },
       },
