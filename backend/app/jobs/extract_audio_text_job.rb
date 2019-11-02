@@ -13,11 +13,19 @@ class ExtractAudioTextJob < ApplicationJob
           language_code: "pt-BR" }
       audio  = { content: binary }
       response = speech.recognize(config, audio)
-      text = response.results.alternatives.to_s
+
+      confidence = response.results.alternatives.trasncript.confidence
+      text = response.results.alternatives.trasncript.to_s
 
       script = join_script_text(contract.script)
       percent_of_equality = compare(text, script)
 
+      if confidence <= 0.50 # Value to failed based in confidence of the transcript, change if necessary
+        change_contract_status(-1.00)
+      else
+        change_contract_status(percent_of_equality)
+      end
+ 
     end
   end
 
@@ -32,13 +40,11 @@ class ExtractAudioTextJob < ApplicationJob
     script_blocks.join(" ")
   end  
 
-  def chage_contract_status(percent)
-    
+  def change_contract_status(percent)
     if percent >= 0.75
       @contract.status = "Contract validated"
     else
       @contract.status = "Audio error, parameter not satisfied"
     end
   end
-
 end
