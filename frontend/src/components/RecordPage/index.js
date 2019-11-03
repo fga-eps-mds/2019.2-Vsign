@@ -26,8 +26,11 @@ import 'rsuite/dist/styles/rsuite-default.css';
 import ScriptProgress from './ScriptProgress.js';
 import ActionButtons from './ActionButtons.js';
 import ScriptControl from './ScriptControl.js';
+import { base64StringToBlob } from 'blob-util';
 import Tour from 'reactour'
-import "./recordUserVideo.css"
+import "./recordUserVideo.css";
+
+
 const videoJsOptions = {
     controls: false,
     screen: true,
@@ -183,19 +186,13 @@ class recordUserVideo extends Component {
         const blobUrl = createObjectURL(this.player.recordedData)
 
         const duration = parseInt(this.player.record().getDuration());
-        console.log(duration)
         for (let time = 0; time < duration; time++) {
             this.getVideoImage(blobUrl, time, (img, secs, event) => {
-                const signatureImageAux = this.state.signatureImage
-                signatureImageAux.push(img)
+                const signatureImageAux = this.state.signatureImage;
+                signatureImageAux.push(img);
                 this.setState({ signatureImage: signatureImageAux })
-                // console.log(img)
             })
         }
-
-        console.log(this.state.signatureImage)
-
-
     }
     startRecording = () => {
         this.setState({
@@ -231,7 +228,6 @@ class recordUserVideo extends Component {
             video: this.state.signatureVideo,
             images: this.state.signatureImage,
         });
-        this.props.history.push('/review');
     }
 
     returnScriptProgress = () => {

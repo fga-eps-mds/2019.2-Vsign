@@ -1,24 +1,31 @@
 import { all, select, call, put, takeEvery } from 'redux-saga/effects';
 import { FINISH_SIGNATURE_REVIEW, REDO_SIGNATURE } from '../constants/review';
-import { setSignatureAssetsAction } from '../actions/record';
-import { upload } from '../components/ReviewPage/services';
+import { clearSignatureAssetsAction } from '../actions/record';
 import { history } from '../store';
-
+import { upload } from '../utils/services';
 
 function* handleFinishSignatureReview(action) {
-    const { video } = yield select(state => state.record);
-    const { signedBlobId } = yield call(upload, video);
-    console.log(signedBlobId);
+    const { audio, video, images } = yield select(state => state.record);
+    const { signedBlobId: videoBlobId } = yield call(upload, video);
+    const { signedBlobId: audioBlobId } = yield call(upload, audio.blob);
+
+    // const imagesBlobId = [];
+    // for (let index = 0; index < 3; index++) {
+    //     const randomIndex = Math.floor(Math.random() * (images.length - 1 ));   
+    //     const image = images[randomIndex];
+    //     const { signedBlobId: imageBlobId } = yield call(upload, image);
+    //     imagesBlobId.push(imageBlobId);
+    // }
+    // console.log(imagesBlobId);
 }
 
 function * watchFinishSignatureReview() {
     yield takeEvery(FINISH_SIGNATURE_REVIEW, handleFinishSignatureReview);
 }
 
-
-function* handleRedoSignature(action) {
+function* handleRedoSignature() {
     history.push('/record');
-    yield put(setSignatureAssetsAction({}));
+    yield put(clearSignatureAssetsAction());
 }
 
 function * watchRedoSignature() {
