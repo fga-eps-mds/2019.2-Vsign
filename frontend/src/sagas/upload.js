@@ -1,5 +1,4 @@
 import { all, select, call, put, takeEvery } from 'redux-saga/effects';
-import { base64StringToBlob } from 'blob-util';
 import {
     setVideoUploadStatusAction, setAudioUploadStatusAction,
     setImagesUploadStatusAction, checkSignatureAssetsUploadedAction
@@ -10,6 +9,7 @@ import {
 } from '../constants/upload';
 import { upload } from '../utils/services';
 import { history } from '../store';
+import { shuffle, imageBlob } from '../utils';
 
 
 function* handleUploadVideo() {
@@ -27,12 +27,13 @@ function* handleUploadVideo() {
         // Upload do vídeo concluído.
         yield put(setVideoUploadStatusAction({
             uploading: false,
-            success: true
+            success: true,
+            signedBlobId
         }));
 
+        // Verifica se todos os assets foram carregados.
         yield put(checkSignatureAssetsUploadedAction());
-        
-        console.log(signedBlobId);
+
     } catch (err) {
         // Se foi erro de conexão, tentar refazer upload.
         yield put(setVideoUploadStatusAction({
@@ -59,12 +60,13 @@ function* handleUploadAudio() {
         // Upload do vídeo concluído.
         yield put(setAudioUploadStatusAction({
             uploading: false,
-            success: true
+            success: true,
+            signedBlobId
         }));
 
+        // Verifica se todos os assets foram carregados.
         yield put(checkSignatureAssetsUploadedAction());
         
-        console.log(signedBlobId);
     } catch (err) {
         // Se foi erro de conexão, tentar refazer upload.
         yield put(setAudioUploadStatusAction({
@@ -75,19 +77,42 @@ function* handleUploadAudio() {
 }
 
 function* handleUploadImages() {
-    const signedBlobIds = [];
+
     const { images } = yield select(state => state.record);
-    for (let index = 0; index < 3; index++) {
-        const randomIndex = Math.floor(Math.random() * (images.length - 1 ));   
-        const image = images[randomIndex];
-        const imageSring = image.split('data:image/png;base64,').join('');
-        const blob = base64StringToBlob(imageSring, 'image/jpeg');
-        const name = `image-${Date.now()}${randomIndex}.jpg`;
-        blob.name = name;
-        const { signedBlobId } = yield call(upload, blob);
-        signedBlobIds.push(signedBlobId);
+    const selectedImages = shuffle(images).slice(0, 3);
+    
+    // Inicia upload do áudio.
+    yield put(setImagesUploadStatusAction({
+        uploading: true
+    }));
+    
+    const signedBlobIds = [];
+    for (let index = 0; index < selectedImages.length; index++) {
+        const blob = imageBlob(selectedImages[index]);
+        try {
+            const { signedBlobId } = yield call(upload, blob);
+            signedBlobIds.push(signedBlobId);
+        } catch (err) {
+            index--;
+        }
     }
-    console.log(signedBlobIds);
+
+    if (signedBlobIds.length === selectedImages.length) {
+        // Upload do vídeo concluído.
+        yield put(setImagesUploadStatusAction({
+            uploading: false,
+            success: true,
+            signedBlobIds
+        }));
+
+        // Verifica se todos os assets foram carregados.
+        yield put(checkSignatureAssetsUploadedAction());
+    } else {
+        yield put(setImagesUploadStatusAction({
+            uploading: false,
+            error: true
+        }));
+    }
 }
 
 function * watchUploadVideo() {

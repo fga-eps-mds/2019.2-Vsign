@@ -1,20 +1,26 @@
-import { SET_VIDEO_UPLOAD_STATUS, SET_AUDIO_UPLOAD_STATUS, SET_IMAGES_UPLOAD_STATUS } from '../constants/record';
+import {
+    SET_VIDEO_UPLOAD_STATUS, SET_AUDIO_UPLOAD_STATUS,
+    SET_IMAGES_UPLOAD_STATUS
+} from '../constants/upload';
 
 const initial = {
     video: {
         uploading: false,
         success: false,
-        error: false
+        error: false,
+        signedBlobId: null
     },
     audio: {
         uploading: false,
         success: false,
-        error: false
+        error: false,
+        signedBlobId: null
     },
     images: {
         uploading: false,
         success: false,
-        error: false
+        error: false,
+        signedBlobIds: null
     },
 };
 
@@ -32,15 +38,15 @@ export default function upload(state = initial, action) {
             return {
                 ...state,
                 audio: {
-                    ...state.video,
+                    ...state.audio,
                     ...action.payload
                 }
             };
         case SET_IMAGES_UPLOAD_STATUS:
             return {
                 ...state,
-                video: {
-                    ...state.video,
+                images: {
+                    ...state.images,
                     ...action.payload
                 }
             };

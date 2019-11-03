@@ -21,14 +21,17 @@ export const checkSignatureAssetsUploadedAction = () => ({
     type: CHECK_SIGNATURE_ASSETS_UPLOADED
 });
 
-export const setAudioUploadStatusAction = () => ({
-    type: SET_AUDIO_UPLOAD_STATUS
+export const setAudioUploadStatusAction = (payload) => ({
+    type: SET_AUDIO_UPLOAD_STATUS,
+    payload
 });
 
-export const setVideoUploadStatusAction = () => ({
-    type: SET_VIDEO_UPLOAD_STATUS
+export const setVideoUploadStatusAction = (payload) => ({
+    type: SET_VIDEO_UPLOAD_STATUS,
+    payload
 });
 
-export const setImagesUploadStatusAction = () => ({
-    type: SET_IMAGES_UPLOAD_STATUS
+export const setImagesUploadStatusAction = (payload) => ({
+    type: SET_IMAGES_UPLOAD_STATUS,
+    payload
 });
