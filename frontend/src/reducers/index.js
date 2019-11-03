@@ -5,7 +5,8 @@ import record from './record';
 
 const rootReducer = (history) => combineReducers({
   record,
-  router: connectRouter(history)
+  router: connectRouter(history),
+  upload
 });
 
 export default rootReducer;
