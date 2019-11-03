@@ -18,13 +18,6 @@ class IdCheckJob < ApplicationJob
       feature_types: ["FORMS"]
     })
 
-    # resp.text_detections.each do |text|
-    #   if text.type === "WORD"
-    #     # puts "#{text.detected_text.to_i}"
-    #     puts "#{text.detected_text}-#{text.id}"
-    #   end
-    # end
-
   end
   
 end
