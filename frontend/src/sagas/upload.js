@@ -1,15 +1,18 @@
 import { all, select, call, put, takeEvery } from 'redux-saga/effects';
 import {
     setVideoUploadStatusAction, setAudioUploadStatusAction,
-    setImagesUploadStatusAction, checkSignatureAssetsUploadedAction
+    setImagesUploadStatusAction, checkSignatureFilesUploadedAction,
+    attachContractFilesAction
 } from '../actions/upload';
 import { 
     UPLOAD_VIDEO, UPLOAD_AUDIO, UPLOAD_IMAGES,
-    CHECK_SIGNATURE_ASSETS_UPLOADED
+    CHECK_SIGNATURE_FILES_UPLOADED,
+    ATTACH_CONTRACT_FILES
 } from '../constants/upload';
 import { upload } from '../utils/services';
 import { history } from '../store';
 import { shuffle, imageBlob } from '../utils';
+import { attachContractFilesMutation } from '../graphql/mutations';
 
 
 function* handleUploadVideo() {
@@ -32,7 +35,7 @@ function* handleUploadVideo() {
         }));
 
         // Verifica se todos os assets foram carregados.
-        yield put(checkSignatureAssetsUploadedAction());
+        yield put(checkSignatureFilesUploadedAction());
 
     } catch (err) {
         // Se foi erro de conexão, tentar refazer upload.
@@ -65,7 +68,7 @@ function* handleUploadAudio() {
         }));
 
         // Verifica se todos os assets foram carregados.
-        yield put(checkSignatureAssetsUploadedAction());
+        yield put(checkSignatureFilesUploadedAction());
         
     } catch (err) {
         // Se foi erro de conexão, tentar refazer upload.
@@ -106,7 +109,7 @@ function* handleUploadImages() {
         }));
 
         // Verifica se todos os assets foram carregados.
-        yield put(checkSignatureAssetsUploadedAction());
+        yield put(checkSignatureFilesUploadedAction());
     } else {
         yield put(setImagesUploadStatusAction({
             uploading: false,
@@ -133,12 +136,34 @@ function* handleCheckSignatureAssetsUploaded() {
     // Se todos os assets foram carregados na nuvem, o usuário deverá ser redirecionado
     // para uma página de sucesso.
     if (video.success && audio.success && images.success) {
-        history.push('/received');
+        yield put(attachContractFilesAction());
     }
 }
 
-function * watchCheckSignatureAssetsUploaded() {
-    yield takeEvery(CHECK_SIGNATURE_ASSETS_UPLOADED, handleCheckSignatureAssetsUploaded);
+function * handleAttachContractFiles() {
+    const { video, audio, images } = yield select(state => state.upload);
+    try {
+        const variables = {
+            video: video.signedBlobId,
+            images: images.signedBlobIds,
+            audio: audio.signedBlobId
+        };
+        const { success } = yield call(attachContractFilesMutation, variables);
+        if (success) {
+            history.push('/received');
+        }
+    } catch {
+        // fazer alguma coisa.
+    }
+
+}
+
+function * watchAttachContractFiles() {
+    yield takeEvery(ATTACH_CONTRACT_FILES, handleAttachContractFiles);
+}
+
+function * watchCheckSignatureFilesUploaded() {
+    yield takeEvery(CHECK_SIGNATURE_FILES_UPLOADED, handleCheckSignatureAssetsUploaded);
 }
 
 export default function* root() {
@@ -146,6 +171,7 @@ export default function* root() {
         watchUploadAudio(),
         watchUploadImages(),
         watchUploadVideo(),
-        watchCheckSignatureAssetsUploaded()
+        watchCheckSignatureFilesUploaded(),
+        watchAttachContractFiles()
     ]);
 }

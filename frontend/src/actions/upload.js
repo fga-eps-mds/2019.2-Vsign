@@ -1,8 +1,8 @@
 import {
     UPLOAD_VIDEO, UPLOAD_AUDIO, UPLOAD_IMAGES,
-    CHECK_SIGNATURE_ASSETS_UPLOADED,
+    CHECK_SIGNATURE_FILES_UPLOADED,
     SET_AUDIO_UPLOAD_STATUS, SET_IMAGES_UPLOAD_STATUS,
-    SET_VIDEO_UPLOAD_STATUS
+    SET_VIDEO_UPLOAD_STATUS, ATTACH_CONTRACT_FILES
 } from '../constants/upload';
 
 export const uploadVideoAction = () => ({
@@ -17,8 +17,8 @@ export const uploadImagesAction = () => ({
     type: UPLOAD_IMAGES
 });
 
-export const checkSignatureAssetsUploadedAction = () => ({
-    type: CHECK_SIGNATURE_ASSETS_UPLOADED
+export const checkSignatureFilesUploadedAction = () => ({
+    type: CHECK_SIGNATURE_FILES_UPLOADED
 });
 
 export const setAudioUploadStatusAction = (payload) => ({
@@ -33,5 +33,10 @@ export const setVideoUploadStatusAction = (payload) => ({
 
 export const setImagesUploadStatusAction = (payload) => ({
     type: SET_IMAGES_UPLOAD_STATUS,
+    payload
+});
+
+export const attachContractFilesAction = (payload) => ({
+    type: ATTACH_CONTRACT_FILES,
     payload
 });
