@@ -6,13 +6,15 @@ import Navbar from './Navbar';
 import Video from './Video';
 import FinishButton from './FinishButton';
 import RedoButton from './RedoButton';
+import SigningSteps from '../Shared/SigningSteps';
+
 
 export default class ReviewPage extends Component {
     render() {
         return (
             <Container>
-                {/* <Navbar /> */}
-                {/* <SigningSteps history={this.props.history} /> */}
+                <Navbar />
+                <SigningSteps />
                 <Content>
                     <FlexboxGrid justify="center">
                         <FlexboxGrid.Item   >

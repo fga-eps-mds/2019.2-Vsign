@@ -142,11 +142,15 @@ function* handleCheckSignatureAssetsUploaded() {
 
 function * handleAttachContractFiles() {
     const { video, audio, images } = yield select(state => state.upload);
+    const { id: contractId } = yield select(state => state.contract);
     try {
         const variables = {
-            video: video.signedBlobId,
-            images: images.signedBlobIds,
-            audio: audio.signedBlobId
+            contractId,
+            files: {
+                video: video.signedBlobId,
+                images: images.signedBlobIds,
+                audio: audio.signedBlobId
+            }
         };
         const { success } = yield call(attachContractFilesMutation, variables);
         if (success) {

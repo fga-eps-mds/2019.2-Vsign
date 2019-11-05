@@ -329,7 +329,7 @@ class recordUserVideo extends Component {
         return (
             <Container data-tour='step0'>
                 <Navbar />
-                {/* <SigningSteps /> */}
+                <SigningSteps />
                 <Content>
                     
                             <FlexboxGrid justify="center">
