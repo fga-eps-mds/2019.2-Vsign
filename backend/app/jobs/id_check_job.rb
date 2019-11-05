@@ -18,6 +18,14 @@ class IdCheckJob < ApplicationJob
       feature_types: ["FORMS"]
     })
 
+    resp.blocks.each do |blocks|
+      text = []
+      if blocks.block_type === "LINE" && blocks.confidence >= 90 #"KEY_VALUE_SET"
+        text = blocks.text
+        puts text
+      end
+    end
+
   end
   
 end
