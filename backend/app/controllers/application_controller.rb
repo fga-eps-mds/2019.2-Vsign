@@ -1,6 +1,11 @@
 # frozen_string_literal: true
 
+# ApplicationController
 class ApplicationController < ActionController::API
+  before_action do
+    ActiveStorage::Current.host = request.base_url
+  end
+
   def render_resource(resource)
     if resource.errors.empty?
       render json: resource

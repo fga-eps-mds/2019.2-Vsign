@@ -19,4 +19,4 @@ services:
     depends_on:
       - db
     env_file:
-      - ./app.env
+      - app.env
