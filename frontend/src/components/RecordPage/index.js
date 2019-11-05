@@ -1,5 +1,7 @@
 import React, { Component } from 'react';
 import { withRouter } from 'react-router-dom';
+import { connect } from 'react-redux';
+import { setSignatureAssetsAction } from '../../actions/record';
 import {
     Container,
     VideoDiv,
@@ -24,8 +26,11 @@ import 'rsuite/dist/styles/rsuite-default.css';
 import ScriptProgress from './ScriptProgress.js';
 import ActionButtons from './ActionButtons.js';
 import ScriptControl from './ScriptControl.js';
+import { base64StringToBlob } from 'blob-util';
 import Tour from 'reactour'
-import "./recordUserVideo.css"
+import "./recordUserVideo.css";
+
+
 const videoJsOptions = {
     controls: false,
     screen: true,
@@ -117,8 +122,8 @@ class recordUserVideo extends Component {
             let url = ""
             url = URL.createObjectURL(new Blob(binaryData, { type: "video/webm" }));
 
-            console.log("Audio:::")
-            console.log(this.state.signatureAudio)
+            // console.log("Audio:::")
+            // console.log(this.state.signatureAudio)
             // this.props.history.push({
             //     pathname: '/review',
             //     state: { 
@@ -181,19 +186,13 @@ class recordUserVideo extends Component {
         const blobUrl = createObjectURL(this.player.recordedData)
 
         const duration = parseInt(this.player.record().getDuration());
-        console.log(duration)
         for (let time = 0; time < duration; time++) {
             this.getVideoImage(blobUrl, time, (img, secs, event) => {
-                const signatureImageAux = this.state.signatureImage
-                signatureImageAux.push(img)
+                const signatureImageAux = this.state.signatureImage;
+                signatureImageAux.push(img);
                 this.setState({ signatureImage: signatureImageAux })
-                // console.log(img)
             })
         }
-
-        console.log(this.state.signatureImage)
-
-
     }
     startRecording = () => {
         this.setState({
@@ -222,15 +221,13 @@ class recordUserVideo extends Component {
         binaryData.push(last);
         let url = ""
         url = URL.createObjectURL(new Blob(binaryData, { type: "video/webm" }));
-        this.props.history.push({
-            pathname: '/review',
-            state: {
-                signatureAudio: this.state.signatureAudio,
-                signatureVideo: this.state.signatureVideo,
-                signatureImage: this.state.signatureImage,
-                url: url
-            }
-        })
+        
+        this.props.setSignatureAssetsAction({
+            url,
+            audio: this.state.signatureAudio,
+            video: this.state.signatureVideo,
+            images: this.state.signatureImage,
+        });
     }
 
     returnScriptProgress = () => {
@@ -332,7 +329,7 @@ class recordUserVideo extends Component {
         return (
             <Container data-tour='step0'>
                 <Navbar />
-                <SigningSteps history={this.props.history} />
+                <SigningSteps />
                 <Content>
                     
                             <FlexboxGrid justify="center">
@@ -392,4 +389,10 @@ class recordUserVideo extends Component {
     }
 }
 
-export default withRouter(recordUserVideo);
+const mapStateToProps = {};
+
+const mapDispatchToProps = {
+    setSignatureAssetsAction
+};
+
+export default withRouter(connect(null, mapDispatchToProps)(recordUserVideo));

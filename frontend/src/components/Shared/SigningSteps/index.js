@@ -1,8 +1,9 @@
 import React from 'react';
 import { FlexboxGrid, Steps } from 'rsuite';
 import { Section } from './styles';
+import { withRouter } from 'react-router-dom';
 
-export default function SigningSteps(history) {
+function SigningSteps(history) {
    
     let url =  history.history.location.pathname
     let current = 0
@@ -41,3 +42,6 @@ export default function SigningSteps(history) {
         </Section>
     );
 };
+
+
+export default withRouter(SigningSteps);
