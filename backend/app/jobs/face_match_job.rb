@@ -4,8 +4,8 @@ class FaceMatchJob < ApplicationJob
   def perform(contract_id)
     @contract = Contract.find(contract_id)
     @user = @contract.user
-    @user.user_document |document_photo|
-    @contract.image.each |image_to_perform| face_matching(image_to_perform.filename, documento_photo.filename)
+    document = @user.user.user_document
+    @contract.image.each |image| face_matching(image.filename, documento.filename)
     
   end
   
