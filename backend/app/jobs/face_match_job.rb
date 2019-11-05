@@ -1,16 +1,17 @@
 class FaceMatchJob < ApplicationJob
   queue_as :default
   
-  def perform(contract_id, user_id)
-    user = User.find(contract.user_id)
+  def perform(contract_id)
     @contract = Contract.find(contract_id)
-    @contract.image.each |image_to_perform| face_matching(image_to_perform.download)
+    @user = @contract.user
+    @user.user_document |document_photo|
+    @contract.image.each |image_to_perform| face_matching(image_to_perform.filename, documento_photo.filename)
     
   end
   
   private 
   
-  def face_matching(video_image)
+  def face_matching(video_image, document_image)
     client = Aws::Rekognition::Client.new({
       region: Rails.application.credentials.dig(:aws, :region),
       credentials: Aws::Credentials.new(
@@ -22,15 +23,13 @@ class FaceMatchJob < ApplicationJob
       source_image: {
         s3_object: {
           bucket: Rails.application.credentials[Rails.env.to_sym][:aws][:bucket],
-          bytes: user.user_document.download
-          # name: 'file'
+          name: document_image
         },
       },
       target_image: {
         s3_object: {
           bucket: Rails.application.credentials[Rails.env.to_sym][:aws][:bucket],
-          bytes: video_image 
-          # name: videoimage
+          name: video_image
         },
       },
       similarity_threshold: 80
