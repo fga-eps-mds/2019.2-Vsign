@@ -19,10 +19,22 @@ class IdCheckJob < ApplicationJob
     })
 
     resp.blocks.each do |blocks|
-      text = []
-      if blocks.block_type === "LINE" && blocks.confidence >= 90 #"KEY_VALUE_SET"
-        text = blocks.text
-        puts text
+      if blocks.block_type === "KEY_VALUE_SET" #"KEY_VALUE_SET"
+        blocks.relationships.each do |rela|
+          puts "\n" + rela.type
+          if rela.type === "CHILD"
+            rela.ids.each do |i|
+              puts i
+              resp.blocks.each do |b|
+                puts b.id + "-------" + b.block_type
+                if i === b
+                if b.id === i && b.block_type === "LINE"
+                  puts 'MATCH'
+                end
+              end
+            end
+          end
+        end
       end
     end
 
