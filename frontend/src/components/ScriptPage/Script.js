@@ -149,6 +149,7 @@ function Modal({ history }) {
         </div>
 
       </div>
+<<<<<<< HEAD
     </div>
   );
 }
@@ -162,3 +163,9 @@ function ScriptPage() {
 }
 
 export default withRouter(ScriptPage);
+=======
+    );
+}
+  
+export default withRouter(Script);
+>>>>>>> develop
