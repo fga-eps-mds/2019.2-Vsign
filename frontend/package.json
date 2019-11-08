@@ -13,6 +13,7 @@
     "ffmpeg.js": "^3.1.9001",
     "graphql": "^14.5.7",
     "history": "^4.10.1",
+    "mic-recorder-to-mp3": "^2.2.1",
     "react": "^16.9.0",
     "react-dom": "^16.9.0",
     "react-mic": "^12.4.1",

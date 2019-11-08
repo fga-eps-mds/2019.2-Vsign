@@ -13,7 +13,7 @@ import SigningSteps from '../Shared/SigningSteps';
 import Navbar from './Navbar';
 import { uploadMutation } from '../../graphql/mutations';
 import { directUpload, getFileMetadata } from '../../utils/activestorage';
-import { upload } from './services'
+// import { upload } from './services'
 class reviewUserVideo extends Component {
     constructor(props) {
         super(props);
@@ -21,6 +21,7 @@ class reviewUserVideo extends Component {
             signatureVideo: {},
             signatureAudio: {},
             signatureImage: [],
+            newAudio: '',
             ScriptBlock: ['djangiagshabog h gha ghuaw ghar gha rgh awrgh aw', 'hebfa uhf w fuah g sF WF WEYFBAHBGAHAW F F WAF AWBG', 'ahbargb bgobae bergaebg rbaehbeagbaeor']
         }
         this._getTheSignatureObjects = this._getTheSignatureObjects.bind(this);
@@ -49,29 +50,29 @@ class reviewUserVideo extends Component {
 
     }
 
-    _uploadVideo = () => {
-        const file = this.state.signatureVideo;
-        upload(file)
-    }
+    // _uploadVideo = () => {
+    //     const file = this.state.signatureVideo;
+    //     upload(file)
+    // }
 
-    _uploadAudio = () => {
-        const file = this.state.signatureAudio;
-        upload(file)
-    }
+    // _uploadAudio = () => {
+    //     const file = this.state.signatureAudio;
+    //     upload(file)
+    // }
 
-    _uploadImages = () => {
-        const image_array_size = this.state.signatureImage.length
-        let image_to_upload = []
-        for (let index = 0; index < 3; index++) {
-            const randomIndex = Math.floor(Math.random() * (image_array_size - 1 ));   
-            image_to_push = this.state.signatureImage[randomIndex]
-            image_to_upload.push(image_to_push)
-        }
+    // _uploadImages = () => {
+    //     const image_array_size = this.state.signatureImage.length
+    //     let image_to_upload = []
+    //     for (let index = 0; index < 3; index++) {
+    //         const randomIndex = Math.floor(Math.random() * (image_array_size - 1 ));   
+    //         image_to_push = this.state.signatureImage[randomIndex]
+    //         image_to_upload.push(image_to_push)
+    //     }
          
-        image_to_upload.map((image) => {
-            upload(image) 
-        })
-    }
+    //     image_to_upload.map((image) => {
+    //         upload(image) 
+    //     })
+    // }
 
     _redoTheOperation = () => {
         this.props.history.push({
@@ -88,15 +89,17 @@ class reviewUserVideo extends Component {
         const signatureAudioAux = this.props.location.state.signatureAudio
         const signatureVideoAux = this.props.location.state.signatureVideo
         const signatureImageAux = this.props.location.state.signatureImage
+        const signatureNewAudio = this.props.location.state.newAudio
         // console.log(signatureAudioAux)
         // console.log(signatureVideoAux)
         this.setState({
             signatureAudio: signatureAudioAux,
             signatureVideo: signatureVideoAux,
             signatureImage: signatureImageAux,
+            newAudio: signatureNewAudio
         })
         // console.log(this.state.signatureAudio)
-        console.log(this.state.signatureVideo)
+        console.log(this.state.newAudio)
 
     }
 

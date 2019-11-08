@@ -26,6 +26,8 @@ import ActionButtons from './ActionButtons.js';
 import ScriptControl from './ScriptControl.js';
 import Tour from 'reactour'
 import "./recordUserVideo.css"
+import MicRecorder from 'mic-recorder-to-mp3';
+
 const videoJsOptions = {
     controls: false,
     screen: true,
@@ -56,6 +58,7 @@ const videoJsOptions = {
     }
 }
 
+const Mp3Recorder = new MicRecorder({ bitRate: 128 });
 
 class recordUserVideo extends Component {
     constructor(props) {
@@ -68,7 +71,9 @@ class recordUserVideo extends Component {
             signatureImage: [],
             recordAudio: false,
             maxTime: 30,
-            isTourOpen: false
+            isTourOpen: false,
+            blobURL: '',
+            isRecording: false
 
         }
 
@@ -195,16 +200,40 @@ class recordUserVideo extends Component {
 
 
     }
+
+
+    startNewLib = () => {
+        Mp3Recorder
+          .start()
+          .then(() => {
+            this.setState({ isRecording: true });
+          }).catch((e) => console.error(e));
+  
+    };
+    
+    stopNewLib = () => {
+      Mp3Recorder
+        .stop()
+        .getMp3()
+        .then(([buffer, blob]) => {
+          const blobURL = URL.createObjectURL(blob)
+          this.setState({ blobURL, isRecording: false });
+        }).catch((e) => console.log(e));
+    };
+    
     startRecording = () => {
         this.setState({
             record: true,
         });
+        this.startNewLib()
     }
 
     stopRecording = () => {
         this.setState({
             record: false
         });
+
+        this.stopNewLib()
     }
 
     onData(recordedBlob) {
@@ -228,7 +257,8 @@ class recordUserVideo extends Component {
                 signatureAudio: this.state.signatureAudio,
                 signatureVideo: this.state.signatureVideo,
                 signatureImage: this.state.signatureImage,
-                url: url
+                url: url,
+                newAudio: this.state.blobURL
             }
         })
     }
@@ -284,6 +314,7 @@ class recordUserVideo extends Component {
         }
         console.log(this.state.scriptBlock[this.state.scriptPosition])
     }
+
     render() {
         const stepSize = (100 / (this.state.scriptBlock).length)
         const steps = [
