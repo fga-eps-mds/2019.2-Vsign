@@ -1,21 +1,21 @@
 class IdConfirmJob < ApplicationJob
   queue_as :default
 
-def perform(contract_id)
-    @contract = Contract.find(contract_id)
-    @user = @contract.user
-    @document = @user
-    
-  end
+  def perform(contract_id)
+      @contract = Contract.find(contract_id)
+      @user = @contract.user
+      @document = @user.user_document
+      id_confirm(@document)
+    end
 
   private 
 
   def id_confirm(document_image)
     client = Aws::Rekognition::Client.new({
-      region: Rails.application.credentials.dig(:aws, :region),
-      credentials: Aws::Credentials.new(
-        Rails.application.credentials.dig(:aws, :access_key_id),
-        Rails.application.credentials.dig(:aws, :secret_access_key))
+    region: Rails.application.credentials.dig(:aws, :region),
+    credentials: Aws::Credentials.new(
+      Rails.application.credentials.dig(:aws, :access_key_id),
+      Rails.application.credentials.dig(:aws, :secret_access_key))
     })
 
     attrs = {
@@ -33,12 +33,11 @@ def perform(contract_id)
     response_image.labels.each do |labels|
       if (labels.name == "Document" || labels.name == "License" || labels.name == "Driving License" || labels.name == "Id Cards")
         is_document = true
-        what_document?(is_document)
+        what_document?()
       else
         is_document = false
-        @contract.status = "error, not a valid document"
-    end
-
+      end
+    perform_next_job(is_document)
   end
 
   def what_document? (document_status)
@@ -66,24 +65,19 @@ def perform(contract_id)
       if (text.detect_text == "CPF" && text.detect_text == "NOME" || text.detect_text == "FILIACAO")
         if (text.detect_text == "PERMISSAO" || text.detect_text == "HAB")
           id_type = "CNH"
-          
         else
           id_type = "RG"
         end
       end
     end
-
-    id_type
   end
 
-  def perform_next_job(similarity)
-
-    if similarity >= 80
-      ExtractAudioTextJob.perform_later contract.id
+  def perform_next_job(valid)
+    if valid
+      IdCheckJob.perform_later contract.id
     else
-      @contract.status = "error, face matching fail"
+      @contract.status = "error, not a valid document"
     end
-
   end
-  
+
 end
