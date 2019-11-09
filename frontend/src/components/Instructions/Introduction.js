@@ -7,25 +7,24 @@ import { checkToken, restrictedAccess, logUser } from '../../utils/checkToken';
 import { getContract } from '../../graphql/queries';
 import { connect } from 'react-redux';
 import { bindActionCreators } from 'redux';
-import { setScript, setOrder } from '../../actions/contract/contract_actions';
-import { setUserName } from '../../actions/user/user_actions';
+import { setScriptAction, setOrderAction } from '../../actions/contract';
+import { setUserNameAction } from '../../actions/user';
 
 function Introduction({ history, ...props }) {
   const { id } = props.match.params;
-  const { setUserName, setScript, setOrder } = props;
+  const { setUserNameAction, setScriptAction, setOrderAction } = props;
 
   getContract(id, "").then(({ data }) => {
     const { token, name } = data.getContract.user;
-    // console.log(token, marcos);
     
     // if there's no token saved -> save new to log user
     // eslint-disable-next-line
-    checkToken ? undefined : logUser(token, name, setUserName);
+    checkToken ? undefined : logUser(token, name, setUserNameAction);
 
     // save contract info on redux
     if (data.getContract) {
-      setScript(data.getContract.script);
-      setOrder(data.getContract.order);
+      setScriptAction(data.getContract.script);
+      setOrderAction(data.getContract.order);
     } else {
       restrictedAccess(history);
     }
@@ -40,6 +39,6 @@ function Introduction({ history, ...props }) {
   )
 };
 
-const mapDispatchToProps = dispatch => bindActionCreators({ setScript, setOrder, setUserName }, dispatch);
+const mapDispatchToProps = dispatch => bindActionCreators({ setScriptAction, setOrderAction, setUserNameAction }, dispatch);
 
 export default connect(null, mapDispatchToProps)(Introduction);

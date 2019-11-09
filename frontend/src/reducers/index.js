@@ -1,9 +1,10 @@
 import { combineReducers } from 'redux';
 import { connectRouter } from 'connected-react-router';
-import { userReducer } from './user_reducer';
-import { contractReducer } from './contract_reducer';
+import userReducer from './user';
+import contractReducer from './contract';
 import record from './record';
 import upload from './upload';
+import session from './session';
 
 
 const rootReducer = (history) => combineReducers({
@@ -11,8 +12,8 @@ const rootReducer = (history) => combineReducers({
   user: userReducer,
   contract: contractReducer,
   record,
-  router: connectRouter(history),
-  upload
-});
+  upload,
+  session
+}, window.__REDUX_DEVTOOLS_EXTENSION__ && window.__REDUX_DEVTOOLS_EXTENSION__());
 
 export default rootReducer;

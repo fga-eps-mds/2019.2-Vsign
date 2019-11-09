@@ -26,3 +26,18 @@ export async function getContract(id, token) {
 
   return response;
 }
+
+export async function currentUser() {
+  const query = gql`
+      query currentUser {
+          currentUser {
+              id
+              name
+          }
+      }
+  `;
+
+  return await apollo.query({
+      query
+  });
+}

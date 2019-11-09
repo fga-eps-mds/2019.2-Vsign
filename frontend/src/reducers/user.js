@@ -1,10 +1,10 @@
-import { SET_NAME } from "../actions/user/user_types";
+import { SET_NAME } from "../constants/user";
 
 const initialState = {
   name: "marcos"
 };
 
-export const userReducer = (state = initialState, action) => {
+export default function userReducer(state = initialState, action) {
   switch (action.type) {
     case SET_NAME:
       return {

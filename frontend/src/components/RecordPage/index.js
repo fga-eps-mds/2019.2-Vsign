@@ -28,8 +28,6 @@ import ActionButtons from './ActionButtons.js';
 import ScriptControl from './ScriptControl.js';
 import Tour from 'reactour'
 import "./recordUserVideo.css"
-import { checkToken, restrictedAccess } from '../../utils/checkToken.js';
-
 
 const videoJsOptions = {
     controls: false,
@@ -65,10 +63,6 @@ const videoJsOptions = {
 class recordUserVideo extends Component {
     constructor(props) {
         super(props);
-
-        if (!checkToken) {
-            restrictedAccess(this.props.history)
-        }
         
         this.state = {
             scriptBlock: ["Bloco de roteiro 0Bloco de roteiro 0Bloco de roteiro 0Bloco de roteiro 0", "Bloco de roteiro 1", "Bloco de roteiro 2", "Bloco de roteiro 3", "Bloco de roteiro 4"],

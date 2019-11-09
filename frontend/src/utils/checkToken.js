@@ -14,7 +14,7 @@ export function restrictedAccess(history) {
   history.push("/");
 }
 
-export function logUser(token, name, setUserName) {
+export function logUser(token, name, setUserNameAction) {
   Notification.success({
     title: "Sucesso",
     description: "Usuário logado com sucesso"
@@ -26,5 +26,5 @@ export function logUser(token, name, setUserName) {
     console.log("Erro ", error);
   }
   // eslint-disable-next-line
-  setUserName(name);
+  setUserNameAction(name);
 }

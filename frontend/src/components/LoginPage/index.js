@@ -4,26 +4,31 @@ import { LoginPanel, InvalidSpan } from './styles';
 import { loginUser } from '../../graphql/mutations';
 import { connect } from 'react-redux';
 import { bindActionCreators } from 'redux';
-import { setUserName } from '../../actions/user/user_actions';
+import { setUserNameAction } from '../../actions/user';
+import { createSessionAction } from "../../actions/session";
 
 function LoginPage({ history, ...props }) {
 	const [email, setEmail] = useState("");
 	const [password, setPassword] = useState("");
 	const [wrongPassword, setWrongPassword] = useState(false);
-	const { setUserName } = props;
+	const { setUserNameAction, createSessionAction } = props;
 
 	const handleLogin = (email, password) => {
-		const token = localStorage.getItem("userToken");
+		// const token = localStorage.getItem("userToken");
 
-		token ? history.push("/contracts") : loginUser({email, password}).then(({ data }) => {
-			if (data.login) {
-				localStorage.setItem("userToken", data.login.token);
-				setUserName(data.login.name);
-				history.push("/contracts");
-			} else {
+		loginUser({ email, password })
+			.then(({ data }) => {
+				if (data.login) {
+					localStorage.setItem("userToken", data.login.token);
+					createSessionAction();
+					setUserNameAction(data.login.name);
+					history.push("/contracts");
+				}
+			})
+			.catch(error => {
 				setWrongPassword(true);
-			}
-		})
+				console.log("Status 500");
+			})
 	}
 
 	return (
@@ -40,7 +45,7 @@ function LoginPage({ history, ...props }) {
 								<FormGroup>
 									<ControlLabel>Senha</ControlLabel>
 									<FormControl onChange={event => setPassword(event)} name="password" type="password" />
-								{ wrongPassword ? <InvalidSpan>Login/Senha inválidos</InvalidSpan> : null}
+									{wrongPassword ? <InvalidSpan>Login/Senha inválidos</InvalidSpan> : null}
 								</FormGroup>
 								<FormGroup>
 									<ButtonToolbar>
@@ -57,6 +62,13 @@ function LoginPage({ history, ...props }) {
 	);
 };
 
-const mapDispatchToProps = dispatch => bindActionCreators({ setUserName }, dispatch);
+const mapDispatchToProps = dispatch => (
+	bindActionCreators(
+		{
+			setUserNameAction,
+			createSessionAction
+		},
+		dispatch
+	));
 
 export default connect(null, mapDispatchToProps)(LoginPage);

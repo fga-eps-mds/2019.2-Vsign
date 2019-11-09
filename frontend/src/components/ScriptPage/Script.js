@@ -24,14 +24,6 @@ function relataErro(props) {
 }
 
 export class Script extends Component {
-  constructor(props) {
-    super(props);
-
-    if (!checkToken) {
-      restrictedAccess(this.props.history);
-    }
-  }
-  
   previousLocation = this.props.location;
 
   recordVideo() {
@@ -149,7 +141,6 @@ function Modal({ history }) {
         </div>
 
       </div>
-<<<<<<< HEAD
     </div>
   );
 }
@@ -163,9 +154,3 @@ function ScriptPage() {
 }
 
 export default withRouter(ScriptPage);
-=======
-    );
-}
-  
-export default withRouter(Script);
->>>>>>> develop

@@ -12,16 +12,11 @@ import SigningSteps from '../Shared/SigningSteps';
 import { Link } from 'react-router-dom';
 
 import './UploadImage.css';
-import { checkToken, restrictedAccess } from '../../utils/checkToken';
 
 class Uploadimage extends React.Component {
     constructor(props) {
         super(props);
 
-        if (!checkToken) {
-            restrictedAccess(this.props.history);
-        }
-        
         this.state = {
             files: [],
             uploading: false,
