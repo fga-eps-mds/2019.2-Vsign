@@ -9,6 +9,7 @@
     "@typescript-eslint/eslint-plugin": "^2.3.1",
     "activestorage": "^5.2.3",
     "apollo-boost": "^0.4.4",
+    "blob-util": "^2.0.2",
     "connected-react-router": "^6.5.2",
     "ffmpeg.js": "^3.1.9001",
     "graphql": "^14.5.7",

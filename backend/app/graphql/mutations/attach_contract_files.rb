@@ -11,11 +11,11 @@ module Mutations
       contract = Contract.find(id: contract_id, user: current_user )
 
       files = files.to_h
-      images = files[images]
-
-      contract.video.attach(files[video])
-      contract.audio.attach(files[audio])
-
+      
+      contract.video.attach(files[:video])
+      contract.audio.attach(files[:audio])
+      
+      images = files[:images]
       images.each {|image| contract.image.attach(image)}
       ExtractAudioTextJob.perform_later contract.id
     end
