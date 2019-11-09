@@ -22,7 +22,7 @@ export class routes extends Component {
                     <PrivateRoute path='/record' location={this.props.location} component={RecordPage} />
                     <Route path="/login" component={LoginPage} />
                     <PrivateRoute path='/review' location={this.props.location} component={ReviewVideoPage} />
-                    <PrivateRoute path='/introduction/:id' location={this.props.location} component={Introduction} />
+                    <Route path='/introduction/:id' location={this.props.location} component={Introduction} />
                     <PrivateRoute path='/upload_document' location={this.props.location} component={Uploadimage} />
                     <PrivateRoute path="/script" component={ScriptPage} />
                 </BrowserRouter>

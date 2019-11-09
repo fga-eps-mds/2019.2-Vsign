@@ -3,32 +3,36 @@ import { Container } from 'rsuite';
 import SigningSteps from '../Shared/SigningSteps';
 import Navbar from '../RecordPage/Navbar';
 import SigningTips from '../SigningTips/SigningTips';
-import { checkToken, restrictedAccess, logUser } from '../../utils/checkToken';
+import { logUser, notifyAccessDenied } from '../../utils/checkToken';
 import { getContract } from '../../graphql/queries';
 import { connect } from 'react-redux';
 import { bindActionCreators } from 'redux';
 import { setScriptAction, setOrderAction } from '../../actions/contract';
 import { setUserNameAction } from '../../actions/user';
+import { createSessionAction } from "../../actions/session";
 
 function Introduction({ history, ...props }) {
   const { id } = props.match.params;
-  const { setUserNameAction, setScriptAction, setOrderAction } = props;
+  const { setUserNameAction, setScriptAction, setOrderAction, createSessionAction } = props;
 
-  getContract(id, "").then(({ data }) => {
-    const { token, name } = data.getContract.user;
-    
-    // if there's no token saved -> save new to log user
-    // eslint-disable-next-line
-    checkToken ? undefined : logUser(token, name, setUserNameAction);
+  getContract(id, "")
+    .then(({ data }) => {
+      const { token, name } = data.getContract.user;
 
-    // save contract info on redux
-    if (data.getContract) {
+      logUser(token, name, setUserNameAction);
+
+      // Set authenticated to true;
+      createSessionAction();
+
+      // save contract info on redux
       setScriptAction(data.getContract.script);
       setOrderAction(data.getContract.order);
-    } else {
-      restrictedAccess(history);
-    }
-  })
+    })
+    .catch(error => {
+      console.log("Error when querying contract");
+      notifyAccessDenied();
+      history.push("/login");
+    })
 
   return (
     <Container>
@@ -39,6 +43,16 @@ function Introduction({ history, ...props }) {
   )
 };
 
-const mapDispatchToProps = dispatch => bindActionCreators({ setScriptAction, setOrderAction, setUserNameAction }, dispatch);
+const mapDispatchToProps = dispatch => (
+  bindActionCreators(
+    {
+      setScriptAction,
+      setOrderAction,
+      setUserNameAction,
+      createSessionAction
+    },
+    dispatch
+  )
+);
 
 export default connect(null, mapDispatchToProps)(Introduction);
