@@ -76,6 +76,7 @@ class IdConfirmJob < ApplicationJob
     if valid
       IdCheckJob.perform_later contract.id
     else
+      SendgridMailer.send(@user.email,{nome : @user.name}, d-3b7c3ef4ecc84d84bf2f5ee7487120de)
       @contract.status = "error, not a valid document"
     end
   end
