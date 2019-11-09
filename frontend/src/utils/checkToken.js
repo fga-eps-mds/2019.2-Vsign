@@ -7,24 +7,31 @@ export const checkToken = localStorage.getItem("userToken");
 // A helper function that redirects user to home
 // and notifies that access is restricted to logged users
 export function restrictedAccess(history) {
-  Notification.error({
-    title: "Acesso restrito",
-    description: "Somente usuários logados podem acessar"
-  })
   history.push("/");
 }
 
-export function logUser(token, name, setUserNameAction) {
+export function notifyAccessDenied() {
+  Notification.error({
+    title: "Acesso restrito",
+    description: "Somente usuários logados podem acessar essa área."
+  })
+}
+
+export function notifyUserLoggedSuccessfuly() {
   Notification.success({
     title: "Sucesso",
     description: "Usuário logado com sucesso"
-  })
+  });
+};
 
+export function logUser(token, name, setUserNameAction) {
+  notifyUserLoggedSuccessfuly();
+  
   try {
     localStorage.setItem("userToken", token)
   } catch (error) {
     console.log("Erro ", error);
   }
-  // eslint-disable-next-line
+
   setUserNameAction(name);
 }
