@@ -13,3 +13,7 @@ export function LoginPanel(props) {
         </StyledPanel>
     );
 }
+
+export const InvalidSpan = styled.span`
+    color: red;
+`;
