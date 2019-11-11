@@ -2,10 +2,11 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
 import App from './App';
+import { ApolloProvider } from 'react-apollo';
+import { ApolloProvider as ApolloHooksProvider } from 'react-apollo-hooks';
 import { Provider } from 'react-redux';
 import { ConnectedRouter } from 'connected-react-router';
 import * as serviceWorker from './serviceWorker';
-import { ApolloProvider } from '@apollo/react-hooks'
 import { client } from './graphql/client';
 import store, { history, sagaMiddleware } from './store';
 import rootSaga from './sagas';
@@ -16,7 +17,9 @@ function Root() {
 		<Provider store={store}>
 			<ConnectedRouter history={history}>
 				<ApolloProvider client={client}>
-					<App />
+      				<ApolloHooksProvider client={client}>
+						<App />
+					</ApolloHooksProvider>
 				</ApolloProvider>
 			</ConnectedRouter>
   		</Provider>
