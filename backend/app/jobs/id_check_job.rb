@@ -25,8 +25,16 @@ class IdCheckJob < ApplicationJob
           name: document_photo # 'file' =  'IMAGE 2019-10-26 18:26:52.jpg'
         },
       },
-    }
-    response = client.detect_text attrs
+      feature_types: ["FORMS"]
+    })
+
+    resp.blocks.each do |blocks|
+      text = []
+      if blocks.block_type === "LINE" && blocks.confidence >= 90 #"KEY_VALUE_SET"
+        text = blocks.text
+        puts text
+      end
+    end
 
   end
   
