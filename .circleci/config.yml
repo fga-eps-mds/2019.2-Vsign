@@ -18,14 +18,17 @@ references:
       POSTGRES_USER: vsign
       POSTGRES_DB: vsign_test
       POSTGRES_PASSWORD: ""
+  default_docker_node_executor: &default_docker_node_executor
+    image: circleci/node:12.2.0
 
 jobs:
   build:
     docker:
       - *default_docker_ruby_executor
+      - *default_docker_node_executor
     steps:
       - checkout
-      # Which version of bundler?
+      # RAILS - Which version of bundler?
       - run:
           name: Which bundler?
           command: bundle -v
@@ -36,13 +39,31 @@ jobs:
             - vsign-
       - run:
           working_directory: ./backend
-          name: Bundle Install
+          name: Rails - Bundle Install
           command: bundle check || bundle install
       # Store bundle cache
       - save_cache:
           key: vsign-{{ checksum "backend/Gemfile.lock" }}
           paths:
             - vendor/bundle
+            
+       # REACT - Download and cache dependencies
+      - restore_cache:
+          keys:
+            - vsign-{{ checksum "frontend/package.json" }}
+            # fallback to using the latest cache if no exact match is found
+            - vsign-
+
+      - run: 
+          working_directory: ./frontend
+          name: React - Yarn Install
+          command: yarn install
+
+      - save_cache:
+          paths:
+            - node_modules
+          key: vsign-{{ checksum "frontend/package.json" }}
+
 
   deploy_staging:
     docker:
@@ -133,6 +154,28 @@ jobs:
           command: |
             ./cc-test-reporter sum-coverage --output - coverage/codeclimate.*.json | ./cc-test-reporter upload-coverage --debug --input -
 
+  mkdocs:
+    docker:
+      - image: circleci/python:3.6-jessie-browsers
+    steps:
+      - checkout
+      - run:
+          name: Install and configure dependencies
+          command: |
+            git config user.email "ci-buildd@vsign.com"
+            git config user.name "ci-build"
+            sudo pip install mkdocs
+      - add_ssh_keys:
+          fingerprints:
+            - "54:92:51:fb:31:89:aa:2f:07:98:d8:6c:51:38:31:eb"
+      - run:
+          name: Before Deploy
+          command: mkdocs build --clean
+      - run:
+          name: Deploy Docs
+          command: mkdocs gh-deploy
+      
+
 workflows:
   version: 2
   build_and_test:
@@ -159,3 +202,9 @@ workflows:
           filters:
             branches:
               only: develop
+  deploy_mkdocs:
+    jobs:
+      - mkdocs:
+          filters:
+            branches:
+              only: master

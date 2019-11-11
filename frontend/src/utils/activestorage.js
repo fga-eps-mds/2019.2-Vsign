@@ -8,7 +8,6 @@ function calculateChecksum(file) {
         reject(error);
         return;
       }
-
       resolve(checksum);
     });
   });

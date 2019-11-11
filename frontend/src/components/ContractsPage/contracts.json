@@ -1,5 +1,6 @@
 [{
 	"id": 1,
+	"token": "abc123",
 	"company": "BxBlue",
 	"createdAt": "30/09/2019",
 	"expiresAt": "15/10/2019",
