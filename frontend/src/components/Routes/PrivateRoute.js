@@ -13,11 +13,11 @@ class PrivateRoute extends Component {
                 render={props => authenticated ? (
                     <Component {...props} />
                 ) : (
-                        <Redirect
-                            from={this.props.path}
-                            to="/login"
-                        />
-                    )}
+                    <Redirect
+                        from={this.props.path}
+                        to="/login"
+                    />
+                )}
             />
         )
     }
