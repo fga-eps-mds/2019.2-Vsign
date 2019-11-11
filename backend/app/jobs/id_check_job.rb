@@ -21,7 +21,7 @@ class IdCheckJob < ApplicationJob
       image: {
         s3_object: {
           bucket: Rails.application.credentials[Rails.env.to_sym][:aws][:bucket],
-          name: 'IMAGE 2019-10-26 18:26:52.jpg' # 'file' =  'IMAGE 2019-10-26 18:26:52.jpg' document_photo
+          name: document_photo # 'file' =  'IMAGE 2019-10-26 18:26:52.jpg' document_photo
         },
       },
     }
