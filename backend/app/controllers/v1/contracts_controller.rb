@@ -10,6 +10,7 @@ class V1::ContractsController < V1Controller
       contract.script = @script.format_content(content)
       contract.user = @user
     end
+    render json: contract, status: :created
   end
 
   private
@@ -24,15 +25,13 @@ class V1::ContractsController < V1Controller
 
   def set_user
     email = params[:email]
-
     random_password = SecureRandom.urlsafe_base64(8)
-
     @user = User.find_or_create_by(email: email) do |user|
       user.name = params[:name]
       user.password = random_password
       user.password_confirmation = random_password
     end
-    sign_in @user
+    # sign_in @user
     sign_in @user, bypass: true
   end
 

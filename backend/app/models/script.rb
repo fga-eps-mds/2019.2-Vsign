@@ -4,10 +4,9 @@ class Script < ApplicationRecord
   belongs_to :company
 
   def format_content(data)
-    data = JSON.parse(data)
     data.each do |key, val|
       content.collect do |block|
-        block.gsub! "%#{key}%", val
+        block.gsub! "%#{key}%", val.to_s
       end
     end
     content
