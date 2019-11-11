@@ -32,6 +32,6 @@ const NavBarInstance = ({ onSelect, activeKey, ...props }) => {
             </Navbar>
         </StyledHeader>
     );
-  };
+};
 
-  export default NavBarInstance;
+export default NavBarInstance;

@@ -2,7 +2,7 @@ import { client as apollo } from './client';
 import gql from 'graphql-tag';
 
 export async function uploadMutation(variables) {
-    const UPLOAD_MUTATION = gql`
+    const mutation = gql`
         mutation UploadMutation($input: CreateDirectUploadInput!) {
             createDirectUpload(input: $input) {
                 url,
@@ -12,15 +12,29 @@ export async function uploadMutation(variables) {
         }
     `;
 
-    const response = await apollo.mutate({
-        mutation: UPLOAD_MUTATION,
+    return await apollo.mutate({
+        mutation,
         variables
     });
-    return response;
+}
+
+export async function current_user() {
+    const query = gql`
+        query currentUser {
+            currentUser {
+                id
+                name
+            }
+        }
+    `;
+
+    return await apollo.query({
+        query
+    });
 }
 
 export async function attachContractFilesMutation(variables) {
-    const ATTACH_CONTRACT_FILES_MUTATION = gql`
+    const mutation = gql`
         mutation AttachContractFilesMutation($contractId: Int!, $files: AttachContractFilesInput!) {
             attachContractFiles(contractId: $contractId, files: $files) {
                 success
@@ -28,9 +42,26 @@ export async function attachContractFilesMutation(variables) {
         }
     `;
 
-    const response = await apollo.mutate({
-        mutation: ATTACH_CONTRACT_FILES_MUTATION,
+    return await apollo.mutate({
+        mutation,
         variables
     });
-    return response
+};
+
+export async function loginUser(variables) {
+    const mutation = gql`
+        mutation login($email: String!, $password: String!) {
+            login(
+                email: $email
+                password: $password
+            ) {
+                token
+            }
+        }
+    `;
+
+    return await apollo.mutate({
+        mutation,
+        variables
+    });
 }

@@ -16,6 +16,7 @@ import './UploadImage.css';
 class Uploadimage extends React.Component {
     constructor(props) {
         super(props);
+
         this.state = {
             files: [],
             uploading: false,

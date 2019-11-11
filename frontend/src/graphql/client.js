@@ -8,6 +8,14 @@ const link = new HttpLink({
 });
 
 export const client = new ApolloClient({
+    request: operation => {
+        const token = localStorage.getItem("userToken");
+        operation.setContext({
+            headers: {
+                Authorization: token ? `Bearer ${token}` : ""
+            }
+        });
+    },
     cache,
     link
 });

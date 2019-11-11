@@ -13,5 +13,5 @@ export default function ContractsPage() {
                 <Contracts />
             </Content>
         </Container>
-    );
+    )
 }
