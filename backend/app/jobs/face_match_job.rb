@@ -3,7 +3,7 @@ class FaceMatchJob < ApplicationJob
   
   def perform(contract_id) 
     
-    client = Aws::Rekognition::Client.new({
+    @client = Aws::Rekognition::Client.new({
       region: Rails.application.credentials.dig(:aws, :region),
       credentials: Aws::Credentials.new(
         Rails.application.credentials.dig(:aws, :access_key_id),
@@ -13,6 +13,7 @@ class FaceMatchJob < ApplicationJob
     @user = @contract.user
     document = @user.user.user_document
     @contract.image.each |image| face_matching(image.filename, document.filename)
+    perform_next_job(similarity)
     
   end
   
@@ -36,19 +37,22 @@ class FaceMatchJob < ApplicationJob
       similarity_threshold: 80
     }
 
-    response = cliente.compare_faces attrs
+    similarity = 0
+
+    response = client.compare_faces attrs
     response.face_matches.each do |face_match|
-      similarity = face_match.similarity
+      similarity = similarity + face_match.similarity
     end
-  
-    perform_next_job(similarity)
+    
+    #sola de similarity das tres vezes que a funcao eh chamda
+    return similarity
 
   end
 
 
   def perform_next_job(similarity)
     
-    if similarity >= 80
+    if similarity >= 240
       ExtractAudioTextJob.perform_later contract.id
     else
       @contract.status = "error, face matching fail"
