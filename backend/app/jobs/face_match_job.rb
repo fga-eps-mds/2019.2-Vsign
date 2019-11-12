@@ -39,7 +39,7 @@ class FaceMatchJob < ApplicationJob
 
     similarity = 0
 
-    response = client.compare_faces attrs
+    response = @client.compare_faces attrs
     response.face_matches.each do |face_match|
       similarity = similarity + face_match.similarity
     end
