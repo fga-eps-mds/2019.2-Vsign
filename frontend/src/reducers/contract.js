@@ -1,22 +1,11 @@
-import { SET_ORDER, SET_SCRIPT } from '../constants/constract';
+import { SET_CONTRACT } from '../constants/contract';
 
-const initialState = {
-  script: "",
-  order: "",
-}
+const initialState = {};
 
 export default function contractReducer(state = initialState, action) {
-  switch (action) {
-    case SET_SCRIPT:
-      return {
-        ...state,
-        script: action.payload
-      };
-    case SET_ORDER:
-      return {
-        ...state,
-        order: action.payload
-      }
+  switch (action.type) {
+    case SET_CONTRACT:
+      return action.payload;
     default:
       return state;
   }
