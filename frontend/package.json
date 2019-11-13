@@ -7,7 +7,9 @@
     "@mattiasbuelens/web-streams-polyfill": "^0.3.2",
     "@types/react": "^16.9.2",
     "@typescript-eslint/eslint-plugin": "^2.3.1",
+    "activestorage": "^5.2.3",
     "apollo-boost": "^0.4.4",
+    "blob-util": "^2.0.2",
     "connected-react-router": "^6.5.2",
     "ffmpeg.js": "^3.1.9001",
     "graphql": "^14.5.7",
@@ -54,6 +56,7 @@
     ]
   },
   "devDependencies": {
+    "babel-loader": "^8.0.6",
     "eslint": "^6.4.0",
     "eslint-plugin-react": "^7.14.3",
     "redux-logger": "^3.0.6"

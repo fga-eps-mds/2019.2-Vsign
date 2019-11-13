@@ -45,7 +45,7 @@ ActiveRecord::Schema.define(version: 2019_11_11_145412) do
 
   create_table "contracts", force: :cascade do |t|
     t.bigint "company_id"
-    t.string "script"
+    t.json "script"
     t.bigint "user_id"
     t.string "order"
     t.datetime "created_at", null: false
