@@ -51,13 +51,6 @@ RSpec.describe Script, type: :model do
       expect(script).to_not be_valid
     end
 
-    it "ensures document is valid" do
-      script.document = "another"
-      script.save
-
-      expect(script).to_not be_valid
-    end
-
     it "ensures script is valid" do
       script.save
 
