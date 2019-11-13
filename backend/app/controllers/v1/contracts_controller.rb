@@ -7,6 +7,7 @@ class V1::ContractsController < V1Controller
     order = params[:order]
     contract = Contract.find_or_create_by(company: @company, order: order) do |contract|
       content = params[:content]
+      contract.token = SecureRandom.urlsafe_base64(64)
       contract.script = @script.format_content(content)
       contract.user = @user
     end

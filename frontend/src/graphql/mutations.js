@@ -65,3 +65,19 @@ export async function loginUser(variables) {
         variables
     });
 }
+
+export async function loginByTokenMutation(variables) {
+    const mutation = gql`
+        mutation LoginByToken($token: String!) {
+            loginByToken(token: $token) {
+                token,
+                name
+            }
+        }
+    `;
+
+    return await apollo.mutate({
+        mutation,
+        variables
+    });
+}
