@@ -68,6 +68,7 @@ ActiveRecord::Schema.define(version: 2019_11_11_145412) do
     t.bigint "company_id"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.integer "document"
     t.index ["company_id"], name: "index_scripts_on_company_id"
   end
 

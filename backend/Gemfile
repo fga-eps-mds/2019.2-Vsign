@@ -65,3 +65,7 @@ gem 'rubocop', '~> 0.74.0', require: false
 # Code coverage analysis
 gem 'rspec_junit_formatter'
 gem 'simplecov', require: false, group: :test
+
+group :test do
+  gem 'shoulda-matchers'
+end
