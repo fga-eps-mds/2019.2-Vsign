@@ -62,11 +62,9 @@ class IdConfirmJob < ApplicationJob
   end
 
   def perform_next_job(valid)
-    if valid
+    if valid == true
       IdCheckJob.perform_later contract.id
     else
-      id_template = "d-3b7c3ef4ecc84d84bf2f5ee7487120de"
-      SendgridMailer.send(@user.email, {name : @user.name}, id_template)
       @contract.status = "error, not a valid document"
     end
   end
