@@ -10,5 +10,12 @@ class ReportWebhookJob < ApplicationJob
     
     @user = @contract.user
     
+    RestClient.post(url, {
+      title: @script.title
+      order: @contract.order,
+      email: @user.email,
+      result: @script.status
+    })    
+
   end
 end
