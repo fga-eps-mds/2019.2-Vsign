@@ -40,23 +40,15 @@ class IdCheckJob < ApplicationJob
     response.text_detections.each do |detections|
       if detections.type === "WORD"
         if detections.text.include?("user_cpf")
-          puts "Valid user CPF"
           document_count = document_count + 1
         elsif detections.text.include?("user_rg")
-          puts "Valid user RG"
           document_count = document_count + 1
         elsif detections.text.include?("user_date")
-          puts "Valid user date of birth"
           document_count = document_count + 1
-        else 
-          puts "Invalid Document"
         end
       elsif detections.type === "LINE"
         if detections.text.include?("user_name")
-          puts "Valid user name"
           document_count = document_count + 1
-        else
-          puts "Invalid Document"
         end
       end
     end
