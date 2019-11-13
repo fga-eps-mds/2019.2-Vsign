@@ -29,7 +29,7 @@ const StatusBadge = ({ status }) => {
 
 const LIST_CLASSNAME = 'list-group-item d-flex justify-content-between align-items-center px-0 border-0';
 
-export default function Card() {
+export default function Card({ id, company, createdAt }) {
 	return (
         <div className="col-12 col-md-6 col-lg-4">
             <div className="card mb-4">
@@ -38,11 +38,11 @@ export default function Card() {
                     <ul className="list-group list-group-flush my-2">
                         <li className={LIST_CLASSNAME}>
                             <span>Empresa</span>
-                            <span>BxBlue</span>
+                            <span>{company.name}</span>
                         </li>
                         <li className={LIST_CLASSNAME}>
                             <span>Data</span>
-                            <span>09/11/19</span>
+                            <span>{createdAt}</span>
                         </li>
                         <li className={LIST_CLASSNAME}>
                             <span>Status</span>
@@ -50,7 +50,7 @@ export default function Card() {
                         </li>
                     </ul>
                     <div className="d-flex justify-content-between align-items-center">
-                        <SignButton contractId={1} />
+                        <SignButton contractId={id} />
                         <small className="text-muted">expira em 24h</small>
                     </div>
                 </div>
