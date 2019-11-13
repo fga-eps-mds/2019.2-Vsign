@@ -24,4 +24,4 @@ backend/master.key
 
 /tmpcoverage
 
-/backend/coverage
+backend/coverage/*
