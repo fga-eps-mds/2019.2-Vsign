@@ -23,3 +23,5 @@ backend/.byebug_history
 backend/master.key
 
 /tmpcoverage
+
+backend/coverage/*
