@@ -11,7 +11,7 @@
 
 ***
 
-Devido as srpints anteriores não terem tido muito trabalho e a produtividade da equipe não ter sido muito boa, essa sprint o trabalho melhorou consideravelmente em comparação com as anteriores, porém a produtividade da equipe ainda não tão boa em comparação com as sprints da Release 1.
+Embora as Sprints anteriores não tenham tido muito trabalho e a produtividade da equipe não tenha sido muito boa, houve uma melhora considerável nessa Sprint, ainda que não tão produtiva quanto as Sprints da Release 01.
 
 As novas issues e as issues de débito técnico planejadas para o time foram as seguintes:
 
