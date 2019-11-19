@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2019_11_02_183305) do
+ActiveRecord::Schema.define(version: 2019_11_19_175045) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -54,6 +54,16 @@ ActiveRecord::Schema.define(version: 2019_11_02_183305) do
     t.index ["user_id"], name: "index_contracts_on_user_id"
   end
 
+  create_table "documents", force: :cascade do |t|
+    t.integer "document_type"
+    t.date "expiration"
+    t.boolean "valid", default: false
+    t.bigint "user_id"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["user_id"], name: "index_documents_on_user_id"
+  end
+
   create_table "jwt_blacklist", force: :cascade do |t|
     t.string "jti", null: false
     t.index ["jti"], name: "index_jwt_blacklist_on_jti"
@@ -66,6 +76,8 @@ ActiveRecord::Schema.define(version: 2019_11_02_183305) do
     t.bigint "company_id"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.integer "document"
+    t.date "expiration_day"
     t.index ["company_id"], name: "index_scripts_on_company_id"
   end
 
@@ -85,5 +97,6 @@ ActiveRecord::Schema.define(version: 2019_11_02_183305) do
   add_foreign_key "active_storage_attachments", "active_storage_blobs", column: "blob_id"
   add_foreign_key "contracts", "companies"
   add_foreign_key "contracts", "users"
+  add_foreign_key "documents", "users"
   add_foreign_key "scripts", "companies"
 end
