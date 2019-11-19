@@ -11,6 +11,7 @@ class User < ApplicationRecord
 
   has_many :contracts
   has_many :documents
+  has_one_attached :user_document
 
   def has_valid_document document_type
     return self.documents.where("valid = TRUE AND document_type = ?", document_type)
