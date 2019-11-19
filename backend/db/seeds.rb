@@ -7,7 +7,9 @@
 #   Character.create(name: 'Luke', movie: movies.first)
 require 'faker'
 
-10.times do 
+document_types = ["cnh", "rg", "any"]
+
+10.times do |t|
   user = User.create(
     email: Faker::Internet.email, 
     password: Faker::Internet.password, 
@@ -16,6 +18,15 @@ require 'faker'
 
   company = Company.create(
     name: Faker::Company.name
+  )
+
+  script = Script.create(
+    title: "Contrato - #{t}",
+    kind: "Empréstimo",
+    content: Faker::Lorem.paragraph,
+    company_id: company.id,
+    document: document_types.sample,
+    expiration_day: Date.today.to_s(:db)
   )
 
   contract = Contract.create(
