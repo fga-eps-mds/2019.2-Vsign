@@ -16,4 +16,8 @@ class Script < ApplicationRecord
     end
     content
   end
+
+  def isExpired
+    return Date.today < self.expiration_day
+  end
 end
