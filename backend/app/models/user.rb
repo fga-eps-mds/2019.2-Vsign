@@ -12,11 +12,7 @@ class User < ApplicationRecord
   has_many :contracts
   has_many :documents
 
-  def has_valid_document
-    return self.documents.where(valid: true)
-  end
-
-  def has_valid_document_where document_type
-    return self.documents.where(document_type: document_type)
+  def has_valid_document document_type
+    return self.documents.where("valid = TRUE AND document_type = ?", document_type)
   end
 end
