@@ -25,3 +25,4 @@ backend/master.key
 /tmpcoverage
 
 backend/coverage/*
+tmp/*
