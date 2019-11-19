@@ -1,21 +1,25 @@
 class ReportWebhookJob < ApplicationJob
   queue_as :default
 
-  def perform(contract_id, company_id)
+  def perform(contract_id)
     @contract = Contract.find(contract_id)
-    @script = Script.find(company_id)
+    @script = @contract.script
+
+    @user = @contract.user
 
     webhook = @script.webhook
     url = URI.unescape(webhook)
     
-    @user = @contract.user
-    
-    RestClient.post(url, {
-      title: @script.title
-      order: @contract.order,
-      email: @user.email,
-      result: @script.status
-    })    
+    begin
+      RestClient.post(url, {
+        title: @script.title,
+        order: @contract.order,
+        email: @user.email,
+        result: @script.status
+      })
+    rescue RestClient::ExceptionWithResponse => e
+      e.response
+    end
 
   end
 end
