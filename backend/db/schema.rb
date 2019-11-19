@@ -66,6 +66,7 @@ ActiveRecord::Schema.define(version: 2019_11_12_232725) do
     t.bigint "company_id"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.string "webhook"
     t.integer "document"
     t.index ["company_id"], name: "index_scripts_on_company_id"
   end
