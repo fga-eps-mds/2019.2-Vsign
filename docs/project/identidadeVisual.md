@@ -3,6 +3,7 @@
 | <center>Versão</center> | <center>Descrição</center> | <center>Autor</center> |
 | :----: | :-------: | :---: |
 | 0.1 | Abertura e escrita do documento | [Cauê](https://github.com/caue96) |
+| 0.2 | Adição do tópico de exemplos de aplicação e correção de alguns slides | [Cauê](https://github.com/caue96) |
 
 ---
 
