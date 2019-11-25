@@ -11,6 +11,7 @@ nav:
         - 'Documento de Visão': 'project/vision-document.md'
         - 'Documento de Arquitetura': 'project/architectureDocument.md'
         - 'Diagrama de casos de uso': 'project/useCasesDiagram.md'
+        - 'Análise Crítica de artigo': 'project/articleCriticalAnalysis.md'
     - Gerenciamento de Projeto:
         - 'Plano de Gerenciamento de Configuração de Software': 'managementProject/gcs.md'
         - 'Folha de Estilo': 'managementProject/styleGuide.md'
