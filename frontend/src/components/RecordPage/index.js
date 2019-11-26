@@ -41,7 +41,7 @@ const videoJsOptions = {
             timeSlice: 2000,
             audio: true,
             video: true,
-            maxLength: 10,
+            maxLength: 60,
             debug: true,
             // convertEngine: 'ts-ebml',
             convertEngine: 'ts-ebml',
