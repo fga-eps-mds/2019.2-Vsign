@@ -14,6 +14,10 @@ class User < ApplicationRecord
   has_one_attached :user_document
 
   def has_valid_document document_type
-    return self.documents.where("valid = TRUE AND document_type = ?", document_type)
+    if document_type
+      return self.documents.where("valid = TRUE AND document_type = ?", document_type)
+    else
+      return self.documents.where(valid: true)
+    end
   end
 end

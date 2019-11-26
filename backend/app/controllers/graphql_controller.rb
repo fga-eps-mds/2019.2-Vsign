@@ -32,7 +32,8 @@ class GraphqlController < ApplicationController
     operation_name = params[:operationName]
     context = {}
     Schema.execute(
-      query, variables: variables, context: context,
+      query, variables: variables, 
+             context: context,
              operation_name: operation_name
     )
   end

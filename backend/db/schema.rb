@@ -50,14 +50,15 @@ ActiveRecord::Schema.define(version: 2019_11_19_175045) do
     t.string "order"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.string "token"
     t.index ["company_id"], name: "index_contracts_on_company_id"
     t.index ["user_id"], name: "index_contracts_on_user_id"
   end
 
   create_table "documents", force: :cascade do |t|
-    t.integer "document_type"
+    t.integer "description"
     t.date "expiration"
-    t.boolean "valid", default: false
+    t.boolean "is_valid", default: false
     t.bigint "user_id"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
