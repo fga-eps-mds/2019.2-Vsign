@@ -17,16 +17,18 @@ class ExtractAudioTextJob < ApplicationJob
       }
       audio  = { content: binary }
       # audio  = { content: audio_file }
-      response = speech.recognize(config, audio)
+       response = speech.recognize(config, audio)
 
        confidence = response.results.first.alternatives.first.confidence.to_f
        
-       text = response.results.first.alternatives.first.transcript.to_s
+     puts  text = response.results.first.alternatives.first.transcript.to_s
        
        script = join_script_text(@contract.script)
-       
-       percent_of_equality = compare(text, script)
-       
+       puts "Porcentagem entre comparação do roteiro com texto extraido :\n\n"
+     puts  percent_of_equality = compare(text, script)
+      
+
+      ### Instead of the PUTS change for the contract status updating 
       if confidence <= 0.50 # Value to failed based in confidence of the transcript, change if necessary
         # change_contract_status(-1.00)
         puts "Audio com baixa taxa de confiança"
