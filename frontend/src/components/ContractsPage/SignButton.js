@@ -1,6 +1,7 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
 import { getContractQuery } from '../../graphql/queries';
+import { setContractAction } from '../../actions/contract';
 
 class SignButton extends Component {
     constructor(props) {
@@ -16,8 +17,11 @@ class SignButton extends Component {
         this.toggleFetching();
 
         try {
-            const { contractId: id } = this.props;
-            const data = await getContractQuery({ id });
+            const { contractId } = this.props;
+            const variables = { id: contractId };
+            const { data } = await getContractQuery(variables);
+            const { getContract } = data || {};
+            this.props.setContractAction(getContract);
         } catch {
             alert('Não foi possível pegar informações do contrato');
         } finally {
@@ -45,7 +49,7 @@ class SignButton extends Component {
 }
 
 const mapDispatchToProps = {
-    // getContractAction
+    setContractAction
 };
 
 export default connect(null, mapDispatchToProps)(SignButton);

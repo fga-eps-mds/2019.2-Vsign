@@ -35,7 +35,7 @@ export async function current_user() {
 
 export async function attachContractFilesMutation(variables) {
     const mutation = gql`
-        mutation AttachContractFilesMutation($contractId: Int!, $files: AttachContractFilesInput!) {
+        mutation AttachContractFilesMutation($contractId: String!, $files: AttachContractFilesInput!) {
             attachContractFiles(contractId: $contractId, files: $files) {
                 success
             }

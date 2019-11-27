@@ -8,9 +8,11 @@ export default function ControlButtons() {
             <Link to={DOCUMENT_URL}>
                 <button className="btn btn-primary pull-right">Continuar</button>
             </Link>
-            <Link to="#">
-                <button className="btn btn-outline-danger pull-right mr-2">Reportar Erro</button>
-            </Link>
+            <button
+                className="btn btn-outline-danger pull-right mr-2"
+                data-toggle="modal"
+                data-target="#report-error-modal"
+            >Reportar Erro</button>
         </Fragment>
     );
 }

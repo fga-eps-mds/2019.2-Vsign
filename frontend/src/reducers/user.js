@@ -1,8 +1,6 @@
 import { SET_NAME } from "../constants/user";
 
-const initialState = {
-  name: "marcos"
-};
+const initialState = {};
 
 export default function userReducer(state = initialState, action) {
   switch (action.type) {

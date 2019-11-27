@@ -44,7 +44,7 @@ export const VideoDiv = styled.div`
     height: 100%;
     transform: scale(-1, 1);
     align-self: flex-start
-    `;
+`;
 
 export const ScriptBlockDiv = styled(Panel)`
     display: flex;

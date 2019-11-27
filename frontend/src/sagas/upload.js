@@ -47,9 +47,8 @@ function* handleUploadVideo() {
 }
 
 function* handleUploadAudio() {
-    const { audio } = yield select(state => state.record);
-    const { blob } = audio;
-    const name = `audio-${Date.now()}.webm`;
+    const { audio: blob } = yield select(state => state.record);
+    const name = `audio-${Date.now()}.wav`;
     blob.name = name;
 
     try {

@@ -7,8 +7,6 @@ import createSagaMiddleware from 'redux-saga';
 import createRootReducer from './reducers';
 export const history = createBrowserHistory();
 
-const initialState = {};
-
 const enhancers = [];
 const reduxPromiseListener = createReduxPromiseListener();
 
@@ -41,7 +39,14 @@ const composedEnhancers = compose(
   ...enhancers
 );
 
-const configureStore = () => createStore(createRootReducer(history), initialState, composedEnhancers);
+const configureStore = () => {
+  const initialState = {
+    session: {
+      authenticated: (sessionStorage.getItem("userToken") !== null)
+    }
+  };
+  return createStore(createRootReducer(history), initialState, composedEnhancers);
+}
 
 const store = configureStore();
 

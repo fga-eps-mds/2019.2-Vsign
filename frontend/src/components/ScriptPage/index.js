@@ -1,10 +1,9 @@
 import React, { Component, Fragment } from 'react';
-import { Link } from 'react-router-dom';
 import Navbar from '../Shared/Navbar';
 import DetailsCard from './DetailsCard';
 import ScriptCard from './ScriptCard';
-import { DOCUMENT_URL } from '../../constants/routes';
 import ControlButtons from './ControlButtons';
+import ReportErrorModal from './ReportErrorModal';
 
 class ScriptPage extends Component {
   previousLocation = this.props.location;
@@ -41,6 +40,7 @@ class ScriptPage extends Component {
           <ScriptCard />
           <ControlButtons />
         </div>
+        <ReportErrorModal />
       </Fragment>
     );
   }

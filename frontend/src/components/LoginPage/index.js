@@ -35,8 +35,8 @@ function LoginPage({ history, ...props }) {
 
 	return (
 		<div class="container d-flex" style={{ height: '100vh' }}>
-    		<div class="row align-self-center w-100">
-				<div class="col-4 mx-auto">
+    		<div class="row align-self-center" style={{ width: '100vh' }}>
+				<div class="col-12 col-md-4 mx-auto">
 					<div className="card">
 						<div className="card-header text-center">
 							<h5>Login</h5>
@@ -44,11 +44,11 @@ function LoginPage({ history, ...props }) {
 						<div className="card-body">
 							<div class="form-group">
 								<label>Email</label>
-								<input className="form-control" name="email" type='email' onChange={event => setEmail(event)} />
+								<input className="form-control" name="email" type='email' onChange={event => setEmail(event.target.value)} />
 							</div>
 							<div class="form-group">
 								<label>Senha</label>
-								<input className="form-control" onChange={event => setPassword(event)} name="password" type="password" />
+								<input className="form-control" onChange={event => setPassword(event.target.value)} name="password" type="password" />
 								{wrongPassword ? <div className="invalid-feedback">Login/Senha inválidos</div> : null}
 							</div>
 							<div className="form-group">
