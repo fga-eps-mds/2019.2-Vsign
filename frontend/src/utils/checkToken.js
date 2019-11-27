@@ -17,6 +17,13 @@ export function notifyAccessDenied() {
   })
 }
 
+export function notifyContractExpired() {
+  Notification.error({
+    title: "Acesso negado",
+    description: "Contrato expirado, entre em contato com a empresa."
+  })
+}
+
 export function notifyUserLoggedSuccessfuly() {
   Notification.success({
     title: "Sucesso",
@@ -24,8 +31,9 @@ export function notifyUserLoggedSuccessfuly() {
   });
 };
 
-export function logUser(token, name, setUserNameAction) {
-  notifyUserLoggedSuccessfuly();
+export function logUser(token, name, setUserNameAction, authenticated) {
+  // eslint-disable-next-line
+  authenticated ? null : notifyUserLoggedSuccessfuly();
   
   try {
     localStorage.setItem("userToken", token)

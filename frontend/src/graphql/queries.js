@@ -11,6 +11,7 @@ export async function getContract(id, token) {
           id
           script
           order
+          expired
           user {
             name
             token
