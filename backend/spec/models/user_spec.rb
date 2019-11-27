@@ -30,5 +30,25 @@ RSpec.describe User, type: :model do
       expect(user).to be_valid
     end
 
+    it 'email invalid - is not unique' do
+      user2 = User.new(
+        name: "James",
+        email: "james@test.com",
+        password: "1234567"
+      )
+      user2.save
+      expect(subject).to be_invalid
+    end
+
+    it 'email valid - is unique' do
+      user2 = User.new(
+        name: "James",
+        email: "james9@test.com",
+        password: "1234567"
+      )
+      user2.save
+      expect(subject).to be_valid
+    end
+
   end
 end
