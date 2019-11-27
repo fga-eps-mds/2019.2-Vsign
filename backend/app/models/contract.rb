@@ -14,9 +14,10 @@ class Contract < ApplicationRecord
     devel = Rails.env.development?
 
     if devel
-      return "http://localhost:3001/"
-    else
+      # return "http://localhost:3001/"
       return "https://develop.dar0d46dq2rcb.amplifyapp.com/"
+    else
+      return "https://master.dar0d46dq2rcb.amplifyapp.com/"
     end
   end
   
