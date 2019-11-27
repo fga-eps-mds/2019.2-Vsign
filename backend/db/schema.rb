@@ -50,7 +50,7 @@ ActiveRecord::Schema.define(version: 2019_11_27_025120) do
     t.string "order"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
-    t.date "expiration_date", default: "2019-12-04", null: false
+    t.date "expiration_date"
     t.index ["company_id"], name: "index_contracts_on_company_id"
     t.index ["user_id"], name: "index_contracts_on_user_id"
   end
