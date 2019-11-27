@@ -35,31 +35,31 @@ class IdCheckJob < ApplicationJob
     user_rg = @content.rg 
     user_date = @content.data_nascimento
   
-    document_count = 0
+    checked_items = 0
     #cpf
     response.text_detections.each do |detections|
       if detections.type === "WORD"
         if detections.text.include?("user_cpf")
-          document_count = document_count + 1
+          checked_items = checked_items + 1
         elsif detections.text.include?("user_rg")
-          document_count = document_count + 1
+          checked_items = checked_items + 1
         elsif detections.text.include?("user_date")
-          document_count = document_count + 1
+          checked_items = checked_items + 1
         end
       elsif detections.type === "LINE"
         if detections.text.include?("user_name")
-          document_count = document_count + 1
+          checked_items = checked_items + 1
         end
       end
     end
     
-    perform_next_job(document_count)
+    perform_next_job(checked_items)
 
   end
   
-  def perform_next_job(document_count)
+  def perform_next_job(checked_items)
     
-    if document_count < 2
+    if checked_items < 2
       FaceMatchJob.perform_later contract.id
     else
       @contract.status = "error, document validation fail"
