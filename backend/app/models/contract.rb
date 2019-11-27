@@ -8,5 +8,5 @@ class Contract < ApplicationRecord
   has_one_attached :audio
   has_many_attached :image
 
-  validates_presence_of :company_id, :script, :order
+  validates_presence_of :company_id, :user_id, :script, :order
 end

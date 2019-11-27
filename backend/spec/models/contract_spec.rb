@@ -3,7 +3,10 @@ require 'rails_helper'
 RSpec.describe Contract, type: :model do
   context 'validation tests' do
     subject(:contract) {
-      company = Company.create(name: "Company Test")
+      company = Company.create(
+        name: "Company Test",
+        api_key: "api_key"
+      )
 
       script = Script.create(
         kind: "kind_script",
@@ -23,13 +26,20 @@ RSpec.describe Contract, type: :model do
       Contract.new(
         company_id: company.id,
         script: script,
-        user_id: user,
+        user_id: user.id,
         order: "Order_test"
       ) 
     }
     
     it "ensures company presence" do
       contract.company_id = nil
+      contract.save
+
+      expect(contract).to_not be_valid
+    end
+
+    it "ensures user presence" do
+      contract.user_id = nil
       contract.save
 
       expect(contract).to_not be_valid
