@@ -15,10 +15,6 @@ export class ScriptProgress extends Component {
         this.increase = this.increase.bind(this);
       }
 
-      componentDidMount() {
-      }
-
-
       changePercent(nextPercent) {
         const percent = nextPercent < 0 ? 0 : nextPercent > 100 ? 100 : nextPercent;
         this.setState({
@@ -28,25 +24,25 @@ export class ScriptProgress extends Component {
         });
       }
 
-
       decline() {
-        
           const stepSize = this.props.stepSize
           this.changePercent(this.state.percent - stepSize);
-
       }
   
       increase() {
-        
           const stepSize = this.props.stepSize
           this.changePercent(this.state.percent + stepSize);
-        
       }
+
       render() {
-        const { percent, color, status } = this.state;
+        const { percent, color } = this.state;
+        const style = {
+          width: `${percent}%`,
+          color 
+        };
         return (
-          <div>
-            <Line percent={percent} strokeColor={color} status={status} />
+          <div class="progress mt-3">
+            <div class="progress-bar" role="progressbar" style={style} aria-valuenow={percent} aria-valuemin="0" aria-valuemax="100" />
           </div>
         );
       }

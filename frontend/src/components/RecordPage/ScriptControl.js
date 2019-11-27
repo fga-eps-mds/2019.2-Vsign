@@ -25,24 +25,21 @@ export default class ScriptControl extends Component {
     render() {
         const disableButtons = !this.props.isRecording;
         return (
-            <Grid fluid style={{ marginTop: '1rem' }}>
-                <Row>
-                    <Col xsHidden xs={12}>
-                        {/* <Progress.Line style={{ marginTop: '.5rem' }} percent={80} showInfo={false} /> */}
-                        <ScriptProgress ref={this.child} stepSize={this.props.stepSize} onClickNxt={this.handleScriptClick}/>
-                    </Col>
-                    <Col xs={12}>
-                        <IconButton
-                            appearance="primary"
-                            placement="right"
-                            onClick={this.handleScriptClick}
-                            icon={<Icon icon="forward" />}
-                            disabled={disableButtons}
-                            block
-                        >Avançar</IconButton>
-                    </Col>
-                </Row>
-            </Grid>
+            <div className="row mt-3">
+                <div className="col-8">
+                    <ScriptProgress ref={this.child} stepSize={this.props.stepSize} />
+                </div>
+                <div className="col-4 pl-0">
+                    <button
+                        className="btn btn-primary btn-block"
+                        placement="right"
+                        onClick={this.handleScriptClick}
+                        icon={<Icon icon="forward" />}
+                        disabled={disableButtons}
+                        block
+                    >Avançar</button>
+                </div>
+            </div>
         );          
     }
 }
