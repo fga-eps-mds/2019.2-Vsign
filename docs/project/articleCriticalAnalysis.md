@@ -4,6 +4,7 @@
 | :----: | :-------: | :---: |
 | 0.1 | Resumo do artigo | [Cauê](https://github.com/caue96) |
 | 0.2 | Uso de deploy contínuo no projeto | [Cauê](https://github.com/caue96) |
+| 0.3 | Paralelo entre projeto e artigo | [Cauê](https://github.com/caue96) |
 
 ---
 
@@ -61,3 +62,12 @@ O deploys só eram realizado no servidor de homologação quando os pull request
 
 
 ### Paralelo entre Vsign e Artigo
+Sobre tudo que foi apresentado no artigo "Continuous deployment at Facebook and OANDA" e com tudo que aconteceu em nosso projeto até então, se pode fazer alguns paralelos e algumas comparações do que se foi observado e tirado como conclusão no artigo comparando com o que aconteceu em nosso projeto.
+
+Quando se compara a questão das atualizações nosso projeto se parece mais com a OANDA, pois durante os quatro meses de desenvolvimento, após 1 pré-release e 1 release de produto, diversas atualizações que foram subidas no servidor de homologação, foram blocos médio de código e não em pequenos bloco em comparação com o Facebook. Em nosso ambiente de produção só foram geradas 2 grandes atualizações, pois como estávamos em início de desenvolvimento, não havia a possibilidade de soltarmos pequenos pedaços de código já para o uso do usuário, pois necessitávamos de mais algumas funcionalidades para termos um produto mais concreto.
+
+Ao contrário do que aconteceu com o Facebook e a Oanda, onde eles trabalham em pequenas equipes para evitar problemas de comunicação e tem métricas de seu progresso de trabalho, em nosso projeto tivemos um equipe que não era grande, porém tivemos problemas constante de comunicação e não tínhamos métricas para acompanhar o progresso de trabalho individual e do time.
+
+Por ser um trabalho onde a equipe é formada integralmente por membros que ainda estão cursando a graduação, a equipe no geral não tem muito experiência e responsabilidade que se é cobrado no Facebook e na OANDA. No surgimento de *bugs* eles eram resolvidos pelo membro mais experiente da equipe ou por quem do time de desenvolvimento se sentisse mais a vontade para resolver o problema, incluindo a dupla de pareamento que desenvolveu a funcionalidade que no geral é quem trabalhava para resolver os *bugs* de suas próprias funcionalidades desenvolvidas.
+
+O nível de maturidade atingida pela equipe para a implementação dos deploys contínuos (homologação, produção e wiki) foi excelente para o nível que se espera chegar ao final da matéria, porém para nível de mercado essa só foi a primeira experiência para se iniciar os conhecimentos que são requisitados para um *DevOps*.
