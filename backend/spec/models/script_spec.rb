@@ -5,7 +5,7 @@ require 'rails_helper'
 RSpec.describe Script, type: :model do
   context 'validation tests' do
     subject(:script) {
-      company = Company.create(name: "Teste")
+      company = Company.create(name: "Teste", api_key: "key_api")
 
       Script.new(
         kind: "kind_script",
