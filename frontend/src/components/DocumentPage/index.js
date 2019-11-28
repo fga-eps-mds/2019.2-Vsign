@@ -3,13 +3,15 @@ import Dropzone from './Dropzone';
 import { Button, Progress } from 'rsuite';
 import Navbar from '../Shared/Navbar';
 import { Link } from 'react-router-dom';
-import { RECORD_URL } from '../../constants/routes';
+import { RECORD_URL, DOCUMENT_UPLOAD_URL } from '../../constants/routes';
 import './UploadImage.css';
+import { connect } from "react-redux";
 
-
-export default class DocumentPage extends Component {
+class DocumentPage extends Component {
     constructor(props) {
         super(props);
+
+        console.log("Props: ", this.props)
 
         this.state = {
             files: [],
@@ -34,7 +36,7 @@ export default class DocumentPage extends Component {
                 <div className="container py-5">
                     <div className="card mb-3">
                         <div className="card-header">Enviar Documento</div>
-                        <div className="Upload">    
+                        <div className="Upload">
                             <div className="Content text-center">
                                 <Dropzone
                                     onFilesAdded={this.onFilesAdded}
@@ -54,9 +56,22 @@ export default class DocumentPage extends Component {
                             {/* <div className="Actions">{this.renderActions()}</div> */}
                         </div>
                     </div>
-                    <Link to={RECORD_URL}>
-                        <button className="btn btn-primary btn-lg float-right">Continuar</button>
-                    </Link>
+                    {/* <button onPress={() => this.uploadFiles()} className="btn btn-primary btn-lg float-right">Enviar</button> */}
+                    <>
+                        <Button
+                            style={{
+                                fontSize: 22
+                            }}
+                            appearance="primary"
+                            active={this.state.files.length < 0 || this.state.uploading}
+                            onClick={this.uploadFiles}
+                        >
+                            Enviar
+                    </Button>
+                        <Link to={RECORD_URL}>
+                            <button className="btn btn-primary btn-lg float-right">Continuar</button>
+                        </Link>
+                    </>
                 </div>
             </Fragment>
         );
@@ -161,9 +176,18 @@ export default class DocumentPage extends Component {
 
             const formData = new FormData();
             formData.append("user_document", file, file.name);
+            formData.append("api_key", this.props.company_api_key)
 
-            req.open("POST", "http://localhost:3000/v1/user/upload_document");
+            req.open("POST", DOCUMENT_UPLOAD_URL);
+            req.setRequestHeader("Authorization", localStorage.getItem("userToken"))
             req.send(formData);
         });
     }
 };
+
+const mapStateToProps = state => {
+    console.log("State: ", state);
+    return { company_api_key: state.contract.company.apiKey }
+}
+
+export default connect(mapStateToProps)(DocumentPage);
