@@ -4,6 +4,7 @@
 | :----: | :-------: | :---: |
 | 0.1 | Estruturação do documento | [Cauê](https://github.com/caue96) |
 | 0.2 | Tópicos Equipe, MDS e EPS adicionados | [Cauê](https://github.com/caue96) |
+| 0.3 | Tópcicos Metodologia, Papeis e Práticas adicionados | [Cauê](https://github.com/caue96) |
 
 ---
 
@@ -54,15 +55,93 @@ O grupo estava bem heterogêneo na questão de conhecimento prévio, com um memb
 O trabalho durante o semestre também não foi muito regular entre os membros. Dois membros trabalharam muito além do exigido e esperado para a matéria, outro membro trabalhou o que era esperado e exigido e o último membro do grupo quase não trabalhou durante a primeira parte da matéria, tendo aparecido somente em reuniões semanais e nas dailys. Na segunda metade da matéria um dos membros continuou a trabalhar muito além do exigido e esperado para a matéria, outro membro trabalhou o que era esperado e exigido e os outros dois membros trabalharam um pouco abaixo do que se esperava na segunda etapa, porém comparado a primeira parte da matéria, nessa segunda metade o trabalho foi mais homogêneo entre os membros.
 
 ## Metodologia
+A equipe decidiu utilizar a metodologia ágil sem um uso de um framework específico a ser seguido. Foi decidido adotar os valores e princípios da metodologia ágil, acoplando a metodologia diversos artefatos e práticas do framework Scrum, porém com diversas adaptações que o grupo julgou que seria melhor para se trabalhar.
 
+De fato da metodologia ágil, de seus valores utilizamos todos eles:
+- Indivíduos e as interações entre eles mais que processos e ferramentas;
+- O software funcionando mais do que uma documentação completa e abrangente;
+- Colaboração com e dos clientes mais do que negociações de contratos;
+- Respostas a mudanças mais do que seguir o plano inicial.
+
+Os quatro valores foram seguidos do início ao fim do projeto.
+
+E de seus princípios utilizamos durante o projeto todos os princípios:
+- A maior prioridade é satisfazer o cliente, através da entrega adiantada e contínua de software de valor;
+- Aceitar mudanças de requisitos, mesmo no fim do desenvolvimento. Processos ágeis se adequam a mudanças, para que o cliente possa tirar vantagens competitivas;
+- Entregar software funcionando com frequência, preferencialmente em semanas;
+- Cooperação diária entre pessoas que entendem do ‘negócio’ e desenvolvedores;
+- Projetos surgem através de indivíduos motivados, entre os quais existe relação de confiança.
+- A maneira mais eficaz e eficiente de transmitir informações são através de conversas cara a cara;
+- Software funcionais são a principal medida de progresso do projeto;
+- Processos ágeis promovem um ambiente sustentável. Os patrocinadores, desenvolvedores e usuários, devem ser capazes de manter indefinidamente, passos constantes;
+- Contínua atenção à excelência técnica e bom design, aumenta a agilidade;
+- Simplicidade é essencial. Cultivar a arte de maximizar a quantidade de trabalho que não precisou ser feito;
+- As melhores arquiteturas, requisitos e projetos emergem de equipes auto-organizadas;
+- Em intervalos regulares, o time reflete em como se tornar mais efetivo, então, se ajustam e otimizam seu comportamento de acordo.
+
+Os 12 princípios foram seguidos do início ao fim do projeto.
+
+Com relação ao uso de práticas de frameworks, resolvemos usar como base o Scrum, porém com diversas adaptações. Algumas práticas que utilizamos durante o projeto foram as seguintes:
+- Iterações;
+- Pair programming;
+- Pair review;
+- Planning Poker;
+- Product Backlog;
+- Daily;
+- Sprint Planning;
+- Sprint Review;
+- Sprint Retrospective;
+- Histórias de usuário;
+- Business Canvas;
+- Deploy contínuo;
+- Integração contínua;
+- Controle de versão;
+- Kanban.
+
+Dessas práticas de diversos frameworks ágil, todas foram utilizadas durante algum período do projeto, mas somente algumas conseguimos manter sendo utilizada do início ao fim como: iterações, product backlog, sprint planning, sprint review, sprint retrospective, business canvas, deploy contínuo e controle de versão.
 
 ## Papeis
+Tivemos alguns papeis que foram definidos e separados entre os membros no início do projeto e ficamos com esses papeis até o final sem realizar rotação entre os papeis. A separação dos papeis entre os membros do grupo ficou da seguinte forma:
 
+| Nome | Papel |
+| :--: | :---: |
+|[Cauê Mateus](https://github.com/caue96)| Product Owner |
+|[Kairon Veloso](https://github.com/kairon-v)| Arquiteto |
+|[Marcos Cabeceira](https://github.com/Foxtrot40)| Desenvolvedor |
+|[Marcos Floresta](https://github.com/MarcosFloresta)| Desenvolvedor |
+|[Marcos Gabriel](https://github.com/marcosgtavares)| Desenvolvedor |
+|[Thiago Pereira](https://github.com/thiagorpereira)| DevOps |
+|[Victor Gomide](https://github.com/victoralvesgomide)| Scrum Master |
+|[Vinicius Porto](https://github.com/ViniciusPuerto)| Desenvolvedor |
+|[William Viera](https://github.com/williamtpv)| Desenvolvedor |
+
+Durante o projeto aconteceram algumas alterações entre os papeis informalmente com uma pessoal realizando funções que seria de outro papel, mas estava realizando ou porque ela tinha maior domínio da atividade que deveria ser realizada pelo papel ou por ausência do membro na entrega de sua tarefa.
+
+Na segunda metade da disciplina dois desenvolvedores já não estavam mais propriamente exercendo o papel de desenvolvedor e passaram a fazer papel de revisor de trabalhos feitos na primeira release e de funcionalidades criadas na segunda metade da matéria. O arquiteto acabou atuando muito também como desenvolvedor.
+
+Nos papeis de Product Owner (PO), Arquiteto, DevOps e Scrum Master (SM), somente DevOps e Arquiteto que ficou com seu papel do início ao fim sem ter ninguém executando tarefas de seu papel. PO acabou sendo executado hora pelo próprio PO e hora pelo Arquiteto, e SM acabou sendo executado hora pelo próprio SM e hora pelo PO. O trabalho de PO acabou sendo executado em alguns momentos específicos pelo Arquiteto, pois como o mesmo já tinha vasta visão de produto e conhecimento, algumas atividades acabaram sendo feitas por ele. O trabalho de SM acabou sendo executado em alguns momentos durante a sprint 1 e em um momento durante a sprint 2 pelo PO, devido a ausência do SM em alguns momentos do projeto.
 
 ## Práticas
+Durante o projeto colocamos diversas práticas em uso e ao longo dele fomos retirando e colocando práticas que ficassem melhores para o grupo. As decisões pelo uso de algumas práticas foram tomadas hora pensando na praticidade, hora na produtividade e hora na qualidade agregada ao trabalho.
+
+ALguns exemplos de práticas que iniciamos, porém retiramos ou modificamos:
+- Iterações passaram de presenciais para conferência;
+- Dailys foram substituidas por conversas individuais do SM com os membros semanalmente;
+- Histórias de usuários pararam de ser classificadas como US e o número de identificação delas e passaram a ser chamadas somente pelo nome da História de usuário.
+
+Práticas que foram adotadas no decorrer do projeto:
+- Pair review, antes era feito individualmente;
+- Integração contínua, foi implementada após a release 1.
+
+As outras práticas foram mantidas do início ao fim do projeto.
+
+## Tecnologias
 
 
 ## Desenvolvimento
+
+
+## Ferramentas
 
 
 ## Release 1
@@ -72,3 +151,8 @@ O trabalho durante o semestre também não foi muito regular entre os membros. D
 
 
 ## Aprendizados Gerais
+
+### Pontos Positivos
+
+
+### Pontos Negativos
