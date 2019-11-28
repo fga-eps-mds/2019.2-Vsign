@@ -21,7 +21,7 @@ class IdCheckJob < ApplicationJob
       image: {
         s3_object: {
           bucket: Rails.application.credentials[Rails.env.to_sym][:aws][:bucket],
-          name: document_photo # 'file' =  'IMAGE 2019-10-26 18:26:52.jpg' document_photo
+          name: document_photo
         },
       },
     }
@@ -62,7 +62,9 @@ class IdCheckJob < ApplicationJob
     if checked_items < 2
       FaceMatchJob.perform_later contract.id
     else
-      @contract.status = "error, document validation fail"
+      @contract.status = :rejected
+      @contract.save
+      NotifyUserResultJob.perform_later contract.id
     end
 
   end

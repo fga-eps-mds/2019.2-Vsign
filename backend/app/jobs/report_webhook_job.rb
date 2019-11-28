@@ -15,7 +15,8 @@ class ReportWebhookJob < ApplicationJob
         title: @script.title,
         order: @contract.order,
         email: @user.email,
-        result: @script.status
+        result: @contract.status,
+        message: @contract.message
       })
     rescue RestClient::ExceptionWithResponse => e
       e.response

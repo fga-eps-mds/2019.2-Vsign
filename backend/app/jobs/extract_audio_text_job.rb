@@ -7,8 +7,6 @@ class ExtractAudioTextJob < ApplicationJob
 
     if @contract.audio.attached?
       binary = @contract.audio.download
-      # file_name = __dir__+"/porto.wav"
-      # audio_file = File.binread file_name
       speech = Google::Cloud::Speech.new
       config = {
         encoding: :LINEAR16,
@@ -16,28 +14,20 @@ class ExtractAudioTextJob < ApplicationJob
         model: "default"
       }
       audio  = { content: binary }
-      # audio  = { content: audio_file }
-       response = speech.recognize(config, audio)
+      response = speech.recognize(config, audio)
 
-       confidence = response.results.first.alternatives.first.confidence.to_f
+      confidence = response.results.first.alternatives.first.confidence.to_f
        
-     puts  text = response.results.first.alternatives.first.transcript.to_s
-       
-       script = join_script_text(@contract.script)
-       puts "Porcentagem entre comparação do roteiro com texto extraido :\n\n"
-     puts  percent_of_equality = compare(text, script)
-      
+      script = join_script_text(@contract.script)
 
       ### Instead of the PUTS change for the contract status updating 
-      if confidence <= 0.50 # Value to failed based in confidence of the transcript, change if necessary
-        # change_contract_status(-1.00)
-        puts "Audio com baixa taxa de confiança"
+      if confidence <= 0.50 || percent_of_equality <= 0.70
+        @contract.status = :rejected
       elsif percent_of_equality >= 0.70
-        # change_contract_status(percent_of_equality)
-        puts "Aprovado"
-      elsif percent_of_equality <= 0.70
-        puts "Não foi falado o que está no contrato"
+        @contract.status = :approved
+        NotifyUserResultJob.perform_later @contract.id
       end
+      @contract.save
     end
   end
 
@@ -51,13 +41,6 @@ class ExtractAudioTextJob < ApplicationJob
 
   def join_script_text(script_blocks)
     JSON.parse(script_blocks).join(" ")
-  end  
-
-  def change_contract_status(percent)
-    if percent >= 0.75
-      @contract.status = "Contract validated"
-    else
-      @contract.status = "Audio error, parameter not satisfied"
-    end
   end
+
 end
