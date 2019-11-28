@@ -5,7 +5,7 @@ class V1::UsersController < V1Controller
     if params[:user_document]
       # Trying to check if file is an image
       # puts Mime::Types.type_for(params[:user_document])
-      User.first.user_document.attach(params[:user_document])
+      current_user.user_document.attach(params[:user_document])
     else
       render json: { message: 'No document sent' }, status: 422
     end
