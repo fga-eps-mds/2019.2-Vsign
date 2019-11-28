@@ -4,6 +4,7 @@
 | :----: | :-------: | :---: |
 | 0.1 | Abertura e escrita do documento | [Cauê](https://github.com/caue96) |
 | 0.2 | Adição do tópico de exemplos de aplicação e correção de alguns slides | [Cauê](https://github.com/caue96) |
+| 0.3 | Melhora da apresentação no drive da identidade visual | [Cauê](https://github.com/caue96) |
 
 ---
 

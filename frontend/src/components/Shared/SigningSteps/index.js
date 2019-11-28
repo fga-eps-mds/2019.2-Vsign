@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { Fragment } from 'react';
 import { FlexboxGrid, Steps } from 'rsuite';
 import { Section } from './styles';
 import { withRouter } from 'react-router-dom';
@@ -26,6 +26,7 @@ function SigningSteps(history) {
         default:
             break;
     }
+    return <Fragment />
     return (
         <Section>
             <FlexboxGrid justify="center">

@@ -1,6 +1,5 @@
 import React, { Component } from 'react';
-import { ButtonGroup, IconButton, Icon } from 'rsuite';
-import {IntructionTextBtn} from "./styles"
+
 export default class ActionButtons extends Component {
     constructor(props) {
         super(props);
@@ -23,24 +22,20 @@ export default class ActionButtons extends Component {
     render() {
         const disableButtons = this.props.isRecording;
         return (
-            <ButtonGroup style={{ marginBottom: '1rem'}} justified>
-                 <IconButton
-                    color="green"
-                    size="lg"
-                    placement="left"
+            <div class="btn-group d-flex mb-3">
+                <button
+                    type="button"
+                    className="btn btn-success w-100"
                     onClick={this.handleRecordClick}
-                    icon={<Icon icon="play" />}
                     disabled={disableButtons}
-                > <IntructionTextBtn>Iniciar Gravação</IntructionTextBtn></IconButton>
-                 <IconButton
-                    appearance="primary"
-                    size="lg"
-                    placement="right"
+                >Iniciar Gravação</button>
+                <button
+                    type="button"
+                    className="btn btn-secondary w-100"
                     onClick={this.handleInstructionsClick}
-                    icon={<Icon icon="help-o" />}
                     disabled={disableButtons}
-                ><IntructionTextBtn>Ver Instruções</IntructionTextBtn></IconButton>
-            </ButtonGroup>
+                >Ver Instruções</button>
+            </div>
         );          
     }
 }
