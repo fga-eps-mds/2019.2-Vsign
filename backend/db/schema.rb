@@ -45,12 +45,17 @@ ActiveRecord::Schema.define(version: 2019_11_13_010256) do
 
   create_table "contracts", force: :cascade do |t|
     t.bigint "company_id"
-    t.string "script"
+    t.json "script"
     t.bigint "user_id"
     t.string "order"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+<<<<<<< HEAD
     t.string "token"
+=======
+    t.string "content"
+    t.json "content_user"
+>>>>>>> develop
     t.index ["company_id"], name: "index_contracts_on_company_id"
     t.index ["user_id"], name: "index_contracts_on_user_id"
   end
@@ -67,6 +72,8 @@ ActiveRecord::Schema.define(version: 2019_11_13_010256) do
     t.bigint "company_id"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.string "webhook"
+    t.integer "document"
     t.index ["company_id"], name: "index_scripts_on_company_id"
   end
 

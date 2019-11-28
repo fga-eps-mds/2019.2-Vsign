@@ -5,34 +5,28 @@ class ExtractAudioTextJob < ApplicationJob
   def perform(contract_id)
     @contract = Contract.find(contract_id)
 
-    # if @contract.audio.attached?
-      # binary = @contract.audio.download
-      file_name = __dir__+"/porto.wav"
-      audio_file = File.binread file_name
+    if @contract.audio.attached?
+      binary = @contract.audio.download
       speech = Google::Cloud::Speech.new
-      config = {
-        encoding: :LINEAR16,
-        language_code: "pt-BR",
-        model: "default"
-      }
-      # audio  = { content: binary }
-      audio  = { content: audio_file }
+      config = { encoding: :FLAC,
+          audio_channel_count: 2,
+          language_code: "pt-BR" }
+      audio  = { content: binary }
       response = speech.recognize(config, audio)
-      puts response
 
-      # confidence = response.results.alternatives.trasncript.confidence
-      # text = response.results.alternatives.trasncript.to_s
+      confidence = response.results.alternatives.trasncript.confidence
+      text = response.results.alternatives.trasncript.to_s
 
-      # script = join_script_text(contract.script)
-      # percent_of_equality = compare(text, script)
+      script = join_script_text(contract.script)
+      percent_of_equality = compare(text, script)
 
-      # if confidence <= 0.50 # Value to failed based in confidence of the transcript, change if necessary
-      #   change_contract_status(-1.00)
-      # else
-      #   change_contract_status(percent_of_equality)
-      # end
+      if confidence <= 0.50 # Value to failed based in confidence of the transcript, change if necessary
+        change_contract_status(-1.00)
+      else
+        change_contract_status(percent_of_equality)
+      end
  
-    # end
+    end
   end
 
 
