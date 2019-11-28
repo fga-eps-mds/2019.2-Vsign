@@ -2,4 +2,6 @@
 
 class Company < ApplicationRecord
   has_many :script
+
+  validates_presence_of :name, :api_key
 end

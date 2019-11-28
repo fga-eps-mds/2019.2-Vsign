@@ -8,6 +8,7 @@ import API from './API';
 import HowItWorks from './HowItWorks';
 import Pricing from './Pricing';
 import SignUp from './SignUp';
+import 'rsuite/dist/styles/rsuite-default.css';
 
 export default function LandingPage() {
     return (

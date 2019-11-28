@@ -1,11 +1,6 @@
-import { SET_ORDER, SET_SCRIPT } from "../constants/constract";
+import { SET_CONTRACT } from "../constants/contract";
 
-export const setOrderAction = value => ({
-  type: SET_ORDER,
-  payload: value,
-})
-
-export const setScriptAction = value => ({
-  type: SET_SCRIPT,
-  payload: value
+export const setContractAction = payload => ({
+  type: SET_CONTRACT,
+  payload
 })
