@@ -2,25 +2,17 @@ import React, { Component } from 'react';
 import { withRouter } from 'react-router-dom';
 import { connect } from 'react-redux';
 import { setSignatureAssetsAction } from '../../actions/record';
-import {
-    VideoDiv,
-    SquareDiv
-} from "./styles.js"
+import { Player, PlayerFocus } from "./styles.js"
 import 'video.js/dist/video-js.css';
 import videojs from 'video.js';
 import 'webrtc-adapter';
 import RecordRTC from 'recordrtc';
 import 'videojs-record/dist/css/videojs.record.css';
+// eslint-disable-next-line
 import Record from 'videojs-record/dist/videojs.record.js';
 import '@mattiasbuelens/web-streams-polyfill/dist/polyfill.min.js';
 import 'videojs-record/dist/plugins/videojs.record.webm-wasm.js';
 import 'videojs-record/dist/plugins/videojs.record.ts-ebml.js';
-import Navbar from '../Shared/Navbar';
-import SigningSteps from '../Shared/SigningSteps';
-import ScriptProgress from './ScriptProgress';
-import ActionButtons from './ActionButtons';
-import ScriptControl from './ScriptControl';
-import AudioRecording from './AudioRecording';
 
 const videoJsOptions = {
     controls: false,
@@ -219,13 +211,13 @@ class RecordPage extends Component {
 
     render() {
         return (
-            <VideoDiv >
+            <Player >
                 <div data-vjs-player>
                     <video data-tour='step1' style={{ backgroundColor: "#556073" }} ref={node => this.videoNode = node} className="video-js vjs-default-skin" playsInline>
                     </video>
-                    <SquareDiv data-tour='step2' />
+                    <PlayerFocus data-tour='step2' />
                 </div>
-            </VideoDiv>
+            </Player>
         );
     }
 }

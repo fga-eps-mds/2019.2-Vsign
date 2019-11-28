@@ -2,22 +2,9 @@ import React, { Component, Fragment } from 'react';
 import { withRouter } from 'react-router-dom';
 import { connect } from 'react-redux';
 import { setSignatureAssetsAction } from '../../actions/record';
-import {
-    VideoDiv,
-    ScriptBlock,
-    ScriptBlockNextBtnText,
-    SquareDiv
-} from "./styles.js"
-import 'video.js/dist/video-js.css';
+// eslint-disable-next-line
+import { ScriptBlock, ScriptBlockNextBtnText } from "./styles";
 import Tour from 'reactour';
-import videojs from 'video.js';
-import 'webrtc-adapter';
-import RecordRTC from 'recordrtc';
-import 'videojs-record/dist/css/videojs.record.css';
-import Record from 'videojs-record/dist/videojs.record.js';
-import '@mattiasbuelens/web-streams-polyfill/dist/polyfill.min.js';
-import 'videojs-record/dist/plugins/videojs.record.webm-wasm.js';
-import 'videojs-record/dist/plugins/videojs.record.ts-ebml.js';
 import Navbar from '../Shared/Navbar';
 import SigningSteps from '../Shared/SigningSteps';
 import ScriptProgress from './ScriptProgress';
@@ -26,37 +13,6 @@ import ScriptControl from './ScriptControl';
 import AudioRecording from './AudioRecording';
 import Video from './Video';
 
-const videoJsOptions = {
-    controls: false,
-    screen: true,
-    image: true,
-    width: 852,
-    height: 521,
-    fluid: true,
-    plugins: {
-        record: {
-            timeSlice: 2000,
-            audio: true,
-            video: true,
-            maxLength: 10,
-            debug: true,
-            // convertEngine: 'ts-ebml',
-            convertEngine: 'ts-ebml',
-            // convert recorded data to MP3
-            convertOptions: ['-f', 'mp3', '-codec:a', 'libmp3lame', '-qscale:a', '2'],
-            // specify MP3 output mime-type
-            pluginLibraryOptions: {
-                outputType: 'audio/mp3'
-            },
-            // use MP4 encoding worker (H.264 & AAC & MP3 encoders)
-            // convertWorkerURL: '../../node_modules/ffmpeg.js/ffmpeg-worker-mp4.js'
-            // or use WebM encoding worker (VP8 & Opus encoders)
-            convertWorkerURL: '../../node_modules/ffmpeg.js/ffmpeg-worker-webm.js',
-        }
-    }
-}
-
-
 class RecordPage extends Component {
     constructor(props) {
         super(props);
@@ -64,11 +20,6 @@ class RecordPage extends Component {
         this.state = {
             scriptBlock: [],
             scriptPosition: 1,
-            signatureVideo: null,
-            signatureAudio: null,
-            signatureImage: [],
-            recordAudio: false,
-            maxTime: 30,
             isTourOpen: false
 
         }
@@ -88,15 +39,6 @@ class RecordPage extends Component {
             record: false
         });
     }
-
-        
-        // this.props.setSignatureAssetsAction({
-        //     url,
-        //     audio: this.state.signatureAudio,
-        //     video: this.state.signatureVideo,
-        //     images: this.state.signatureImage,
-        // });
-    // }
 
     returnScriptProgress = () => {
         const stepSize = ((this.state.scriptBlock).length) / 100
@@ -146,16 +88,14 @@ class RecordPage extends Component {
                 selector: '[data-tour="step5"]',
                 content: 'e passar para o próximo bloco aqui e no fim de tudo revise seu video na proxima etapa!!',
             },
+        ];
 
-
-        ]
-
-        let textNext;
-        if (this.state.scriptPosition === (this.state.scriptBlock.length)) {
-            textNext = <ScriptBlockNextBtnText>Revisar</ScriptBlockNextBtnText>;
-        } else {
-            textNext = <ScriptBlockNextBtnText> Proximo {this.state.scriptPosition}</ScriptBlockNextBtnText>;
-        }
+        // let textNext;
+        // if (this.state.scriptPosition === (this.state.scriptBlock.length)) {
+        //     textNext = <ScriptBlockNextBtnText>Revisar</ScriptBlockNextBtnText>;
+        // } else {
+        //     textNext = <ScriptBlockNextBtnText> Proximo {this.state.scriptPosition}</ScriptBlockNextBtnText>;
+        // }
 
         let scriptText;
         if (this.state.scriptPosition > 0) {
@@ -169,7 +109,7 @@ class RecordPage extends Component {
             <Fragment>
                 <Navbar />
                 <SigningSteps />
-                <div className="container" data-tour='step0'>
+                <div className="container mt-5" data-tour='step0'>
                     <div className="row">
                         <div className="col-12 col-md-6">
                             <Video record={this.state.record} />

@@ -12,11 +12,14 @@ export default function ReportErrorModal() {
                     </button>
                 </div>
                 <div className="modal-body">
-                    ...
+                    <div className="alert alert-danger">Escreva o que encontrou de errado em seu contrato. Ele será enviado para revisão de informações e estará indisponível durante a análise.</div>
+                    <form>
+                        <textarea className="form-control" rows="5" />
+                    </form>
                 </div>
                 <div className="modal-footer">
-                    <button type="button" className="btn btn-secondary" data-dismiss="modal">Close</button>
-                    <button type="button" className="btn btn-primary">Save changes</button>
+                    <button type="button" className="btn btn-secondary" data-dismiss="modal">Fechar</button>
+                    <button type="button" className="btn btn-success">Reportar Erro</button>
                 </div>
                 </div>
             </div>

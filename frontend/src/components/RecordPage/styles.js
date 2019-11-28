@@ -36,7 +36,7 @@ export const RowOnTop = styled.div`
     margin-top: 10vh
     `;
 
-export const VideoDiv = styled.div`
+export const Player = styled.div`
     display: flex;
     align-items: center;
     justify-content: center;
@@ -106,7 +106,7 @@ export const NextBtnDiv = styled.div`
     
 `;
 
-export const SquareDiv = styled.div`
+export const PlayerFocus = styled.div`
     position: absolute;
     border: 5px solid red;
     top: 12%;

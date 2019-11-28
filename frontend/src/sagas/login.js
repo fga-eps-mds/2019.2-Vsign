@@ -3,6 +3,7 @@ import { history } from '../store';
 import { CONTRACTS_URL } from '../constants/routes';
 import { LOGIN } from '../constants/login';
 
+// eslint-disable-next-line
 function* handleLogin(action) {
     history.push(CONTRACTS_URL);
 }

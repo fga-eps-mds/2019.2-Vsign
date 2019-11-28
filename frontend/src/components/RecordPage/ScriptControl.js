@@ -1,5 +1,4 @@
 import React, { Component } from 'react';
-import { Grid, IconButton, Row, Col, Icon} from 'rsuite';
 import ScriptProgress from './ScriptProgress';
 
 export default class ScriptControl extends Component {
@@ -34,7 +33,6 @@ export default class ScriptControl extends Component {
                         className="btn btn-primary btn-block"
                         placement="right"
                         onClick={this.handleScriptClick}
-                        icon={<Icon icon="forward" />}
                         disabled={disableButtons}
                         block
                     >Avançar</button>

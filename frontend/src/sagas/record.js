@@ -6,8 +6,6 @@ import { history } from '../store';
 function* handleSetSignatureAssets(action) {
     const { video, audio } = yield select(state => state.record);
     if (audio && video) {
-        console.log(audio)
-        console.log(video)
         history.push(REVIEW_URL);
     }
 }

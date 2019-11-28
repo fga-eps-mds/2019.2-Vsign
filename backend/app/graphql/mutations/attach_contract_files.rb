@@ -18,6 +18,9 @@ module Mutations
       
       images = files[:images]
       images.each {|image| contract.image.attach(image)}
+
+      ExtractAudioTextJob.perform_later contract.id
+
       {
         success: true
       }
