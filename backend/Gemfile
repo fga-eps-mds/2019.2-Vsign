@@ -1,9 +1,12 @@
-# frozen_string_literal: true
-
 source 'https://rubygems.org'
 git_source(:github) { |repo| "https://github.com/#{repo}.git" }
 
 ruby '2.6.3'
+
+gem 'aws-sdk', '~> 3'
+#gem 'aws-sdk-rails', '~>2'
+#gem 'aws-sdk-s3', '~>1'
+gem 'aws-sdk-rekognition', '~> 1.31'
 
 # Ruby implementation of GraphQL http://graphql-ruby.org
 gem 'devise'
@@ -16,6 +19,7 @@ gem 'pg', '>= 0.18', '< 2.0'
 # Use Puma as the app server
 gem 'puma', '~> 3.11'
 # Build JSON APIs with ease. Read more: https://github.com/rails/jbuilder
+gem 'rest-client', '~> 2.1'
 # gem 'jbuilder', '~> 2.5'
 # Use Redis adapter to run Action Cable in production
 # gem 'redis', '~> 4.0'
@@ -40,6 +44,7 @@ group :development, :test do
   # Call 'byebug' anywhere in the code to stop execution and get a debugger console
   gem 'byebug', platforms: %i[mri mingw x64_mingw]
   gem 'rspec-rails', '~> 3.8'
+  gem 'faker'
 end
 
 group :development do
@@ -59,3 +64,7 @@ gem 'rubocop', '~> 0.74.0', require: false
 # Code coverage analysis
 gem 'rspec_junit_formatter'
 gem 'simplecov', require: false, group: :test
+
+group :test do
+  gem 'shoulda-matchers'
+end
