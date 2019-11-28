@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2019_11_27_025120) do
+ActiveRecord::Schema.define(version: 2019_11_28_172416) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -53,6 +53,8 @@ ActiveRecord::Schema.define(version: 2019_11_27_025120) do
     t.date "expiration_date"
     t.json "content_user"
     t.string "token"
+    t.integer "status"
+    t.string "message", default: "0"
     t.index ["company_id"], name: "index_contracts_on_company_id"
     t.index ["user_id"], name: "index_contracts_on_user_id"
   end

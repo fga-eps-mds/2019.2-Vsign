@@ -141,24 +141,53 @@ As tecnologias utilizadas foram as seguintes:
 - [React](https://pt-br.reactjs.org/);
 - [GraphQL](https://graphql.org/);
 - [Amazon S3](https://aws.amazon.com/pt/s3/);
-- [Cloud Text-to-Speech](https://cloud.google.com/text-to-speech/?hl=pt-br);
-- [Amazon Rekognition](https://aws.amazon.com/pt/rekognition/).
+- [AWS Amplify](https://aws.amazon.com/pt/amplify/);
+- [Cloud Speech-to-Text](https://cloud.google.com/speech-to-text/);
+- [Amazon Rekognition](https://aws.amazon.com/pt/rekognition/);
+- [RSpec](https://rspec.info/) para testes do back-end.
 
 A escolha das tecnologias foi feita com base em uma sugestão dada pelo cliente e após análise do grupo sobre conhecimento individual de cada um com relação a cada tecnologia e ao levantamento feito pelo grupo de tecnlogias boas para serem utilizadas no projeto. Ao final decidimos por essas tecnologias que foram as mesmas sugeridas pelo cliente, com exceção do React e do GraphQL que o próprio grupo escolheu utilizar.
 
-As tecnologias utilizadas no projeto se pagaram ao final, pois todas elas atenderam as necessidades do grupo em solucionar os desafios e contruir o *software*. As duas tecnlogias que o grupo teve um pouco mais de dificuldade para utilizar foram: Cloud Text-to-Speech e a Amazon Rekognition, pois ambas envolviam aprender do zero a como utilizá-las para resolver os problemas propostos a serem resolvidos. A Rekognition depois de pouco tempo o grupo já estava com um bom domínio sobre a mesma, sendo o problema maior com a Text-to-Speech onde também não foi difícil para o grupo saber como utilizá-la para resolver o problema, porém na conversão do áudio de gravação para conseguir ser analisado e transcrito. Após descoberto como resolver essa conversão do formato do áudio para o formato utilizado pela Google em sua ferramenta, o problema foi resolvido.
+As tecnologias utilizadas no projeto se pagaram ao final, pois todas elas atenderam as necessidades do grupo em solucionar os desafios e contruir o *software*. As duas tecnlogias que o grupo teve um pouco mais de dificuldade para utilizar foram: Cloud Speech-to-Text e a Amazon Rekognition, pois ambas envolviam aprender do zero a como utilizá-las para resolver os problemas propostos a serem resolvidos. A Rekognition depois de pouco tempo o grupo já estava com um bom domínio sobre a mesma, sendo o problema maior com a Text-to-Speech onde também não foi difícil para o grupo saber como utilizá-la para resolver o problema, porém na conversão do áudio de gravação para conseguir ser analisado e transcrito. Após descoberto como resolver essa conversão do formato do áudio para o formato utilizado pela Google em sua ferramenta, o problema foi resolvido.
 
 ## Ferramentas
+As ferramentas utilizadas para auxílio do trabalho foram as seguintes:
+- [Zenhub](https://www.zenhub.com/) para o tracking e organização das features;
+- [CircleCI](https://circleci.com/) para integração e entrega contínua;
+- [Rubocop](https://www.rubocop.org/en/stable/) para apontar todas as ofensas do código do projeto que não seguirem o padrão do linter no back-end;
+- [MKDocs](https://www.mkdocs.org/) para manter toda a documentação do projeto;
+- [Google Drive](https://drive.google.com/drive/u/0/) para manter algumas apresentações, planilhas e arquivos do grupo;
+- [Slack](https://slack.com/intl/pt-br/) onde as conversas entre o grupo e entre o cliente aconteciam;
+- [Telegram](https://web.telegram.org) usado para conversas parelales, envios de áudios e quando alguns membros tinham problemas com o slack;
+- [Code Climate](https://codeclimate.com/) usado para verificar a qualidade do código e dos testes.
+- [Eslint](https://eslint.org/) para apontar todas as ofensas do código do projeto que não seguirem o guia de estilo da airbnb no front-end
 
+O grupo não teve trabalho para aprender a utilizar as ferramentas listadas, os problemas que ocorreram foi o mal uso de algumas ferramentas como o Drive que acabou ficando com os documentos todos largados e o Zenhub que não foi atualizado e utilizado de forma correta. O zenhub foi a mais crítica das ferramentas, pois a mesma não estava sendo atualizada constantemente e a rastreabilidade que a ferramenta trás estava mais confundindo o grupo do que ajudando por erros na utilização. As métricas que são geradas pelo zenhub nunca foram utilizadas pelo grupo, pois o uso da ferramenta não estava correta e o membro que estava responsável pela análise das métricas não fez as análises necessárias.
 
 ## Desenvolvimento
+O código em sua versão de produção pode ser encontrado no seguinte link [Vsign](https://master.dar0d46dq2rcb.amplifyapp.com/). Todas as funcionalidades desenvolvidas podem ser encontradas no seguinte link [Release 1.0](https://github.com/fga-eps-mds/2019.2-Vsign/releases/tag/v1.0).
 
+A equipe de desenvolvimento foi composta por todos os membros de MDS e na maior parte do tempo também pelo Arquiteto do projeto que possuia o maior nível de conhecimento técnico do grupo e para auxiliar MDS atuou ativamente como um desenvolvedor, sempre que possível pareando e ensinando.
+
+O uso das issues e dos pull requests foi bom, porém não foi usado em um nível de excelência que estavamos buscando. Nem todos os comentários foram feitos nas issues e nos pull requests, durante a release 1 vários estavam sendo comentadas, porém durante a release 2 a utilização dos mesmos começou a ser feita sem a devida atenção que se deveria.
+
+Problemas com nível técnico das tecnologias ocorreram nas duas primeiras sprints de código do projeto, nas últimas três semanas de projeto problemas com a conversão no formato de áudio utilizado pela google no Speech-to-Text ocorreram, porém foi solucionado esse problema após bastante tempo de desenvolvimento. Esses foram os 2 maiores problemas que se teve para desenvolver o *software*.
 
 ## Release 1
+Durante o mês de agosto e setembro foi trabalhado dentro da release 1. Ao término desse período soltamos um pré-release note, mas porque não foi soltado uma release ao invés de uma pré-release? Após o término desse período ainda não tinhamos uma MVP rodando e por esse motivo não poderiamos liberar uma release versão 1 do produto, mas sim uma pré-release versão 0.1 do produto, onde trabalhamos nos dois meses seguintes para liberar a primeira release do projeto, ou seja, o primeiro MVP.
 
+Durante as três primeiras sprints, como ainda não tinhamos grupo definido e somente os times estavam definidos, prefirimos por focar no estudos das possíveis tecnologias que trabalhariamos e começar a mostrar para a equipe de MDS a metodologia de trabalho que utilizaríamos, práticas, rituais e como trabalhar dentro do repositório da equipe.
+
+Assim que o tema foi definido, foram realizados alguns treinamentos das tecnologias, metodologia e foi passado diversas orientações da forma com que trabalharíamos nas duas semanas seguintes. Na sprint 2 começamos a gerar os artefatos iniciais do projeto e na sprint 4 o código da aplicação começou a ser feito. E assim foi tocado o projeto até a release 1. Ao final foi gerado o seguinte [pré release 0.1](https://github.com/fga-eps-mds/2019.2-Vsign/releases/tag/v0.1).
+
+Vários problemas ocorreram durante a release 1 como: a falta de comunicação que começou a aumentar conforme o tempo ia passando, alguns membros ausentes ou dispersos, mudanças de práticas para se adaptar melhor ao grupo, entre outros. Porém no geral o trabalho foi bom, pois conseguimos entregar tudo que nós haviamos nos comprometido a entregar até a release 1.
 
 ## Release 2
+Durante o mês de outubro e novembro foi trabalhado dentro da release 2. Ao término desse período soltamos a primeira release note, pois ao término desse ciclo conseguimos finalizar o primeiro MVP.
 
+Durante as dua primeiras sprints desse ciclo o trabalho de todos no grupo foi ruim no geral, pois haviamos adiantado bastante do trabalho e ido muito bem na release 1 e com isso alguns membros relaxaram na matéria e outros se ausentaram por um período de tempo para focar em outras matérias que estavam deixando de lada para focar em MDS/EPS. Após essas duas sprints iniciais o trabalho voltou a rodar bem novamente com os membros retomando o ritmo de trabalho, sendo que já na sprint 4 dessa release os membros voltaram a trabalhar no mesmo ritmo da primeira metade da matéria. Ao final da release 2 foi gerado um *patch note* com o MVP entregue e pode ser encontrado aqui na [release 1.0](https://github.com/fga-eps-mds/2019.2-Vsign/releases/tag/v1.0).
+
+Vários problemas ocorreram durante a release 2 como: comunicação que piorou em comparação com a release 1, alguns membros se distanciaram mais ainda do restante do grupo, alguns membros ficaram ausentes durante boa parte da release 2, muita conversa e pouca ação por parte de alguns membros, entre outros. Porém igualmente aconteceu ao final da release 1, nesse ciclo o trabalho no geral também foi bom, pois conseguimos entregar todo o escopo e artefatos planejados para serem entregues até ao final da release 2.
 
 ## Aprendizados Gerais
 
@@ -166,7 +195,13 @@ As tecnologias utilizadas no projeto se pagaram ao final, pois todas elas atende
 - Problema de comunicação parte dele pode ser resolvido, pois os membros do grupo tinham um alto engajamento no projeto;
 - Maioria do grupo engajada e motivada com o projeto;
 - Todo o escopo planejado no início foi implementado;
-- Uso de uma metodologia definida, porém sem definição de frameworks, somente com práticas que melhor se encaixavam no projeto.
+- Uso de uma metodologia definida, porém sem definição de frameworks, somente com práticas que melhor se encaixavam no projeto;
+- Boa parte do grupo já tinha um bom nível de conhecimento o que facilitou o trabalho;
+- Grupo sem conflitos internos;
+- Situação do SM após a release 1 conseguiu ser contornada, após conversa franca com o membro;
+- Apesar das poucas conversas individuais que tivemos, elas foram mais importantes do que as dailys para tomar ações no projeto;
+- Vários problemas foram resolvidos após intensas procuras no Google;
+- Grupo motivado por trabalhar em um projeto real.
 
 ### Pontos Negativos
 - Falta de comunicação;
@@ -174,3 +209,17 @@ As tecnologias utilizadas no projeto se pagaram ao final, pois todas elas atende
 - Falta de reuniões presenciais;
 - Ausência de métricas para verificar andamento, qualidade do trabalho e gerenciar riscos;
 - Oscilação do nível de trabalho durante as sprints.
+- Utilização do Kanban sem atualizá-lo constantemente, gerando mais dúvida do que tudo;
+- Conversa pessoal que substituiu as dailys não ocorreu da forma que deveria;
+- Baixa produtividade de alguns membros;
+- Alguns membros mais falando do que fazendo;
+- Problemas de alguns membros com o docker, principalmente no começo, pois constantemente o docker apontava algum problema que impedia de rodar algum ambiente (back-end e/ou front-end)
+
+### Recomendações
+- Insistir com membros que estiverem mais afastados do grupo antes de tomar decisões extremas de demitir o membro do grupo;
+- Ajudar a nivelar o nível técnico da equipe, ajudando os membros que estão com mais dificuldades a aprender;
+- Grupo se encontrar presencialmente pelo menos uma vez na semana, para não deixar ocorrer afastamento entre os membros do grupo;
+- Escolher tecnologias e ferramentas para serem usadas onde pelo menos um membro do grupo tenha domínio sobre ela;
+- O SM do grupo deve ser aquele que tiver maior conhecimento da metodologia e maior engajamento com o trabalho;
+- O PO do grupo deve ser aquele que tiver o maior conhecimento técnico e visão de produto;
+- A comunicação deve sempre ser estimulada por pelo menos algum membro do grupo sempre, caso contrário problemas ocorrerão.

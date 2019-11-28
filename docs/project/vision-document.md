@@ -15,7 +15,6 @@ O objetivo deste documento é explicar e esclarecer a respeito do escopo do proj
 ## 1.2. Escopo
 No mundo contemporâneo é cada vez mais difícil se apresentar fisicamente para, por exemplo, assinar um contrato, o que é o problema alvo que este projeto almeja solucionar. Diante desse dilema, o Vsign visa permitir que o usuário assine contratos com afiliados em qualquer lugar com acesso a internet.
 
-
 ## 1.3. Visão Geral do Documento
 Este documento contém informações a respeito das características do projeto sendo desenvolvido esclarecendo o problema que se busca mitigar e as soluções propostas. Este documento está organizado da seguinte maneira:
 - Posicionamento: descrição do produto e vantagens quanto as opções vigentes;
@@ -25,7 +24,6 @@ Este documento contém informações a respeito das características do projeto 
 
 ## 1.4. Referências
 - A Estrutura de Tópicos do Documento de Visão, IBM Knowledge Center, disponível em: https://www.ibm.com/support/knowledgecenter/pt-br/SSYMRC_6.0.6/com.ibm.rational.rrm.help.doc/topics/r_vision_doc.html
-
 - Documento de visão, 24/08/2009, Assembla, disponível em: https://app.assembla.com/wiki/show/modelo_projeto_uml/Documento_de_Vis%C3%A3o_
 - LGDP:entenda o que é a Lei Geral de Proteção de Dados Pessoais, 31/05/2019, Estadão, disponível em: https://politica.estadao.com.br/blogs/fausto-macedo/lgpd-entenda-o-que-e-a-lei-geral-de-protecao-de-dados-pessoais/
 
@@ -34,14 +32,13 @@ Este documento contém informações a respeito das características do projeto 
 ## 2.1. Oportunidade de Negócios
 As pessoas têm cada vez menos tempo disponível em suas agendas e agendar uma data para a assinatura de contratos que se encaixam nela é um problema que fica cada vez mais difícil de resolver. Diante deste cenário, o Vsign procura conectar seus usuários para que a assinatura de contratos aconteça no momento mais conveniente para todos os envolvidos.
 
-
 ## 2.2. Descrição do Problema
 
-| O problea seria       | Assinar um contratos por vídeo.  |
-|-----------------------|---|
-| Que afeta             | Pessoas que querem assinar contratos pela internet.  |
-| Cujo impacto é        | Atraso e desestimulo na concretização dos acordos.  |
-| Uma boa solução seria | Uma plataforma que permita a assinitura do contrato via vídeo.  |
+| O problea seria       | Assinar um contratos por vídeo  |
+|-----------------------|------|
+| Que afeta             | Pessoas que querem assinar contratos com a bxblue  |
+| Cujo impacto é        | Atraso e desestimulo na concretização dos acordos  |
+| Uma boa solução seria | Uma plataforma que permita a assinitura do contrato via vídeo  |
 
 ## 2.3. Sentença de Posição do Produto
 
@@ -72,17 +69,17 @@ A plataforma que os clientes do cliente terão acesso deve ser acessada a partir
 # 4. Envolvidos
 ----
 
-|  NOME                           | FUNÇÃO     | GITHUB  
-|---------------------------------|----------------|----------------------|
-|Cauê Mateus Oliveira             |Product Owner, membro da Equipe de Gestão do Projeto.   | [@caue96](https://github.com/caue96)                     |
-|Kairon Velozo                    |Architect, membro da Equipe de Gestão do Projeto.       | [@kairon-v](https://github.com/kairon-v)                     | 
-|Thiago Pereira                   |DevOps, membro da Equipe de Gestão do Projeto.          | [@thiagorpereira](https://github.com/thiagorpereira)                     |   
-|Victor Alves Gomide              |Scrum Master, membro da Equipe de Gestão do Projeto.    | [@victoralvesgomide](https://github.com/victoralvesgomide)                     | 
-|Marcos da Silva Cabeceira        |Membro da equipe de desenvolvimento.   |  [@Foxtrot40](https://github.com/Foxtrot40)  | 
-|Marcos Gabriel Tavares           |Membro da equipe de desenvolvimento.   | [@marcosgtavares](https://github.com/marcosgtavares)  |   
-|Marcos Vinicius Lima Raimundo    |Membro da equipe de desenvolvimento.   | [@MarcosFloresta](https://github.com/MarcosFloresta)  |   
-|Vinicius Porto                   |Membro da equipe de desenvolvimento.   | [@ViniciusPuerto](https://github.com/ViniciusPuerto)  |  
-|William Thalisson Pereivea Vieira|Membro da equipe de desenvolvimento.   | [@williamtpv](https://github.com/williamtpv)  |
+| NOME      |DESCRIÇÃO | PRINCIPAIS RESPONSABILIDADES
+|-----------|----------|----------------------------|
+| Cauê Mateus Oliveira | Product Owner | Definir a estratégia de trabalho e maximizar o valor do projeto|
+| Kairon Velozo |Architect| Definir a arquitetura geral do sistema |
+| Marcos da Silva Cabeceira | Membro da equipe de desenvolvimento.   | Desenvolver e manter a documentação e o software.|
+| Marcos Gabriel Tavares |  Membro da equipe de desenvolvimento.   | Desenvolver e manter a documentação e o software.|
+| Marcos Vinicius Lima Raimundo |  Membro da equipe de desenvolvimento.   | Desenvolver e manter a documentação e o software.|
+| Thiago Pereira | DevOps | Responsavel pela integração continua|
+| Victor Alves Gomide | Scrum Master | Garantir a realização da metodologia do Scrum|
+| Vinicius Porto |  Membro da equipe de desenvolvimento.   | Desenvolver e manter a documentação e o software.|
+| William Thalisson Pereivea Vieira |  Membro da equipe de desenvolvimento.   |Desenvolver e manter a documentação e o software.|
 
 # 5. Visão geral do produto
 ----
