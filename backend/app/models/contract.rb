@@ -1,7 +1,7 @@
 # frozen_string_literal: true
 
 class Contract < ApplicationRecord
-  after_create :send_email_new_contract
+  # after_create :send_email_new_contract
   
   belongs_to :company
   belongs_to :user

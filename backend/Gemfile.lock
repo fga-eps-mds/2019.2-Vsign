@@ -1072,8 +1072,8 @@ DEPENDENCIES
   byebug
   devise
   devise-jwt
-  fuzzy-string-match
   faker
+  fuzzy-string-match
   google-cloud-speech
   graphiql-rails
   graphql
