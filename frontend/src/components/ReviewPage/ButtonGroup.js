@@ -1,13 +1,12 @@
-import React, { Component } from 'react'
+import React, { Fragment } from 'react';
+import RedoButton from './RedoButton';
+import FinishButton from './FinishButton';
 
-export class ButtonGroup extends Component {
-    render() {
-        return (
-            <div>
-                
-            </div>
-        )
-    }
+export default function ButtonGroup() {
+    return (
+        <Fragment>
+            <RedoButton />
+            <FinishButton />
+        </Fragment>
+    );
 }
-
-export default ButtonGroup

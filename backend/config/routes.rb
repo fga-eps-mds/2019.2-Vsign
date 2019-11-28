@@ -8,6 +8,8 @@ Rails.application.routes.draw do
     mount GraphiQL::Rails::Engine, at: '/graphiql', graphql_path: '/graphql'
   end
 
+  get '/login/:token', to: redirect('/'), as: :login_by_token
+
   namespace :v1 do
     resources :contracts, only: [:create]
 
@@ -16,15 +18,5 @@ Rails.application.routes.draw do
     end
   end
 
-  devise_for :users,
-             path: '',
-             path_names: {
-               sign_in: 'login',
-               sign_out: 'logout',
-               registration: 'signup'
-             },
-             controllers: {
-               sessions: 'sessions',
-               registrations: 'registrations'
-             }
+  devise_for :user
 end

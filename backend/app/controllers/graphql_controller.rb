@@ -3,7 +3,20 @@
 # Controller que trata as requests GraphQL.
 class GraphqlController < ApplicationController
   def execute
-    result = execute_schema
+    variables = ensure_hash(params[:variables])
+    query = params[:query]
+    operation_name = params[:operationName]
+    context = {
+      current_user: current_user,
+      login: method(:sign_in),
+    }
+    result = Schema.execute(
+      query, 
+      variables: variables, 
+      context: context, 
+      operation_name: operation_name
+    )
+    # result = execute_schema
     render json: result
   rescue StandardError => e
     raise e unless Rails.env.development?
@@ -50,8 +63,12 @@ class GraphqlController < ApplicationController
     logger.error error.message
     logger.error error.backtrace.join("\n")
 
-    render json: { error: {
-      message: error.message, backtrace: error.backtrace
-    }, data: {} }, status: 500
+    render json: { 
+      error: { 
+        message: error.message, 
+        backtrace: error.backtrace 
+      }, 
+      data: {} 
+    }, status: 500
   end
 end

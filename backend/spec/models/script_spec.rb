@@ -4,25 +4,66 @@ require 'rails_helper'
 
 RSpec.describe Script, type: :model do
   context 'validation tests' do
+    subject(:script) {
+      company = Company.create(name: "Teste", api_key: "key_api")
+
+      Script.new(
+        kind: "kind_script",
+        content: '{ "Start":"start", "Num":1, "End":"end" }',
+        title: "Test",
+        webhook: "http://bx.com/api/reports",
+        document: 0,
+        company_id: company.id,
+      ) 
+    }
+    
     it 'ensures title presence' do
-      script = Script.new(
-        kind: 'kind_script',
-        content: '{ "Start":"start", "Num":1, "End":"end" }'
-      ).save
-      expect(script).to eq(false)
+      script.title = nil
+      script.save
+
+      expect(script).to_not be_valid
     end
 
     it 'ensures kind presence' do
-      script = Script.new(
-        title: 'title_script',
-        content: '{ "Start":"start", "Num":1, "End":"end" }'
-      ).save
-      expect(script).to eq(false)
+      script.kind = nil
+      script.save
+
+      expect(script).to_not be_valid
     end
 
     it 'ensures content presence' do
-      script = Script.new(title: 'title_script', kind: 'kind_script').save
-      expect(script).to eq(false)
+      script.content = nil
+      script.save
+
+      expect(script).to_not be_valid
     end
+
+    it "ensures document presence" do
+      script.document = nil
+      script.save
+
+      expect(script).to_not be_valid
+    end
+
+    it "ensures company presence" do
+      script.company_id = nil
+      script.save
+
+      expect(script).to_not be_valid
+    end
+
+    it "ensures webhook presence" do
+      script.webhook = nil
+      script.save
+
+      expect(script).to_not be_valid
+    end
+
+    it "ensures script is valid" do
+      script.save
+
+      expect(script).to be_valid
+    end
+
   end
 end

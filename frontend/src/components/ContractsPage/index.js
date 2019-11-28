@@ -1,17 +1,12 @@
-import React from 'react'
-import { Container, Content } from 'rsuite';
-import Navbar from './Navbar';
-import Hero from './Hero';
+import React, { Fragment } from 'react'
+import Navbar from '../Shared/Navbar';
 import Contracts from './Contracts';
 
 export default function ContractsPage() {
     return (
-        <Container>
+        <Fragment>
             <Navbar />
-            <Content>
-                <Hero />
-                <Contracts />
-            </Content>
-        </Container>
-    );
+            <Contracts />
+        </Fragment>
+    )
 }

@@ -1,12 +1,12 @@
-import React from 'react';
+import React, { Fragment } from 'react';
 import { FlexboxGrid, Steps } from 'rsuite';
 import { Section } from './styles';
 import { withRouter } from 'react-router-dom';
 
 function SigningSteps(history) {
-   
-    let url =  history.history.location.pathname
-    let current = 0
+    let url =  history.history.location.pathname;
+    let current = 0;
+    
     switch (url) {
         case "/introduction":
             current = 0
@@ -26,6 +26,7 @@ function SigningSteps(history) {
         default:
             break;
     }
+    return <Fragment />
     return (
         <Section>
             <FlexboxGrid justify="center">
