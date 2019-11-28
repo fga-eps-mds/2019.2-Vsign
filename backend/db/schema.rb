@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2019_11_19_175045) do
+ActiveRecord::Schema.define(version: 2019_11_27_025120) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -50,6 +50,7 @@ ActiveRecord::Schema.define(version: 2019_11_19_175045) do
     t.string "order"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.json "content_user"
     t.string "token"
     t.index ["company_id"], name: "index_contracts_on_company_id"
     t.index ["user_id"], name: "index_contracts_on_user_id"
@@ -77,8 +78,13 @@ ActiveRecord::Schema.define(version: 2019_11_19_175045) do
     t.bigint "company_id"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+<<<<<<< HEAD
     t.integer "document"
     t.date "expiration_day"
+=======
+    t.string "webhook"
+    t.integer "document"
+>>>>>>> develop
     t.index ["company_id"], name: "index_scripts_on_company_id"
   end
 
@@ -91,6 +97,7 @@ ActiveRecord::Schema.define(version: 2019_11_19_175045) do
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.string "name"
+    t.string "status"
     t.index ["email"], name: "index_users_on_email", unique: true
     t.index ["reset_password_token"], name: "index_users_on_reset_password_token", unique: true
   end

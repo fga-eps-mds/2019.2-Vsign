@@ -7,3 +7,6 @@ export const RECORD_URL = '/gravacao';
 export const DOCUMENT_URL = '/documento';
 export const INSTRUCTIONS_URL = '/instrucoes';
 export const SCRIPT_URL = '/roteiro';
+export const RECEIVED_URL = '/recebido';
+export const ACCOUNT_URL = '/conta';
+export const DOCUMENT_UPLOAD_URL = "http://localhost:3000/v1/user/upload_document";

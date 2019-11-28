@@ -9,6 +9,7 @@ import ContractsPage from '../ContractsPage';
 import RecordPage from '../RecordPage';
 import ReviewVideoPage from '../ReviewPage';
 import ScriptPage from '../ScriptPage';
+import ReceivedPage from '../ReceivedPage';
 import Introduction from '../InstructionsPage';
 import PrivateRoute from './PrivateRoute';
 import {
@@ -16,7 +17,8 @@ import {
     LOGIN_URL, RECORD_URL,
     LOGIN_TOKEN_URL, CONTRACTS_URL,
     DOCUMENT_URL, REVIEW_URL,
-    INSTRUCTIONS_URL, SCRIPT_URL
+    INSTRUCTIONS_URL, SCRIPT_URL,
+    RECEIVED_URL
 } from '../../constants/routes';
 
 export default function Routes() {
@@ -31,6 +33,7 @@ export default function Routes() {
             <PrivateRoute path={REVIEW_URL} component={ReviewVideoPage} />
             <PrivateRoute path={DOCUMENT_URL} component={Uploadimage} />
             <PrivateRoute path={SCRIPT_URL} component={ScriptPage} />
+            <PrivateRoute path={RECEIVED_URL} component={ReceivedPage} />
         </Switch>
     );
 }

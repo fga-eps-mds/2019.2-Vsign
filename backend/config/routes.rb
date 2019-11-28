@@ -8,6 +8,8 @@ Rails.application.routes.draw do
     mount GraphiQL::Rails::Engine, at: '/graphiql', graphql_path: '/graphql'
   end
 
+  get '/login/:token', to: redirect('/'), as: :login_by_token
+
   namespace :v1 do
     resources :contracts, only: [:create]
 

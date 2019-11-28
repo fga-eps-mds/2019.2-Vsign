@@ -20,4 +20,7 @@ class User < ApplicationRecord
       return self.documents.where(valid: true)
     end
   end
+
+  validates_presence_of :name, :email, :password
+
 end

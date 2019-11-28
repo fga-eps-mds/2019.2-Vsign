@@ -6,11 +6,15 @@ export async function getContractQuery(variables) {
     query getContract($id: ID!) {
       getContract(id: $id) {
           id
+          createdAt
           script
           order
+          company {
+            name
+            apiKey
+          }
           user {
             name
-            token
           }
       }
     }
@@ -28,11 +32,14 @@ export function contractsQuery() {
       contracts {
         id
         order
+        company {
+          name
+        }
+        createdAt
       }
     }
   `;
 }
-
 
 export async function currentUser() {
   const query = gql`

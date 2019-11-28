@@ -1,10 +1,8 @@
 import React, { Component } from 'react';
 import { connect} from 'react-redux';
 import { redoSignatureAction } from '../../actions/review';
-import { IntructionTextBtn } from './styles';
-import { Button } from 'rsuite';
 
-class reviewUserVideo extends Component {
+class ReviewPage extends Component {
     constructor(props) {
         super(props);
         this.handleClick = this.handleClick.bind(this);
@@ -16,11 +14,7 @@ class reviewUserVideo extends Component {
 
     render() {
         return (
-            <Button appearance='primary' size='md' color='green'  onClick={this.handleClick}>
-                <IntructionTextBtn>
-                    Regravar o vídeo
-                </IntructionTextBtn>
-            </Button>
+            <button className="btn btn-warning btn-block mb-3" onClick={this.handleClick}>Regravar o vídeo</button>
         );
     }
 }
@@ -29,4 +23,4 @@ const mapDispatchToProps = {
     redoSignatureAction
 };
 
-export default connect(null, mapDispatchToProps)(reviewUserVideo);
+export default connect(null, mapDispatchToProps)(ReviewPage);

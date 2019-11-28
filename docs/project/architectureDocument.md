@@ -5,7 +5,7 @@
 | 04/09/2019 | 0.1    | Abertura                               | Marcos Cabeceira     |
 | 06/09/2019 | 0.1.1  | Correção de erros de português         | Marcos Cabeceira     |
 | 06/09/2019 | 0.1.2  | Correção de erros de português         | Marcos Cabeceira     |
-
+| 24/11/2019 | 0.1.3  | Visão geral do documento               | William Vieira       |
 -----
 
 ## 1. Introdução
@@ -31,6 +31,8 @@ Descrição da arquitetura do website de assinatura de contratos por vídeo, VSi
 ### 1.4. Referências
 
 ### 1.5. Visão Geral
+
+Definida a finalidade e escopo deste documento, em seguida serão apresentadas as motivações que levaram as decisões de arquitetura para este projeto.
 
 ## 2. Representação Arquitetural
 
