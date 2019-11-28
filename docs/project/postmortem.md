@@ -142,13 +142,13 @@ As tecnologias utilizadas foram as seguintes:
 - [GraphQL](https://graphql.org/);
 - [Amazon S3](https://aws.amazon.com/pt/s3/);
 - [AWS Amplify](https://aws.amazon.com/pt/amplify/);
-- [Cloud Text-to-Speech](https://cloud.google.com/text-to-speech/?hl=pt-br);
+- [Cloud Speech-to-Text](https://cloud.google.com/speech-to-text/);
 - [Amazon Rekognition](https://aws.amazon.com/pt/rekognition/);
 - [RSpec](https://rspec.info/) para testes do back-end.
 
 A escolha das tecnologias foi feita com base em uma sugestão dada pelo cliente e após análise do grupo sobre conhecimento individual de cada um com relação a cada tecnologia e ao levantamento feito pelo grupo de tecnlogias boas para serem utilizadas no projeto. Ao final decidimos por essas tecnologias que foram as mesmas sugeridas pelo cliente, com exceção do React e do GraphQL que o próprio grupo escolheu utilizar.
 
-As tecnologias utilizadas no projeto se pagaram ao final, pois todas elas atenderam as necessidades do grupo em solucionar os desafios e contruir o *software*. As duas tecnlogias que o grupo teve um pouco mais de dificuldade para utilizar foram: Cloud Text-to-Speech e a Amazon Rekognition, pois ambas envolviam aprender do zero a como utilizá-las para resolver os problemas propostos a serem resolvidos. A Rekognition depois de pouco tempo o grupo já estava com um bom domínio sobre a mesma, sendo o problema maior com a Text-to-Speech onde também não foi difícil para o grupo saber como utilizá-la para resolver o problema, porém na conversão do áudio de gravação para conseguir ser analisado e transcrito. Após descoberto como resolver essa conversão do formato do áudio para o formato utilizado pela Google em sua ferramenta, o problema foi resolvido.
+As tecnologias utilizadas no projeto se pagaram ao final, pois todas elas atenderam as necessidades do grupo em solucionar os desafios e contruir o *software*. As duas tecnlogias que o grupo teve um pouco mais de dificuldade para utilizar foram: Cloud Speech-to-Text e a Amazon Rekognition, pois ambas envolviam aprender do zero a como utilizá-las para resolver os problemas propostos a serem resolvidos. A Rekognition depois de pouco tempo o grupo já estava com um bom domínio sobre a mesma, sendo o problema maior com a Text-to-Speech onde também não foi difícil para o grupo saber como utilizá-la para resolver o problema, porém na conversão do áudio de gravação para conseguir ser analisado e transcrito. Após descoberto como resolver essa conversão do formato do áudio para o formato utilizado pela Google em sua ferramenta, o problema foi resolvido.
 
 ## Ferramentas
 As ferramentas utilizadas para auxílio do trabalho foram as seguintes:
@@ -171,7 +171,7 @@ A equipe de desenvolvimento foi composta por todos os membros de MDS e na maior 
 
 O uso das issues e dos pull requests foi bom, porém não foi usado em um nível de excelência que estavamos buscando. Nem todos os comentários foram feitos nas issues e nos pull requests, durante a release 1 vários estavam sendo comentadas, porém durante a release 2 a utilização dos mesmos começou a ser feita sem a devida atenção que se deveria.
 
-Problemas com nível técnico das tecnologias ocorreram nas duas primeiras sprints de código do projeto, nas últimas três semanas de projeto problemas com a conversão no formato de áudio utilizado pela google no Text-to-Speech ocorreram, porém foi solucionado esse problema após bastante tempo de desenvolvimento. Esses foram os 2 maiores problemas que se teve para desenvolver o *software*.
+Problemas com nível técnico das tecnologias ocorreram nas duas primeiras sprints de código do projeto, nas últimas três semanas de projeto problemas com a conversão no formato de áudio utilizado pela google no Speech-to-Text ocorreram, porém foi solucionado esse problema após bastante tempo de desenvolvimento. Esses foram os 2 maiores problemas que se teve para desenvolver o *software*.
 
 ## Release 1
 Durante o mês de agosto e setembro foi trabalhado dentro da release 1. Ao término desse período soltamos um pré-release note, mas porque não foi soltado uma release ao invés de uma pré-release? Após o término desse período ainda não tinhamos uma MVP rodando e por esse motivo não poderiamos liberar uma release versão 1 do produto, mas sim uma pré-release versão 0.1 do produto, onde trabalhamos nos dois meses seguintes para liberar a primeira release do projeto, ou seja, o primeiro MVP.
