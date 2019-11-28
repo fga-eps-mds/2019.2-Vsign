@@ -1,10 +1,10 @@
-# Sprint 09
+# Sprint 10
 
 ## Histórico de Revisões
 
 | Versão | Descrição | Autor |
 | :----: | :-------- | :---: |
-| 1.0 | Documentação da Sprint 09 do projeto | [Cauê](https://github.com/caue96) |
+| 1.0 | Documentação da Sprint 10 do projeto | [Cauê](https://github.com/caue96) |
 
 ## Planejamento
 * **Período:** 05/11/19 - 11/11/19
