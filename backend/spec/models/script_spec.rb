@@ -5,14 +5,15 @@ require 'rails_helper'
 RSpec.describe Script, type: :model do
   context 'validation tests' do
     subject(:script) {
-      c = Company.create(name: "Teste")
+      company = Company.create(name: "Teste", api_key: "key_api")
 
       Script.new(
         kind: "kind_script",
         content: '{ "Start":"start", "Num":1, "End":"end" }',
         title: "Test",
+        webhook: "http://bx.com/api/reports",
         document: 0,
-        company_id: c.id
+        company_id: company.id,
       ) 
     }
     
@@ -51,10 +52,18 @@ RSpec.describe Script, type: :model do
       expect(script).to_not be_valid
     end
 
+    it "ensures webhook presence" do
+      script.webhook = nil
+      script.save
+
+      expect(script).to_not be_valid
+    end
+
     it "ensures script is valid" do
       script.save
 
       expect(script).to be_valid
     end
+
   end
 end
