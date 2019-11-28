@@ -53,7 +53,7 @@ ActiveRecord::Schema.define(version: 2019_11_28_172416) do
     t.json "content_user"
     t.string "token"
     t.integer "status"
-    t.string "message"
+    t.string "message", default: "0"
     t.index ["company_id"], name: "index_contracts_on_company_id"
     t.index ["user_id"], name: "index_contracts_on_user_id"
   end
