@@ -50,12 +50,9 @@ ActiveRecord::Schema.define(version: 2019_11_13_010256) do
     t.string "order"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
-<<<<<<< HEAD
     t.string "token"
-=======
     t.string "content"
     t.json "content_user"
->>>>>>> develop
     t.index ["company_id"], name: "index_contracts_on_company_id"
     t.index ["user_id"], name: "index_contracts_on_user_id"
   end
