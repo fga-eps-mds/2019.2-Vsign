@@ -50,6 +50,7 @@ ActiveRecord::Schema.define(version: 2019_11_28_172416) do
     t.string "order"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.date "expiration_date"
     t.json "content_user"
     t.string "token"
     t.integer "status"

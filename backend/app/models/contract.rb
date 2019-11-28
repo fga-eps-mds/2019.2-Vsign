@@ -2,6 +2,7 @@
 include Rails.application.routes.url_helpers
 
 class Contract < ApplicationRecord
+
   after_create :send_email_new_contract
 
   enum document: { pending: 0, approved: 1, rejected: 2 }

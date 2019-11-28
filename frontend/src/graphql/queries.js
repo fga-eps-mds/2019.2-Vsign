@@ -11,6 +11,7 @@ export async function getContractQuery(variables) {
           order
           company {
             name
+            apiKey
           }
           user {
             name

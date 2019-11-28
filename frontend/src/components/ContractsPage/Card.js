@@ -50,7 +50,7 @@ export default function Card({ id, company, createdAt }) {
                         </li>
                     </ul>
                     <div className="d-flex justify-content-between align-items-center">
-                        <SignButton contractId={id} />
+                        <SignButton contractId={id} companyApiKey={company.api_key} />
                         <small className="text-muted">expira em 24h</small>
                     </div>
                 </div>
