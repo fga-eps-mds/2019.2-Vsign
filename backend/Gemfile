@@ -14,6 +14,7 @@ gem 'aws-sdk-textract', '~> 1.3'
 gem 'devise'
 gem 'devise-jwt'
 gem 'graphql'
+gem 'google-cloud-speech'
 # Bundle edge Rails instead: gem 'rails', github: 'rails/rails'
 gem 'rails', '~> 5.2.3'
 # Use postgresql as the database for Active Record
@@ -41,6 +42,8 @@ gem 'sendgrid-ruby'
 
 # Use Rack CORS for handling Cross-Origin Resource Sharing (CORS), making cross-origin AJAX possible
 gem 'rack-cors'
+# Gem to string compare
+gem 'fuzzy-string-match'
 
 group :development, :test do
   # Call 'byebug' anywhere in the code to stop execution and get a debugger console

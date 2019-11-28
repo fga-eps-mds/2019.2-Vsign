@@ -1,10 +1,8 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
-import { IntructionTextBtn, } from './styles';
-import { Button } from 'rsuite';
 import { finishSignatureReviewAction } from '../../actions/review';
 
-class reviewUserVideo extends Component {
+class FinishButton extends Component {
     constructor(props) {
         super(props);
         this.handleClick = this.handleClick.bind(this);
@@ -17,11 +15,7 @@ class reviewUserVideo extends Component {
 
     render() {
         return (
-            <Button appearance='primary' size='md' color='blue'  onClick={this.handleClick}>
-                <IntructionTextBtn>
-                    Finalizar assinatura 
-                </IntructionTextBtn>  
-            </Button>
+            <button className="btn btn-primary btn-block" onClick={this.handleClick}>Finalizar assinatura</button>
         )
     }
 }
@@ -30,4 +24,4 @@ const mapDispatchToProps = {
     finishSignatureReviewAction
 };
 
-export default connect(null, mapDispatchToProps)(reviewUserVideo);
+export default connect(null, mapDispatchToProps)(FinishButton);
