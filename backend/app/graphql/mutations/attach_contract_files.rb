@@ -3,12 +3,13 @@
 module Mutations
   # AttachContractFiles
   class AttachContractFiles < BaseMutation
-    argument :contract_id, Int, required: true
+    argument :contract_id, String, required: true
     argument :files, Types::AttachContractFilesInputType, required: true
     type Types::AttachContractFilesType
 
     def resolve(contract_id: nil, files: nil)
-      contract = Contract.find(id: contract_id, user: current_user )
+      current_user = context[:current_user]
+      contract = current_user.contracts.find(contract_id)
 
       files = files.to_h
       
@@ -17,7 +18,12 @@ module Mutations
       
       images = files[:images]
       images.each {|image| contract.image.attach(image)}
+
       ExtractAudioTextJob.perform_later contract.id
+
+      {
+        success: true
+      }
     end
   end
 end

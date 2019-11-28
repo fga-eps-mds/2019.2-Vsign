@@ -1,14 +1,11 @@
 import React from 'react';
 import { connect} from 'react-redux';
-import { VideoDivReview } from './styles';
 
 function Video({ video }) {
     return (
-        <VideoDivReview>
-            <video controls autoPlay name="media">
-                <source src={video} type="video/webm" />
-            </video>
-        </VideoDivReview>
+        <video controls autoPlay name="media" style={{ width: '100%' }}>
+            <source src={video} type="video/webm" />
+        </video>
     );
 }
 

@@ -1,8 +1,9 @@
-import { all, select, call, put, takeEvery } from 'redux-saga/effects';
+import { all, put, takeEvery } from 'redux-saga/effects';
 import { FINISH_SIGNATURE_REVIEW, REDO_SIGNATURE } from '../constants/review';
 import { clearSignatureAssetsAction } from '../actions/record';
 import { history } from '../store';
 import { uploadVideoAction, uploadAudioAction, uploadImagesAction } from '../actions/upload';
+import { RECORD_URL } from '../constants/routes';
 
 
 function* handleFinishSignatureReview(action) {
@@ -16,7 +17,7 @@ function * watchFinishSignatureReview() {
 }
 
 function* handleRedoSignature() {
-    history.push('/record');
+    history.push(RECORD_URL);
     yield put(clearSignatureAssetsAction());
 }
 

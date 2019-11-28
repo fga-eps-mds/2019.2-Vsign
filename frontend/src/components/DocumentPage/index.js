@@ -1,19 +1,13 @@
-/*
-*
-*		@author: Marcos Cabeceira
-*		Talk is cheap, show me the code
-*/
-
-import React from 'react';
+import React, { Component, Fragment } from 'react';
 import Dropzone from './Dropzone';
 import { Button, Progress } from 'rsuite';
-import Navbar from '../RecordPage/Navbar';
-import SigningSteps from '../Shared/SigningSteps';
+import Navbar from '../Shared/Navbar';
 import { Link } from 'react-router-dom';
-
+import { RECORD_URL } from '../../constants/routes';
 import './UploadImage.css';
 
-class Uploadimage extends React.Component {
+
+export default class DocumentPage extends Component {
     constructor(props) {
         super(props);
 
@@ -34,20 +28,18 @@ class Uploadimage extends React.Component {
         const { Line } = Progress;
 
         return (
-            <div>
+            <Fragment>
                 <Navbar />
-                <SigningSteps history={this.props.history} />
-                <div className="container">
-                    <div className="card">
-                        <div className="Upload">
-                            <span className='Title'>Enviar Documento</span>
-                            <div className="Content">
-                                <div>
-                                    <Dropzone
-                                        onFilesAdded={this.onFilesAdded}
-                                        disabled={this.state.uploading || this.state.successfullUploaded}
-                                    />
-                                </div>
+                {/* <SigningSteps history={this.props.history} /> */}
+                <div className="container py-5">
+                    <div className="card mb-3">
+                        <div className="card-header">Enviar Documento</div>
+                        <div className="Upload">    
+                            <div className="Content text-center">
+                                <Dropzone
+                                    onFilesAdded={this.onFilesAdded}
+                                    disabled={this.state.uploading || this.state.successfullUploaded}
+                                />
                                 <div className="Files">
                                     {this.state.files.map(file => {
                                         return (
@@ -59,12 +51,15 @@ class Uploadimage extends React.Component {
                                     })}
                                 </div>
                             </div>
-                            <div className="Actions">{this.renderActions()}</div>
+                            {/* <div className="Actions">{this.renderActions()}</div> */}
                         </div>
                     </div>
+                    <Link to={RECORD_URL}>
+                        <button className="btn btn-primary btn-lg float-right">Continuar</button>
+                    </Link>
                 </div>
-            </div>
-        )
+            </Fragment>
+        );
     }
 
     onFilesAdded(files) {
@@ -172,6 +167,3 @@ class Uploadimage extends React.Component {
         });
     }
 };
-
-
-export default Uploadimage;

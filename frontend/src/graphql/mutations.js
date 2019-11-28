@@ -35,7 +35,7 @@ export async function current_user() {
 
 export async function attachContractFilesMutation(variables) {
     const mutation = gql`
-        mutation AttachContractFilesMutation($contractId: Int!, $files: AttachContractFilesInput!) {
+        mutation AttachContractFilesMutation($contractId: String!, $files: AttachContractFilesInput!) {
             attachContractFiles(contractId: $contractId, files: $files) {
                 success
             }
@@ -56,6 +56,22 @@ export async function loginUser(variables) {
                 password: $password
             ) {
                 token
+            }
+        }
+    `;
+
+    return await apollo.mutate({
+        mutation,
+        variables
+    });
+}
+
+export async function loginByTokenMutation(variables) {
+    const mutation = gql`
+        mutation LoginByToken($token: String!) {
+            loginByToken(token: $token) {
+                token,
+                name
             }
         }
     `;
