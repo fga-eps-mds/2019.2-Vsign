@@ -12,7 +12,6 @@ module Mutations
       is_valid_for_auth = user.valid_for_authentication?{
         user.valid_password?(password)
       }
-
       return is_valid_for_auth ? user : nil
     end
 
