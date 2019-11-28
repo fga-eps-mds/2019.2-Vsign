@@ -136,12 +136,22 @@ Práticas que foram adotadas no decorrer do projeto:
 As outras práticas foram mantidas do início ao fim do projeto.
 
 ## Tecnologias
+As tecnologias utilizadas foram as seguintes:
+- [Framework Ruby On Rails](https://rubyonrails.org/);
+- [React](https://pt-br.reactjs.org/);
+- [GraphQL](https://graphql.org/);
+- [Amazon S3](https://aws.amazon.com/pt/s3/);
+- [Cloud Text-to-Speech](https://cloud.google.com/text-to-speech/?hl=pt-br);
+- [Amazon Rekognition](https://aws.amazon.com/pt/rekognition/).
+
+A escolha das tecnologias foi feita com base em uma sugestão dada pelo cliente e após análise do grupo sobre conhecimento individual de cada um com relação a cada tecnologia e ao levantamento feito pelo grupo de tecnlogias boas para serem utilizadas no projeto. Ao final decidimos por essas tecnologias que foram as mesmas sugeridas pelo cliente, com exceção do React e do GraphQL que o próprio grupo escolheu utilizar.
+
+As tecnologias utilizadas no projeto se pagaram ao final, pois todas elas atenderam as necessidades do grupo em solucionar os desafios e contruir o *software*. As duas tecnlogias que o grupo teve um pouco mais de dificuldade para utilizar foram: Cloud Text-to-Speech e a Amazon Rekognition, pois ambas envolviam aprender do zero a como utilizá-las para resolver os problemas propostos a serem resolvidos. A Rekognition depois de pouco tempo o grupo já estava com um bom domínio sobre a mesma, sendo o problema maior com a Text-to-Speech onde também não foi difícil para o grupo saber como utilizá-la para resolver o problema, porém na conversão do áudio de gravação para conseguir ser analisado e transcrito. Após descoberto como resolver essa conversão do formato do áudio para o formato utilizado pela Google em sua ferramenta, o problema foi resolvido.
+
+## Ferramentas
 
 
 ## Desenvolvimento
-
-
-## Ferramentas
 
 
 ## Release 1
@@ -153,6 +163,14 @@ As outras práticas foram mantidas do início ao fim do projeto.
 ## Aprendizados Gerais
 
 ### Pontos Positivos
-
+- Problema de comunicação parte dele pode ser resolvido, pois os membros do grupo tinham um alto engajamento no projeto;
+- Maioria do grupo engajada e motivada com o projeto;
+- Todo o escopo planejado no início foi implementado;
+- Uso de uma metodologia definida, porém sem definição de frameworks, somente com práticas que melhor se encaixavam no projeto.
 
 ### Pontos Negativos
+- Falta de comunicação;
+- Alguns membros do grupo foram se afastando conforme o projeto foi passando, isso causou alguns problemas de atrasos em entregas e sobrecarga de outros membros;
+- Falta de reuniões presenciais;
+- Ausência de métricas para verificar andamento, qualidade do trabalho e gerenciar riscos;
+- Oscilação do nível de trabalho durante as sprints.
