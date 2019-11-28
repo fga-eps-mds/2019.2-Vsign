@@ -10,6 +10,8 @@ class Contract < ApplicationRecord
   has_one_attached :audio
   has_many_attached :image
 
+  validates_presence_of :company_id, :user_id, :script, :order
+
   def send_email_new_contract
     SendgridMailer.send(
       self.user.email,
@@ -19,4 +21,5 @@ class Contract < ApplicationRecord
       "d-977dd6915e8a430bbed0ab92c9a4421a" 
     )
   end
+
 end
