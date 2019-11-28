@@ -36,7 +36,7 @@ As pessoas têm cada vez menos tempo disponível em suas agendas e agendar uma d
 ## 2.2. Descrição do Problema
 
 | O problea seria       | Assinar um contratos por vídeo  |
-|-----------------------|---|
+|-----------------------|------|
 | Que afeta             | Pessoas que querem assinar contratos com a bxblue  |
 | Cujo impacto é        | Atraso e desestimulo na concretização dos acordos  |
 | Uma boa solução seria | Uma plataforma que permita a assinitura do contrato via vídeo  |
@@ -71,9 +71,8 @@ A plataforma devo ser acessada a partir de um dispositivo conectado a internet, 
 ----
 | NOME      |DESCRIÇÃO | PRINCIPAIS RESPONSABILIDADES
 |-----------|----------|----------------------------|
-
-| Cauê Mateus Oliveira | Product Owner | ---------------|
-| Kairon Velozo |-------|--------------|
+| Cauê Mateus Oliveira | Product Owner | Definir a estratégia de trabalho e maximizar o valor do projeto|
+| Kairon Velozo |Architect|--------------|
 | Marcos da Silva Cabeceira | Membro da equipe de desenvolvimento.   |Executar o projeto além de desenvolver e manter a documentação e o software.|
 | Marcos Gabriel Tavares |  Membro da equipe de desenvolvimento.   |Executar o projeto além de desenvolver e manter a documentação e o software.|
 | Marcos Vinicius Lima Raimundo |  Membro da equipe de desenvolvimento.   |Executar o projeto além de desenvolver e manter a documentação e o software.|
