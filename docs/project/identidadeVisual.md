@@ -3,6 +3,7 @@
 | <center>Versão</center> | <center>Descrição</center> | <center>Autor</center> |
 | :----: | :-------: | :---: |
 | 0.1 | Abertura e escrita do documento | [Cauê](https://github.com/caue96) |
+| 0.2 | Melhora da apresentação no drive da identidade visual | [Cauê](https://github.com/caue96) |
 
 ---
 
