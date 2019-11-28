@@ -1,0 +1,622 @@
+<!DOCTYPE html>
+<!--[if IE 8]><html class="no-js lt-ie9" lang="en" > <![endif]-->
+<!--[if gt IE 8]><!--> <html class="no-js" lang="en" > <!--<![endif]-->
+<head>
+  <meta charset="utf-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  
+  
+  <link rel="shortcut icon" href="../../img/favicon.ico">
+  <title>Postmortem - Vsign</title>
+  <link href='https://fonts.googleapis.com/css?family=Lato:400,700|Roboto+Slab:400,700|Inconsolata:400,700' rel='stylesheet' type='text/css'>
+
+  <link rel="stylesheet" href="../../css/theme.css" type="text/css" />
+  <link rel="stylesheet" href="../../css/theme_extra.css" type="text/css" />
+  <link rel="stylesheet" href="//cdnjs.cloudflare.com/ajax/libs/highlight.js/9.12.0/styles/github.min.css">
+  
+  <script>
+    // Current page data
+    var mkdocs_page_name = "Postmortem";
+    var mkdocs_page_input_path = "project/postmortem.md";
+    var mkdocs_page_url = null;
+  </script>
+  
+  <script src="../../js/jquery-2.1.1.min.js" defer></script>
+  <script src="../../js/modernizr-2.8.3.min.js" defer></script>
+  <script src="//cdnjs.cloudflare.com/ajax/libs/highlight.js/9.12.0/highlight.min.js"></script>
+  <script>hljs.initHighlightingOnLoad();</script> 
+  
+</head>
+
+<body class="wy-body-for-nav" role="document">
+
+  <div class="wy-grid-for-nav">
+
+    
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side stickynav">
+      <div class="wy-side-nav-search">
+        <a href="../.." class="icon icon-home"> Vsign</a>
+        <div role="search">
+  <form id ="rtd-search-form" class="wy-form" action="../../search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" title="Type search term here" />
+  </form>
+</div>
+      </div>
+
+      <div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="main navigation">
+	<ul class="current">
+	  
+          
+            <li class="toctree-l1">
+		
+    <a class="" href="../..">Home</a>
+	    </li>
+          
+            <li class="toctree-l1">
+		
+    <span class="caption-text">Projeto</span>
+    <ul class="subnav">
+                <li class="">
+                    
+    <a class="" href="../tap/">Termo de Abertura de Projeto</a>
+                </li>
+                <li class="">
+                    
+    <a class="" href="../identidadeVisual/">Identidade Visual</a>
+                </li>
+                <li class="">
+                    
+    <a class="" href="../canvas/">Plano de Negócios</a>
+                </li>
+                <li class="">
+                    
+    <a class="" href="../planoComunicacao/">Plano de Comunicação Interna</a>
+                </li>
+                <li class="">
+                    
+    <a class="" href="../roadmap/">Roadmap</a>
+                </li>
+                <li class="">
+                    
+    <a class="" href="../eap/">EAP</a>
+                </li>
+                <li class="">
+                    
+    <a class="" href="../vision-document/">Documento de Visão</a>
+                </li>
+                <li class="">
+                    
+    <a class="" href="../architectureDocument/">Documento de Arquitetura</a>
+                </li>
+                <li class="">
+                    
+    <a class="" href="../useCasesDiagram/">Diagrama de casos de uso</a>
+                </li>
+                <li class="">
+                    
+    <a class="" href="../class-diagram/">Diagrama de Classes</a>
+                </li>
+                <li class="">
+                    
+    <a class="" href="../fidelity_prototyping/">Protótipo de Média Fidelidade</a>
+                </li>
+                <li class="">
+                    
+    <a class="" href="../articleCriticalAnalysis/">Análise Crítica de artigo</a>
+                </li>
+                <li class=" current">
+                    
+    <a class="current" href="./">Postmortem</a>
+    <ul class="subnav">
+            
+    <li class="toctree-l3"><a href="#historico-de-versao">Histórico de Versão</a></li>
+    
+
+    <li class="toctree-l3"><a href="#postmortem">Postmortem</a></li>
+    
+        <ul>
+        
+            <li><a class="toctree-l4" href="#equipe-vsign">Equipe Vsign</a></li>
+        
+            <li><a class="toctree-l4" href="#mds">MDS</a></li>
+        
+            <li><a class="toctree-l4" href="#eps">EPS</a></li>
+        
+            <li><a class="toctree-l4" href="#metodologia">Metodologia</a></li>
+        
+            <li><a class="toctree-l4" href="#papeis">Papeis</a></li>
+        
+            <li><a class="toctree-l4" href="#praticas">Práticas</a></li>
+        
+            <li><a class="toctree-l4" href="#tecnologias">Tecnologias</a></li>
+        
+            <li><a class="toctree-l4" href="#ferramentas">Ferramentas</a></li>
+        
+            <li><a class="toctree-l4" href="#desenvolvimento">Desenvolvimento</a></li>
+        
+            <li><a class="toctree-l4" href="#release-1">Release 1</a></li>
+        
+            <li><a class="toctree-l4" href="#release-2">Release 2</a></li>
+        
+            <li><a class="toctree-l4" href="#aprendizados-gerais">Aprendizados Gerais</a></li>
+        
+        </ul>
+    
+
+    </ul>
+                </li>
+    </ul>
+	    </li>
+          
+            <li class="toctree-l1">
+		
+    <span class="caption-text">Gerenciamento de Projeto</span>
+    <ul class="subnav">
+                <li class="">
+                    
+    <a class="" href="../../managementProject/gcs/">Plano de Gerenciamento de Configuração de Software</a>
+                </li>
+                <li class="">
+                    
+    <a class="" href="../../managementProject/styleGuide/">Folha de Estilo</a>
+                </li>
+    </ul>
+	    </li>
+          
+            <li class="toctree-l1">
+		
+    <span class="caption-text">Sprints</span>
+    <ul class="subnav">
+                <li class="">
+                    
+    <a class="" href="../../sprints/preSprint/">Pré-Sprint</a>
+                </li>
+                <li class="">
+                    
+    <a class="" href="../../sprints/sprint1/">Sprint 1</a>
+                </li>
+                <li class="">
+                    
+    <a class="" href="../../sprints/sprint2/">Sprint 2</a>
+                </li>
+                <li class="">
+                    
+    <a class="" href="../../sprints/sprint3/">Sprint 3</a>
+                </li>
+                <li class="">
+                    
+    <a class="" href="../../sprints/sprint4/">Sprint 4</a>
+                </li>
+                <li class="">
+                    
+    <a class="" href="../../sprints/sprint5/">Sprint 5</a>
+                </li>
+                <li class="">
+                    
+    <a class="" href="../../sprints/sprint6/">Sprint 6</a>
+                </li>
+                <li class="">
+                    
+    <a class="" href="../../sprints/sprint7/">Sprint 7</a>
+                </li>
+                <li class="">
+                    
+    <a class="" href="../../sprints/sprint8/">Sprint 8</a>
+                </li>
+                <li class="">
+                    
+    <a class="" href="../../sprints/sprint9/">Sprint 9</a>
+                </li>
+                <li class="">
+                    
+    <a class="" href="../../sprints/sprint10/">Sprint 10</a>
+                </li>
+                <li class="">
+                    
+    <a class="" href="../../sprints/sprint11/">Sprint 11</a>
+                </li>
+                <li class="">
+                    
+    <a class="" href="../../sprints/sprint12/">Sprint 12</a>
+                </li>
+    </ul>
+	    </li>
+          
+            <li class="toctree-l1">
+		
+    <span class="caption-text">Atas de Reunião</span>
+    <ul class="subnav">
+                <li class="">
+                    
+    <a class="" href="../../meetings/reuniao29_08_19/">29/08/2019</a>
+                </li>
+                <li class="">
+                    
+    <a class="" href="../../meetings/reuniao31_08_19/">31/08/2019</a>
+                </li>
+                <li class="">
+                    
+    <a class="" href="../../meetings/reuniao05_09_19/">05/09/2019</a>
+                </li>
+                <li class="">
+                    
+    <a class="" href="../../meetings/reuniao07_09_19/">07/09/2019</a>
+                </li>
+                <li class="">
+                    
+    <a class="" href="../../meetings/reuniao14_09_19/">14/09/2019</a>
+                </li>
+                <li class="">
+                    
+    <a class="" href="../../meetings/reuniao21_09_19/">21/09/2019</a>
+                </li>
+                <li class="">
+                    
+    <a class="" href="../../meetings/reuniao29_09_19/">29/09/2019</a>
+                </li>
+                <li class="">
+                    
+    <a class="" href="../../meetings/reuniao06_10_19/">06/10/2019</a>
+                </li>
+                <li class="">
+                    
+    <a class="" href="../../meetings/reuniao12_10_19/">12/10/2019</a>
+                </li>
+                <li class="">
+                    
+    <a class="" href="../../meetings/reuniao19_10_19/">19/10/2019</a>
+                </li>
+                <li class="">
+                    
+    <a class="" href="../../meetings/reuniao22_10_19/">22/10/2019</a>
+                </li>
+                <li class="">
+                    
+    <a class="" href="../../meetings/reuniao26_10_19/">26/10/2019</a>
+                </li>
+                <li class="">
+                    
+    <a class="" href="../../meetings/reuniao04_11_19/">04/11/2019</a>
+                </li>
+                <li class="">
+                    
+    <a class="" href="../../meetings/reuniao11_11_19/">11/11/2019</a>
+                </li>
+                <li class="">
+                    
+    <a class="" href="../../meetings/reuniao19_11_19/">19/11/2019</a>
+                </li>
+                <li class="">
+                    
+    <a class="" href="../../meetings/reuniao27_11_19/">27/11/2019</a>
+                </li>
+    </ul>
+	    </li>
+          
+        </ul>
+      </div>
+      &nbsp;
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap">
+
+      
+      <nav class="wy-nav-top" role="navigation" aria-label="top navigation">
+        <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+        <a href="../..">Vsign</a>
+      </nav>
+
+      
+      <div class="wy-nav-content">
+        <div class="rst-content">
+          <div role="navigation" aria-label="breadcrumbs navigation">
+  <ul class="wy-breadcrumbs">
+    <li><a href="../..">Docs</a> &raquo;</li>
+    
+      
+        
+          <li>Projeto &raquo;</li>
+        
+      
+    
+    <li>Postmortem</li>
+    <li class="wy-breadcrumbs-aside">
+      
+    </li>
+  </ul>
+  <hr/>
+</div>
+          <div role="main">
+            <div class="section">
+              
+                <h2 id="historico-de-versao">Histórico de Versão</h2>
+<table>
+<thead>
+<tr>
+<th align="center"><center>Versão</center></th>
+<th align="center"><center>Descrição</center></th>
+<th align="center"><center>Autor</center></th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td align="center">0.1</td>
+<td align="center">Estruturação do documento</td>
+<td align="center"><a href="https://github.com/caue96">Cauê</a></td>
+</tr>
+<tr>
+<td align="center">0.2</td>
+<td align="center">Tópicos Equipe, MDS e EPS adicionados</td>
+<td align="center"><a href="https://github.com/caue96">Cauê</a></td>
+</tr>
+<tr>
+<td align="center">0.3</td>
+<td align="center">Tópcicos Metodologia, Papeis e Práticas adicionados</td>
+<td align="center"><a href="https://github.com/caue96">Cauê</a></td>
+</tr>
+</tbody>
+</table>
+<hr />
+<h1 id="postmortem">Postmortem</h1>
+<h2 id="equipe-vsign">Equipe Vsign</h2>
+<p>A equipe é formada por 9 membros, sendo eles:</p>
+<ol>
+<li><a href="https://github.com/caue96">Cauê Mateus</a></li>
+<li><a href="https://github.com/kairon-v">Kairon Veloso</a></li>
+<li><a href="https://github.com/Foxtrot40">Marcos Cabeceira</a></li>
+<li><a href="https://github.com/MarcosFloresta">Marcos Floresta</a></li>
+<li><a href="https://github.com/marcosgtavares">Marcos Gabriel</a></li>
+<li><a href="https://github.com/thiagorpereira">Thiago Pereira</a></li>
+<li><a href="https://github.com/victoralvesgomide">Victor Gomide</a></li>
+<li><a href="https://github.com/ViniciusPuerto">Vinicius Porto</a></li>
+<li><a href="https://github.com/williamtpv">William Viera</a></li>
+</ol>
+<p>A equipe foi formada com alguns membros que já se conheciam antes das matérias de MDS e EPS e outros se agregaram ao grupo após a primeira semana de aula. No início começamos com uma equipe um pouco heterogênia e ao final da matéria terminamos com uma equipe mais hetorogênea do que quando começamos, pois alguns membros avançaram bastante seus conhecimentos e outros ficaram para trás o que causou uma diferença maior ainda de conhecimentos do que quando o semestre foi iniciado.</p>
+<p>O que pode-se dizer sobre a formação da equipe é que no final das contas ela acabou ficando equilibrada, pois cada um possuia seus pontos fortes e fracos e um membro completava o déficit do outro. A comunicação entre os membros foi um ponto fraco e criticado por alguns membros, pois não se tinha muito comunicação aberta entre o grupo, somente nas reuniões e alguns poucos momentos fora dela. O ponto fonte que se pode ressaltar é que a equipe teve um desempenho no geral superior ao esperado para o trabalho, tanto na parte de código quanto na documentação apresentada.</p>
+<h2 id="mds">MDS</h2>
+<p>Os membros da disciplina de MDS é formada por:</p>
+<ol>
+<li><a href="https://github.com/Foxtrot40">Marcos Cabeceira</a></li>
+<li><a href="https://github.com/MarcosFloresta">Marcos Floresta</a></li>
+<li><a href="https://github.com/marcosgtavares">Marcos Gabriel</a></li>
+<li><a href="https://github.com/ViniciusPuerto">Vinicius Porto</a></li>
+<li><a href="https://github.com/williamtpv">William Viera</a></li>
+</ol>
+<p>Quatro membros estavam matriculado na turma da tarde e um membro na turma da manhã. Esse membro matriculado na turma da manhã acabou ficando um pouco isolado do restante do grupo na maior parte do tempo, pois além de não ter aula no mesmo horário do restante dos membros ele não procurava interagir e ser proativo no trabalho.</p>
+<p>O membro que estava matriculado na turma da manhã e um na turma da tarde tiveram problemas com o andamento do trabalho, pois não conseguiram acompanhar no mesmo ritmo do restante do grupo e com isso foram se isolando cada vez mais do grupo e do trabalho. Diversos problemas causaram o afastamento crescente desses membros do projeto, entre alguns fatores pode-se destacar os seguintes: problemas pessoais, falta de interesse no trabalho, não afinidade com o grupo, semestre apertado com outras matérias e o déficit de conhecimento gerando desanimação.</p>
+<p>Os três membros restantes já tinham bastante afinidade antes da matéria começar e já tinham também um bom nível de programação, só faltando aprender mais sobre as metodologias de trabalho, geração de artefatos, notação de documentos e uso de algumas tecnologias utilizadas no projeto. No geral esses três membros se saíram muito bem e tiveram um desempenho superior ao que é esperado para membros da matéria de MDS.</p>
+<h2 id="eps">EPS</h2>
+<p>Os membros da disciplina de EPS é formada por:</p>
+<ol>
+<li><a href="https://github.com/caue96">Cauê Mateus</a></li>
+<li><a href="https://github.com/kairon-v">Kairon Veloso</a></li>
+<li><a href="https://github.com/thiagorpereira">Thiago Pereira</a></li>
+<li><a href="https://github.com/victoralvesgomide">Victor Gomide</a></li>
+</ol>
+<p>O grupo estava bem heterogêneo na questão de conhecimento prévio, com um membro se destacando muito, tendo conhecimento em diversas tecnologias que seriam utilizadas e no projeto como um todo. Os outros três membros tinham conhecimentos iniciais menores e um deles conseguiu desenvolver novos conhecimento e habilidades durante o decorrer do trabalho e os dois membros restantes não apresentarão grande evolução de conhecimento e de suas habilidades iniciais.</p>
+<p>O trabalho durante o semestre também não foi muito regular entre os membros. Dois membros trabalharam muito além do exigido e esperado para a matéria, outro membro trabalhou o que era esperado e exigido e o último membro do grupo quase não trabalhou durante a primeira parte da matéria, tendo aparecido somente em reuniões semanais e nas dailys. Na segunda metade da matéria um dos membros continuou a trabalhar muito além do exigido e esperado para a matéria, outro membro trabalhou o que era esperado e exigido e os outros dois membros trabalharam um pouco abaixo do que se esperava na segunda etapa, porém comparado a primeira parte da matéria, nessa segunda metade o trabalho foi mais homogêneo entre os membros.</p>
+<h2 id="metodologia">Metodologia</h2>
+<p>A equipe decidiu utilizar a metodologia ágil sem um uso de um framework específico a ser seguido. Foi decidido adotar os valores e princípios da metodologia ágil, acoplando a metodologia diversos artefatos e práticas do framework Scrum, porém com diversas adaptações que o grupo julgou que seria melhor para se trabalhar.</p>
+<p>De fato da metodologia ágil, de seus valores utilizamos todos eles:
+- Indivíduos e as interações entre eles mais que processos e ferramentas;
+- O software funcionando mais do que uma documentação completa e abrangente;
+- Colaboração com e dos clientes mais do que negociações de contratos;
+- Respostas a mudanças mais do que seguir o plano inicial.</p>
+<p>Os quatro valores foram seguidos do início ao fim do projeto.</p>
+<p>E de seus princípios utilizamos durante o projeto todos os princípios:
+- A maior prioridade é satisfazer o cliente, através da entrega adiantada e contínua de software de valor;
+- Aceitar mudanças de requisitos, mesmo no fim do desenvolvimento. Processos ágeis se adequam a mudanças, para que o cliente possa tirar vantagens competitivas;
+- Entregar software funcionando com frequência, preferencialmente em semanas;
+- Cooperação diária entre pessoas que entendem do ‘negócio’ e desenvolvedores;
+- Projetos surgem através de indivíduos motivados, entre os quais existe relação de confiança.
+- A maneira mais eficaz e eficiente de transmitir informações são através de conversas cara a cara;
+- Software funcionais são a principal medida de progresso do projeto;
+- Processos ágeis promovem um ambiente sustentável. Os patrocinadores, desenvolvedores e usuários, devem ser capazes de manter indefinidamente, passos constantes;
+- Contínua atenção à excelência técnica e bom design, aumenta a agilidade;
+- Simplicidade é essencial. Cultivar a arte de maximizar a quantidade de trabalho que não precisou ser feito;
+- As melhores arquiteturas, requisitos e projetos emergem de equipes auto-organizadas;
+- Em intervalos regulares, o time reflete em como se tornar mais efetivo, então, se ajustam e otimizam seu comportamento de acordo.</p>
+<p>Os 12 princípios foram seguidos do início ao fim do projeto.</p>
+<p>Com relação ao uso de práticas de frameworks, resolvemos usar como base o Scrum, porém com diversas adaptações. Algumas práticas que utilizamos durante o projeto foram as seguintes:
+- Iterações;
+- Pair programming;
+- Pair review;
+- Planning Poker;
+- Product Backlog;
+- Daily;
+- Sprint Planning;
+- Sprint Review;
+- Sprint Retrospective;
+- Histórias de usuário;
+- Business Canvas;
+- Deploy contínuo;
+- Integração contínua;
+- Controle de versão;
+- Kanban.</p>
+<p>Dessas práticas de diversos frameworks ágil, todas foram utilizadas durante algum período do projeto, mas somente algumas conseguimos manter sendo utilizada do início ao fim como: iterações, product backlog, sprint planning, sprint review, sprint retrospective, business canvas, deploy contínuo e controle de versão.</p>
+<h2 id="papeis">Papeis</h2>
+<p>Tivemos alguns papeis que foram definidos e separados entre os membros no início do projeto e ficamos com esses papeis até o final sem realizar rotação entre os papeis. A separação dos papeis entre os membros do grupo ficou da seguinte forma:</p>
+<table>
+<thead>
+<tr>
+<th align="center">Nome</th>
+<th align="center">Papel</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td align="center"><a href="https://github.com/caue96">Cauê Mateus</a></td>
+<td align="center">Product Owner</td>
+</tr>
+<tr>
+<td align="center"><a href="https://github.com/kairon-v">Kairon Veloso</a></td>
+<td align="center">Arquiteto</td>
+</tr>
+<tr>
+<td align="center"><a href="https://github.com/Foxtrot40">Marcos Cabeceira</a></td>
+<td align="center">Desenvolvedor</td>
+</tr>
+<tr>
+<td align="center"><a href="https://github.com/MarcosFloresta">Marcos Floresta</a></td>
+<td align="center">Desenvolvedor</td>
+</tr>
+<tr>
+<td align="center"><a href="https://github.com/marcosgtavares">Marcos Gabriel</a></td>
+<td align="center">Desenvolvedor</td>
+</tr>
+<tr>
+<td align="center"><a href="https://github.com/thiagorpereira">Thiago Pereira</a></td>
+<td align="center">DevOps</td>
+</tr>
+<tr>
+<td align="center"><a href="https://github.com/victoralvesgomide">Victor Gomide</a></td>
+<td align="center">Scrum Master</td>
+</tr>
+<tr>
+<td align="center"><a href="https://github.com/ViniciusPuerto">Vinicius Porto</a></td>
+<td align="center">Desenvolvedor</td>
+</tr>
+<tr>
+<td align="center"><a href="https://github.com/williamtpv">William Viera</a></td>
+<td align="center">Desenvolvedor</td>
+</tr>
+</tbody>
+</table>
+<p>Durante o projeto aconteceram algumas alterações entre os papeis informalmente com uma pessoal realizando funções que seria de outro papel, mas estava realizando ou porque ela tinha maior domínio da atividade que deveria ser realizada pelo papel ou por ausência do membro na entrega de sua tarefa.</p>
+<p>Na segunda metade da disciplina dois desenvolvedores já não estavam mais propriamente exercendo o papel de desenvolvedor e passaram a fazer papel de revisor de trabalhos feitos na primeira release e de funcionalidades criadas na segunda metade da matéria. O arquiteto acabou atuando muito também como desenvolvedor.</p>
+<p>Nos papeis de Product Owner (PO), Arquiteto, DevOps e Scrum Master (SM), somente DevOps e Arquiteto que ficou com seu papel do início ao fim sem ter ninguém executando tarefas de seu papel. PO acabou sendo executado hora pelo próprio PO e hora pelo Arquiteto, e SM acabou sendo executado hora pelo próprio SM e hora pelo PO. O trabalho de PO acabou sendo executado em alguns momentos específicos pelo Arquiteto, pois como o mesmo já tinha vasta visão de produto e conhecimento, algumas atividades acabaram sendo feitas por ele. O trabalho de SM acabou sendo executado em alguns momentos durante a sprint 1 e em um momento durante a sprint 2 pelo PO, devido a ausência do SM em alguns momentos do projeto.</p>
+<h2 id="praticas">Práticas</h2>
+<p>Durante o projeto colocamos diversas práticas em uso e ao longo dele fomos retirando e colocando práticas que ficassem melhores para o grupo. As decisões pelo uso de algumas práticas foram tomadas hora pensando na praticidade, hora na produtividade e hora na qualidade agregada ao trabalho.</p>
+<p>ALguns exemplos de práticas que iniciamos, porém retiramos ou modificamos:
+- Iterações passaram de presenciais para conferência;
+- Dailys foram substituidas por conversas individuais do SM com os membros semanalmente;
+- Histórias de usuários pararam de ser classificadas como US e o número de identificação delas e passaram a ser chamadas somente pelo nome da História de usuário.</p>
+<p>Práticas que foram adotadas no decorrer do projeto:
+- Pair review, antes era feito individualmente;
+- Integração contínua, foi implementada após a release 1.</p>
+<p>As outras práticas foram mantidas do início ao fim do projeto.</p>
+<h2 id="tecnologias">Tecnologias</h2>
+<p>As tecnologias utilizadas foram as seguintes:
+- <a href="https://rubyonrails.org/">Framework Ruby On Rails</a>;
+- <a href="https://pt-br.reactjs.org/">React</a>;
+- <a href="https://graphql.org/">GraphQL</a>;
+- <a href="https://aws.amazon.com/pt/s3/">Amazon S3</a>;
+- <a href="https://aws.amazon.com/pt/amplify/">AWS Amplify</a>;
+- <a href="https://cloud.google.com/speech-to-text/">Cloud Speech-to-Text</a>;
+- <a href="https://aws.amazon.com/pt/rekognition/">Amazon Rekognition</a>;
+- <a href="https://rspec.info/">RSpec</a> para testes do back-end.</p>
+<p>A escolha das tecnologias foi feita com base em uma sugestão dada pelo cliente e após análise do grupo sobre conhecimento individual de cada um com relação a cada tecnologia e ao levantamento feito pelo grupo de tecnlogias boas para serem utilizadas no projeto. Ao final decidimos por essas tecnologias que foram as mesmas sugeridas pelo cliente, com exceção do React e do GraphQL que o próprio grupo escolheu utilizar.</p>
+<p>As tecnologias utilizadas no projeto se pagaram ao final, pois todas elas atenderam as necessidades do grupo em solucionar os desafios e contruir o <em>software</em>. As duas tecnlogias que o grupo teve um pouco mais de dificuldade para utilizar foram: Cloud Speech-to-Text e a Amazon Rekognition, pois ambas envolviam aprender do zero a como utilizá-las para resolver os problemas propostos a serem resolvidos. A Rekognition depois de pouco tempo o grupo já estava com um bom domínio sobre a mesma, sendo o problema maior com a Text-to-Speech onde também não foi difícil para o grupo saber como utilizá-la para resolver o problema, porém na conversão do áudio de gravação para conseguir ser analisado e transcrito. Após descoberto como resolver essa conversão do formato do áudio para o formato utilizado pela Google em sua ferramenta, o problema foi resolvido.</p>
+<h2 id="ferramentas">Ferramentas</h2>
+<p>As ferramentas utilizadas para auxílio do trabalho foram as seguintes:
+- <a href="https://www.zenhub.com/">Zenhub</a> para o tracking e organização das features;
+- <a href="https://circleci.com/">CircleCI</a> para integração e entrega contínua;
+- <a href="https://www.rubocop.org/en/stable/">Rubocop</a> para apontar todas as ofensas do código do projeto que não seguirem o padrão do linter no back-end;
+- <a href="https://www.mkdocs.org/">MKDocs</a> para manter toda a documentação do projeto;
+- <a href="https://drive.google.com/drive/u/0/">Google Drive</a> para manter algumas apresentações, planilhas e arquivos do grupo;
+- <a href="https://slack.com/intl/pt-br/">Slack</a> onde as conversas entre o grupo e entre o cliente aconteciam;
+- <a href="https://web.telegram.org">Telegram</a> usado para conversas parelales, envios de áudios e quando alguns membros tinham problemas com o slack;
+- <a href="https://codeclimate.com/">Code Climate</a> usado para verificar a qualidade do código e dos testes.
+- <a href="https://eslint.org/">Eslint</a> para apontar todas as ofensas do código do projeto que não seguirem o guia de estilo da airbnb no front-end</p>
+<p>O grupo não teve trabalho para aprender a utilizar as ferramentas listadas, os problemas que ocorreram foi o mal uso de algumas ferramentas como o Drive que acabou ficando com os documentos todos largados e o Zenhub que não foi atualizado e utilizado de forma correta. O zenhub foi a mais crítica das ferramentas, pois a mesma não estava sendo atualizada constantemente e a rastreabilidade que a ferramenta trás estava mais confundindo o grupo do que ajudando por erros na utilização. As métricas que são geradas pelo zenhub nunca foram utilizadas pelo grupo, pois o uso da ferramenta não estava correta e o membro que estava responsável pela análise das métricas não fez as análises necessárias.</p>
+<h2 id="desenvolvimento">Desenvolvimento</h2>
+<p>O código em sua versão de produção pode ser encontrado no seguinte link <a href="https://master.dar0d46dq2rcb.amplifyapp.com/">Vsign</a>. Todas as funcionalidades desenvolvidas podem ser encontradas no seguinte link <a href="https://github.com/fga-eps-mds/2019.2-Vsign/releases/tag/v1.0">Release 1.0</a>.</p>
+<p>A equipe de desenvolvimento foi composta por todos os membros de MDS e na maior parte do tempo também pelo Arquiteto do projeto que possuia o maior nível de conhecimento técnico do grupo e para auxiliar MDS atuou ativamente como um desenvolvedor, sempre que possível pareando e ensinando.</p>
+<p>O uso das issues e dos pull requests foi bom, porém não foi usado em um nível de excelência que estavamos buscando. Nem todos os comentários foram feitos nas issues e nos pull requests, durante a release 1 vários estavam sendo comentadas, porém durante a release 2 a utilização dos mesmos começou a ser feita sem a devida atenção que se deveria.</p>
+<p>Problemas com nível técnico das tecnologias ocorreram nas duas primeiras sprints de código do projeto, nas últimas três semanas de projeto problemas com a conversão no formato de áudio utilizado pela google no Speech-to-Text ocorreram, porém foi solucionado esse problema após bastante tempo de desenvolvimento. Esses foram os 2 maiores problemas que se teve para desenvolver o <em>software</em>.</p>
+<h2 id="release-1">Release 1</h2>
+<p>Durante o mês de agosto e setembro foi trabalhado dentro da release 1. Ao término desse período soltamos um pré-release note, mas porque não foi soltado uma release ao invés de uma pré-release? Após o término desse período ainda não tinhamos uma MVP rodando e por esse motivo não poderiamos liberar uma release versão 1 do produto, mas sim uma pré-release versão 0.1 do produto, onde trabalhamos nos dois meses seguintes para liberar a primeira release do projeto, ou seja, o primeiro MVP.</p>
+<p>Durante as três primeiras sprints, como ainda não tinhamos grupo definido e somente os times estavam definidos, prefirimos por focar no estudos das possíveis tecnologias que trabalhariamos e começar a mostrar para a equipe de MDS a metodologia de trabalho que utilizaríamos, práticas, rituais e como trabalhar dentro do repositório da equipe.</p>
+<p>Assim que o tema foi definido, foram realizados alguns treinamentos das tecnologias, metodologia e foi passado diversas orientações da forma com que trabalharíamos nas duas semanas seguintes. Na sprint 2 começamos a gerar os artefatos iniciais do projeto e na sprint 4 o código da aplicação começou a ser feito. E assim foi tocado o projeto até a release 1. Ao final foi gerado o seguinte <a href="https://github.com/fga-eps-mds/2019.2-Vsign/releases/tag/v0.1">pré release 0.1</a>.</p>
+<p>Vários problemas ocorreram durante a release 1 como: a falta de comunicação que começou a aumentar conforme o tempo ia passando, alguns membros ausentes ou dispersos, mudanças de práticas para se adaptar melhor ao grupo, entre outros. Porém no geral o trabalho foi bom, pois conseguimos entregar tudo que nós haviamos nos comprometido a entregar até a release 1.</p>
+<h2 id="release-2">Release 2</h2>
+<p>Durante o mês de outubro e novembro foi trabalhado dentro da release 2. Ao término desse período soltamos a primeira release note, pois ao término desse ciclo conseguimos finalizar o primeiro MVP.</p>
+<p>Durante as dua primeiras sprints desse ciclo o trabalho de todos no grupo foi ruim no geral, pois haviamos adiantado bastante do trabalho e ido muito bem na release 1 e com isso alguns membros relaxaram na matéria e outros se ausentaram por um período de tempo para focar em outras matérias que estavam deixando de lada para focar em MDS/EPS. Após essas duas sprints iniciais o trabalho voltou a rodar bem novamente com os membros retomando o ritmo de trabalho, sendo que já na sprint 4 dessa release os membros voltaram a trabalhar no mesmo ritmo da primeira metade da matéria. Ao final da release 2 foi gerado um <em>patch note</em> com o MVP entregue e pode ser encontrado aqui na <a href="https://github.com/fga-eps-mds/2019.2-Vsign/releases/tag/v1.0">release 1.0</a>.</p>
+<p>Vários problemas ocorreram durante a release 2 como: comunicação que piorou em comparação com a release 1, alguns membros se distanciaram mais ainda do restante do grupo, alguns membros ficaram ausentes durante boa parte da release 2, muita conversa e pouca ação por parte de alguns membros, entre outros. Porém igualmente aconteceu ao final da release 1, nesse ciclo o trabalho no geral também foi bom, pois conseguimos entregar todo o escopo e artefatos planejados para serem entregues até ao final da release 2.</p>
+<h2 id="aprendizados-gerais">Aprendizados Gerais</h2>
+<h3 id="pontos-positivos">Pontos Positivos</h3>
+<ul>
+<li>Problema de comunicação parte dele pode ser resolvido, pois os membros do grupo tinham um alto engajamento no projeto;</li>
+<li>Maioria do grupo engajada e motivada com o projeto;</li>
+<li>Todo o escopo planejado no início foi implementado;</li>
+<li>Uso de uma metodologia definida, porém sem definição de frameworks, somente com práticas que melhor se encaixavam no projeto;</li>
+<li>Boa parte do grupo já tinha um bom nível de conhecimento o que facilitou o trabalho;</li>
+<li>Grupo sem conflitos internos;</li>
+<li>Situação do SM após a release 1 conseguiu ser contornada, após conversa franca com o membro;</li>
+<li>Apesar das poucas conversas individuais que tivemos, elas foram mais importantes do que as dailys para tomar ações no projeto;</li>
+<li>Vários problemas foram resolvidos após intensas procuras no Google;</li>
+<li>Grupo motivado por trabalhar em um projeto real.</li>
+</ul>
+<h3 id="pontos-negativos">Pontos Negativos</h3>
+<ul>
+<li>Falta de comunicação;</li>
+<li>Alguns membros do grupo foram se afastando conforme o projeto foi passando, isso causou alguns problemas de atrasos em entregas e sobrecarga de outros membros;</li>
+<li>Falta de reuniões presenciais;</li>
+<li>Ausência de métricas para verificar andamento, qualidade do trabalho e gerenciar riscos;</li>
+<li>Oscilação do nível de trabalho durante as sprints.</li>
+<li>Utilização do Kanban sem atualizá-lo constantemente, gerando mais dúvida do que tudo;</li>
+<li>Conversa pessoal que substituiu as dailys não ocorreu da forma que deveria;</li>
+<li>Baixa produtividade de alguns membros;</li>
+<li>Alguns membros mais falando do que fazendo;</li>
+<li>Problemas de alguns membros com o docker, principalmente no começo, pois constantemente o docker apontava algum problema que impedia de rodar algum ambiente (back-end e/ou front-end)</li>
+</ul>
+<h3 id="recomendacoes">Recomendações</h3>
+<ul>
+<li>Insistir com membros que estiverem mais afastados do grupo antes de tomar decisões extremas de demitir o membro do grupo;</li>
+<li>Ajudar a nivelar o nível técnico da equipe, ajudando os membros que estão com mais dificuldades a aprender;</li>
+<li>Grupo se encontrar presencialmente pelo menos uma vez na semana, para não deixar ocorrer afastamento entre os membros do grupo;</li>
+<li>Escolher tecnologias e ferramentas para serem usadas onde pelo menos um membro do grupo tenha domínio sobre ela;</li>
+<li>O SM do grupo deve ser aquele que tiver maior conhecimento da metodologia e maior engajamento com o trabalho;</li>
+<li>O PO do grupo deve ser aquele que tiver o maior conhecimento técnico e visão de produto;</li>
+<li>A comunicação deve sempre ser estimulada por pelo menos algum membro do grupo sempre, caso contrário problemas ocorrerão.</li>
+</ul>
+              
+            </div>
+          </div>
+          <footer>
+  
+    <div class="rst-footer-buttons" role="navigation" aria-label="footer navigation">
+      
+        <a href="../../managementProject/gcs/" class="btn btn-neutral float-right" title="Plano de Gerenciamento de Configuração de Software">Next <span class="icon icon-circle-arrow-right"></span></a>
+      
+      
+        <a href="../articleCriticalAnalysis/" class="btn btn-neutral" title="Análise Crítica de artigo"><span class="icon icon-circle-arrow-left"></span> Previous</a>
+      
+    </div>
+  
+
+  <hr/>
+
+  <div role="contentinfo">
+    <!-- Copyright etc -->
+    
+  </div>
+
+  Built with <a href="http://www.mkdocs.org">MkDocs</a> using a <a href="https://github.com/snide/sphinx_rtd_theme">theme</a> provided by <a href="https://readthedocs.org">Read the Docs</a>.
+</footer>
+      
+        </div>
+      </div>
+
+    </section>
+
+  </div>
+
+  <div class="rst-versions" role="note" style="cursor: pointer">
+    <span class="rst-current-version" data-toggle="rst-current-version">
+      
+      
+        <span><a href="../articleCriticalAnalysis/" style="color: #fcfcfc;">&laquo; Previous</a></span>
+      
+      
+        <span style="margin-left: 15px"><a href="../../managementProject/gcs/" style="color: #fcfcfc">Next &raquo;</a></span>
+      
+    </span>
+</div>
+    <script>var base_url = '../..';</script>
+    <script src="../../js/theme.js" defer></script>
+      <script src="../../search/main.js" defer></script>
+
+</body>
+</html>
