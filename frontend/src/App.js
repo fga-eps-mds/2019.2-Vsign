@@ -2,8 +2,6 @@ import React, { Fragment } from 'react';
 import Routes from './components/Routes';
 import GlobalStyle from './styles';
 
-export default App;
-
 export default function App() {
     return (
         <Fragment>
@@ -12,4 +10,3 @@ export default function App() {
         </Fragment>
     );
 }
-

@@ -1,4 +1,5 @@
 # frozen_string_literal: true
+include Rails.application.routes.url_helpers
 
 class Contract < ApplicationRecord
   after_create :send_email_new_contract
@@ -15,8 +16,9 @@ class Contract < ApplicationRecord
   def send_email_new_contract
     SendgridMailer.send(
       self.user.email,
-      { 
-        buttonURL: app.login_by_token_path(token: self.token)
+      {
+        name: self.user.name, 
+        buttonURL: login_by_token_path(token: self.token)
       },
       "d-977dd6915e8a430bbed0ab92c9a4421a" 
     )
