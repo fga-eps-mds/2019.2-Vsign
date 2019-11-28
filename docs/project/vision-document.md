@@ -72,14 +72,14 @@ A plataforma devo ser acessada a partir de um dispositivo conectado a internet, 
 | NOME      |DESCRIÇÃO | PRINCIPAIS RESPONSABILIDADES
 |-----------|----------|----------------------------|
 | Cauê Mateus Oliveira | Product Owner | Definir a estratégia de trabalho e maximizar o valor do projeto|
-| Kairon Velozo |Architect|--------------|
-| Marcos da Silva Cabeceira | Membro da equipe de desenvolvimento.   |Executar o projeto além de desenvolver e manter a documentação e o software.|
-| Marcos Gabriel Tavares |  Membro da equipe de desenvolvimento.   |Executar o projeto além de desenvolver e manter a documentação e o software.|
-| Marcos Vinicius Lima Raimundo |  Membro da equipe de desenvolvimento.   |Executar o projeto além de desenvolver e manter a documentação e o software.|
-| Thiago Pereira | DevOps |-------|
-| Victor Alves Gomide | Scrum Master | ------------------|
-| Vinicius Porto |  Membro da equipe de desenvolvimento.   |Executar o projeto além de desenvolver e manter a documentação e o software.|
-| William Thalisson Pereivea Vieira |  Membro da equipe de desenvolvimento.   |Executar o projeto além de desenvolver e manter a documentação e o software.|
+| Kairon Velozo |Architect| Definir a arquitetura geral do sistema |
+| Marcos da Silva Cabeceira | Membro da equipe de desenvolvimento.   | Desenvolver e manter a documentação e o software.|
+| Marcos Gabriel Tavares |  Membro da equipe de desenvolvimento.   | Desenvolver e manter a documentação e o software.|
+| Marcos Vinicius Lima Raimundo |  Membro da equipe de desenvolvimento.   | Desenvolver e manter a documentação e o software.|
+| Thiago Pereira | DevOps | Responsavel pela integração continua|
+| Victor Alves Gomide | Scrum Master | Garantir a realização da metodologia do Scrum|
+| Vinicius Porto |  Membro da equipe de desenvolvimento.   | Desenvolver e manter a documentação e o software.|
+| William Thalisson Pereivea Vieira |  Membro da equipe de desenvolvimento.   |Desenvolver e manter a documentação e o software.|
 
 # 5. Visão geral do produto
 ----
