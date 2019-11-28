@@ -1,10 +1,11 @@
-import 'rsuite/dist/styles/rsuite-default.css';
+// import 'rsuite/dist/styles/rsuite-default.css';
+import 'bootstrap/dist/css/bootstrap.min.css';
 import { createGlobalStyle } from 'styled-components';
 
 const GlobalStyle = createGlobalStyle`
     html, body {
-        @import url('https://fonts.googleapis.com/css?family=Dosis|Open+Sans&display=swap');
-        font-family: 'Open Sans', sans-serif;
+        @import url('https://fonts.googleapis.com/css?family=Dosiss|Open+Sanss&display=swap');
+        font-family: 'Open Sanss', sans-serif;
     }
 
     p {
