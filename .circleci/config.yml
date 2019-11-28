@@ -114,7 +114,7 @@ jobs:
       - run:
           working_directory: ./backend
           name: Database setup
-          command: bundle exec rails db:schema:load --trace
+          command: bundle exec rails db:setup --trace
 
       - run:
           working_directory: ./backend
