@@ -2,6 +2,7 @@ import React, { Component, Fragment } from 'react';
 import { connect } from 'react-redux';
 import { setSignatureAssetsAction } from '../../actions/record';
 
+// eslint-disable-next-line
 URL = window.URL || window.webkitURL;
 var gumStream; 						
 var rec; 							

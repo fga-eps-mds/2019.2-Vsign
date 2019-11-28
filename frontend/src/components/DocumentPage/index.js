@@ -55,7 +55,7 @@ export default class DocumentPage extends Component {
                         </div>
                     </div>
                     <Link to={RECORD_URL}>
-                        <button className="btn btn-primary pull-right">Continuar</button>
+                        <button className="btn btn-primary btn-lg float-right">Continuar</button>
                     </Link>
                 </div>
             </Fragment>

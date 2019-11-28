@@ -34,8 +34,7 @@ export default class ScriptProgress extends Component {
   render() {
     const {
       percent,
-      color,
-      status
+      color
     } = this.state;
     const style = {
       width: `${percent}%`,

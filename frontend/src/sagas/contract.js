@@ -3,6 +3,7 @@ import { history } from '../store';
 import { SET_CONTRACT } from '../constants/contract';
 import { INSTRUCTIONS_URL } from '../constants/routes';
 
+// eslint-disable-next-line
 function* handleSetContract(action) {
     history.push(INSTRUCTIONS_URL);
 }
