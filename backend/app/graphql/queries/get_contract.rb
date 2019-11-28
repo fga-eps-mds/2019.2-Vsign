@@ -7,8 +7,9 @@ module Queries
 
     type Types::ContractType, null: true
 
-    def resolve(id:, token:)
-      contract = !token.blank? ? Contract.where(token: token).first : Contract.find(id)
+    def resolve(id:)
+      # contract = !token.blank? ? Contract.where(token: token).first : Contract.find(id)
+      contract = Contract.find(id)
       
       return contract
     end

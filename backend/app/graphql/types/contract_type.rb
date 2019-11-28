@@ -5,5 +5,6 @@ module Types
     field :order, String, null: false
     field :user, Types::UserType, null: false
     field :token, String, null: false
+    field :expired, Boolean, null: false
   end
 end

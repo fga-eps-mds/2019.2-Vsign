@@ -4,9 +4,8 @@ import { Route, Redirect } from 'react-router-dom';
 
 class PrivateRoute extends Component {
     render() {
-        console.log(this.props);
         const { component: Component, authenticated, ...rest } = this.props;
-        
+
         return (
             <Route
                 {...rest}
@@ -24,10 +23,9 @@ class PrivateRoute extends Component {
 }
 
 const mapStateToProps = (state) => {
-    console.log(state);
-    
     return {
-    authenticated: state.session.authenticated
-}};
+        authenticated: state.session.authenticated
+    }
+};
 
 export default connect(mapStateToProps)(PrivateRoute);
