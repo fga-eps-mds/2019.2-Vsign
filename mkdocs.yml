@@ -11,6 +11,9 @@ nav:
         - 'Documento de Visão': 'project/vision-document.md'
         - 'Documento de Arquitetura': 'project/architectureDocument.md'
         - 'Diagrama de casos de uso': 'project/useCasesDiagram.md'
+        - 'Diagrama de Classes': 'project/class-diagram.md'
+        - 'Protótipo de Média Fidelidade': 'project/fidelity_prototyping.md'
+        - 'Análise Crítica de artigo': 'project/articleCriticalAnalysis.md'
         - 'Postmortem': 'project/postmortem.md'
     - Gerenciamento de Projeto:
         - 'Plano de Gerenciamento de Configuração de Software': 'managementProject/gcs.md'
@@ -23,6 +26,7 @@ nav:
         - 'Sprint 4': 'sprints/sprint4.md'
         - 'Sprint 5': 'sprints/sprint5.md'
         - 'Sprint 6': 'sprints/sprint6.md'
+        - 'Sprint 9': 'sprints/sprint9.md'
     - Atas de Reunião:
         - '29/08/2019': 'meetings/reuniao29_08_19.md'
         - '31/08/2019': 'meetings/reuniao31_08_19.md'
@@ -37,4 +41,5 @@ nav:
         - '22/10/2019': 'meetings/reuniao22_10_19.md'
         - '26/10/2019': 'meetings/reuniao26_10_19.md'
         - '04/11/2019': 'meetings/reuniao04_11_19.md'
+        - '11/11/2019': 'meetings/reuniao11_11_19.md'
 theme: readthedocs

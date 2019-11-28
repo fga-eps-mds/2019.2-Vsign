@@ -10,4 +10,4 @@
 
 ### Diagrama de casos de uso
 
-[![Diagrama de casos de uso](img/useCasesDiagram.png)](https://ibb.co/cwtPmsW)
+[![Diagrama de casos de uso](img/useCasesDiagram.jpg)](https://ibb.co/cwtPmsW)

@@ -7,9 +7,11 @@ class V1::ContractsController < V1Controller
     order = params[:order]
     contract = Contract.find_or_create_by(company: @company, order: order) do |contract|
       content = params[:content]
+      contract.token = SecureRandom.urlsafe_base64(64)
       contract.script = @script.format_content(content)
       contract.user = @user
     end
+    render json: contract, status: :created
   end
 
   private
@@ -17,19 +19,20 @@ class V1::ContractsController < V1Controller
   def set_script
     kind = params[:kind]
     @script = Script.where(company: @company, kind: kind).order('RANDOM()').first
+    render json: {
+      message: 'Modelo de contrato não encontrado.'
+    }, status: :not_found if @script.nil?
   end
 
   def set_user
     email = params[:email]
-
     random_password = SecureRandom.urlsafe_base64(8)
-
     @user = User.find_or_create_by(email: email) do |user|
       user.name = params[:name]
-      user.password = random_password,
-                      user.password_confirmation = random_password
+      user.password = random_password
+      user.password_confirmation = random_password
     end
-    sign_in @user
+    # sign_in @user
     sign_in @user, bypass: true
   end
 

@@ -13,6 +13,7 @@ import { upload } from '../utils/services';
 import { history } from '../store';
 import { shuffle, imageBlob } from '../utils';
 import { attachContractFilesMutation } from '../graphql/mutations';
+import { RECEIVED_URL } from '../constants/routes';
 
 
 function* handleUploadVideo() {
@@ -47,9 +48,8 @@ function* handleUploadVideo() {
 }
 
 function* handleUploadAudio() {
-    const { audio } = yield select(state => state.record);
-    const { blob } = audio;
-    const name = `audio-${Date.now()}.webm`;
+    const { audio: blob } = yield select(state => state.record);
+    const name = `audio-${Date.now()}.wav`;
     blob.name = name;
 
     try {
@@ -152,9 +152,11 @@ function * handleAttachContractFiles() {
                 audio: audio.signedBlobId
             }
         };
-        const { success } = yield call(attachContractFilesMutation, variables);
+        const { data } = yield call(attachContractFilesMutation, variables);
+        const { attachContractFiles } = data || {};
+        const { success } = attachContractFiles || {};
         if (success) {
-            history.push('/received');
+            history.push(RECEIVED_URL);
         }
     } catch {
         // fazer alguma coisa.

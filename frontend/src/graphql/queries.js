@@ -1,30 +1,43 @@
 import { client as apollo } from './client';
 import gql from 'graphql-tag';
 
-export async function getContract(id, token) {
-  const GET_CONTRACT = gql`
-    query getContract($id: ID, $token: String) {
-      getContract(
-        id: $id
-        token: $token
-      ) {
+export async function getContractQuery(variables) {
+  const query = gql`
+    query getContract($id: ID!) {
+      getContract(id: $id) {
           id
+          createdAt
           script
           order
+          company {
+            name
+          }
           user {
             name
-            token
           }
       }
     }
   `;
 
-  const response = await apollo.query({
-    query: GET_CONTRACT,
-    variables: { id, token }
+  return await apollo.query({
+    query,
+    variables
   });
+}
 
-  return response;
+export function contractsQuery() {
+  return gql`
+    query contracts {
+      contracts {
+        id
+        order
+        company {
+          name
+        }
+        createdAt
+      }
+    }
+  `;
 }
 
 export async function currentUser() {

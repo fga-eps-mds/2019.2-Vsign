@@ -11,4 +11,7 @@ class User < ApplicationRecord
 
   has_one_attached :user_document
   has_many :contracts
+
+  validates_presence_of :name, :email, :password
+
 end
