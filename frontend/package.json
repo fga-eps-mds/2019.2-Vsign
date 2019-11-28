@@ -19,8 +19,6 @@
     "react-mic": "^12.4.1",
     "react-player": "^1.13.0",
     "react-redux": "^7.1.1",
-    "react-router-dom": "^5.0.1",
-    "react-scripts": "3.1.1",
     "reactour": "^1.15.2",
     "recordrtc": "^5.5.8",
     "redux": "^4.0.4",
@@ -32,7 +30,10 @@
     "ts-ebml": "^2.0.2",
     "typescript": "^3.6.3",
     "videojs-record": "^3.8.0",
-    "webm-wasm": "^0.4.1"
+    "webm-wasm": "^0.4.1",
+    "react-router-dom": "^5.0.1",
+    "react-router-modal": "^1.5.2",
+    "react-scripts": "3.1.1"
   },
   "scripts": {
     "start": "PORT=3001 react-app-rewired start",
